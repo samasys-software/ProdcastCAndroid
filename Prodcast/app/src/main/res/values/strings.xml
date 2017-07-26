@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">"Prodcast "</string>
+    <string name="error_field_required">This field is Reqiured</string>
+    <string name="error_invalid_username">This MobileNumber is invalid</string>
+    <string name="error_invalid_password">This Pin Number is Invalid</string>
+    <string name="error_incorrect_password">The Username or Password is wrong</string>
+</resources>

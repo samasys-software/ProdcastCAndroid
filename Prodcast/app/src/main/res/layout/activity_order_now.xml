@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_order_now"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_store"
+    tools:context="com.ventruxinformatics.prodcast.OrderNowActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlheadlogo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/logo"
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_logo_head"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toggle_menu_icon"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/imageButton4"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlheader"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/rlheadlogo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="Order Now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textColor="#629a1e"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlordernowmaian"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rlheader"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp">
+
+
+        <LinearLayout
+            android:id="@+id/llmainorder"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:weightSum="3"
+            android:background="@drawable/white_bg"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <RelativeLayout
+                android:id="@+id/rlproduct"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rlproducthead"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/product_bg"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:text="Product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#fff"
+                        android:id="@+id/textView4"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlproductspinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                   android:background="@drawable/form_box"
+                    android:layout_marginTop="99dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:paddingLeft="10dp"
+                        android:id="@+id/spinner"
+                        />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="2dp"
+                android:background="#629a1e"
+                android:id="@+id/rdivproduct"
+                android:layout_height="match_parent">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlqty"
+                android:layout_width="0dp"
+                android:layout_weight=".7"
+                android:layout_height="match_parent">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/rlqtyhead"
+                    android:background="@drawable/product_bg"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true">
+
+                    <TextView
+                        android:text="Quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#fff"
+                        android:id="@+id/companyDetails"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlqtyvalue"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/small_form"
+                    android:layout_marginTop="99dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#5c801e"
+                        android:id="@+id/textqtyvalue"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rldivqty"
+                android:layout_width="2dp"
+                android:background="#629a1e"
+                android:layout_height="match_parent">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rltotal"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rltotalhead"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/product_bg"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:text="Subtotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#fff"
+                        android:id="@+id/textView6"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:text="$ 100.00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#5c801e"
+
+                    android:id="@+id/textView9"
+                    android:layout_below="@+id/rltotalhead"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="70dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rltotalbottom"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#deedc4"
+            android:layout_below="@+id/llmainorder"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:text="Total value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:id="@+id/textView7"
+                android:textSize="18sp"
+                android:textColor="#5c801e"/>
+
+            <TextView
+                android:text="$ 100.00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:textSize="16sp"
+                android:textColor="#5c801e"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlbottoms"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/rltotalbottom"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:text="Review"
+                android:textColor="#aad772"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/log_in_button"
+                android:layout_marginStart="30dp"
+                android:id="@+id/review" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textColor="#aad772"
+                android:textAllCaps="false"
+                android:background="@drawable/log_in_button"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:id="@+id/submit" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/green_bg"
+    tools:context="com.ventruxinformatics.prodcast.LoginActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlloginmain"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/yellow_background"
+        android:layout_marginTop="110dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:id="@+id/rlcountry"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/form_bg"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/globe_icon"
+                android:id="@+id/imageButton"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner2"
+                android:layout_marginLeft="45dp"
+                android:background="@null"
+                android:paddingLeft="10dp"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true" />
+
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/dropdown_icon"
+                android:id="@+id/imageButton2"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlpin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/form_bg"
+            android:layout_below="@+id/rlmobile"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/password_icon"
+                android:id="@+id/imageButton3"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp" />
+
+            <EditText
+                android:id="@+id/loginPinNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="50dp"
+                android:background="@null"
+                android:ems="10"
+                android:hint="PIN"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:textAllCaps="true"
+                android:textColor="#a4a4a3" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlmobile"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/form_bg"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/rlcountry"
+            android:layout_alignStart="@+id/rlcountry"
+            android:layout_alignRight="@+id/rlcountry"
+            android:layout_alignEnd="@+id/rlcountry">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/customer_icon"
+                android:id="@+id/imageButton1"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp" />
+
+            <EditText
+                android:id="@+id/loginMobileNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="50dp"
+                android:background="@null"
+                android:ems="10"
+                android:hint="MOBILE NUMBER"
+                android:inputType="phone"
+                android:paddingLeft="10dp"
+                android:textAllCaps="true"
+                android:textColor="#a4a4a3" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/rlloginmain"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout2">
+
+        <Button
+            android:id="@+id/logIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/log_in_button"
+            android:text="Log In"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+
+            android:id="@+id/logClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:layout_marginRight="28dp"
+            android:background="@drawable/log_in_button"
+            android:text="Clear"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="Register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:id="@+id/textView"
+            android:textColor="#345904"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Forgot Pin?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/forgotPin"
+            android:textColor="#345904"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+</RelativeLayout>
