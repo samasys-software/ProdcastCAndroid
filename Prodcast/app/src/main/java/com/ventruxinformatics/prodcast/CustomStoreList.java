@@ -70,6 +70,7 @@ public class CustomStoreList extends BaseAdapter {
         holder.tv=(TextView) rowView.findViewById(R.id.companyDetails);
         holder.tv1=(TextView) rowView.findViewById(R.id.companyAddress);
         holder.img=(ImageView) rowView.findViewById(R.id.companyLogo);
+        //  holder.tv.setText(result[position]);                  //prev. code
       //  holder.tv.setText(result[position]);                  //prev. code
       holder.tv.setText(result.get(position));
       holder.tv1.setText(address.get(position));
