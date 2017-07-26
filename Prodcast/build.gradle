@@ -9,7 +9,7 @@ buildscript {
 
 
         // NOTE: Do not place your application dependencies here; they belong
-		// NOTE: Do not place your application dependencies here; they belong TEST
+		// NOTE: Do not place your application dependencies here; they belong TEST SSSS
         // in the individual module build.gradle files
     }
 }
