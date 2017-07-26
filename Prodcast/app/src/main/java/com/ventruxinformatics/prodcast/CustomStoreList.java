@@ -46,6 +46,7 @@ public class CustomStoreList extends BaseAdapter {
     public Object getItem(int position) {
         // TODO Auto-generated method stub
         return position;
+        
     }
 
     @Override
