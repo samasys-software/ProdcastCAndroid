@@ -9,6 +9,7 @@ buildscript {
 
 
         // NOTE: Do not place your application dependencies here; they belong
+		// NOTE: Do not place your application dependencies here; they belong TEST
         // in the individual module build.gradle files
     }
 }
