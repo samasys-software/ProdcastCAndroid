@@ -50,6 +50,7 @@ public class StoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_store);
 
         context = this;
+
         JSONArray[] jsonArrays;
         try {
             ArrayList<JSONObject> distributors=new ArrayList<>();
@@ -57,37 +58,40 @@ public class StoreActivity extends AppCompatActivity {
             StoreActivityTask MAuthTask = new StoreActivityTask();
             MAuthTask.execute((Void) null);
              jsonArrays = MAuthTask.get();
-            System.out.println("Length="+jsonArrays.length);
-            //JSONArray jArray = new JSONArray(jsonArrays);
-            for(int i=0;i<jsonArrays.length;i++) {
-                JSONArray list=jsonArrays[i];
-                for(int j=0;j<list.length();j++) {
+            if(jsonArrays==null){
+                Toast.makeText(context, "It is null", Toast.LENGTH_LONG).show();
+            }
+            else {
 
-                    System.out.println("jsonArrays=" + list);
-                    JSONObject object = list.getJSONObject(j);
-                    System.out.println("jsonArrays=" + object);
-                    count++;
-                    distributors.add(count,object);
-                    prgmNameList.add( count,object.getString("companyName"));
-                    prgmAddressList.add( count,object.getString("address1")+" "+object.getString("address2")+" "+object.getString("address3"));
-                    System.out.println("jsonArrays=" + object.getString("companyName"));
-                    String fileName=object.getString("logo");
-                    String url="http://ec2-52-91-5-22.compute-1.amazonaws.com:8080/prodcastweb/V5/images/"+fileName;
-                    String[] params={url};
-                    StoreImageTask task = new StoreImageTask();
-                    task.execute( params);
-                    Bitmap bmp=task.get();
-                    prgmImages.add(count,bmp);
+                System.out.println("Length=" + jsonArrays.length);
+                //JSONArray jArray = new JSONArray(jsonArrays);
+                for (int i = 0; i < jsonArrays.length; i++) {
+                    JSONArray list = jsonArrays[i];
+                    for (int j = 0; j < list.length(); j++) {
+
+                        System.out.println("jsonArrays=" + list);
+                        JSONObject object = list.getJSONObject(j);
+                        System.out.println("jsonArrays=" + object);
+                        count++;
+                        distributors.add(count, object);
+                        prgmNameList.add(count, object.getString("companyName"));
+                        prgmAddressList.add(count, object.getString("address1") + " " + object.getString("address2") + " " + object.getString("address3"));
+                        System.out.println("jsonArrays=" + object.getString("companyName"));
+                        String fileName = object.getString("logo");
+                        String url = "http://ec2-52-91-5-22.compute-1.amazonaws.com:8080/prodcastweb/V5/images/" + fileName;
+                        String[] params = {url};
+                        StoreImageTask task = new StoreImageTask();
+                        task.execute(params);
+                        Bitmap bmp = task.get();
+                        prgmImages.add(count, bmp);
+
+
+                    }
+
+                    SessionInformations.getInstance().setAllDistributors(distributors);
 
 
                 }
-
-                SessionInformations.getInstance().setAllDistributors(distributors);
-
-
-
-
-
             }
         }
         catch(Exception e){

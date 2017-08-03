@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText mobileNumber,pinNumber;
 
     Button signInButton,clearButton;
-    TextView forgotPin;
+    TextView forgotPin,register;
     Spinner spin;
     boolean cancel = false;
     View focusView = null;
@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         signInButton=(Button) findViewById(R.id.logIn);
         clearButton=(Button) findViewById(R.id.logClear);
         forgotPin=(TextView) findViewById(R.id.forgotPin);
+        register=(TextView) findViewById(R.id.register);
 
 
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
@@ -85,7 +86,14 @@ public class LoginActivity extends AppCompatActivity {
                attemptRetrive();
             }
         });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent i = new Intent(LoginActivity.this,CustomerRegistrationActivity.class);
+                startActivity(i);
+            }
+        });
 
         //Creating the ArrayAdapter instance having the country list
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,country);
@@ -162,17 +170,35 @@ public class LoginActivity extends AppCompatActivity {
 
     private void attemptRetrive() {
         String username = mobileNumber.getText().toString();
-        String password = pinNumber.getText().toString();
         String country=spin.getSelectedItem().toString();
         if (TextUtils.isEmpty(username)) {
             mobileNumber.setError(getString(R.string.error_field_required));
             focusView = mobileNumber;
             cancel = true;
         }
+        if (TextUtils.isEmpty(country)) {
+            mobileNumber.setError(getString(R.string.error_field_required));
+            focusView = mobileNumber;
+            cancel = true;
+        }
+        else {
+            cancel = false;
 
-           UserRetriveTask task = new UserRetriveTask(username, country);
-            task.execute((Void) null);
-        Toast.makeText(context,"huigyufyuf",Toast.LENGTH_LONG).show();
+            try {
+
+                UserRetriveTask task = new UserRetriveTask(username, country);
+                task.execute((Void) null);
+                Boolean success = task.get();
+                if(success)
+                    Toast.makeText(context, "Successfully", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
 
 
     }

@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_login"
+    android:id="@+id/activity_change_password"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/green_bg"
-    tools:context="com.ventruxinformatics.prodcast.LoginActivity">
+    android:background="@drawable/bg_store"
+    tools:context="com.ventruxinformatics.prodcast.CustomerRegistrationActivity">
 
     <RelativeLayout
         android:id="@+id/rlimageprodcast"

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    android:background="@drawable/green_bg"
-    android:orientation="vertical">
+    android:background="@drawable/green_bg">
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
     <ImageView
         android:id="@+id/orderIcon"
-        android:layout_width="90dp"
+        android:layout_width="150dp"
         android:layout_height="96dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -21,8 +23,8 @@
         app:srcCompat="@drawable/order_entry" />
 
     <ImageView
-        android:id="@+id/changeStoreIcon"
-        android:layout_width="90dp"
+        android:id="@+id/changePasswordIcon"
+        android:layout_width="150dp"
         android:layout_height="96dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -30,46 +32,53 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="35dp"
         android:layout_row="0"
-        app:srcCompat="@drawable/order_entry" />
-
+        app:srcCompat="@drawable/chnge" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageView
-        android:id="@+id/orderHistroyIcon"
-        android:layout_width="90dp"
+        android:id="@+id/changeStoreIcon"
+        android:layout_width="150dp"
         android:layout_height="96dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_column="2"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="175dp"
         android:layout_row="0"
-        app:srcCompat="@drawable/order_entry" />
+        app:srcCompat="@drawable/distribution_icon" />
+    <ImageView
+            android:id="@+id/orderHistroyIcon"
+            android:layout_width="150dp"
+            android:layout_height="96dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_column="2"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="175dp"
+            android:layout_row="1"
+            app:srcCompat="@drawable/report" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-    <!-- <ImageView
-         android:id="@+id/editRegistrationIcon"
-         android:layout_width="94dp"
-         android:layout_height="96dp"
-         android:layout_alignParentTop="true"
-         android:layout_centerHorizontal="true"
-         android:layout_column="1"
-         android:layout_marginRight="23dp"
-         android:layout_marginStart="00dp"
-         android:layout_marginTop="30dp"
-         android:layout_row="1"
-         app:srcCompat="@drawable/order_entry" />
+        <ImageView
+            android:id="@+id/editRegistrationIcon"
+            android:layout_width="150dp"
+            android:layout_height="96dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_column="1"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="300dp"
+            android:layout_row="1"
+            app:srcCompat="@drawable/editreg" />
 
-     <ImageView
-         android:id="@+id/changePinIcon"
-         android:layout_width="90dp"
-         android:layout_height="96dp"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentStart="true"
-         android:layout_alignParentTop="true"
-         android:layout_column="0"
-         android:layout_marginLeft="32dp"
-         android:layout_marginStart="32dp"
-         android:layout_marginTop="21dp"
-         android:layout_row="0"
-         app:srcCompat="@drawable/order_entry" />
- -->
-
-</GridLayout>
+    </LinearLayout>
+</RelativeLayout>

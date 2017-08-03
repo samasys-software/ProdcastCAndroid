@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/activity_change_password"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/green_bg"
+tools:context="com.ventruxinformatics.prodcast.OrderHistroyActivity">
+
+
+
+<RelativeLayout
+    android:id="@+id/rlloginmain"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/yellow_background"
+    android:layout_marginTop="30dp"
+    android:layout_below="@+id/rlimageprodcast"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+
+
+    <RelativeLayout
+        android:id="@+id/rlcountry"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/form_bg"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner2"
+            android:layout_marginLeft="45dp"
+            android:background="@null"
+            android:paddingLeft="10dp"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+</RelativeLayout>
