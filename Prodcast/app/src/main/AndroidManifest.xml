@@ -19,13 +19,23 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>0
+        </activity>
+        0
         --
         <activity android:name=".LoginActivity" />
         <activity android:name=".StoreActivity" />
         <activity android:name=".OrderNowActivity" />
         <activity android:name=".BillActivity" />
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:label="@string/title_activity_change_password"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".CustomerRegistrationActivity" />
+        <activity
+            android:name=".OrderHistroyActivity"
+            android:label="@string/title_activity_order_histroy"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
