@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fgs.customerregistration.CustomerRegistration">
+
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="10dp"
+                android:hint="country"
+                android:inputType="text"
+                android:text="Country" />
+
+            <EditText
+                android:id="@+id/mobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+
+                android:layout_marginTop="20dp"
+                android:hint="MobileNumber"
+                android:inputType="phone"
+                android:text="MobileNumber" />
+
+            <EditText
+                android:id="@+id/pin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+
+                android:hint="PIN"
+                android:inputType="text"
+                android:text="Pin" />
+
+            <EditText
+                android:id="@+id/confirmPin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+
+                android:hint="Confirm PIN"
+                android:inputType="text"
+                android:text="ConfirmPin" />
+
+            <Button
+                android:id="@+id/login"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#FFFF"
+
+                android:background="@android:color/holo_green_dark"
+
+                android:text="Register" />
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="-46.5dp"
+                android:background="@android:color/holo_green_dark"
+                android:text="Cancel"
+                android:textColor="#FFFF" />
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="30dp"
+                android:layout_marginTop="-320dp"
+                android:layout_marginLeft="330dp"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="40dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintRight_toRightOf="parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
