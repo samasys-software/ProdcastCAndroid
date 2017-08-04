@@ -1,6 +1,7 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,9 +10,11 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
@@ -19,11 +22,19 @@ import com.loopj.android.http.SyncHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import businessObjects.SessionInformations;
 import cz.msebera.android.httpclient.Header;
 
 public class BillActivity extends AppCompatActivity {
     Button newOrderPin;
+    ListView listHistroy;
+    public static ArrayList<String> billNumber=new ArrayList<String>() ;
+    public static ArrayList<String> status=new ArrayList<String>() ;
+    public static ArrayList<String> billDate=new ArrayList<String>() ;
+    public static ArrayList<String> total=new ArrayList<String>() ;
+    public static ArrayList<String> balance=new ArrayList<String>() ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +44,7 @@ public class BillActivity extends AppCompatActivity {
         newOrderPin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(BillActivity.this,OrderNowActivity.class);
+                Intent intent=new Intent(BillActivity.this,ProductListActivity.class);
                 startActivity(intent);
             }
             });
@@ -42,13 +53,46 @@ public class BillActivity extends AppCompatActivity {
         try {
             BillActivityTask MAuthTask = new BillActivityTask();
             MAuthTask.execute((Void) null);
+            int count=-1;
             JSONObject jsonArrays = MAuthTask.get();
             JSONObject distributor=(JSONObject)SessionInformations.getInstance().getDistributor().get("distributor");
             String currencySymbol=distributor.getString("currencySymbol");
 
             JSONArray outstandingBill=jsonArrays.getJSONArray("outstandingBill");
-            if(outstandingBill.length()>0) {
-                createSome(outstandingBill);
+            if(outstandingBill.length()>0)
+            {
+                              System.out.println("Length=" + outstandingBill.length());
+                        //JSONArray jArray = new JSONArray(jsonArrays);
+                        for (int i = 0; i < outstandingBill.length(); i++) {
+                            count++;
+                            if(i==0) {
+                                billNumber.add(count, "Bill No");
+                                status.add(count, "Status");
+                                billDate.add(count, "Bill Date");
+                                total.add(count, "Total("+currencySymbol+")");
+                                balance.add(count, "Balance("+currencySymbol+")");
+
+
+                            }
+                            else{
+                                JSONObject object = outstandingBill.getJSONObject(i - 1);
+                                String billNo=""+object.getLong("billNumber");
+                                billNumber.add(count,billNo );
+                                String orderStatus="NEW";
+                                System.out.println("Status : "+object.getString("orderStatus"));
+                                if(object.getString("orderStatus").equals("F")){
+                                    orderStatus="READY";
+                                }
+                                status.add(count, orderStatus);
+                                billDate.add(count,object.getString("billDate"));
+                                total.add(count,""+object.getDouble("outstandingBalance"));
+                            }
+
+                        }
+
+                listHistroy = (ListView) findViewById(R.id.billsListView);
+                listHistroy.setAdapter(new BillDetailsList(this, billNumber,status,billDate,total));
+
                /* StringBuilder html = new StringBuilder();
 
 
@@ -163,8 +207,9 @@ public class BillActivity extends AppCompatActivity {
     }
 
 
-    public void createSome(JSONArray outstandingBills){
-      TableLayout ll = (TableLayout) findViewById(R.id.table);
+   /* public void createSome(Arra){
+        listHistroy = (ListView) findViewById(R.id.billsListView);
+        listHistroy.setAdapter(new BillDetailsList(this, prgmNameList,prgmAddressList, prgmImages)); TableLayout ll = (TableLayout) findViewById(R.id.table);
         CheckBox checkBox;
         Button tv;
 
@@ -221,7 +266,7 @@ public class BillActivity extends AppCompatActivity {
             qty.setText("10");
             row.addView(checkBox);
             row.addView(minusBtn);
-            row.addView(qty);*/
+            row.addView(qty);
                    // row.addView(checkBox);
                     row.addView(billNumber);
                    row.addView(status);
@@ -232,5 +277,5 @@ public class BillActivity extends AppCompatActivity {
             }
             ll.addView(row,counter);
         }
-    }
+    }*/
 }

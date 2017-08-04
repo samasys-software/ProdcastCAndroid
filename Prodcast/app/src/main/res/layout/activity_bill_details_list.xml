@@ -1,0 +1,73 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/linearmain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/billNo"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Samasys"
+            android:textAllCaps="true"
+            android:textColor="#629a1e"
+            android:textSize="16sp"
+            android:textStyle="bold"
+          />
+
+
+        <TextView
+            android:text="Samasys"
+
+            android:textAllCaps="true"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/status"
+            android:textColor="#629a1e"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+
+            />
+        <TextView
+            android:text="Samasys"
+            android:textAllCaps="true"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/billDate"
+            android:textColor="#629a1e"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+
+            />
+        <TextView
+            android:text="Samasys"
+            android:textAllCaps="true"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/total"
+            android:textColor="#629a1e"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+
+            />
+
+
+    </LinearLayout>
+</RelativeLayout>
+
+
+
