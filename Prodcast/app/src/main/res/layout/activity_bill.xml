@@ -74,16 +74,27 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true">
 
-<!--previous code
+        <ListView
+            android:id="@+id/billsListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" >
 
-    <WebView
-        android:id="@+id/myWebView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />-->
+        </ListView>
+
+
+        <!--previous code
+
+            <WebView
+                android:id="@+id/myWebView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />-->
 
 
 
-    <TableLayout
+  <!-- commented on 4/8
+   <TableLayout
         android:id="@+id/table"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -93,7 +104,7 @@
 
 
 
-    </TableLayout>
+    </TableLayout>-->
 
 
     </RelativeLayout>
