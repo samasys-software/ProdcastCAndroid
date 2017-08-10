@@ -44,7 +44,7 @@ public class BillActivity extends AppCompatActivity {
         newOrderPin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(BillActivity.this,ProductListActivity.class);
+                Intent intent=new Intent(BillActivity.this,OrderNowActivity.class);
                 startActivity(intent);
             }
             });
@@ -66,6 +66,7 @@ public class BillActivity extends AppCompatActivity {
                         for (int i = 0; i < outstandingBill.length(); i++) {
                             count++;
                             if(i==0) {
+                                
                                 billNumber.add(count, "Bill No");
                                 status.add(count, "Status");
                                 billDate.add(count, "Bill Date");
@@ -85,13 +86,15 @@ public class BillActivity extends AppCompatActivity {
                                 }
                                 status.add(count, orderStatus);
                                 billDate.add(count,object.getString("billDate"));
-                                total.add(count,""+object.getDouble("outstandingBalance"));
+                                total.add(count,""+object.getDouble("billAmount"));
+                                balance.add(count,""+object.getString("outstandingBalance"));
                             }
 
                         }
 
                 listHistroy = (ListView) findViewById(R.id.billsListView);
-                listHistroy.setAdapter(new BillDetailsList(this, billNumber,status,billDate,total));
+
+                listHistroy.setAdapter(new BillDetailsList(this, billNumber,status,billDate,total,balance));
 
                /* StringBuilder html = new StringBuilder();
 

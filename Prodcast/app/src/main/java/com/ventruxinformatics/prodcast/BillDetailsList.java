@@ -3,8 +3,7 @@ package com.ventruxinformatics.prodcast;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -23,17 +22,19 @@ public class BillDetailsList extends BaseAdapter {
         ArrayList<String> orderStatus;
         ArrayList<String> billDate;
         ArrayList<String> totalAmount;
+        ArrayList<String> outstandingBalance;
         Context context;
         //int [] imageId;           //prev. code
         ArrayList<Bitmap> imageId;
         private static LayoutInflater inflater=null;
         //public CustomStoreList(StoreActivity mainActivity,String[] prgmNameList, int[] prgmImages) {           //prev. code
-        public BillDetailsList(BillActivity mainActivity,ArrayList<String> billNumber, ArrayList<String> status, ArrayList<String> billDates, ArrayList<String> total) {
+        public BillDetailsList(BillActivity mainActivity,ArrayList<String> billNumber, ArrayList<String> status, ArrayList<String> billDates, ArrayList<String> total,ArrayList<String> balance) {
             // TODO Auto-generated constructor stub
             billno=billNumber;
             orderStatus=status;
             billDate=billDates;
             totalAmount=total;
+            outstandingBalance=balance;
             context=mainActivity;
 
             inflater = ( LayoutInflater )context.
@@ -64,6 +65,7 @@ public class BillDetailsList extends BaseAdapter {
             TextView tv1;
             TextView tv2;
             TextView tv3;
+            TextView tv4;
 
         }
         @Override
@@ -76,12 +78,14 @@ public class BillDetailsList extends BaseAdapter {
             holder.tv1=(TextView) rowView.findViewById(R.id.status);
             holder.tv2=(TextView) rowView.findViewById(R.id.billDate);
             holder.tv3=(TextView) rowView.findViewById(R.id.total);
+            holder.tv4=(TextView) rowView.findViewById(R.id.outstandingBalance);
             //holder.img=(ImageView) rowView.findViewById(R.id.companyLogo);
             //  holder.tv.setText(result[position]);                  //prev. code
             holder.tv.setText(billno.get(position));
             holder.tv1.setText(orderStatus.get(position));
             holder.tv2.setText(billDate.get(position));
             holder.tv3.setText(totalAmount.get(position));
+            holder.tv4.setText(outstandingBalance.get(position));
             //  holder.img.setImageResource(imageId[position]);            //prev. code
           //  holder.img.setImageBitmap(imageId.get(position));
 

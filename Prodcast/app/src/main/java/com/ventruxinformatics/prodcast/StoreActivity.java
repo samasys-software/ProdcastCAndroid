@@ -147,7 +147,7 @@ public class StoreActivity extends AppCompatActivity {
                 SyncHttpClient asyncHttpClient = new SyncHttpClient();
 
 
-                long accessId = SessionInformations.getInstance().getCustomerDetails().getLong("accessId");
+                long accessId = SessionInformations.getInstance().getCustomerDetails().getAccessId();
                 String url = "http://ec2-52-91-5-22.compute-1.amazonaws.com:8080/prodcast/customer/getDistributorList?accessId=" + accessId;
 
                 asyncHttpClient.get(url, new JsonHttpResponseHandler() {
@@ -266,7 +266,7 @@ public class StoreActivity extends AppCompatActivity {
                 SyncHttpClient asyncHttpClient = new SyncHttpClient();
                 RequestParams requestParams = new RequestParams();
                  String distributorId= SessionInformations.getInstance().getAllDistributors().get(position).getString("distributorId");
-                 String accessId= SessionInformations.getInstance().getCustomerDetails().getString("accessId");
+                 long accessId= SessionInformations.getInstance().getCustomerDetails().getAccessId();
                 System.out.println("DistributorId="+distributorId);
                 System.out.println("AccessId="+accessId);
                 requestParams.put("accessId", accessId);

@@ -37,22 +37,9 @@
             android:label="@string/title_activity_order_histroy"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ProductListActivity"
-            android:label="@string/title_product_list"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".ProductDetailActivity"
-            android:label="@string/title_product_detail"
-            android:parentActivityName=".ProductListActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ventruxinformatics.prodcast.ProductListActivity" />
-        </activity>
-        <activity
             android:name=".BillDetailsList"
             android:label="@string/title_activity_bill_details_list"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

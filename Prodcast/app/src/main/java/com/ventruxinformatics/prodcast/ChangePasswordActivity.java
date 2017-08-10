@@ -5,8 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -21,15 +20,21 @@ import android.widget.Toast;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
+import com.ventruxinformatics.prodcast.connect.ProdcastServiceManager;
+import com.ventruxinformatics.prodcast.domain.CustomerLoginDTO;
+import com.ventruxinformatics.prodcast.domain.ProdcastDTO;
 
 import org.json.JSONObject;
 
 import businessObjects.SessionInformations;
 import cz.msebera.android.httpclient.Header;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChangePasswordActivity extends AppCompatActivity {
 
-    private UserChangePasswordTask mAuthTask = null;
+    //private UserChangePasswordTask mAuthTask = null;
     EditText oldPinNumber,newPinNumber,confirmPinNumber;
 
     Button submitButton,resetButton;
@@ -60,28 +65,22 @@ public class ChangePasswordActivity extends AppCompatActivity {
         });
 
 
-
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                oldPinNumber.setText("");
-                newPinNumber.setText("");
-                confirmPinNumber.setText("");
-
+               reset();
             }
         });
-
-
-
-
-
     }
 
+    public void reset(){
+        oldPinNumber.setText("");
+        newPinNumber.setText("");
+        confirmPinNumber.setText("");
 
+    }
     public void checkValue(String oldPassword,String newPassword,String confirmPassword){
-        if (mAuthTask != null) {
-            return;
-        }
+
 
         // Reset errors.
         oldPinNumber.setError(null);
@@ -141,31 +140,48 @@ public class ChangePasswordActivity extends AppCompatActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
+
+            long accessId=162;
+
+            Call<ProdcastDTO> changePinDTO = new ProdcastServiceManager().getClient().changePinNumber( accessId,oldPassword,newPassword );
+
+            changePinDTO.enqueue(new Callback<ProdcastDTO>() {
+                @Override
+                public void onResponse(Call<ProdcastDTO> call, Response<ProdcastDTO> response) {
+                    String responseString = null;
+                    ProdcastDTO dto = response.body();
+                    if(dto.isError()) {
+                        oldPinNumber.setError(getString(R.string.error_incorrect_password));
+                        focusView=oldPinNumber;
+                        focusView.requestFocus();
+                    }
+                    else {
+                        Toast.makeText(context,"Your Pin Number Has Been Changed Successfully",Toast.LENGTH_LONG).show();
+                        reset();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ProdcastDTO> call, Throwable t) {
+                    t.printStackTrace();
+
+                }
+            });
+
           /* Intent i = new Intent(LoginActivity.this,StoreActivity.class);
            startActivity(i);*/              //prev. code
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
         /*   showProgress(true);*/              //prev. code
-            mAuthTask = new UserChangePasswordTask(oldPassword, newPassword,confirmPassword);
+          /*  mAuthTask = new UserChangePasswordTask(oldPassword, newPassword,confirmPassword);
             mAuthTask.execute((Void) null);
-            System.out.println("successfully Login");
+            System.out.println("successfully Login");*/ // commented on 10/08/2017
         }
     }
 
 
-    private void showMainMenuScreen(JSONObject employee){
 
-
-        try {
-            Intent intent=new Intent(this, StoreActivity.class);
-            startActivity(intent);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
-    }
-    public class UserChangePasswordTask extends AsyncTask<Void, Void, Boolean> {
+   /* public class UserChangePasswordTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String moldPassword;
         private final String mnewPassword;
@@ -186,7 +202,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 // Simulate network access.
                 SyncHttpClient asyncHttpClient = new SyncHttpClient();
                 RequestParams requestParams = new RequestParams();
-                long accessId = SessionInformations.getInstance().getCustomerDetails().getLong("accessId");
+                long accessId = SessionInformations.getInstance().getCustomerDetails().getAccessId();
                 requestParams.put("accessId", accessId);
                 requestParams.put("oldPinNumber", moldPassword);
                 requestParams.put("newPinNumber", mnewPassword);
@@ -263,7 +279,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         }
 
 
-    }
+    }*/ //commented on 10/08/2017
 
 
 }
