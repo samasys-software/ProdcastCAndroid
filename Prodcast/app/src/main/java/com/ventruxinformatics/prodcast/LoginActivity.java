@@ -20,8 +20,10 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
 import com.ventruxinformatics.prodcast.connect.ProdcastServiceManager;
+import com.ventruxinformatics.prodcast.domain.CustomerLoginDTO;
 import com.ventruxinformatics.prodcast.domain.LoginDTO;
 
+import businessObjects.FormDataLogin;
 import businessObjects.SessionInformations;
 import cz.msebera.android.httpclient.Header;
 import retrofit2.Call;
@@ -29,6 +31,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
     //private UserLoginTask mAuthTask = null;
@@ -149,7 +153,11 @@ public class LoginActivity extends AppCompatActivity {
         String username = mobileNumber.getText().toString();
         String password = pinNumber.getText().toString();
         String country=spin.getSelectedItem().toString();
-        checkValue(username,password,country);
+        FormDataLogin login = new FormDataLogin();
+        login.setUserid(username);
+        login.setPassword(password);
+        login.setCountry(country);
+        //checkValue(username,password,country);
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -161,18 +169,19 @@ public class LoginActivity extends AppCompatActivity {
             // perform the user login attempt.
         //   showProgress(true);              //prev. code
 
-            Call<com.ventruxinformatics.prodcast.domain.LoginDTO> loginDTO = new ProdcastServiceManager().getClient().login( username , password, country );
+            Call<com.ventruxinformatics.prodcast.domain.CustomerLoginDTO> loginDTO = new ProdcastServiceManager().getClient().login( login.getUserid(), login.getPassword(), login.getCountry() );
 
-            loginDTO.enqueue(new Callback<LoginDTO>() {
+            loginDTO.enqueue(new Callback<CustomerLoginDTO>() {
                 @Override
-                public void onResponse(Call<LoginDTO> call, Response<LoginDTO> response) {
-                    LoginDTO dto = response.body();
+                public void onResponse(Call<CustomerLoginDTO> call, Response<CustomerLoginDTO> response) {
+                    String responseString = null;
+                    CustomerLoginDTO dto = response.body();
                     showMainMenuScreen(dto);
                     SessionInformations.getInstance().setCustomerDetails(null);
                 }
 
                 @Override
-                public void onFailure(Call<LoginDTO> call, Throwable t) {
+                public void onFailure(Call<CustomerLoginDTO> call, Throwable t) {
 
                 }
             });
@@ -204,7 +213,7 @@ public class LoginActivity extends AppCompatActivity {
         // logic
         return password.length() >= 6;
     }
-    private void showMainMenuScreen(LoginDTO employee){
+    private void showMainMenuScreen(CustomerLoginDTO employee){
 
 
         try {
