@@ -3,6 +3,7 @@ package com.ventruxinformatics.prodcast;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInstaller;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,14 +19,23 @@ import android.widget.Toast;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
+import com.ventruxinformatics.prodcast.connect.ProdcastServiceManager;
+import com.ventruxinformatics.prodcast.domain.CustomerLoginDTO;
+import com.ventruxinformatics.prodcast.domain.LoginDTO;
 
+import businessObjects.FormDataLogin;
 import businessObjects.SessionInformations;
 import cz.msebera.android.httpclient.Header;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 public class LoginActivity extends AppCompatActivity {
-    private UserLoginTask mAuthTask = null;
+    //private UserLoginTask mAuthTask = null;
     String[] country = { "IN", "USA"  };
     public static final String PREFS_NAME = "MyPrefsFile";
 
@@ -114,9 +124,9 @@ public class LoginActivity extends AppCompatActivity {
 
      }*/
     public void checkValue(String username,String password,String country){
-        if (mAuthTask != null) {
+        /*if (mAuthTask != null) {
             return;
-        }
+        }*/
 
         // Reset errors.
         mobileNumber.setError(null);
@@ -151,7 +161,11 @@ public class LoginActivity extends AppCompatActivity {
         String username = mobileNumber.getText().toString();
         String password = pinNumber.getText().toString();
         String country=spin.getSelectedItem().toString();
-        checkValue(username,password,country);
+        FormDataLogin login = new FormDataLogin();
+        login.setUserid(username);
+        login.setPassword(password);
+        login.setCountry(country);
+        //checkValue(username,password,country);
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -161,9 +175,27 @@ public class LoginActivity extends AppCompatActivity {
            startActivity(i);*/              //prev. code
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-        /*   showProgress(true);*/              //prev. code
-            mAuthTask = new UserLoginTask(username, password,country);
-            mAuthTask.execute((Void) null);
+        //   showProgress(true);              //prev. code
+
+            Call<com.ventruxinformatics.prodcast.domain.CustomerLoginDTO> loginDTO = new ProdcastServiceManager().getClient().login( login.getUserid(), login.getPassword(), login.getCountry() );
+
+            loginDTO.enqueue(new Callback<CustomerLoginDTO>() {
+                @Override
+                public void onResponse(Call<CustomerLoginDTO> call, Response<CustomerLoginDTO> response) {
+                    String responseString = null;
+                    CustomerLoginDTO dto = response.body();
+                    showMainMenuScreen(dto);
+                    SessionInformations.getInstance().setCustomerDetails(null);
+                }
+
+                @Override
+                public void onFailure(Call<CustomerLoginDTO> call, Throwable t) {
+
+                }
+            });
+
+            //mAuthTask = new UserLoginTask(username, password,country);
+            //mAuthTask.execute((Void) null);
             System.out.println("successfully Login");
         }
     }
@@ -207,7 +239,7 @@ public class LoginActivity extends AppCompatActivity {
         // logic
         return password.length() >= 6;
     }
-    private void showMainMenuScreen(JSONObject employee){
+    private void showMainMenuScreen(CustomerLoginDTO employee){
 
 
         try {
@@ -225,7 +257,9 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+
+
+  /*  public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
@@ -331,7 +365,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-
+*/
     public class UserRetriveTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mobilePhone;
