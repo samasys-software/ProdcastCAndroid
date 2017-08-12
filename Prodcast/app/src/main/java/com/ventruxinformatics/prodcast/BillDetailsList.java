@@ -87,7 +87,7 @@ public class BillDetailsList extends BaseAdapter {
             holder.tv3.setText(totalAmount.get(position));
             holder.tv4.setText(outstandingBalance.get(position));
             //  holder.img.setImageResource(imageId[position]);            //prev. code
-          //  holder.img.setImageBitmap(imageId.get(position));
+          //holder.img.setImageBitmap(imageId.get(position));
 
 
             //prev. code

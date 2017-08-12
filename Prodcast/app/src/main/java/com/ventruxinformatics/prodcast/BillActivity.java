@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
+import com.ventruxinformatics.prodcast.domain.Distributor;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,7 +48,7 @@ public class BillActivity extends AppCompatActivity {
                 Intent intent=new Intent(BillActivity.this,OrderNowActivity.class);
                 startActivity(intent);
             }
-            });
+        });
 
         //WebView mWebView = (WebView) findViewById(R.id.myWebView);
         try {
@@ -55,42 +56,42 @@ public class BillActivity extends AppCompatActivity {
             MAuthTask.execute((Void) null);
             int count=-1;
             JSONObject jsonArrays = MAuthTask.get();
-            JSONObject distributor=(JSONObject)SessionInformations.getInstance().getDistributor().get("distributor");
-            String currencySymbol=distributor.getString("currencySymbol");
+            Distributor distributor=SessionInformations.getInstance().getEmployee().getDistributor();
+            String currencySymbol=distributor.getCurrencySymbol();
 
             JSONArray outstandingBill=jsonArrays.getJSONArray("outstandingBill");
             if(outstandingBill.length()>0)
             {
-                              System.out.println("Length=" + outstandingBill.length());
-                        //JSONArray jArray = new JSONArray(jsonArrays);
-                        for (int i = 0; i < outstandingBill.length(); i++) {
-                            count++;
-                            if(i==0) {
-                                
-                                billNumber.add(count, "Bill No");
-                                status.add(count, "Status");
-                                billDate.add(count, "Bill Date");
-                                total.add(count, "Total("+currencySymbol+")");
-                                balance.add(count, "Balance("+currencySymbol+")");
+                System.out.println("Length=" + outstandingBill.length());
+                //JSONArray jArray = new JSONArray(jsonArrays);
+                for (int i = 0; i < outstandingBill.length(); i++) {
+                    count++;
+                    if(i==0) {
+
+                        billNumber.add(count, "Bill No");
+                        status.add(count, "Status");
+                        billDate.add(count, "Bill Date");
+                        total.add(count, "Total("+currencySymbol+")");
+                        balance.add(count, "Balance("+currencySymbol+")");
 
 
-                            }
-                            else{
-                                JSONObject object = outstandingBill.getJSONObject(i - 1);
-                                String billNo=""+object.getLong("billNumber");
-                                billNumber.add(count,billNo );
-                                String orderStatus="NEW";
-                                System.out.println("Status : "+object.getString("orderStatus"));
-                                if(object.getString("orderStatus").equals("F")){
-                                    orderStatus="READY";
-                                }
-                                status.add(count, orderStatus);
-                                billDate.add(count,object.getString("billDate"));
-                                total.add(count,""+object.getDouble("billAmount"));
-                                balance.add(count,""+object.getString("outstandingBalance"));
-                            }
-
+                    }
+                    else{
+                        JSONObject object = outstandingBill.getJSONObject(i - 1);
+                        String billNo=""+object.getLong("billNumber");
+                        billNumber.add(count,billNo );
+                        String orderStatus="NEW";
+                        System.out.println("Status : "+object.getString("orderStatus"));
+                        if(object.getString("orderStatus").equals("F")){
+                            orderStatus="READY";
                         }
+                        status.add(count, orderStatus);
+                        billDate.add(count,object.getString("billDate"));
+                        total.add(count,""+object.getDouble("billAmount"));
+                        balance.add(count,""+object.getString("outstandingBalance"));
+                    }
+
+                }
 
                 listHistroy = (ListView) findViewById(R.id.billsListView);
 
@@ -159,8 +160,8 @@ public class BillActivity extends AppCompatActivity {
                 SyncHttpClient asyncHttpClient = new SyncHttpClient();
 
 
-                long customerId = SessionInformations.getInstance().getDistributor().getLong("customerId");
-                long employeeId=SessionInformations.getInstance().getDistributor().getLong("employeeId");
+                long customerId = SessionInformations.getInstance().getEmployee().getCustomerId();
+                long employeeId=SessionInformations.getInstance().getEmployee().getEmployeeId();
 
 
                 String url = "http://ec2-52-91-5-22.compute-1.amazonaws.com:8080/prodcast/global/customer?id="+customerId+"&employeeId="+employeeId;

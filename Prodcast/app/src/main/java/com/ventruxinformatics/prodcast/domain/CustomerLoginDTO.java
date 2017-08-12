@@ -14,32 +14,12 @@ import java.util.List;
  * Created by Hai on 11/2/2016.
  */
 public class CustomerLoginDTO<T> extends ProdcastDTO {
-    private boolean verified;
+    private boolean verified,registered;
     private T result;
-
-    public boolean isRegistered() {
-        return registered;
-    }
-
-    public void setRegistered(boolean registered) {
-        this.registered = registered;
-    }
-
-    private boolean registered;
     private List<Distributor> distributors;
 
     private List<Customer> customers;
-
-    private List<Distributor> DistributorsPublic;
-    //private List<NewCustomerRegistrationDetails> newCustRegDetails;
-
-    public T getResult(){
-        return result;
-    }
-
-    public void setResult(T result){
-        this.result = result;
-    }
+    private List<Distributor> distributorsPublic;
 
     public boolean isVerified() {
         return verified;
@@ -49,38 +29,43 @@ public class CustomerLoginDTO<T> extends ProdcastDTO {
         this.verified = verified;
     }
 
-    public List<Distributor> getDistributors()
-    {
+    public boolean isRegistered() {
+        return registered;
+    }
+
+    public void setRegistered(boolean registered) {
+        this.registered = registered;
+    }
+
+    public T getResult() {
+        return result;
+    }
+
+    public void setResult(T result) {
+        this.result = result;
+    }
+
+    public List<Distributor> getDistributors() {
         return distributors;
     }
 
-
     public void setDistributors(List<Distributor> distributors) {
         this.distributors = distributors;
-
-    }
-    public List<Distributor> getDistributorsPublic()
-    {
-        return DistributorsPublic;
     }
 
-    public void setDistributorsPublic(List<Distributor> DistributorsPublic)
-    {
-        this.DistributorsPublic = DistributorsPublic;
-    }
-
-    public List<Customer> getAllCustomers()
-    {
+    public List<Customer> getCustomers() {
         return customers;
     }
 
-    public void setAllCustomers(List<Customer> customers)
-    {
+    public void setCustomers(List<Customer> customers) {
         this.customers = customers;
     }
 
+    public List<Distributor> getDistributorsPublic() {
+        return distributorsPublic;
+    }
 
-
-
-
+    public void setDistributorsPublic(List<Distributor> distributorsPublic) {
+        this.distributorsPublic = distributorsPublic;
+    }
 }

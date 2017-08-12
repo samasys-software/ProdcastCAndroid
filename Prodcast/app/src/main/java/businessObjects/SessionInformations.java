@@ -1,6 +1,8 @@
 package businessObjects;
 
 import com.ventruxinformatics.prodcast.domain.CustomersLogin;
+import com.ventruxinformatics.prodcast.domain.Distributor;
+import com.ventruxinformatics.prodcast.domain.EmployeeDetails;
 
 import org.json.JSONObject;
 
@@ -12,8 +14,9 @@ import java.util.List;
 
 public class SessionInformations {
     private CustomersLogin customerDetails;
-    private List<JSONObject> allDistributors;
-    private JSONObject distributor;
+    private List<Distributor> allDistributors;
+    private EmployeeDetails employee;
+
     private JSONObject outstandingBills;
 
     private static final SessionInformations ourInstance = new SessionInformations();
@@ -29,21 +32,9 @@ public class SessionInformations {
 
 
 
-    public List<JSONObject> getAllDistributors() {
-        return allDistributors;
-    }
 
-    public void setAllDistributors(List<JSONObject> allDistributors) {
-        this.allDistributors = allDistributors;
-    }
 
-    public JSONObject getDistributor() {
-        return distributor;
-    }
 
-    public void setDistributor(JSONObject distributor) {
-        this.distributor = distributor;
-    }
 
     public JSONObject getOutstandingBills() {
         return outstandingBills;
@@ -59,5 +50,21 @@ public class SessionInformations {
 
     public void setCustomerDetails(CustomersLogin customerDetails) {
         this.customerDetails = customerDetails;
+    }
+
+    public List<Distributor> getAllDistributors() {
+        return allDistributors;
+    }
+
+    public void setAllDistributors(List<Distributor> allDistributors) {
+        this.allDistributors = allDistributors;
+    }
+
+    public EmployeeDetails getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(EmployeeDetails employee) {
+        this.employee = employee;
     }
 }

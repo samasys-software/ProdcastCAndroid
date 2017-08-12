@@ -2,6 +2,8 @@ package com.ventruxinformatics.prodcast.connect;
 
 import com.ventruxinformatics.prodcast.domain.AdminDTO;
 import com.ventruxinformatics.prodcast.domain.CustomerLoginDTO;
+import com.ventruxinformatics.prodcast.domain.CustomersLogin;
+import com.ventruxinformatics.prodcast.domain.EmployeeDetails;
 import com.ventruxinformatics.prodcast.domain.LoginDTO;
 import com.ventruxinformatics.prodcast.domain.ProdcastDTO;
 
@@ -10,8 +12,10 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by sarathan732 on 8/5/2017.
@@ -20,7 +24,7 @@ import retrofit2.http.Path;
 public interface ProdcastService {
     @POST("prodcast/customer/login")
     @FormUrlEncoded
-    Call<CustomerLoginDTO> login(@Field("userid") String userId, @Field("password") String password, @Field("country") String country);
+    Call<CustomerLoginDTO<CustomersLogin>> login(@Field("userid") String userId, @Field("password") String password, @Field("country") String country);
 
     @POST("prodcast/customer/retrievePin")
     @FormUrlEncoded
@@ -29,4 +33,13 @@ public interface ProdcastService {
     @POST("prodcast/customer/changePinNumber")
     @FormUrlEncoded
     Call<ProdcastDTO> changePinNumber(@Field("accessId") long accessId, @Field("oldPinNumber") String oldPinNumber, @Field("newPinNumber") String newPinNumber);
+
+    @GET("prodcast/customer/getDistributorList")
+     Call<CustomerLoginDTO> getAllDistributors(@Query("accessId") long accessId);
+
+     @POST("prodcast/customer/getCustomerDetails")
+     @FormUrlEncoded
+     Call<AdminDTO<EmployeeDetails>> getCustomerDetails(@Field("accessId") long accessId, @Field("distributorId") long distributorId);
+
+
 }
