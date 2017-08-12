@@ -46,4 +46,3 @@ public class ProdcastDTO {
         this.validationErrorMessage = validationErrorMessage;
     }
 }
-

@@ -24,6 +24,7 @@ public class ProdcastServiceManager {
                 Request request = chain.request();
                 Response response = chain.proceed(request);
                 String body = response.body().string();
+                System.out.println(body);
 
                 return response.newBuilder()
                         .body(ResponseBody.create(response.body().contentType(), body))

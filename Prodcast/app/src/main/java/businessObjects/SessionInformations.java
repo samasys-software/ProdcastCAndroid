@@ -1,5 +1,9 @@
 package businessObjects;
 
+import com.ventruxinformatics.prodcast.domain.CustomersLogin;
+import com.ventruxinformatics.prodcast.domain.Distributor;
+import com.ventruxinformatics.prodcast.domain.EmployeeDetails;
+
 import org.json.JSONObject;
 
 import java.util.List;
@@ -9,9 +13,11 @@ import java.util.List;
  */
 
 public class SessionInformations {
-    private JSONObject customerDetails;
-    private List<JSONObject> allDistributors;
-    private JSONObject distributor;
+    private CustomersLogin customerDetails;
+    private List<Distributor> allDistributors;
+    private EmployeeDetails employee;
+
+    private JSONObject outstandingBills;
 
     private static final SessionInformations ourInstance = new SessionInformations();
 
@@ -22,27 +28,43 @@ public class SessionInformations {
     private SessionInformations() {
     }
 
-    public JSONObject getCustomerDetails() {
+
+
+
+
+
+
+
+
+    public JSONObject getOutstandingBills() {
+        return outstandingBills;
+    }
+
+    public void setOutstandingBills(JSONObject outstandingBills) {
+        this.outstandingBills = outstandingBills;
+    }
+
+    public CustomersLogin getCustomerDetails() {
         return customerDetails;
     }
 
-    public void setCustomerDetails(JSONObject customerDetails) {
+    public void setCustomerDetails(CustomersLogin customerDetails) {
         this.customerDetails = customerDetails;
     }
 
-    public List<JSONObject> getAllDistributors() {
+    public List<Distributor> getAllDistributors() {
         return allDistributors;
     }
 
-    public void setAllDistributors(List<JSONObject> allDistributors) {
+    public void setAllDistributors(List<Distributor> allDistributors) {
         this.allDistributors = allDistributors;
     }
 
-    public JSONObject getDistributor() {
-        return distributor;
+    public EmployeeDetails getEmployee() {
+        return employee;
     }
 
-    public void setDistributor(JSONObject distributor) {
-        this.distributor = distributor;
+    public void setEmployee(EmployeeDetails employee) {
+        this.employee = employee;
     }
 }

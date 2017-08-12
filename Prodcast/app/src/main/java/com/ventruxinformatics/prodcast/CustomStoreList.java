@@ -18,27 +18,24 @@ import java.util.ArrayList;
 
 public class CustomStoreList extends BaseAdapter {
 
-   // String [] result;             //prev. code
     ArrayList<String> result;
     ArrayList<String> address;
     Context context;
-    //int [] imageId;           //prev. code
     ArrayList<Bitmap> imageId;
     private static LayoutInflater inflater=null;
-   //public CustomStoreList(StoreActivity mainActivity,String[] prgmNameList, int[] prgmImages) {           //prev. code
    public CustomStoreList(StoreActivity mainActivity,ArrayList<String> prgmNameList, ArrayList<String> prgmAddressList,ArrayList<Bitmap> prgmImages) {
+   //public CustomStoreList(StoreActivity mainActivity,ArrayList<String> prgmNameList, ArrayList<String> prgmAddressList) {
        // TODO Auto-generated constructor stub
         result=prgmNameList;
        address=prgmAddressList;
         context=mainActivity;
-        imageId=prgmImages;
+      imageId=prgmImages;
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        //return result.length;             //prev. code
         return result.size();
     }
 
@@ -69,26 +66,11 @@ public class CustomStoreList extends BaseAdapter {
         holder.tv=(TextView) rowView.findViewById(R.id.companyDetails);
         holder.tv1=(TextView) rowView.findViewById(R.id.companyAddress);
         holder.img=(ImageView) rowView.findViewById(R.id.companyLogo);
-      //  holder.tv.setText(result[position]);                  //prev. code
-      holder.tv.setText(result.get(position));
-      holder.tv1.setText(address.get(position));
-      //  holder.img.setImageResource(imageId[position]);            //prev. code
-      holder.img.setImageBitmap(imageId.get(position));
+        holder.tv.setText(result.get(position));
+        holder.tv1.setText(address.get(position));
+        holder.img.setImageBitmap(imageId.get(position));
 
 
-        //prev. code
-      /*  if (position % 2 == 0) {
-            rowView.setBackgroundColor(Color.parseColor("#eae9e9"));
-        } else {
-            rowView.setBackgroundColor(Color.parseColor("#ffffff"));
-        }*/
-        /*rowView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
-            }
-        });*/
         return rowView;
     }
 }
