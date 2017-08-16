@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText mobileNumber,pinNumber;
 
     Button signInButton,clearButton;
-    TextView forgotPin;
+    TextView forgotPin,register;
     Spinner spin;
     boolean cancel = false;
     View focusView = null;
@@ -67,10 +67,12 @@ public class LoginActivity extends AppCompatActivity {
         signInButton=(Button) findViewById(R.id.logIn);
         clearButton=(Button) findViewById(R.id.logClear);
         forgotPin=(TextView) findViewById(R.id.forgotPin);
+        register=(TextView) findViewById(R.id.register);
 
 
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
         spin = (Spinner) findViewById(R.id.spinner2);
+
         //  spin.setOnItemSelectedListener(this);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +99,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 attemptRetrive();
+            }
+        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -170,7 +181,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else{
-                            Intent intent=new Intent(LoginActivity.this, HomeActivity.class);
+                            Intent intent=new Intent(LoginActivity.this, VerifyPinActivity.class);
                             startActivity(intent);
                         }
                     }
