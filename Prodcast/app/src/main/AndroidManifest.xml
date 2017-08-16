@@ -40,6 +40,18 @@
             android:name=".BillDetailsList"
             android:label="@string/title_activity_bill_details_list"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EditRegistrationActivity"
+            android:label="@string/title_activity_edit_registration"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".VerifyPinActivity"
+            android:label="@string/title_activity_verify_pin"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

@@ -164,7 +164,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="35dp"
         android:id="@+id/relativeLayout2"
         android:layout_below="@+id/rlloginmain"
         android:layout_alignParentLeft="true"
@@ -188,10 +188,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="38dp"
         android:layout_below="@+id/relativeLayout2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp">
 
         <TextView
             android:text="Register"

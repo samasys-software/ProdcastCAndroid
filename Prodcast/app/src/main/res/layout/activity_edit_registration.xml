@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:background="@drawable/bg_store"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/skipRegisteration"
+
+                style="@style/submitButton"
+                android:hint="SKIP"/>
+
+            <EditText
+                android:id="@+id/firstName"
+                android:hint="First Name"
+                android:inputType="text"
+                style="@style/editText" />
+
+            <EditText
+                android:id="@+id/latName"
+                android:hint="Last Name"
+                android:inputType="text"
+                style="@style/editText"
+                />
+
+            <EditText
+                android:id="@+id/emailAddress"
+                android:inputType="text|textWebEmailAddress"
+                android:hint="Email Address"
+                style="@style/editText"
+                />
+
+            <EditText
+                android:id="@+id/billingAddress1"
+                android:inputType="text"
+                android:hint="Billing Address1"
+                style="@style/editText"
+                />
+            <EditText
+                android:id="@+id/billingAddress2"
+                android:inputType="text"
+                android:hint="Billing Address2"
+                style="@style/editText"
+                />
+
+            <EditText
+                android:id="@+id/billingAddress3"
+                android:inputType="text"
+                android:hint="Billing Address3"
+                style="@style/editText"
+                />
+
+
+            <EditText
+                android:id="@+id/homePhoneNumber"
+                android:inputType="text"
+                android:hint="Home PhoneNumber"
+                style="@style/editText"
+
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/city"
+                android:inputType="text"
+                android:hint="City"
+                style="@style/editText"
+                android:visibility="visible" />
+
+
+            <EditText
+                android:id="@+id/state"
+                android:inputType="text"
+                style="@style/editText"
+                android:hint="State"
+                android:visibility="visible" />
+            <EditText
+                android:id="@+id/country"
+                android:inputType="text"
+                style="@style/editText"
+
+                android:hint="Country"
+                />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="270dp"
+                android:layout_marginTop="-45dp"
+                android:visibility="visible"
+                />
+
+            <EditText
+                android:id="@+id/postalCode"
+                android:inputType="text"
+                android:hint="Postal Code"
+                style="@style/editText"
+                android:visibility="visible" />
+
+
+            <CheckBox
+                android:id="@+id/smsAllowed"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:checked="true"
+
+                android:hint="Sms Allowed"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/edit"
+                android:hint="Edit"
+                style="@style/submitButton"
+                android:visibility="visible"
+                />
+
+            <Button
+                android:id="@+id/reset"
+                style="@style/submitButton"
+                android:visibility="visible"
+                android:hint="Reset"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

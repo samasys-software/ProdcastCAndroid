@@ -1,7 +1,9 @@
 package com.ventruxinformatics.prodcast.connect;
 
+import com.ventruxinformatics.prodcast.StoreActivity;
 import com.ventruxinformatics.prodcast.domain.AdminDTO;
 import com.ventruxinformatics.prodcast.domain.CustomerLoginDTO;
+import com.ventruxinformatics.prodcast.domain.CustomerRegistration;
 import com.ventruxinformatics.prodcast.domain.CustomersLogin;
 import com.ventruxinformatics.prodcast.domain.EmployeeDetails;
 import com.ventruxinformatics.prodcast.domain.LoginDTO;
@@ -40,6 +42,10 @@ public interface ProdcastService {
      @POST("prodcast/customer/getCustomerDetails")
      @FormUrlEncoded
      Call<AdminDTO<EmployeeDetails>> getCustomerDetails(@Field("accessId") long accessId, @Field("distributorId") long distributorId);
+
+    @POST("prodcast/customer/customerRegistration")
+    @FormUrlEncoded
+    Call<CustomerLoginDTO<CustomerRegistration>> register(@Field("country") String country, @Field("mobilePhone") String mobilePhone,@Field("pinNumber") String pinNumber);
 
 
 }
