@@ -56,11 +56,102 @@
 
 
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rloutbillheaders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlseprator"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="80dp">
+
+    <LinearLayout
+        android:id="@+id/linearmain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/billNo"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+
+            android:text="BILL NO"
+            android:textAllCaps="true"
+            android:textColor="#629a1e"
+            android:background="@drawable/border"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:text="Status"
+            android:gravity="center"
+
+            android:textAllCaps="true"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/border"
+            android:id="@+id/status"
+            android:textColor="#629a1e"
+            android:textSize="16sp"
+            android:textStyle="bold"
+
+
+            />
+        <TextView
+            android:text="BILL DATE"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:id="@+id/billDate"
+            android:textColor="#629a1e"
+            android:background="@drawable/border"
+            android:textSize="16sp"
+            android:textStyle="bold"
+
+
+            />
+        <TextView
+            android:text="Total($)"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:id="@+id/total"
+            android:textColor="#629a1e"
+            android:background="@drawable/border"
+            android:textSize="16sp"
+            android:textStyle="bold"
+
+            />
+        <TextView
+            android:text="Balance($)"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:id="@+id/outstandingBalance"
+            android:textColor="#629a1e"
+            android:background="@drawable/border"
+            android:textSize="16sp"
+            android:textStyle="bold"
+
+            />
+
+
+    </LinearLayout>
+        </RelativeLayout>
 
     <RelativeLayout
     android:id="@+id/rlwebviewmain"
     android:layout_width="match_parent"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="50dp"
     android:layout_height="match_parent"
     android:layout_below="@+id/rloutbilltext"
     android:layout_alignParentLeft="true"
@@ -76,27 +167,7 @@
         </ListView>
 
 
-        <!--previous code
 
-            <WebView
-                android:id="@+id/myWebView"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />-->
-
-
-
-  <!-- commented on 4/8
-   <TableLayout
-        android:id="@+id/table"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp">
-
-
-
-    </TableLayout>-->
 
 
     </RelativeLayout>

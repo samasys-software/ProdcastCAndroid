@@ -51,6 +51,23 @@
         <activity
             android:name=".VerifyPinActivity"
             android:label="@string/title_activity_verify_pin"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ProductListActivity"
+            android:label="@string/title_product_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ProductDetailActivity"
+            android:label="@string/title_product_detail"
+            android:parentActivityName=".ProductListActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ventruxinformatics.prodcast.ProductListActivity" />
+        </activity>
+        <activity
+            android:name=".AllProductsActivity"
+            android:label="@string/title_activity_all_products"
             android:theme="@style/AppTheme"></activity>
     </application>
 

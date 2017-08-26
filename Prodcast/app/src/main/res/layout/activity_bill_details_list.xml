@@ -19,6 +19,7 @@
             android:id="@+id/billNo"
             android:layout_width="50dp"
             android:layout_height="match_parent"
+            android:gravity="center"
 
             android:text="BILL NO"
             android:textAllCaps="true"
@@ -31,7 +32,7 @@
 
         <TextView
             android:text="Status"
-
+            android:gravity="center"
             android:textAllCaps="true"
             android:layout_width="75dp"
             android:layout_height="match_parent"
@@ -45,6 +46,7 @@
             />
         <TextView
             android:text="Samasys"
+            android:gravity="center"
             android:textAllCaps="true"
             android:layout_width="100dp"
             android:layout_height="match_parent"
@@ -58,6 +60,7 @@
             />
         <TextView
             android:text="Total($)"
+            android:gravity="center"
             android:textAllCaps="true"
             android:layout_width="75dp"
             android:layout_height="match_parent"
@@ -70,6 +73,7 @@
             />
         <TextView
             android:text="Total($)"
+            android:gravity="center"
             android:textAllCaps="true"
             android:layout_width="75dp"
             android:layout_height="match_parent"
