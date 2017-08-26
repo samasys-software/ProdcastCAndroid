@@ -1,12 +1,9 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,11 +11,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.ventruxinformatics.prodcast.connect.ProdcastServiceManager;
-import com.ventruxinformatics.prodcast.domain.AdminDTO;
-import com.ventruxinformatics.prodcast.domain.CustomerLoginDTO;
-import com.ventruxinformatics.prodcast.domain.CustomerRegistration;
+import businessObjects.connect.ProdcastServiceManager;
+import businessObjects.domain.CustomerRegistration;
 
+import businessObjects.SessionInformations;
+import businessObjects.dto.CustomerLoginDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -74,10 +71,16 @@ public class RegisterActivity extends AppCompatActivity {
                     CustomerLoginDTO<CustomerRegistration> dto = response.body();
                     if(dto.isError())
                     {
-
+                        System.out.println(dto.getErrorMessage());
                     }
                     else{
+
                         Toast.makeText(context,"Successfully Registered",Toast.LENGTH_LONG).show();
+                        CustomerRegistration cust1 = dto.getResult();
+                        SessionInformations.getInstance().setRegisteredCustomer(cust1);
+                        Intent intent=new Intent(RegisterActivity.this,VerifyPinActivity.class);
+                        startActivity(intent);
+
                     }
 
                 }

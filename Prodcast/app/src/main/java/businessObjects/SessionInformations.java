@@ -1,8 +1,13 @@
 package businessObjects;
 
-import com.ventruxinformatics.prodcast.domain.CustomersLogin;
-import com.ventruxinformatics.prodcast.domain.Distributor;
-import com.ventruxinformatics.prodcast.domain.EmployeeDetails;
+import businessObjects.domain.Bill;
+import businessObjects.domain.Category;
+import businessObjects.domain.Customer;
+import businessObjects.domain.CustomerRegistration;
+import businessObjects.domain.CustomersLogin;
+import businessObjects.domain.Distributor;
+import businessObjects.domain.EmployeeDetails;
+import businessObjects.domain.Product;
 
 import org.json.JSONObject;
 
@@ -14,8 +19,13 @@ import java.util.List;
 
 public class SessionInformations {
     private CustomersLogin customerDetails;
+    private CustomerRegistration registeredCustomer;
     private List<Distributor> allDistributors;
     private EmployeeDetails employee;
+    private Customer currentCustomer;
+    private  List<Category> categoryDetails;
+    private  List<Product> ProductDetails;
+
 
     private JSONObject outstandingBills;
 
@@ -27,12 +37,6 @@ public class SessionInformations {
 
     private SessionInformations() {
     }
-
-
-
-
-
-
 
 
 
@@ -66,5 +70,37 @@ public class SessionInformations {
 
     public void setEmployee(EmployeeDetails employee) {
         this.employee = employee;
+    }
+
+    public CustomerRegistration getRegisteredCustomer() {
+        return registeredCustomer;
+    }
+
+    public void setRegisteredCustomer(CustomerRegistration registeredCustomer) {
+        this.registeredCustomer = registeredCustomer;
+    }
+
+    public Customer getCurrentCustomer() {
+        return currentCustomer;
+    }
+
+    public void setCurrentCustomer(Customer currentCustomer) {
+        this.currentCustomer = currentCustomer;
+    }
+
+    public List<Category> getCategoryDetails() {
+        return categoryDetails;
+    }
+
+    public void setCategoryDetails(List<Category> categoryDetails) {
+        this.categoryDetails = categoryDetails;
+    }
+
+    public List<Product> getProductDetails() {
+        return ProductDetails;
+    }
+
+    public void setProductDetails(List<Product> productDetails) {
+        ProductDetails = productDetails;
     }
 }

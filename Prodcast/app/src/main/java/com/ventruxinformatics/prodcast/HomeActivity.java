@@ -61,7 +61,10 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(HomeActivity.this,StoreActivity.class);
+                Intent i = new Intent(HomeActivity.this,EditRegistrationActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("status", "edit");
+                i.putExtras(extras);
                 startActivity(i);
             }
         });

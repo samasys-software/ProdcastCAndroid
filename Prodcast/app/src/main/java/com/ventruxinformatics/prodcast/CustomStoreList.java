@@ -10,7 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+import java.util.List;
+
+import businessObjects.domain.Distributor;
 
 /**
  * Created by AndroidUser on 12/13/2016.
@@ -18,18 +23,12 @@ import java.util.ArrayList;
 
 public class CustomStoreList extends BaseAdapter {
 
-    ArrayList<String> result;
-    ArrayList<String> address;
-    Context context;
-    ArrayList<Bitmap> imageId;
-    private static LayoutInflater inflater=null;
-   public CustomStoreList(StoreActivity mainActivity,ArrayList<String> prgmNameList, ArrayList<String> prgmAddressList,ArrayList<Bitmap> prgmImages) {
-   //public CustomStoreList(StoreActivity mainActivity,ArrayList<String> prgmNameList, ArrayList<String> prgmAddressList) {
-       // TODO Auto-generated constructor stub
-        result=prgmNameList;
-       address=prgmAddressList;
-        context=mainActivity;
-      imageId=prgmImages;
+    List<Distributor> result;
+      Context context;
+     private static LayoutInflater inflater=null;
+   public CustomStoreList(StoreActivity mainActivity,List<Distributor> distributors) {
+       result=distributors;
+       context=mainActivity;
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -66,11 +65,9 @@ public class CustomStoreList extends BaseAdapter {
         holder.tv=(TextView) rowView.findViewById(R.id.companyDetails);
         holder.tv1=(TextView) rowView.findViewById(R.id.companyAddress);
         holder.img=(ImageView) rowView.findViewById(R.id.companyLogo);
-        holder.tv.setText(result.get(position));
-        holder.tv1.setText(address.get(position));
-        holder.img.setImageBitmap(imageId.get(position));
-
-
+        holder.tv.setText(result.get(position).getCompanyName());
+        holder.tv1.setText(result.get(position).getAddress1()+" "+result.get(position).getAddress2()+" "+result.get(position).getAddress3());
+        Picasso.with(context).load("http://ec2-52-91-5-22.compute-1.amazonaws.com:8080/prodcastweb/V5/images/" +result.get(position).getLogo()).into(holder.img);
         return rowView;
     }
 }

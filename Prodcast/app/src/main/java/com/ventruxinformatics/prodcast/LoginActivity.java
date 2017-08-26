@@ -2,9 +2,6 @@ package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageInstaller;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,28 +13,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-import com.loopj.android.http.SyncHttpClient;
-import com.ventruxinformatics.prodcast.connect.ProdcastServiceManager;
-import com.ventruxinformatics.prodcast.domain.AdminDTO;
-import com.ventruxinformatics.prodcast.domain.Customer;
-import com.ventruxinformatics.prodcast.domain.CustomerLoginDTO;
-import com.ventruxinformatics.prodcast.domain.CustomersLogin;
-import com.ventruxinformatics.prodcast.domain.LoginDTO;
+import businessObjects.connect.ProdcastServiceManager;
+import businessObjects.domain.CustomersLogin;
 
-import businessObjects.FormDataLogin;
 import businessObjects.SessionInformations;
-import cz.msebera.android.httpclient.Header;
+import businessObjects.dto.AdminDTO;
+import businessObjects.dto.CustomerLoginDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
     //private UserLoginTask mAuthTask = null;
@@ -122,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void checkValue(String username,String password,String country){
            // Reset errors.
+        cancel=false;
         mobileNumber.setError(null);
         pinNumber.setError(null);
 
@@ -195,6 +180,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
+
             System.out.println("successfully Login");
         }
     }
@@ -233,8 +219,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
             });
-
-
         }
 
 
@@ -245,3 +229,4 @@ public class LoginActivity extends AppCompatActivity {
         return password.length() >= 6;
     }
 }
+
