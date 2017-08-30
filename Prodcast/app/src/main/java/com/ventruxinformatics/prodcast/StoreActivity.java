@@ -68,7 +68,7 @@ public class StoreActivity extends AppCompatActivity {
 
                         SessionInformations.getInstance().setAllDistributors(distributors);
                     }
-                    listhistory.setAdapter(new CustomStoreList(StoreActivity.this, distributors));
+                    listhistory.setAdapter(new CustomStoreAdapter(StoreActivity.this, distributors));
                     if (mProgressDialog.isShowing())
                         mProgressDialog.dismiss();
 

@@ -1,7 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import businessObjects.domain.Distributor;
@@ -21,12 +19,12 @@ import businessObjects.domain.Distributor;
  * Created by AndroidUser on 12/13/2016.
  */
 
-public class CustomStoreList extends BaseAdapter {
+public class CustomStoreAdapter extends BaseAdapter {
 
     List<Distributor> result;
       Context context;
      private static LayoutInflater inflater=null;
-   public CustomStoreList(StoreActivity mainActivity,List<Distributor> distributors) {
+   public CustomStoreAdapter(StoreActivity mainActivity, List<Distributor> distributors) {
        result=distributors;
        context=mainActivity;
         inflater = ( LayoutInflater )context.
@@ -59,7 +57,7 @@ public class CustomStoreList extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-        CustomStoreList.Holder holder=new CustomStoreList.Holder();
+        CustomStoreAdapter.Holder holder=new CustomStoreAdapter.Holder();
         View rowView;
         rowView = inflater.inflate(R.layout.store_list_items, null);
         holder.tv=(TextView) rowView.findViewById(R.id.companyDetails);

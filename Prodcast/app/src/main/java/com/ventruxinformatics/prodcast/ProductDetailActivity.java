@@ -1,14 +1,18 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -16,6 +20,7 @@ import java.util.List;
 
 import businessObjects.SessionInformations;
 import businessObjects.domain.Category;
+import businessObjects.domain.OrderDetails;
 import businessObjects.domain.Product;
 
 /**
@@ -26,7 +31,15 @@ import businessObjects.domain.Product;
  */
 public class ProductDetailActivity extends AppCompatActivity {
     public static final String ARG_ITEM_ID = "item_id";
-    ArrayList<Product> productDetails=new ArrayList<Product>();
+    private Category selectedCategory;
+
+    public Category getSelectedCategory() {
+        return selectedCategory;
+    }
+
+    public void setSelectedCategory(Category selectedCategory) {
+        this.selectedCategory = selectedCategory;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +52,9 @@ public class ProductDetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with my own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i=new Intent(ProductDetailActivity.this,EntryActivity.class);
+                startActivity(i);
+
             }
         });
 
@@ -62,31 +76,12 @@ public class ProductDetailActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
-            Intent intent=getIntent();
-            long selectedCategoryId=intent.getLongExtra(ARG_ITEM_ID,0);
+            //Category selectedCategory=intent.getExtra(ARG_ITEM_ID,0);
             ProductDetailFragment fragment = new ProductDetailFragment();
-            List<Category> category=SessionInformations.getInstance().getCategoryDetails();
-            List<Product> products=SessionInformations.getInstance().getProductDetails();
-            int count=0;
-            for(Category cat:category)
-                if(cat.getCategoryId()==selectedCategoryId)
-                {
-                    for(Product pro:products) {
-                        System.out.println("Selected Category Id"+selectedCategoryId);
-                        System.out.println("Product Category Id"+pro.getCategoryId());
-                        if(pro.getCategoryId()==selectedCategoryId)
-                        {
-                            productDetails.add(count,pro);
-                            count++;
-                        }
-
-                    }
-                    break;
-                }
 
 
 
-            fragment.setmItem(productDetails);
+            fragment.setSelectedCategory(getSelectedCategory());
 
 
 

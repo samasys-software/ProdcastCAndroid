@@ -1,35 +1,30 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import businessObjects.domain.Bill;
 
-public class BillDetailsList extends BaseAdapter {
+public class OutstandingBillsDetailsAdapter extends BaseAdapter {
 
 
         List<Bill> outstandingBills;
         Context context;
+        OutstandingBillsActivity activity;
         private static LayoutInflater inflater=null;
-        public BillDetailsList(BillActivity mainActivity, List<Bill> bills){
+        public OutstandingBillsDetailsAdapter(OutstandingBillsActivity mainActivity, List<Bill> bills){
 
             // TODO Auto-generated constructor stub
             outstandingBills=bills;
-
+            activity=mainActivity;
             context=mainActivity;
 
                     inflater = ( LayoutInflater )context.
@@ -67,7 +62,7 @@ public class BillDetailsList extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         String status;
         // TODO Auto-generated method stub
-        com.ventruxinformatics.prodcast.BillDetailsList.Holder holder=new com.ventruxinformatics.prodcast.BillDetailsList.Holder();
+        OutstandingBillsDetailsAdapter.Holder holder=new OutstandingBillsDetailsAdapter.Holder();
         View rowView;
         if(convertView==null)
 
@@ -89,6 +84,8 @@ public class BillDetailsList extends BaseAdapter {
         holder.tv2.setText(String.valueOf(outstandingBills.get(position).getBillDate()));
         holder.tv3.setText(String.valueOf(outstandingBills.get(position).getBillAmount()));
         holder.tv4.setText(String.valueOf(outstandingBills.get(position).getOutstandingBalance()));
+
+
 
 
 
