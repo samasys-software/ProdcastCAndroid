@@ -125,6 +125,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
+            return;
         } else {
 
             long accessId=SessionInformations.getInstance().getCustomerDetails().getAccessId();

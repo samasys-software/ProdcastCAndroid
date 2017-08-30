@@ -2,6 +2,7 @@ package businessObjects.connect;
 
 import businessObjects.domain.Bill;
 import businessObjects.domain.Category;
+import businessObjects.domain.NewCustomerRegistrationDetails;
 import businessObjects.domain.Product;
 import businessObjects.dto.CustomerDTO;
 
@@ -14,11 +15,16 @@ import businessObjects.domain.EmployeeDetails;
 import businessObjects.dto.AdminDTO;
 import businessObjects.dto.CustomerListDTO;
 import businessObjects.dto.CustomerLoginDTO;
+import businessObjects.dto.CustomerReportDTO;
+import businessObjects.dto.OrderDTO;
+import businessObjects.dto.OrderDetailDTO;
 import businessObjects.dto.ProdcastDTO;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -88,6 +94,10 @@ public interface ProdcastService {
                                           @Field("postalCode") String postalCode,
                                           @Field("smsAllowed") boolean smsAllowed);
 
+    @POST("prodcast/global/saveOrder")
+    @Headers({"Content-Type: application/json", "Cache-Control: max-age=640000"})
+    Call<CustomerDTO> saveOrder(@Body OrderDetailDTO body);
+
 
     @GET("prodcast/distributor/getCategory")
     Call<AdminDTO<List<Category>>> getCategory(@Query("employeeId") long employeeId);
@@ -96,6 +106,25 @@ public interface ProdcastService {
     @GET("prodcast/distributor/getProducts")
     Call<AdminDTO<List<Product>>> getProducts(@Query("employeeId") long employeeId);
 
+
+
+    @GET("prodcast/global/billdetails")
+    Call<OrderDTO> getBillDetails(@Query("billId") long id,
+                                  @Query("employeeId") long employeeId,
+                                  @Query("userRole") String userRole) ;
+
+
+    @GET("prodcast/customer/reportForCustomers")
+    Call<CustomerReportDTO> reportForCustomers(@Query("reportType") String reportType,
+                                        @Query("accessId") long accessId,
+                                        @Query("startDate") String customStartDate,
+                                        @Query("endDate") String customEndDate,
+                                        @Query("selectedDistributor") long selectedDistributor,
+                                        @Query("reportId") String reportId);
+
+
+    @GET("prodcast/customer/getNewCustomerRegistrationDetails")
+    Call<CustomerListDTO<NewCustomerRegistrationDetails>>  getNewCustomerRegistrationDetails(@Query("accessId") long accessId);
 
 
 }

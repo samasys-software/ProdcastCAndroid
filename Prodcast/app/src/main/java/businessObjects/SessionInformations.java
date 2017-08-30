@@ -7,7 +7,9 @@ import businessObjects.domain.CustomerRegistration;
 import businessObjects.domain.CustomersLogin;
 import businessObjects.domain.Distributor;
 import businessObjects.domain.EmployeeDetails;
+import businessObjects.domain.OrderDetails;
 import businessObjects.domain.Product;
+import businessObjects.dto.OrderEntryDTO;
 
 import org.json.JSONObject;
 
@@ -25,9 +27,8 @@ public class SessionInformations {
     private Customer currentCustomer;
     private  List<Category> categoryDetails;
     private  List<Product> ProductDetails;
-
-
-    private JSONObject outstandingBills;
+    private  List<OrderDetails> entry;
+    private Customer billsForCustomer;
 
     private static final SessionInformations ourInstance = new SessionInformations();
 
@@ -38,16 +39,6 @@ public class SessionInformations {
     private SessionInformations() {
     }
 
-
-
-    public JSONObject getOutstandingBills() {
-        return outstandingBills;
-    }
-
-    public void setOutstandingBills(JSONObject outstandingBills) {
-        this.outstandingBills = outstandingBills;
-    }
-
     public CustomersLogin getCustomerDetails() {
         return customerDetails;
     }
@@ -55,6 +46,7 @@ public class SessionInformations {
     public void setCustomerDetails(CustomersLogin customerDetails) {
         this.customerDetails = customerDetails;
     }
+
 
     public List<Distributor> getAllDistributors() {
         return allDistributors;
@@ -64,6 +56,7 @@ public class SessionInformations {
         this.allDistributors = allDistributors;
     }
 
+
     public EmployeeDetails getEmployee() {
         return employee;
     }
@@ -71,6 +64,7 @@ public class SessionInformations {
     public void setEmployee(EmployeeDetails employee) {
         this.employee = employee;
     }
+
 
     public CustomerRegistration getRegisteredCustomer() {
         return registeredCustomer;
@@ -80,6 +74,7 @@ public class SessionInformations {
         this.registeredCustomer = registeredCustomer;
     }
 
+
     public Customer getCurrentCustomer() {
         return currentCustomer;
     }
@@ -87,6 +82,7 @@ public class SessionInformations {
     public void setCurrentCustomer(Customer currentCustomer) {
         this.currentCustomer = currentCustomer;
     }
+
 
     public List<Category> getCategoryDetails() {
         return categoryDetails;
@@ -96,11 +92,30 @@ public class SessionInformations {
         this.categoryDetails = categoryDetails;
     }
 
+
     public List<Product> getProductDetails() {
         return ProductDetails;
     }
 
     public void setProductDetails(List<Product> productDetails) {
         ProductDetails = productDetails;
+    }
+
+
+    public List<OrderDetails> getEntry() {
+        return entry;
+    }
+
+    public void setEntry(List<OrderDetails> entry) {
+        this.entry = entry;
+    }
+
+
+    public Customer getBillsForCustomer() {
+        return billsForCustomer;
+    }
+
+    public void setBillsForCustomer(Customer billsForCustomer) {
+        this.billsForCustomer = billsForCustomer;
     }
 }

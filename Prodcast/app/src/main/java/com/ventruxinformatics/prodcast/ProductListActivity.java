@@ -22,6 +22,7 @@ import java.util.List;
 
 import businessObjects.SessionInformations;
 import businessObjects.domain.Category;
+import businessObjects.domain.OrderDetails;
 import businessObjects.domain.Product;
 import businessObjects.dto.AdminDTO;
 import retrofit2.Call;
@@ -46,7 +47,7 @@ public class ProductListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
-    List<Category> categories=new ArrayList<Category>();
+    //List<Category> categories=new ArrayList<Category>();
     View recyclerView;
 
 
@@ -55,8 +56,9 @@ public class ProductListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
         recyclerView= findViewById(R.id.product_list);
-        //List<Category> categories;
+
         long employeeId=SessionInformations.getInstance().getEmployee().getEmployeeId();
+        SessionInformations.getInstance().setEntry(new ArrayList<OrderDetails>());
 
         Call<AdminDTO<List<Category>>> categoryDTO = new ProdcastServiceManager().getClient().getCategory( employeeId );
 
@@ -70,9 +72,9 @@ public class ProductListActivity extends AppCompatActivity {
                 }
                 else {
 
-                        categories = dto.getResult();
-                       SessionInformations.getInstance().setCategoryDetails(categories);
-                      System.out.println(categories.get(0).getCategoryId());
+                        //List<Category> categories = dto.getResult();
+                       SessionInformations.getInstance().setCategoryDetails(dto.getResult());
+                     // System.out.println(categories.get(0).getCategoryId());
                     setupRecyclerView((RecyclerView) recyclerView);
 
 
@@ -101,8 +103,8 @@ public class ProductListActivity extends AppCompatActivity {
                 }
                 else {
 
-                    List<Product> products = dto.getResult();
-                    SessionInformations.getInstance().setProductDetails(products);
+                    //List<Product> products = dto.getResult();
+                    SessionInformations.getInstance().setProductDetails(dto.getResult());
 
 
 
@@ -145,16 +147,16 @@ public class ProductListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(categories));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(SessionInformations.getInstance().getCategoryDetails()));
     }
 
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<Category> mValues;
+        private final List<Category> categories;
 
         public SimpleItemRecyclerViewAdapter(List<Category> items) {
-            mValues = items;
+            categories = items;
         }
 
         @Override
@@ -166,26 +168,28 @@ public class ProductListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mItem = mValues.get(position);
-            holder.mIdView.setText(String.valueOf(mValues.get(position).getCategoryId()));
-            holder.mContentView.setText(mValues.get(position).getCategoryName());
+            holder.mItem = categories.get(position);
+            holder.mIdView.setText(String.valueOf(categories.get(position).getCategoryId()));
+            holder.mContentView.setText(categories.get(position).getCategoryName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mTwoPane) {
-                        Bundle arguments = new Bundle();
-                        arguments.putLong(ProductDetailFragment.ARG_ITEM_ID, holder.mItem.getCategoryId());
+                        Bundle bundle=new Bundle();
+
                         ProductDetailFragment fragment = new ProductDetailFragment();
-                      //  fragment.setmItem(holder.mItem);
+                       fragment.setSelectedCategory(holder.mItem);
+                        //fragment.setSelected
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.product_detail_container, fragment)
                                 .commit();
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, ProductDetailActivity.class);
-                        intent.putExtra(ProductDetailFragment.ARG_ITEM_ID, holder.mItem.getCategoryId());
 
+                        ProductDetailActivity productDetail=new ProductDetailActivity();
+                        productDetail.setSelectedCategory(holder.mItem);
                         context.startActivity(intent);
                     }
                 }
@@ -194,7 +198,7 @@ public class ProductListActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return mValues.size();
+            return categories.size();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {

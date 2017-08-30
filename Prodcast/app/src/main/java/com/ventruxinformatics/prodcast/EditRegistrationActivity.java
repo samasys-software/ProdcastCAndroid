@@ -16,6 +16,7 @@ import android.widget.Toast;
 import businessObjects.connect.ProdcastServiceManager;
 
 import businessObjects.SessionInformations;
+import businessObjects.domain.NewCustomerRegistrationDetails;
 import businessObjects.dto.CustomerListDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,6 +29,9 @@ public class EditRegistrationActivity extends AppCompatActivity {
     TextView skip;
     Button edit,cancel;
     Context context;
+    String customerId=null;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +57,63 @@ public class EditRegistrationActivity extends AppCompatActivity {
         cancel=(Button)findViewById(R.id.cancel);
         Bundle bundle = intent.getExtras();
 
+
+
+        long accessId=SessionInformations.getInstance().getCustomerDetails().getAccessId();
+        Call<CustomerListDTO<NewCustomerRegistrationDetails>> getNewCustomerDTO = new ProdcastServiceManager().getClient().getNewCustomerRegistrationDetails(accessId);
+        getNewCustomerDTO.enqueue(new Callback<CustomerListDTO<NewCustomerRegistrationDetails>>() {
+            @Override
+            public void onResponse(Call<CustomerListDTO<NewCustomerRegistrationDetails>> call, Response<CustomerListDTO<NewCustomerRegistrationDetails>> response) {
+                String responseString = null;
+                CustomerListDTO<NewCustomerRegistrationDetails> dto = response.body();
+                if (dto.isError()) {
+
+                    Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                } else {
+
+                    NewCustomerRegistrationDetails newCustomerRegistrationDetails=dto.getResult();
+                    if(newCustomerRegistrationDetails!=null){
+                        firstName.setText(newCustomerRegistrationDetails.getFirstName());
+                        lastName.setText(newCustomerRegistrationDetails.getLastName());
+                        emailAddress.setText(newCustomerRegistrationDetails.getEmail());
+                        billingAddress1.setText(newCustomerRegistrationDetails.getAddress1());
+                        billingAddress2.setText(newCustomerRegistrationDetails.getAddress2());
+                        billingAddress3.setText(newCustomerRegistrationDetails.getAddress3());
+                        homePhoneNumber.setText(newCustomerRegistrationDetails.getWorkPhone());
+                        city.setText(newCustomerRegistrationDetails.getCity());
+                        state.setText(newCustomerRegistrationDetails.getState());
+                        postalCode.setText(newCustomerRegistrationDetails.getPostalCode());
+                        //country.(newCustomerRegistrationDetails.getFirstName());
+                        //skip.setText(newCustomerRegistrationDetails.getFirstName());
+                        boolean checked=false;
+                        if(newCustomerRegistrationDetails.getSmsAllowed().equals("1")){
+                            checked=true;
+                        }
+                        smsAllowed.setChecked(checked);
+                        customerId=String.valueOf(newCustomerRegistrationDetails.getCustomerId());
+
+
+                    }
+                    else{
+                        customerId=null;
+
+                    }
+
+                    Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<CustomerListDTO<NewCustomerRegistrationDetails>> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+
         // 5. get status value from bundle
         String status = bundle.getString("status");
         if(status.equals("edit")){
@@ -75,24 +136,24 @@ public class EditRegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                editRegistration();
+                editRegistration(customerId);
             }
         });
 
 
     }
-    public void editRegistration(){
-        String customerId=null;
+    public void editRegistration(String customerId){
+        //String customerId=null;
         String firstName1=firstName.getText().toString();
         String lastName1=lastName.getText().toString();
         String email=emailAddress.getText().toString();
         String address1=billingAddress1.getText().toString();
         String address2=billingAddress2.getText().toString();
         String address3=billingAddress3.getText().toString();
-        String phone=firstName.getText().toString();
-        String city1=firstName.getText().toString();
-        String state1=firstName.getText().toString();
-        String code=firstName.getText().toString();
+        String phone=homePhoneNumber.getText().toString();
+        String city1=city.getText().toString();
+        String state1=state.getText().toString();
+        String code=postalCode.getText().toString();
         Boolean sms;
         String ctry=country.getSelectedItem().toString();
          if(smsAllowed.isChecked()){
@@ -141,6 +202,7 @@ public class EditRegistrationActivity extends AppCompatActivity {
 
         }
         */
+
       String cellPhone=SessionInformations.getInstance().getCustomerDetails().getUsername();
         Call<CustomerListDTO> saveCustomerDTO = new ProdcastServiceManager().getClient().saveNewCustomer(customerId,firstName1,lastName1,email,cellPhone,phone,address1,address2,address3,city1,state1,ctry,code,sms);
         saveCustomerDTO.enqueue(new Callback<CustomerListDTO>() {

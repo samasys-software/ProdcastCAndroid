@@ -76,8 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
                     else{
 
                         Toast.makeText(context,"Successfully Registered",Toast.LENGTH_LONG).show();
-                        CustomerRegistration cust1 = dto.getResult();
-                        SessionInformations.getInstance().setRegisteredCustomer(cust1);
+                        //CustomerRegistration cust1 = dto.getResult();
+                        SessionInformations.getInstance().setRegisteredCustomer(dto.getResult());
                         Intent intent=new Intent(RegisterActivity.this,VerifyPinActivity.class);
                         startActivity(intent);
 

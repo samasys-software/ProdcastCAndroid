@@ -21,14 +21,14 @@ import java.util.List;
 import businessObjects.domain.Bill;
 import businessObjects.domain.Product;
 
-public class AllProductsList extends BaseAdapter {
+public class AllProductsAdapter extends BaseAdapter {
 
 
     List<Product> products;
     int count=0;
     Context context;
     LayoutInflater inflater;
-    public AllProductsList(Context mainActivity, List<Product> product){
+    public AllProductsAdapter(Context mainActivity, List<Product> product){
 
         // TODO Auto-generated constructor stub
         products=product;
@@ -78,7 +78,10 @@ public class AllProductsList extends BaseAdapter {
             holder=new Holder();
             convertView = inflater.inflate(R.layout.activity_all_products, parent,false);
             holder.tv = (TextView) convertView.findViewById(R.id.id);
-            holder.tv1 = (TextView) convertView.findViewById(R.id.content);
+            holder.tv1 = (TextView) convertView.findViewById(R.id.productName);
+            holder.tv2 = (TextView) convertView.findViewById(R.id.unitPrice);
+            holder.tv3 = (TextView) convertView.findViewById(R.id.salesTax);
+            holder.tv4 = (TextView) convertView.findViewById(R.id.otherTax);
             convertView.setTag(holder);
         }
         else{
@@ -88,6 +91,9 @@ public class AllProductsList extends BaseAdapter {
         Product product=products.get(holder.position);
         holder.tv.setText(String.valueOf(product.getId()));
         holder.tv1.setText(String.valueOf(product.getProductName()));
+        holder.tv2.setText("Unit Price : "+String.valueOf(product.getUnitPrice()));
+        holder.tv3.setText("Sales Tax : "+String.valueOf(product.getSalesTax()));
+        holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));
 
 
 
