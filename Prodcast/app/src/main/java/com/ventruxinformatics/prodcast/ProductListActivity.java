@@ -187,9 +187,10 @@ public class ProductListActivity extends AppCompatActivity {
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, ProductDetailActivity.class);
-
-                        ProductDetailActivity productDetail=new ProductDetailActivity();
-                        productDetail.setSelectedCategory(holder.mItem);
+                        intent.putExtra("selectedCategoryId",holder.mItem.getCategoryId());
+                        intent.putExtra("selectedCategoryName",holder.mItem.getCategoryName());
+                        //ProductDetailActivity productDetail=new ProductDetailActivity();
+                        //productDetail.setSelectedCategory(holder.mItem);
                         context.startActivity(intent);
                     }
                 }

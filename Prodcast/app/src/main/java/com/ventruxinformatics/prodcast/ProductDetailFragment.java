@@ -67,7 +67,7 @@ public class ProductDetailFragment extends Fragment {
     public ProductDetailFragment() {
     }
 
-    List<Product> productDetails;
+    List<Product> productDetails=new ArrayList<Product>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,7 +82,7 @@ public class ProductDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(getSelectedCategory().getCategoryName());
+                appBarLayout.setTitle("Hai");//getSelectedCategory().getCategoryName());
             }
 
     }
@@ -128,6 +128,8 @@ public class ProductDetailFragment extends Fragment {
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                     alertDialog.setTitle("Prodcast Notification");
+                    alertDialog.setCancelable(true);
+
 
 
                     LinearLayout layout = new LinearLayout(getActivity());
@@ -137,27 +139,46 @@ public class ProductDetailFragment extends Fragment {
 
                     layout.setGravity(Gravity.CLIP_HORIZONTAL);
 
-                    RelativeLayout reltivelayout=new RelativeLayout(getActivity());
+                    RelativeLayout relativelayout=new RelativeLayout(getActivity());
                     RelativeLayout.LayoutParams parameters = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                   reltivelayout.setLayoutParams(parameters);
+                   relativelayout.setLayoutParams(parameters);
+                    float unitPrice;
 
+                    if(SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")){
+                        unitPrice=product.getRetailPrice();
+                    }
+                    else{
+                        unitPrice=product.getUnitPrice();
+                    }
+
+
+                    final TextView productName=new TextView(getActivity());
+                    productName.setText("Product Name : "+product.getProductName()+"   UnitPrice : "+unitPrice);
+                    productName.setTextSize(20);
 
                     final EditText qty = new EditText(getActivity());
                     qty.setHint("Enter Quantity");
+
 
                     final TextView subTotal = new TextView(getActivity());
                     subTotal.setText("Subtotal : 0.00");
                     subTotal.setTextSize(25);
 
                     RelativeLayout.LayoutParams tv1Params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    tv1Params.topMargin = 150;
+                    tv1Params.topMargin = 200;
 
 
 
+                    RelativeLayout.LayoutParams productParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    productParam.topMargin = 50;
 
-                    reltivelayout.addView(qty, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                    reltivelayout.addView(subTotal,tv1Params);
-                    layout.addView(reltivelayout);
+                    RelativeLayout.LayoutParams qtyParam=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    qtyParam.topMargin=125;
+
+                    relativelayout.addView(productName,productParam);
+                    relativelayout.addView(qty,qtyParam);
+                    relativelayout.addView(subTotal,tv1Params);
+                    layout.addView(relativelayout);
 
                     alertDialog.setView(layout);
 
