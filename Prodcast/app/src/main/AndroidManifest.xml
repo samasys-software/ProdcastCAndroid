@@ -80,7 +80,9 @@
         <activity
             android:name=".BillDetailsActivity"
             android:label="@string/title_activity_bill_details"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".BillDetailsListAdapter" />
+        <activity android:name=".PaymentDetailsListAdapter"></activity>
     </application>
 
 </manifest>
