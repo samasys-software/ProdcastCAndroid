@@ -79,10 +79,14 @@ public class ProductDetailActivity extends AppCompatActivity {
             //Category selectedCategory=intent.getExtra(ARG_ITEM_ID,0);
             ProductDetailFragment fragment = new ProductDetailFragment();
 
+            Intent i=getIntent();
+            long selectedCategoryId=i.getLongExtra("selectedCategoryId",0);
+            String selectedCategoryName=i.getStringExtra("selectedCategoryName");
+            Category category=new Category();
+            category.setCategoryId(selectedCategoryId);
+            category.setCategoryName(selectedCategoryName);
 
-
-            fragment.setSelectedCategory(getSelectedCategory());
-
+            fragment.setSelectedCategory(category);
 
 
             //fragment.setArguments(arguments);
