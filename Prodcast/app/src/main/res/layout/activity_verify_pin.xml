@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_store"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/registerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/yellow_background"
+        android:layout_marginTop="104dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="250dp"
+
+            android:layout_height="50dp"
+            android:text="Please enter the confirmation code from the text sent to your registered mobile number"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="27dp"
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/relativeLayout5" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/relativeLayout5"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentEnd="true">
+
+
+            <EditText
+                android:id="@+id/verficationCode"
+                style="@style/editText"
+                android:hint="Verfication Code"
+                android:inputType="phone"
+                android:layout_marginStart="22dp"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+
+        android:layout_height="30dp"
+        android:text="Resend confirmation code"
+        android:id="@+id/resendConfirmationCode"
+        android:layout_above="@+id/relativeLayout6"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="38dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="66dp"
+        android:id="@+id/relativeLayout6"
+        android:layout_alignBottom="@+id/registerLayout"
+        android:layout_alignParentStart="true">
+
+
+
+        <Button
+            android:id="@+id/verify"
+            style="@style/submitButton"
+            android:text="Verify"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="37dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

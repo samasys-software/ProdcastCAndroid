@@ -22,27 +22,15 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
 
-            <TextView
-                android:text="Samasys"
-                android:textAllCaps="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView3"
-                android:textColor="#629a1e"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/companyLogo"
-                android:layout_centerHorizontal="true" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
                 app:srcCompat="@drawable/p_logo"
                 android:id="@+id/companyLogo"
+                android:layout_marginTop="15dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="21dp" />
+                android:layout_centerHorizontal="true" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -51,33 +39,33 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true">
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/rlimagemain"
+            android:layout_toEndOf="@+id/rlimagemain">
 
             <TextView
                 android:textColor="#345904"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:text="SAMASYS PVT LTD"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/companyDetails"
                 android:layout_marginTop="25dp"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="18dp"
-                android:layout_marginStart="18dp" />
+                android:layout_centerHorizontal="true" />
 
             <TextView
                 android:id="@+id/companyAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/companyDetails"
-                android:layout_alignStart="@+id/companyDetails"
-                android:layout_below="@+id/companyDetails"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="22dp"
                 android:text="Salt Lake City"
                 android:textColor="#629a1e"
-                android:textSize="13sp" />
+                android:textSize="16sp"
+                android:layout_below="@+id/companyDetails"
+                android:layout_alignLeft="@+id/companyDetails"
+            />
         </RelativeLayout>
 
 

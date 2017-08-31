@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:background="@drawable/bg_store"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/skipRegisteration"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="260dp"
+                android:layout_marginTop="40dp"
+                android:textSize="36sp"
+                android:gravity="end"
+                android:textColor="@color/orange"
+
+                android:text="SKIP" />
+
+            <RelativeLayout
+                android:id="@+id/mainlayoutreg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/yellow_background">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="40dp">
+                <EditText
+                    android:id="@+id/firstName"
+                    style="@style/editText"
+
+                    android:hint="First Name"
+                    android:inputType="text"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="90dp">
+             <EditText
+                    android:id="@+id/latName"
+                    style="@style/editText"
+
+                 android:hint="Last Name"
+                    android:inputType="text"
+                 android:layout_alignParentTop="true"
+                 android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="140dp">
+
+
+                <EditText
+                    android:id="@+id/emailAddress"
+                    style="@style/editText"
+
+
+                    android:hint="Email Address"
+                    android:inputType="text|textWebEmailAddress"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" /> -->
+
+</RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="190dp">
+                         <EditText
+                    android:id="@+id/billingAddress1"
+                    android:inputType="text"
+
+                    android:hint="Billing Address1"
+                    style="@style/editText"
+                             android:layout_alignParentTop="true"
+                             android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="240dp">
+                <EditText
+                    android:id="@+id/billingAddress2"
+                    android:inputType="text"
+
+                    android:hint="Billing Address2"
+                    style="@style/editText"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="290dp">
+
+                <EditText
+                    android:id="@+id/billingAddress3"
+                    android:inputType="text"
+
+                    android:hint="Billing Address3"
+                    style="@style/editText"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="340dp">
+                <EditText
+                    android:id="@+id/homePhoneNumber"
+                    android:inputType="text"
+                    android:hint="Home PhoneNumber"
+
+                     style="@style/editText"
+
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true" />
+                </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="390dp">
+
+                <EditText
+                    android:id="@+id/city"
+                    android:inputType="text"
+                    android:hint="City"
+
+                    style="@style/editText"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+</RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="440dp">
+                <EditText
+                    android:id="@+id/state"
+                    android:inputType="text"
+                    style="@style/editText"
+                    android:layout_alignParentTop="true"
+
+
+                    android:hint="State"
+
+                    android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="490dp"
+                android:background="@drawable/form_box"
+
+               >
+
+
+
+                <Spinner
+                    android:id="@+id/editCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+
+                    android:visibility="visible"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="540dp">
+
+                <EditText
+                    android:id="@+id/postalCode"
+                    style="@style/editText"
+                    android:hint="Postal Code"
+                    android:inputType="text"
+
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="590dp">
+
+                <CheckBox
+                    android:id="@+id/smsAllowed"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+
+                    android:hint="Sms Allowed"
+
+
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp" />
+
+            </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/editReg13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp">
+            <Button
+                android:id="@+id/edit"
+                android:text="Save"
+                style="@style/submitButton"
+                android:visibility="visible"
+                android:layout_marginTop="20dp"
+
+                />
+
+            <Button
+                android:id="@+id/reset"
+                style="@style/submitButton"
+                android:visibility="visible"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="200dp"
+
+                android:hint="Reset"
+                />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

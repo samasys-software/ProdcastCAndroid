@@ -8,4 +8,18 @@
     <string name="error_newpassword_is_minimum">Please Enter Minimum 6 Digits</string>
     <string name="title_activity_change_password">ChangePasswordActivity</string>
     <string name="title_activity_order_histroy">OrderHistroyActivity</string>
+    <string name="title_ordernewactivity_list">Items</string>
+    <string name="title_ordernewactivity_detail">OrdernewActivity Detail</string>
+    <string name="title_product_list">Products</string>
+    <string name="title_product_detail">Product Detail</string>
+    <string name="title_activity_bill_details_list">BillDetailsList</string>
+    <string name="title_activity_lusu">lusuActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_edit_registration">EditRegistrationActivity</string>
+    <string name="title_activity_verify_pin">VerifyPinActivity</string>
+    <string name="title_activity_all_products">AllProductsActivity</string>
+    <string name="title_activity_entries_custom_adapter">EntriesCustomAdapter</string>
+    <string name="title_activity_entry">EntryActivity</string>
+    <string name="title_activity_bill_details">BillDetailsActivity</string>
+    <string name="required_quantity">Please Enter Quantity</string>
 </resources>

@@ -1,11 +1,9 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 
@@ -23,8 +21,10 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(HomeActivity.this,BillActivity.class);
+                Intent i = new Intent(HomeActivity.this,OutstandingBillsActivity.class);
+                i.putExtra("useCache",false);
                 startActivity(i);
+
             }
         });
 
@@ -60,7 +60,10 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(HomeActivity.this,StoreActivity.class);
+                Intent i = new Intent(HomeActivity.this,EditRegistrationActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("status", "edit");
+                i.putExtras(extras);
                 startActivity(i);
             }
         });

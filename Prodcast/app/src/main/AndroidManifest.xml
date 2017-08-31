@@ -25,7 +25,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".StoreActivity" />
         <activity android:name=".OrderNowActivity" />
-        <activity android:name=".BillActivity" />
+        <activity android:name=".OutstandingBillsActivity" />
         <activity android:name=".HomeActivity" />
         <activity
             android:name=".ChangePasswordActivity"
@@ -35,6 +35,51 @@
         <activity
             android:name=".OrderHistroyActivity"
             android:label="@string/title_activity_order_histroy"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".OutstandingBillsDetailsAdapter"
+            android:label="@string/title_activity_bill_details_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EditRegistrationActivity"
+            android:label="@string/title_activity_edit_registration"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".VerifyPinActivity"
+            android:label="@string/title_activity_verify_pin"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ProductListActivity"
+            android:label="@string/title_product_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ProductDetailActivity"
+            android:label="@string/title_product_detail"
+            android:parentActivityName=".ProductListActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ventruxinformatics.prodcast.ProductListActivity" />
+        </activity>
+        <activity
+            android:name=".AllProductsActivity"
+            android:label="@string/title_activity_all_products"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EntriesCustomAdapter"
+            android:label="@string/title_activity_entries_custom_adapter"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EntryActivity"
+            android:label="@string/title_activity_entry"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".BillDetailsActivity"
+            android:label="@string/title_activity_bill_details"
             android:theme="@style/AppTheme"></activity>
     </application>
 
