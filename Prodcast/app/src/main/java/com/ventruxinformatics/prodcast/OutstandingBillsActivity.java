@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import businessObjects.domain.EmployeeDetails;
@@ -89,14 +90,16 @@ public class OutstandingBillsActivity extends AppCompatActivity {
         if(bills.size()>0) {
             listHistroy.setAdapter(new OutstandingBillsDetailsAdapter(OutstandingBillsActivity.this, bills));
 
-
-
             listHistroy.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent=new Intent(OutstandingBillsActivity.this,BillDetailsActivity.class);
-                    startActivity(intent);
 
+                    TextView c = (TextView) view.findViewById(R.id.billNo);
+                    String selectedBillIndex = c.getText().toString();
+                    System.out.println(selectedBillIndex);
+                    Intent intent = new Intent(OutstandingBillsActivity.this, BillDetailsActivity.class);
+                    intent.putExtra("billId",selectedBillIndex);
+                    startActivity(intent);
 
                 }
             });
@@ -108,5 +111,7 @@ public class OutstandingBillsActivity extends AppCompatActivity {
         }
 
     }
+
+
 
 }
