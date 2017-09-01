@@ -89,29 +89,55 @@ public class EntriesCustomAdapter extends BaseAdapter {
             holder.qty=(EditText) convertView.findViewById(R.id.orderQuantity);
             holder.tv2= (TextView) convertView.findViewById(R.id.subTotal);
             convertView.setTag(holder);
+
+             final OrderDetails orders=orderEntries.get(position);
+             holder.tv.setText(orders.getProduct().getProductName());
+             holder.tv1.setText(String.valueOf(orders.getProduct().getUnitPrice()));
+             holder.qty.setText(String.valueOf(orders.getQuantity()));
+             holder.tv2.setText(ProductDetailFragment.calculateTotal(orders.getProduct(),Integer.parseInt(holder.qty.getText().toString())));
+
+             holder.img.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View view) {
+
+                     orderEntries.remove(position);
+
+                     notifyDataSetChanged();
+                     // SessionInformations.getInstance().setEntry(orderEntries);
+
+
+                 }
+             });
+
+
+
+             holder.qty.addTextChangedListener(new TextWatcher() {
+                 @Override
+                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                 }
+
+                 @Override
+                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                 }
+
+                 @Override
+                 public void afterTextChanged(Editable s) {
+                     OrderDetails orders=orderEntries.get(position);
+                     String newValue = s.toString();
+                     if( newValue.trim().length()==0) newValue="0";
+                     int newQuantity = Integer.parseInt(newValue);
+                     orders.setQuantity( newQuantity );
+                     holder.tv2.setText( String.valueOf( orders.getQuantity()*orders.getProduct().getUnitPrice()));
+
+                 }
+             });
         }
         else{
             holder=(Holder) convertView.getTag();
         }
 
-        final OrderDetails orders=orderEntries.get(position);
-        holder.tv.setText(orders.getProduct().getProductName());
-        holder.tv1.setText(String.valueOf(orders.getProduct().getUnitPrice()));
-        holder.qty.setText(String.valueOf(orders.getQuantity()));
-        holder.tv2.setText(ProductDetailFragment.calculateTotal(orders.getProduct(),Integer.parseInt(holder.qty.getText().toString())));
-
-        holder.img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                orderEntries.remove(position);
-
-                notifyDataSetChanged();
-               // SessionInformations.getInstance().setEntry(orderEntries);
-
-
-            }
-        });
 
 
        /* holder.qty.addTextChangedListener(new TextWatcher() {
