@@ -93,16 +93,12 @@ public class OutstandingBillsActivity extends AppCompatActivity {
             listHistroy.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                   // long sr=parent.getSelectedItemId();
+
                     TextView c = (TextView) view.findViewById(R.id.billNo);
                     String selectedBillIndex = c.getText().toString();
-
                     System.out.println(selectedBillIndex);
-                 //  Bill bills=(Bill)parent.getSelectedItem();
-             //   long selectedBillIndex=bills.getBillNumber();
                     Intent intent = new Intent(OutstandingBillsActivity.this, BillDetailsActivity.class);
                     intent.putExtra("billId",selectedBillIndex);
-
                     startActivity(intent);
 
                 }

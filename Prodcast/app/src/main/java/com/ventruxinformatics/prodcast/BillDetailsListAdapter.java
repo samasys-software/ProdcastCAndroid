@@ -44,22 +44,12 @@ public class BillDetailsListAdapter extends BaseAdapter {
     }
 
     public class Holder {
-        TextView tv,tv1,tv2,tv3,tv4,tv5,tv6,tv7;
-
-        TextView orderNo,billDate,salesRep,total,balance,discount;
-
-        TextView discountType;
         TextView productName;
         TextView qty;
         TextView salesTax;
         TextView otherTax;
         TextView subTotal;
         TextView price;
-        TextView paymentDate;
-        TextView paymentReceiver;
-        TextView paymentAmount;
-
-
     }
 
     @Override
@@ -73,8 +63,6 @@ public class BillDetailsListAdapter extends BaseAdapter {
             holder.salesTax=(TextView) convertview.findViewById(R.id.salesTax);
             holder.otherTax=(TextView) convertview.findViewById(R.id.otherTax);
             holder.subTotal=(TextView) convertview.findViewById(R.id.subTotal);
-
-
 
             //order details
             holder.productName.setText(orderDetails.get(position).getProductName());

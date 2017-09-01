@@ -15,9 +15,6 @@ import businessObjects.domain.Collection;
 
 public class PaymentDetailsListAdapter extends BaseAdapter {
     List<Collection> collections;
-
-
-
     Context context;
     public static LayoutInflater inflater = null;
 
@@ -47,8 +44,6 @@ public class PaymentDetailsListAdapter extends BaseAdapter {
         TextView paymentDate;
         TextView paymentReceiver;
         TextView paymentAmount;
-
-
     }
 
     @Override
@@ -62,11 +57,7 @@ public class PaymentDetailsListAdapter extends BaseAdapter {
             holder.paymentDate.setText(String.valueOf(collections.get(position).getPaymentDate()));
             holder.paymentReceiver.setText(collections.get(position).getEmployeeName());
             holder.paymentAmount.setText(String.valueOf(collections.get(position).getAmountPaid()));
-
-
+            }
+           return convertview;
         }
-        return convertview;
-    }
-
-
 }

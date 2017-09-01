@@ -9,25 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dip" >
-      <!--  <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/close"
-                style="@style/submitButton"
-                android:text="Close"
-                />
 
-            <Button
-
-                android:id="@+id/cloneOrder"
-                style="@style/submitButton"
-                android:text="CloneOrder"
-                android:layout_alignParentRight="true"
-                />
-
-        </LinearLayout>-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -417,6 +399,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/paymentDetailsInvisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -430,7 +413,7 @@
                 android:padding="5dp"
                 android:layout_weight="0.9"
                 android:text="Date"/>
-            <!--android:id="@+id/dateInvisible"-->
+
             <TextView
 
                 android:layout_width="0dp"
@@ -440,7 +423,7 @@
                 android:padding="5dp"
                 android:layout_weight="2"
                 android:text="Received By"/>
-            <!--android:id="@+id/receiverInvisible"-->
+
             <TextView
 
                 android:layout_width="0dp"
@@ -450,13 +433,34 @@
                 android:padding="5dp"
                 android:layout_weight="1"
                 android:text="Amount"/>
-            <!--android:id="@+id/amountInvisible"-->
+
         </LinearLayout>
 
         <ListView
             android:id="@+id/paymentEntriesAdapter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ListView>
+
+
+        <!--  <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+          <Button
+              android:id="@+id/close"
+              style="@style/submitButton"
+              android:text="Close"
+              />
+
+          <Button
+
+              android:id="@+id/cloneOrder"
+              style="@style/submitButton"
+              android:text="CloneOrder"
+              android:layout_alignParentRight="true"
+              />
+
+      </LinearLayout>-->
 
     </LinearLayout>
 
