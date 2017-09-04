@@ -21,11 +21,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VerifyPinActivity extends AppCompatActivity {
+public class VerifyPinActivity extends ProdcastCBaseActivity {
     EditText verificationCode;
     Button verify;
     TextView resendConfirmationCode;
     Context context;
+
+    @Override
+    public String getProdcastTitle() {
+        return "Verify Code";
+    }
+
+    @Override
+    public boolean getCompanyName() {
+        return false;
+    }
+
 
 
     @Override
@@ -127,5 +138,6 @@ public class VerifyPinActivity extends AppCompatActivity {
 
 
         }
+
 
 }

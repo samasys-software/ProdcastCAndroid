@@ -32,10 +32,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EntryActivity extends AppCompatActivity {
+public class EntryActivity extends ProdcastCBaseActivity {
 
     Inflater inflater;
     Button order;
+
+    @Override
+    public String getProdcastTitle() {
+        return "Orders Screen";
+    }
+
+    @Override
+    public boolean getCompanyName() {
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,5 +132,6 @@ public class EntryActivity extends AppCompatActivity {
 
         }
     }
+
 
 }

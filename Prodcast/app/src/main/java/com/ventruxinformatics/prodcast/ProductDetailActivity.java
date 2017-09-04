@@ -29,9 +29,19 @@ import businessObjects.domain.Product;
  * item details are presented side-by-side with a list of items
  * in a {@link ProductListActivity}.
  */
-public class ProductDetailActivity extends AppCompatActivity {
+public class ProductDetailActivity extends ProdcastCBaseActivity {
     public static final String ARG_ITEM_ID = "item_id";
     private Category selectedCategory;
+
+    @Override
+    public String getProdcastTitle() {
+        return "Products List";
+    }
+
+    @Override
+    public boolean getCompanyName() {
+        return true;
+    }
 
     public Category getSelectedCategory() {
         return selectedCategory;
@@ -111,4 +121,5 @@ public class ProductDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

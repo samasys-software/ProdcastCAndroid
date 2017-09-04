@@ -24,13 +24,26 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StoreActivity extends AppCompatActivity {
+public class StoreActivity extends ProdcastCBaseActivity {
 
     ListView listhistory;
     Context context;
     List<Distributor> distributors = new ArrayList<>();
     List<Distributor> dist=null;
     List<Distributor> distOpen=null;
+
+
+    @Override
+    public  String getProdcastTitle(){
+        return "Change Store";
+    }
+
+
+    @Override
+    public  boolean getCompanyName(){
+        return false;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

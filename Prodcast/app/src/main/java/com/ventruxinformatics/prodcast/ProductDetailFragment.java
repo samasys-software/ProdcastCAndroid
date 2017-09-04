@@ -2,6 +2,7 @@ package com.ventruxinformatics.prodcast;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,8 @@ import android.widget.TextView;
 
 //import com.ventruxinformatics.prodcast.dummy.DummyContent;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +40,8 @@ import businessObjects.domain.Product;
  * on handsets.
  */
 public class ProductDetailFragment extends Fragment {
+    EditText qty;
+    TextView subTotal;
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -82,7 +87,7 @@ public class ProductDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle("Hai");//getSelectedCategory().getCategoryName());
+                appBarLayout.setTitle(getSelectedCategory().getCategoryName());
             }
 
     }
@@ -93,18 +98,16 @@ public class ProductDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.product_detail, container, false);
 
 
-        List<Category> categories=SessionInformations.getInstance().getCategoryDetails();
-        List<Product> products=SessionInformations.getInstance().getProductDetails();
-        int count=0;
-        for(Category category:categories)
-            if(category.getCategoryId()==getSelectedCategory().getCategoryId())
-            {
-                for(Product product:products) {
-                    System.out.println("Selected Category Id"+category.getCategoryId());
-                    System.out.println("Product Category Id"+product.getCategoryId());
-                    if(product.getCategoryId()==category.getCategoryId())
-                    {
-                        productDetails.add(count,product);
+        List<Category> categories = SessionInformations.getInstance().getCategoryDetails();
+        List<Product> products = SessionInformations.getInstance().getProductDetails();
+        int count = 0;
+        for (Category category : categories)
+            if (category.getCategoryId() == getSelectedCategory().getCategoryId()) {
+                for (Product product : products) {
+                    System.out.println("Selected Category Id" + category.getCategoryId());
+                    System.out.println("Product Category Id" + product.getCategoryId());
+                    if (product.getCategoryId() == category.getCategoryId()) {
+                        productDetails.add(count, product);
                         count++;
                     }
 
@@ -115,45 +118,42 @@ public class ProductDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (productDetails != null) {
-            ListView listView=(ListView) rootView.findViewById(R.id.product_detail);
-            listView.setAdapter(new AllProductsAdapter(getActivity(),productDetails));
-
+            ListView listView = (ListView) rootView.findViewById(R.id.product_detail);
+            listView.setAdapter(new AllProductsAdapter(getActivity(), productDetails));
 
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                     final Product product= SessionInformations.getInstance().getProductDetails().get(position);
 
+                    final Product product = SessionInformations.getInstance().getProductDetails().get(position);
 
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertTheme);
                     alertDialog.setTitle("Prodcast Notification");
-                    alertDialog.setCancelable(true);
 
+                    alertDialog.setCancelable(true);
 
 
                     LinearLayout layout = new LinearLayout(getActivity());
                     LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     layout.setOrientation(LinearLayout.VERTICAL);
                     layout.setLayoutParams(parms);
+                    layout.setBackgroundColor(Color.parseColor("#ffffff"));
 
                     layout.setGravity(Gravity.CLIP_HORIZONTAL);
 
-                    RelativeLayout relativelayout=new RelativeLayout(getActivity());
+                    RelativeLayout relativelayout = new RelativeLayout(getActivity());
                     RelativeLayout.LayoutParams parameters = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                   relativelayout.setLayoutParams(parameters);
+                    relativelayout.setLayoutParams(parameters);
+
                     float unitPrice;
-
-                    if(SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")){
-                        unitPrice=product.getRetailPrice();
+                    if (SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")) {
+                        unitPrice = product.getRetailPrice();
+                    } else {
+                        unitPrice = product.getUnitPrice();
                     }
-                    else{
-                        unitPrice=product.getUnitPrice();
-                    }
-
-
-                    final TextView productName=new TextView(getActivity());
-                    productName.setText("Product Name : "+product.getProductName()+"   UnitPrice : "+unitPrice);
+                    final TextView productName = new TextView(getActivity());
+                    productName.setText("Product Name : " + product.getProductName() + "        UnitPrice : " + unitPrice);
                     productName.setTextSize(20);
 
                     final EditText qty = new EditText(getActivity());
@@ -165,48 +165,21 @@ public class ProductDetailFragment extends Fragment {
                     subTotal.setTextSize(25);
 
                     RelativeLayout.LayoutParams tv1Params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    tv1Params.topMargin = 200;
-
+                    tv1Params.topMargin = 250;
 
 
                     RelativeLayout.LayoutParams productParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                     productParam.topMargin = 50;
 
-                    RelativeLayout.LayoutParams qtyParam=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    qtyParam.topMargin=125;
+                    RelativeLayout.LayoutParams qtyParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    qtyParam.topMargin = 125;
 
-                    relativelayout.addView(productName,productParam);
-                    relativelayout.addView(qty,qtyParam);
-                    relativelayout.addView(subTotal,tv1Params);
+                    relativelayout.addView(productName, productParam);
+                    relativelayout.addView(qty, qtyParam);
+                    relativelayout.addView(subTotal, tv1Params);
                     layout.addView(relativelayout);
 
                     alertDialog.setView(layout);
-
-
-                    qty.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count,
-                                                      int after) {
-
-                            //subTotal.setText("SubTotal:0.00");
-                        }
-                        @Override
-                        public void onTextChanged(final CharSequence s, int start, int before,
-                                                  int count) {
-
-                            //subTotal.setText("SubTotal : "+calculateTotal(product,Integer.valueOf(qty.getText().toString())));
-
-                        }
-                        @Override
-                        public void afterTextChanged(final Editable s) {
-                            //avoid triggering event when text is too short
-                            subTotal.setText("SubTotal : "+calculateTotal(product,Integer.valueOf(qty.getText().toString())));
-
-                        }
-                    });
-
-
-
 
 
                     alertDialog.setIcon(R.drawable.customer_icon);
@@ -214,17 +187,15 @@ public class ProductDetailFragment extends Fragment {
 
                     alertDialog.setPositiveButton("YES",
                             new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,int which) {
+                                public void onClick(DialogInterface dialog, int which) {
                                     // Write your code here to execute after dialog
-                                    String quantity=qty.getText().toString();
-                                    if(TextUtils.isEmpty(quantity))
-                                    {
+                                    String quantity = qty.getText().toString();
+                                    if (TextUtils.isEmpty(quantity)) {
                                         qty.setError(getString(R.string.required_quantity));
                                         qty.requestFocus();
                                     }
-                                    if(!TextUtils.isEmpty(quantity))
-                                    {
-                                        final OrderDetails orderDetails=new OrderDetails();
+                                    if (!TextUtils.isEmpty(quantity)) {
+                                        final OrderDetails orderDetails = new OrderDetails();
 
                                         System.out.println(qty.getText() + "success");
                                         orderDetails.setProduct(product);
@@ -232,9 +203,8 @@ public class ProductDetailFragment extends Fragment {
 
                                         SessionInformations.getInstance().getEntry().add(orderDetails);
                                         //SessionInformations.getInstance().setEntry(null);
-                                       // SessionInformations.getInstance().setEntry(entries);
+                                        // SessionInformations.getInstance().setEntry(entries);
                                     }
-
 
 
                                 }
@@ -257,18 +227,14 @@ public class ProductDetailFragment extends Fragment {
 
                 }
             });
-
-
-
-
-
-    }
-
+        }
         return rootView;
-
-
     }
-    public static final String calculateTotal(Product pro,int quantity){
+
+
+
+
+        public static final String calculateTotal(Product pro,int quantity){
         float unitPrice = pro.getUnitPrice();
         float retailPrice=pro.getRetailPrice();
         float salesTax = Float.valueOf(pro.getSalesTax());
@@ -278,7 +244,7 @@ public class ProductDetailFragment extends Fragment {
 
         //var subtotal = (Number(unitPrice) * Number(quantity)*( 1+(Number(salesTax)+Number(otherTax))/100  )).toFixed(2);
 
-       if(SessionInformations.getInstance().getEmployee().getCustomerType().equals("R"))
+        if(SessionInformations.getInstance().getEmployee().getCustomerType().equals("R"))
             subtotal=(retailPrice * quantity*( 1+(salesTax+otherTax)/100  ));
         else
             subtotal=(unitPrice * quantity*( 1+(salesTax+otherTax)/100  ));
@@ -288,3 +254,11 @@ public class ProductDetailFragment extends Fragment {
 
 
 }
+
+
+
+
+
+
+
+

@@ -13,16 +13,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import businessObjects.connect.ProdcastServiceManager;
 
 import businessObjects.SessionInformations;
+import businessObjects.domain.Country;
 import businessObjects.domain.NewCustomerRegistrationDetails;
 import businessObjects.dto.CustomerListDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditRegistrationActivity extends AppCompatActivity {
+public class EditRegistrationActivity extends ProdcastCBaseActivity {
     EditText firstName,lastName,emailAddress,billingAddress1,billingAddress2,billingAddress3,homePhoneNumber,city,state,postalCode;
     Spinner country;
     CheckBox smsAllowed;
@@ -30,6 +33,13 @@ public class EditRegistrationActivity extends AppCompatActivity {
     Button edit,cancel;
     Context context;
     String customerId=null;
+    boolean companyName=false;
+
+    @Override
+    public String getProdcastTitle() {
+        return "Edit Registration";
+    }
+
 
 
     @Override
@@ -39,7 +49,7 @@ public class EditRegistrationActivity extends AppCompatActivity {
         context=this;
         Intent intent = getIntent();
 
-        String[] countries = { "IN", "USA"  };
+        //String[] countries = { "IN", "USA"  };
         firstName=(EditText) findViewById(R.id.firstName);
         lastName=(EditText) findViewById(R.id.latName);
         emailAddress=(EditText) findViewById(R.id.emailAddress);
@@ -55,6 +65,14 @@ public class EditRegistrationActivity extends AppCompatActivity {
         smsAllowed=(CheckBox)findViewById(R.id.smsAllowed);
         edit=(Button)findViewById(R.id.edit);
         cancel=(Button)findViewById(R.id.cancel);
+        List<Country> countryList=SessionInformations.getInstance().getCountries();
+        Country defaultCountry = new Country();
+        defaultCountry.setCountryId("");
+        defaultCountry.setCountryName("Select Country");
+        countryList.add(0, defaultCountry  );
+        ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(EditRegistrationActivity.this, android.R.layout.simple_list_item_1, countryList);
+        country.setAdapter(adapter);
+
         Bundle bundle = intent.getExtras();
 
 
@@ -119,11 +137,13 @@ public class EditRegistrationActivity extends AppCompatActivity {
         if(status.equals("edit")){
             skip.setVisibility(View.INVISIBLE);
             edit.setText("Edit");
+            companyName=true;
         }
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,countries);
+        /*ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,countries);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
-        country.setAdapter(aa);
+        country.setAdapter(aa);*/
+
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,6 +162,8 @@ public class EditRegistrationActivity extends AppCompatActivity {
 
 
     }
+
+
     public void editRegistration(String customerId){
         //String customerId=null;
         String firstName1=firstName.getText().toString();
@@ -155,8 +177,11 @@ public class EditRegistrationActivity extends AppCompatActivity {
         String state1=state.getText().toString();
         String code=postalCode.getText().toString();
         Boolean sms;
-        String ctry=country.getSelectedItem().toString();
-         if(smsAllowed.isChecked()){
+        int ctry = country.getSelectedItemPosition();
+        Country selectedCountry = (Country) country.getSelectedItem();
+        String selectedCountryId = selectedCountry.getCountryId();
+
+        if(smsAllowed.isChecked()){
             sms=true;
         }
         else{
@@ -204,7 +229,8 @@ public class EditRegistrationActivity extends AppCompatActivity {
         */
 
       String cellPhone=SessionInformations.getInstance().getCustomerDetails().getUsername();
-        Call<CustomerListDTO> saveCustomerDTO = new ProdcastServiceManager().getClient().saveNewCustomer(customerId,firstName1,lastName1,email,cellPhone,phone,address1,address2,address3,city1,state1,ctry,code,sms);
+        Call<CustomerListDTO> saveCustomerDTO = new ProdcastServiceManager().getClient().saveNewCustomer(customerId,firstName1,
+                lastName1,email,cellPhone,phone,address1,address2,address3,city1,state1,selectedCountryId,code,sms);
         saveCustomerDTO.enqueue(new Callback<CustomerListDTO>() {
             @Override
             public void onResponse(Call<CustomerListDTO> call, Response<CustomerListDTO> response) {
@@ -230,4 +256,11 @@ public class EditRegistrationActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean getCompanyName() {
+        return companyName;
+    }
+
+
 }

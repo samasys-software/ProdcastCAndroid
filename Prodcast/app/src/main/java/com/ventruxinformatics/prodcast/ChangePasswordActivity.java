@@ -18,7 +18,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ChangePasswordActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends ProdcastCBaseActivity{
+
+
+    @Override
+    public boolean getCompanyName(){
+        return true;
+    }
+
+    @Override
+    public String getProdcastTitle() {
+        return "Change Password";
+    }
+
 
     //private UserChangePasswordTask mAuthTask = null;
     EditText oldPinNumber,newPinNumber,confirmPinNumber;
@@ -166,6 +178,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         }
     }
+
 }
  /* public class UserChangePasswordTask extends AsyncTask<Void, Void, Boolean> {
 

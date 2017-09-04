@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import businessObjects.domain.EmployeeDetails;
-import businessObjects.dto.AdminDTO;
 import businessObjects.dto.CustomerDTO;
 
 import businessObjects.connect.ProdcastServiceManager;
@@ -19,7 +19,6 @@ import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.Bill;
 import businessObjects.domain.Customer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import businessObjects.SessionInformations;
@@ -27,16 +26,25 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OutstandingBillsActivity extends AppCompatActivity {
+public class OutstandingBillsActivity extends ProdcastCBaseActivity {
     Button newOrderPin;
     ListView listHistroy;
     Context context;
 
+    @Override
+    public String getProdcastTitle() {
+        return "Outstanding Bills";
+    }
+
+    @Override
+    public boolean getCompanyName() {
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bill);
+        setContentView(R.layout.activity_outstanding_bill);
         context = this;
         listHistroy=(ListView) findViewById(R.id.billsListView);
         newOrderPin = (Button) findViewById(R.id.newOrderPin);
@@ -89,17 +97,20 @@ public class OutstandingBillsActivity extends AppCompatActivity {
         if(bills.size()>0) {
             listHistroy.setAdapter(new OutstandingBillsDetailsAdapter(OutstandingBillsActivity.this, bills));
 
-
-
             listHistroy.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent=new Intent(OutstandingBillsActivity.this,BillDetailsActivity.class);
-                    startActivity(intent);
 
+                    TextView c = (TextView) view.findViewById(R.id.billNo);
+                    String selectedBillIndex = c.getText().toString();
+                    System.out.println(selectedBillIndex);
+                    Intent intent = new Intent(OutstandingBillsActivity.this, BillDetailsActivity.class);
+                    intent.putExtra("billId",selectedBillIndex);
+                    startActivity(intent);
 
                 }
             });
+
 
         }
         else{
@@ -108,5 +119,7 @@ public class OutstandingBillsActivity extends AppCompatActivity {
         }
 
     }
+
+
 
 }
