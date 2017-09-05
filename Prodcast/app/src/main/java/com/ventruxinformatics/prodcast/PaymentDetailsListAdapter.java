@@ -1,8 +1,11 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +60,7 @@ public class PaymentDetailsListAdapter extends BaseAdapter {
             holder.paymentDate.setText(String.valueOf(collections.get(position).getPaymentDate()));
             holder.paymentReceiver.setText(collections.get(position).getEmployeeName());
             holder.paymentAmount.setText(String.valueOf(collections.get(position).getAmountPaid()));
-            }
-           return convertview;
         }
+        return convertview;
+    }
 }

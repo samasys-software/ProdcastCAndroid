@@ -24,14 +24,12 @@
         --
         <activity android:name=".LoginActivity" />
         <activity android:name=".StoreActivity" />
-        <activity android:name=".OrderNowActivity" />
         <activity android:name=".OutstandingBillsActivity" />
         <activity android:name=".HomeActivity" />
         <activity
             android:name=".ChangePasswordActivity"
             android:label="@string/title_activity_change_password"
             android:theme="@style/AppTheme" />
-        <activity android:name=".CustomerRegistrationActivity" />
         <activity
             android:name=".OrderHistroyActivity"
             android:label="@string/title_activity_order_histroy"
@@ -66,7 +64,7 @@
                 android:value="com.ventruxinformatics.prodcast.ProductListActivity" />
         </activity>
         <activity
-            android:name=".AllProductsActivity"
+            android:name=".AllProductsAdapter"
             android:label="@string/title_activity_all_products"
             android:theme="@style/AppTheme" />
         <activity
@@ -81,8 +79,18 @@
             android:name=".BillDetailsActivity"
             android:label="@string/title_activity_bill_details"
             android:theme="@style/AppTheme" />
-        <activity android:name=".BillDetailsListAdapter" />
-        <activity android:name=".PaymentDetailsListAdapter"></activity>
+        <activity
+            android:name=".BillDetailsListAdapter"
+            android:label="@string/title_activity_bill_details"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PaymentDetailsListAdapter"
+            android:label="@string/title_activity_payment_list_adapter"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ProdcastCBaseActivity"
+            android:label="@string/title_activity_prodcast_cbase"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

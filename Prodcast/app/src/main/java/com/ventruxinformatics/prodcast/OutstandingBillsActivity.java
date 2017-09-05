@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import businessObjects.domain.EmployeeDetails;
-import businessObjects.dto.AdminDTO;
 import businessObjects.dto.CustomerDTO;
 
 import businessObjects.connect.ProdcastServiceManager;
@@ -20,7 +19,6 @@ import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.Bill;
 import businessObjects.domain.Customer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import businessObjects.SessionInformations;
@@ -28,16 +26,25 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OutstandingBillsActivity extends AppCompatActivity {
+public class OutstandingBillsActivity extends ProdcastCBaseActivity {
     Button newOrderPin;
     ListView listHistroy;
     Context context;
 
+    @Override
+    public String getProdcastTitle() {
+        return "Outstanding Bills";
+    }
+
+    @Override
+    public boolean getCompanyName() {
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bill);
+        setContentView(R.layout.activity_outstanding_bill);
         context = this;
         listHistroy=(ListView) findViewById(R.id.billsListView);
         newOrderPin = (Button) findViewById(R.id.newOrderPin);
@@ -103,6 +110,7 @@ public class OutstandingBillsActivity extends AppCompatActivity {
 
                 }
             });
+
 
         }
         else{

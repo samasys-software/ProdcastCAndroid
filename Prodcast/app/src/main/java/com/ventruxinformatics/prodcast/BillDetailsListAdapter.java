@@ -1,8 +1,15 @@
 package com.ventruxinformatics.prodcast;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+
+
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +19,10 @@ import android.widget.TextView;
 import java.util.List;
 
 import businessObjects.domain.OrderEntry;
+
+/**
+ * Created by nandhini on 01/09/17.
+ */
 
 public class BillDetailsListAdapter extends BaseAdapter {
 
@@ -75,3 +86,5 @@ public class BillDetailsListAdapter extends BaseAdapter {
         return convertview;
     }
 }
+
+

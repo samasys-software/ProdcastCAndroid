@@ -66,7 +66,7 @@ public class OutstandingBillsDetailsAdapter extends BaseAdapter {
         View rowView;
         if(convertView==null)
 
-            convertView = inflater.inflate(R.layout.activity_outstanding_bills_adapter, null);
+            convertView = inflater.inflate(R.layout.activity_bill_details_list, null);
         holder.tv=(TextView) convertView.findViewById(R.id.billNo);
         holder.tv1=(TextView) convertView.findViewById(R.id.status);
         holder.tv2=(TextView) convertView.findViewById(R.id.billDate);

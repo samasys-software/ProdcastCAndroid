@@ -34,16 +34,6 @@
 
 
 
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner2"
-                android:layout_marginLeft="45dp"
-                android:background="@null"
-                android:paddingLeft="10dp"
-
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true" />
 
 
         </RelativeLayout>

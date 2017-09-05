@@ -37,10 +37,11 @@ import retrofit2.Response;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class ProductListActivity extends AppCompatActivity {
+
+public class ProductListActivity extends ProdcastCBaseActivity {
 
 
-    
+
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -49,6 +50,17 @@ public class ProductListActivity extends AppCompatActivity {
     private boolean mTwoPane;
     //List<Category> categories=new ArrayList<Category>();
     View recyclerView;
+
+    @Override
+    public String getProdcastTitle(){
+
+            return "Change Password";
+    }
+
+    @Override
+    public boolean getCompanyName() {
+        return true;
+    }
 
 
     @Override
@@ -72,9 +84,9 @@ public class ProductListActivity extends AppCompatActivity {
                 }
                 else {
 
-                        //List<Category> categories = dto.getResult();
-                       SessionInformations.getInstance().setCategoryDetails(dto.getResult());
-                     // System.out.println(categories.get(0).getCategoryId());
+                    //List<Category> categories = dto.getResult();
+                    SessionInformations.getInstance().setCategoryDetails(dto.getResult());
+                    // System.out.println(categories.get(0).getCategoryId());
                     setupRecyclerView((RecyclerView) recyclerView);
 
 
@@ -121,11 +133,7 @@ public class ProductListActivity extends AppCompatActivity {
 
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
-
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,7 +187,7 @@ public class ProductListActivity extends AppCompatActivity {
                         Bundle bundle=new Bundle();
 
                         ProductDetailFragment fragment = new ProductDetailFragment();
-                       fragment.setSelectedCategory(holder.mItem);
+                        fragment.setSelectedCategory(holder.mItem);
                         //fragment.setSelected
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.product_detail_container, fragment)
@@ -222,3 +230,4 @@ public class ProductListActivity extends AppCompatActivity {
         }
     }
 }
+

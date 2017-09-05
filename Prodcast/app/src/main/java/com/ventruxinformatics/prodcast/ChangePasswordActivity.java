@@ -18,7 +18,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ChangePasswordActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends ProdcastCBaseActivity{
+
+
+    @Override
+    public boolean getCompanyName(){
+        return true;
+    }
+
+    @Override
+    public String getProdcastTitle() {
+        return "Change Password";
+    }
+
 
     //private UserChangePasswordTask mAuthTask = null;
     EditText oldPinNumber,newPinNumber,confirmPinNumber;
@@ -65,7 +77,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         confirmPinNumber.setText("");
 
     }
-    public void checkValue(String oldPassword,String newPassword,String confirmPassword){
+    public boolean checkValue(String oldPassword,String newPassword,String confirmPassword){
 
 
         // Reset errors.
@@ -83,50 +95,54 @@ public class ChangePasswordActivity extends AppCompatActivity {
             oldPinNumber.setError(getString(R.string.error_field_required));
             focusView = oldPinNumber;
             cancel = true;
+            return cancel;
         }
                 // Check for a valid email address.
-       if (TextUtils.isEmpty(newPassword)) {
+        if (TextUtils.isEmpty(newPassword)) {
             newPinNumber.setError(getString(R.string.error_field_required));
             focusView = newPinNumber;
             cancel = true;
+           return cancel;
         }
         if(oldPassword.equals(newPassword)){
-                newPinNumber.setError(getString(R.string.error_oldpassword_and_newpassword_is_same));
-                focusView = newPinNumber;
-                cancel = true;
-            }
-      if(newPassword.length()<6)
-            {
-                newPinNumber.setError(getString(R.string.error_newpassword_is_minimum));
-                focusView = newPinNumber;
-                cancel = true;
-            }
-
-         if (TextUtils.isEmpty(confirmPassword)) {
+            newPinNumber.setError(getString(R.string.error_oldpassword_and_newpassword_is_same));
+            focusView = newPinNumber;
+            cancel = true;
+            return cancel;
+        }
+        if(!LoginActivity.isPasswordValid(newPassword)) {
+            newPinNumber.setError(getString(R.string.error_newpassword_is_minimum));
+            focusView = newPinNumber;
+            cancel = true;
+            return cancel;
+        }
+        if (TextUtils.isEmpty(confirmPassword)) {
             confirmPinNumber.setError(getString(R.string.error_field_required));
             focusView = confirmPinNumber;
             cancel = true;
+            return cancel;
         }
-         if(!confirmPassword.equals(newPassword)){
-                confirmPinNumber.setError(getString(R.string.error_oldpassword_and_newpassword_is_same));
-                focusView = confirmPinNumber;
-                cancel = true;
-            }
-
-
+        if(!confirmPassword.equals(newPassword)){
+            confirmPinNumber.setError(getString(R.string.error_confirmpassword_and_newpassword_is_not_same));
+            focusView = confirmPinNumber;
+            cancel = true;
+            return cancel;
+        }
+        return cancel;
     }
 
     private void attemptChangePassword() {
         String oldPassword = oldPinNumber.getText().toString();
         String newPassword = newPinNumber.getText().toString();
         String confirmPassword=confirmPinNumber.getText().toString();
-        checkValue(oldPassword,newPassword,confirmPassword);
-        if (cancel) {
+        boolean cancelled=checkValue(oldPassword,newPassword,confirmPassword);
+        if (cancelled) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
             return;
-        } else {
+        }
+        else {
 
             long accessId=SessionInformations.getInstance().getCustomerDetails().getAccessId();
 
@@ -166,6 +182,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         }
     }
+
 }
  /* public class UserChangePasswordTask extends AsyncTask<Void, Void, Boolean> {
 

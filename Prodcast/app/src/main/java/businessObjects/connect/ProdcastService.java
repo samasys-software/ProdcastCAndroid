@@ -4,6 +4,7 @@ import businessObjects.domain.Bill;
 import businessObjects.domain.Category;
 import businessObjects.domain.NewCustomerRegistrationDetails;
 import businessObjects.domain.Product;
+import businessObjects.dto.CountryDTO;
 import businessObjects.dto.CustomerDTO;
 
 import java.util.List;
@@ -125,6 +126,10 @@ public interface ProdcastService {
 
     @GET("prodcast/customer/getNewCustomerRegistrationDetails")
     Call<CustomerListDTO<NewCustomerRegistrationDetails>>  getNewCustomerRegistrationDetails(@Query("accessId") long accessId);
+
+    @GET("prodcast/global/getCountries")
+    Call<CountryDTO> getCountries();
+
 
 
 }

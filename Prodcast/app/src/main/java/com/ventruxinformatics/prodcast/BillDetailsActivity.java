@@ -1,12 +1,9 @@
 package com.ventruxinformatics.prodcast;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.util.DiffUtil;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -14,19 +11,31 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ventruxinformatics.prodcast.BillDetailsListAdapter;
+import com.ventruxinformatics.prodcast.R;
+
 import businessObjects.SessionInformations;
 import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.EmployeeDetails;
 import businessObjects.domain.Order;
-import businessObjects.dto.CustomerReportDTO;
 import businessObjects.dto.OrderDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+public class BillDetailsActivity extends ProdcastCBaseActivity {
 
 
-public class BillDetailsActivity extends AppCompatActivity {
+    @Override
+    public boolean getCompanyName(){
+        return true;
+    }
+
+    @Override
+     public String getProdcastTitle(){
+        return "Bill Details";
+    }
+
 
     ListView orderListView;
     ListView paymentListView;
@@ -41,9 +50,9 @@ public class BillDetailsActivity extends AppCompatActivity {
 
         paymentListView=(ListView) findViewById(R.id.paymentEntriesAdapter);
         orderListView=(ListView) findViewById(R.id.orderEntriesAdapter);
-     //   Close=(Button) findViewById(R.id.close);
+        //   Close=(Button) findViewById(R.id.close);
         context=this;
-         EmployeeDetails employeeDetails= SessionInformations.getInstance().getEmployee();
+        EmployeeDetails employeeDetails= SessionInformations.getInstance().getEmployee();
         long employeeId = employeeDetails.getEmployeeId();
         String userRole=employeeDetails.getUserRole();
 
@@ -61,20 +70,20 @@ public class BillDetailsActivity extends AppCompatActivity {
                     setBillDetails(order);
                     Toast.makeText(context, "vvgfv", Toast.LENGTH_LONG).show();
 
-                     if(order.getCollectionEntries().size()>0 ) {
-                         paymentListView.setAdapter(new PaymentDetailsListAdapter(BillDetailsActivity.this, order.getCollectionEntries()));
-                          }
-                     else{
+                    if(order.getCollectionEntries().size()>0 ) {
+                        paymentListView.setAdapter(new PaymentDetailsListAdapter(BillDetailsActivity.this, order.getCollectionEntries()));
+                    }
+                    else{
 
-                         LinearLayout txView=(LinearLayout) findViewById(R.id.llpayment);
-                         LinearLayout txView1=(LinearLayout) findViewById(R.id.paymentDetailsInvisible);
+                        LinearLayout txView=(LinearLayout) findViewById(R.id.llpayment);
+                        LinearLayout txView1=(LinearLayout) findViewById(R.id.paymentDetailsInvisible);
 
                         txView.setVisibility(View.INVISIBLE);
-                         txView1.setVisibility(View.INVISIBLE);
-                     }
-                       if(order.getOrderEntries().size()>0){
-                            orderListView.setAdapter(new BillDetailsListAdapter(BillDetailsActivity.this,order.getOrderEntries()));
-                          }
+                        txView1.setVisibility(View.INVISIBLE);
+                    }
+                    if(order.getOrderEntries().size()>0){
+                        orderListView.setAdapter(new BillDetailsListAdapter(BillDetailsActivity.this,order.getOrderEntries()));
+                    }
                 }
             }
             @Override

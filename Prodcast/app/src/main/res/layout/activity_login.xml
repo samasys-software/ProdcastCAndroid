@@ -10,9 +10,9 @@
 
     <RelativeLayout
         android:id="@+id/rlimageprodcast"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="49dp"
+        android:layout_width="200sp"
+        android:layout_height="80sp"
+        android:layout_marginTop="49sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
@@ -33,9 +33,9 @@
     <RelativeLayout
         android:id="@+id/rlloginmain"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="200sp"
         android:background="@drawable/yellow_background"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="30sp"
         android:layout_below="@+id/rlimageprodcast"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
@@ -44,11 +44,11 @@
         <RelativeLayout
             android:id="@+id/rlcountry"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="40sp"
             android:background="@drawable/form_bg"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30sp"
+            android:layout_marginRight="30sp"
+            android:layout_marginLeft="30sp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true">
 
@@ -60,29 +60,29 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp" />
+                android:layout_marginLeft="15sp"
+                android:layout_marginStart="15sp" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinner2"
-                android:layout_marginLeft="45dp"
+                android:id="@+id/country"
+                android:layout_marginLeft="45sp"
 
-                android:paddingLeft="10dp"
+                android:paddingLeft="10sp"
 
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true" />
 
           <!--  <ImageButton
                 android:id="@+id/imageButton2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10sp"
+                android:layout_marginRight="10sp"
                 android:background="@drawable/dropdown_icon"
                 android:visibility="invisible" />-->
         </RelativeLayout>
@@ -90,12 +90,12 @@
         <RelativeLayout
             android:id="@+id/rlpin"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="40sp"
             android:background="@drawable/form_bg"
             android:layout_below="@+id/rlmobile"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp">
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="30sp"
+            android:layout_marginLeft="30sp">
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -105,18 +105,18 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp" />
+                android:layout_marginLeft="15sp"
+                android:layout_marginStart="15sp" />
 
             <EditText
                 android:id="@+id/loginPinNumber"
                 style="@style/editText"
 
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="50sp"
                 android:background="@null"
 
                 android:hint="PIN NUMBER"
-                android:inputType="textPassword"
+                android:inputType="numberPassword"
 
                 android:textAllCaps="true"
                  />
@@ -126,7 +126,7 @@
         <RelativeLayout
             android:id="@+id/rlmobile"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="40sp"
             android:background="@drawable/form_bg"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/rlcountry"
@@ -142,14 +142,14 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp" />
+                android:layout_marginLeft="15sp"
+                android:layout_marginStart="15sp" />
 
             <EditText
                 android:id="@+id/loginMobileNumber"
                 style="@style/editText"
 
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="50sp"
                 android:background="@null"
 
                 android:hint="MOBILE NUMBER"
@@ -163,8 +163,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="35dp"
+        android:layout_height="40sp"
+        android:layout_marginTop="35sp"
         android:id="@+id/relativeLayout2"
         android:layout_below="@+id/rlloginmain"
         android:layout_alignParentLeft="true"
@@ -187,19 +187,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="40sp"
         android:layout_below="@+id/relativeLayout2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp">
+        android:layout_marginLeft="10sp"
+        android:layout_marginStart="10sp">
 
         <TextView
             android:text="Register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginStart="30sp"
             android:id="@+id/register"
             android:textColor="#345904"
             android:textSize="16sp"
@@ -211,8 +211,8 @@
             android:text="Forgot Pin?"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30sp"
+            android:layout_marginEnd="30sp"
             android:id="@+id/forgotPin"
             android:textColor="#345904"
             android:textSize="16sp"

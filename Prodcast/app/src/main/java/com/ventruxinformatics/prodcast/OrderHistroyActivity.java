@@ -37,7 +37,7 @@ public class OrderHistroyActivity extends AppCompatActivity {
                     Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
                 } else {
 
-                    Toast.makeText(context, "", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "jhjhj", Toast.LENGTH_LONG).show();
 
 
 
