@@ -205,7 +205,7 @@ public class LoginActivity extends AppCompatActivity {
         Country selectedCountry = (Country) country.getSelectedItem();
         String selectedCountryId = selectedCountry.getCountryId();
 
-       // String ctry = country.getSelectedItem().toString();
+        // String ctry = country.getSelectedItem().toString();
         boolean cancelled=checkValue(username, password, ctry);
 
         if (cancelled) {

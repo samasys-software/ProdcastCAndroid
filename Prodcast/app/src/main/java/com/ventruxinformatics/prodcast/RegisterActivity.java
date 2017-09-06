@@ -139,7 +139,7 @@ public class RegisterActivity extends ProdcastCBaseActivity {
     }
 
     public boolean checkValid(int ctry,String mobileNumber,String pin,String confirmPinNumber){
-        cancel=false;
+        //cancel=false;
         if(ctry<=0){
             focusView=country;
             cancel=true;
@@ -163,9 +163,9 @@ public class RegisterActivity extends ProdcastCBaseActivity {
             cancel = true;
             return cancel;
         }
-        if(!confirmPinNumber.equals(pin))
+        if(confirmPinNumber.equals(pin))
         {
-            confirmPin.setError(getString(R.string.error_confirmpassword_and_newpassword_is_not_same));
+            confirmPin.setError(getString(R.string.error_field_required));
             focusView=confirmPin;
             cancel=true;
             return cancel;

@@ -3,17 +3,24 @@ package com.ventruxinformatics.prodcast;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +40,6 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
     public static final String ARG_ITEM_ID = "item_id";
     private Category selectedCategory;
 
-    @Override
-    public String getProdcastTitle() {
-        return "Products List";
-    }
-
-    @Override
-    public boolean getCompanyName() {
-        return true;
-    }
 
     public Category getSelectedCategory() {
         return selectedCategory;
@@ -52,21 +50,33 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
     }
 
     @Override
+    public String getProdcastTitle(){
+
+        return "Product";
+    }
+
+    @Override
+    public boolean getCompanyName() {
+        return true;
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+       /* ImageButton addToCart = (ImageButton) findViewById(R.id.addToCart);
+        addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(ProductDetailActivity.this,EntryActivity.class);
                 startActivity(i);
 
             }
-        });
+        });*/
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
@@ -106,6 +116,9 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         }
     }
 
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -119,7 +132,69 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             navigateUpTo(new Intent(this, ProductListActivity.class));
             return true;
         }
+        else
+        {
+            Intent intent=new Intent(this,EntryActivity.class);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.testAction);
+        int count=0;
+        List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
+        for(OrderDetails orderDetails:entries)
+        {
+            count=count+orderDetails.getQuantity();
+        }
+        menuItem.setIcon(buildCounterDrawable(count, R.drawable.wrench));
+
+        return true;
+    }
+
+    private Drawable buildCounterDrawable(int count, int backgroundImageId) {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.content_dd_to_cart, null);
+        //view.setBackgroundResource(backgroundImageId);
+        Bitmap bitmap = null;
+
+
+        if (count == 0) {
+            View counterTextPanel = view.findViewById(R.id.count);
+            counterTextPanel.setVisibility(View.GONE);
+        } else {
+            TextView textView = (TextView) view.findViewById(R.id.count);
+            textView.setText("" + count);
+
+
+
+        }
+        view.measure(
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+
+        view.setDrawingCacheEnabled(true);
+        bitmap=Bitmap.createBitmap(view.getDrawingCache());
+        view.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        view.setDrawingCacheEnabled(false);
+
+
+
+        return new BitmapDrawable(getResources(), bitmap);
+
+
+    }
+
+
+
+
+
 
 }

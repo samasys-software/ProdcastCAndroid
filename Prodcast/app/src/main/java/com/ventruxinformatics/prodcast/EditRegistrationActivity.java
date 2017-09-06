@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -185,45 +184,7 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
             sms=false;
         }
 
-
-
-      String cellPhone=SessionInformations.getInstance().getCustomerDetails().getUsername();
-        Call<CustomerListDTO> saveCustomerDTO = new ProdcastServiceManager().getClient().saveNewCustomer(customerId,firstName1,
-                lastName1,email,cellPhone,phone,address1,address2,address3,city1,state1,selectedCountryId,code,sms);
-        saveCustomerDTO.enqueue(new Callback<CustomerListDTO>() {
-            @Override
-            public void onResponse(Call<CustomerListDTO> call, Response<CustomerListDTO> response) {
-                String responseString = null;
-                CustomerListDTO dto = response.body();
-                if (dto.isError()) {
-
-                    Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
-                } else {
-
-                    Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
-
-
-
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<CustomerListDTO> call, Throwable t) {
-                t.printStackTrace();
-
-            }
-        });
-    }
-
-    @Override
-    public boolean getCompanyName() {
-        return companyName;
-    }
-
-    /*
-    public void checkValid(){
-        if(TextUtils.isEmpty(firstName1)) {
+      /*  if(TextUtils.isEmpty(firstName1)) {
 
             firstName.setError(getString(R.string.error_field_required));
 
@@ -261,8 +222,41 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
             postalCode.setError(getString(R.string.error_field_required));
 
         }
+        */
 
+      String cellPhone=SessionInformations.getInstance().getCustomerDetails().getUsername();
+        Call<CustomerListDTO> saveCustomerDTO = new ProdcastServiceManager().getClient().saveNewCustomer(customerId,firstName1,
+                lastName1,email,cellPhone,phone,address1,address2,address3,city1,state1,selectedCountryId,code,sms);
+        saveCustomerDTO.enqueue(new Callback<CustomerListDTO>() {
+            @Override
+            public void onResponse(Call<CustomerListDTO> call, Response<CustomerListDTO> response) {
+                String responseString = null;
+                CustomerListDTO dto = response.body();
+                if (dto.isError()) {
+
+                    Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                } else {
+
+                    Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<CustomerListDTO> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
     }
-*/
+
+    @Override
+    public boolean getCompanyName() {
+        return companyName;
+    }
+
 
 }

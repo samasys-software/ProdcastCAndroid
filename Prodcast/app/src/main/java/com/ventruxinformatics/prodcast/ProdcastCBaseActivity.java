@@ -127,7 +127,7 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
                 startActivity(intent);
         }else if(id == R.id.nav_logOut){
             File dir = getFilesDir();
-            File file = new File(dir, "prodcastCustomerLogin.txt");
+            File file = new File(dir, "prodcastCLogin.txt");
             SessionInformations.getInstance().destroy();
             boolean deleted = file.delete();
             intent = new Intent(this,LoginActivity.class);
@@ -138,5 +138,7 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
     }
     public abstract String getProdcastTitle();
     public abstract boolean getCompanyName();
+
+
 
 }
