@@ -58,10 +58,6 @@ public class RegisterActivity extends ProdcastCBaseActivity {
         register = (Button) findViewById(R.id.registeration);
         clear = (Button) findViewById(R.id.clear);
         List<Country> countryList=SessionInformations.getInstance().getCountries();
-        Country defaultCountry = new Country();
-        defaultCountry.setCountryId("");
-        defaultCountry.setCountryName("Select Country");
-        countryList.add(0, defaultCountry  );
         ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(RegisterActivity.this, android.R.layout.simple_list_item_1, countryList);
         country.setAdapter(adapter);
 

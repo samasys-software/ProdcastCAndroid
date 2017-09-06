@@ -66,10 +66,6 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         edit=(Button)findViewById(R.id.edit);
         cancel=(Button)findViewById(R.id.cancel);
         List<Country> countryList=SessionInformations.getInstance().getCountries();
-        Country defaultCountry = new Country();
-        defaultCountry.setCountryId("");
-        defaultCountry.setCountryName("Select Country");
-        countryList.add(0, defaultCountry  );
         ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(EditRegistrationActivity.this, android.R.layout.simple_list_item_1, countryList);
         country.setAdapter(adapter);
 

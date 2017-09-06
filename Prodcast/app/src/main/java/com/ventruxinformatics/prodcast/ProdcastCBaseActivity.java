@@ -139,4 +139,6 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
     public abstract String getProdcastTitle();
     public abstract boolean getCompanyName();
 
+
+
 }

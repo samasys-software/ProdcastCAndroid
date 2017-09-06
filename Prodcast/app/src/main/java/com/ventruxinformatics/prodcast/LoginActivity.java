@@ -94,13 +94,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-     /*   CustomersLogin custLogin = loginRetrive();
+
+        CustomersLogin custLogin = loginRetrive();
         if (custLogin != null) {
             SessionInformations.getInstance().setCustomerDetails(custLogin);
             Intent intent = new Intent(LoginActivity.this, StoreActivity.class);
             startActivity(intent);
         }
-*/
+
         //  spin.setOnItemSelectedListener(this);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -149,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    public void checkValue(String username, String password, int ctry) {
+    public boolean checkValue(String username, String password, int ctry) {
         // Reset errors.
         cancel = false;
         mobileNumber.setError(null);
@@ -162,12 +163,15 @@ public class LoginActivity extends AppCompatActivity {
                 pinNumber.setError(getString(R.string.error_field_required));
                 focusView = pinNumber;
                 cancel = true;
+                return  cancel;
             }
             if (!isPasswordValid(password)) {
                 pinNumber.setError(getString(R.string.error_invalid_password));
                 focusView = pinNumber;
                 cancel = true;
+                return  cancel;
             }
+            return  cancel;
         }
 
         // Check for a valid username
@@ -175,17 +179,19 @@ public class LoginActivity extends AppCompatActivity {
             mobileNumber.setError(getString(R.string.error_field_required));
             focusView = mobileNumber;
             cancel = true;
+            return  cancel;
         }
 
         //check for a valid country
         if (ctry <= 0) {
             focusView=country;
             cancel = true;
+            return  cancel;
         }
-
-
+        return  cancel;
 
     }
+
 
     private void attemptLogin() {
        /* ArrayAdapter<Country> adapter =(ArrayAdapter<Country>) country.getAdapter();
@@ -199,15 +205,16 @@ public class LoginActivity extends AppCompatActivity {
         Country selectedCountry = (Country) country.getSelectedItem();
         String selectedCountryId = selectedCountry.getCountryId();
 
-       // String ctry = country.getSelectedItem().toString();
-        checkValue(username, password, ctry);
+        // String ctry = country.getSelectedItem().toString();
+        boolean cancelled=checkValue(username, password, ctry);
 
-        if (cancel) {
+        if (cancelled) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
             return;
-        } else {
+        }
+        else {
 
             Call<CustomerLoginDTO<CustomersLogin>> loginDTO = new ProdcastServiceManager().getClient().login(username, password, selectedCountryId);
 
@@ -246,14 +253,15 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
     private void attemptRetrive() {
         String username = mobileNumber.getText().toString();
         int ctry = country.getSelectedItemPosition();
-        checkValue(username,null,ctry);
+        boolean cancelled=checkValue(username,null,ctry);
 
         Country selectedCountry = (Country) country.getSelectedItem();
         String selectedCountryId = selectedCountry.getCountryId();
-        if(cancel) {
+        if(cancelled) {
             focusView.requestFocus();
             return;
         }
@@ -287,11 +295,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
     public static boolean isPasswordValid(String password) {
-        //TODO: Replace this with your ow
         // logic
         return password.length() >= 6;
     }
+
 
     public void loginToFile(CustomersLogin customersLogin) {
         File file = new File(getFilesDir(), FILE_NAME);
@@ -304,18 +313,21 @@ public class LoginActivity extends AppCompatActivity {
             ObjectOutputStream oos = new ObjectOutputStream(outputStream);
             oos.writeObject(customersLogin);
             outputStream.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+
 
     public CustomersLogin loginRetrive() {
         try {
             ObjectInputStream ois = new ObjectInputStream(openFileInput(FILE_NAME));
             CustomersLogin r = (CustomersLogin) ois.readObject();
             return r;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
             return null;
         }

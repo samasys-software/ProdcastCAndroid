@@ -2,16 +2,22 @@ package com.ventruxinformatics.prodcast;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -85,10 +91,10 @@ public class ProductDetailFragment extends Fragment {
                //    System.out.println(mItem.size());
 
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-            if (appBarLayout != null) {
-                appBarLayout.setTitle(getSelectedCategory().getCategoryName());
-            }
+            Toolbar appBarLayout = (Toolbar) activity.findViewById(R.id.detail_toolbar);
+
+                appBarLayout.setSubtitle(getSelectedCategory().getCategoryName());
+
 
     }
 
@@ -234,7 +240,8 @@ public class ProductDetailFragment extends Fragment {
 
 
 
-        public static final String calculateTotal(Product pro,int quantity){
+
+    public static final String calculateTotal(Product pro,int quantity){
         float unitPrice = pro.getUnitPrice();
         float retailPrice=pro.getRetailPrice();
         float salesTax = Float.valueOf(pro.getSalesTax());
