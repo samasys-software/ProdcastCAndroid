@@ -9,12 +9,10 @@ import android.widget.ImageView;
 
 public class HomeActivity extends ProdcastCBaseActivity {
 
-
     @Override
     public boolean getCompanyName(){
         return true;
     }
-
 
     @Override
     public String getProdcastTitle(){
@@ -24,14 +22,9 @@ public class HomeActivity extends ProdcastCBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         ImageView orderIcon,changePasswordIcon,changeStoreIcon,editRegitrationIcon,orderHistroyIcon;
-
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_home);
-
-
         orderIcon=(ImageView) findViewById(R.id.orderIcon);
         orderIcon.setClickable(true);
 
@@ -46,7 +39,6 @@ public class HomeActivity extends ProdcastCBaseActivity {
             }
         });
 
-
         changePasswordIcon=(ImageView) findViewById(R.id.changePasswordIcon);
         changePasswordIcon.setClickable(true);
 
@@ -58,7 +50,6 @@ public class HomeActivity extends ProdcastCBaseActivity {
                 startActivity(i);
             }
         });
-
 
         changeStoreIcon=(ImageView) findViewById(R.id.changeStoreIcon);
         changeStoreIcon.setClickable(true);
@@ -88,7 +79,6 @@ public class HomeActivity extends ProdcastCBaseActivity {
             }
         });
 
-
         orderHistroyIcon=(ImageView) findViewById(R.id.orderHistroyIcon);
         orderHistroyIcon.setClickable(true);
 
@@ -102,6 +92,4 @@ public class HomeActivity extends ProdcastCBaseActivity {
         });
 
     }
-
-
 }

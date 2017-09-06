@@ -66,7 +66,7 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               reset();
+                reset();
             }
         });
     }
@@ -97,12 +97,12 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
             cancel = true;
             return cancel;
         }
-                // Check for a valid email address.
+        // Check for a valid email address.
         if (TextUtils.isEmpty(newPassword)) {
             newPinNumber.setError(getString(R.string.error_field_required));
             focusView = newPinNumber;
             cancel = true;
-           return cancel;
+            return cancel;
         }
         if(oldPassword.equals(newPassword)){
             newPinNumber.setError(getString(R.string.error_oldpassword_and_newpassword_is_same));
