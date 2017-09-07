@@ -7,6 +7,7 @@ package businessObjects.domain;
 public class OrderDetails {
     private Product product;
     private  int quantity;
+    private float subTotal;
 
 
     public Product getProduct() {
@@ -25,5 +26,11 @@ public class OrderDetails {
         this.quantity = quantity;
     }
 
+    public float getSubTotal() {
+        return subTotal;
+    }
 
+    public void setSubTotal(float subTotal) {
+        this.subTotal = subTotal;
+    }
 }
