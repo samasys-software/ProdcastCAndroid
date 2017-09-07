@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +42,9 @@ import businessObjects.domain.Product;
  * on handsets.
  */
 public class ProductDetailFragment extends Fragment {
+
+    TextView productName;
+    TextView unitPrice;
     EditText qty;
     TextView subTotal;
     /**
@@ -98,6 +103,7 @@ public class ProductDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.product_detail, container, false);
 
 
+
         List<Category> categories = SessionInformations.getInstance().getCategoryDetails();
         List<Product> products = SessionInformations.getInstance().getProductDetails();
         int count = 0;
@@ -130,62 +136,79 @@ public class ProductDetailFragment extends Fragment {
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertTheme);
                     alertDialog.setTitle("Prodcast Notification");
-
                     alertDialog.setCancelable(true);
 
+                    LayoutInflater inflater = getActivity().getLayoutInflater();
+                     View diaView = inflater.inflate(R.layout.qty_dialog, null);
+                    alertDialog.setView(diaView);
 
-                    LinearLayout layout = new LinearLayout(getActivity());
-                    LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    layout.setOrientation(LinearLayout.VERTICAL);
-                    layout.setLayoutParams(parms);
-                    layout.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    layout.setGravity(Gravity.CLIP_HORIZONTAL);
 
-                    RelativeLayout relativelayout = new RelativeLayout(getActivity());
-                    RelativeLayout.LayoutParams parameters = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    relativelayout.setLayoutParams(parameters);
+                    productName = (TextView) diaView.findViewById(R.id.productName);
+                    unitPrice = (TextView) diaView.findViewById(R.id.unitPrice);
+                    qty = (EditText) diaView.findViewById(R.id.qty);
+                    subTotal = (TextView) diaView.findViewById(R.id.subTotal);
 
-                    float unitPrice;
+
+ // Add action buttons
+                    productName.setText("Product Name :" + product.getProductName());
+                    unitPrice.setText("Unit Price : " + product.getUnitPrice());
+
+                   subTotal.setText("Sub Total : 0.0");
+
+                    final float unitPrice;
                     if (SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")) {
                         unitPrice = product.getRetailPrice();
                     } else {
                         unitPrice = product.getUnitPrice();
                     }
-                    final TextView productName = new TextView(getActivity());
-                    productName.setText("Product Name : " + product.getProductName() + "        UnitPrice : " + unitPrice);
-                    productName.setTextSize(20);
 
-                    final EditText qty = new EditText(getActivity());
-                    qty.setHint("Enter Quantity");
+                    qty.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        NumberFormat nf1 = NumberFormat.getInstance();
 
 
-                    final TextView subTotal = new TextView(getActivity());
-                    subTotal.setText("Subtotal : 0.00");
-                    subTotal.setTextSize(25);
-
-                    RelativeLayout.LayoutParams tv1Params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    tv1Params.topMargin = 250;
+                        int quantity = 0;
+                        qty.setError(null);
+                        try{
+                            quantity = Integer.parseInt(s.toString());
 
 
-                    RelativeLayout.LayoutParams productParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    productParam.topMargin = 50;
+                        }
+                        catch (Exception e){
 
-                    RelativeLayout.LayoutParams qtyParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    qtyParam.topMargin = 125;
+                            qty.setError("Please Enter valid number");
 
-                    relativelayout.addView(productName, productParam);
-                    relativelayout.addView(qty, qtyParam);
-                    relativelayout.addView(subTotal, tv1Params);
-                    layout.addView(relativelayout);
+                        }
+                        subTotal.setText("Sub Total : " +nf1.format(quantity*unitPrice));
 
-                    alertDialog.setView(layout);
+                    }
+                });
+
+
+
+
+
+
+
+
 
 
                     alertDialog.setIcon(R.drawable.customer_icon);
 
 
-                    alertDialog.setPositiveButton("YES",
+                    alertDialog.setPositiveButton("SUBMIT",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // Write your code here to execute after dialog
@@ -197,7 +220,7 @@ public class ProductDetailFragment extends Fragment {
                                     if (!TextUtils.isEmpty(quantity)) {
                                         final OrderDetails orderDetails = new OrderDetails();
 
-                                        System.out.println(qty.getText() + "success");
+
                                         orderDetails.setProduct(product);
                                         orderDetails.setQuantity(Integer.parseInt(quantity));
 
@@ -210,12 +233,12 @@ public class ProductDetailFragment extends Fragment {
                                 }
                             });
                     // Setting Negative "NO" Button
-                    alertDialog.setNegativeButton("NO",
+                    alertDialog.setNegativeButton("CANCEL",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // Write your code here to execute after dialog
                                     dialog.cancel();
-                                    System.out.println("Closed");
+
                                 }
                             });
 
