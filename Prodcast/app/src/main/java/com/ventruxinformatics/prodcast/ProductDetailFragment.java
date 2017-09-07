@@ -54,9 +54,16 @@ public class ProductDetailFragment extends Fragment {
      */
     public static final String ARG_ITEM_ID = "item_id";
 
+    ProductDetailActivity productDetailActivity;
 
 
+    public ProductDetailActivity getProductDetailActivity() {
+        return productDetailActivity;
+    }
 
+    public void setProductDetailActivity(ProductDetailActivity productDetailActivity) {
+        this.productDetailActivity = productDetailActivity;
+    }
 
     /**
      * The dummy content this fragment is presenting.
@@ -74,9 +81,13 @@ public class ProductDetailFragment extends Fragment {
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
+
      */
-    public ProductDetailFragment() {
+
+    public  ProductDetailFragment(){
+
     }
+
 
     List<Product> productDetails=new ArrayList<Product>();
 
@@ -208,6 +219,9 @@ public class ProductDetailFragment extends Fragment {
                                         orderDetails.setQuantity(Integer.parseInt(quantity));
 
                                         SessionInformations.getInstance().getEntry().add(orderDetails);
+                                        if(productDetailActivity!=null) {
+                                            productDetailActivity.setOrderTotal();
+                                        }
                                         //SessionInformations.getInstance().setEntry(null);
                                         // SessionInformations.getInstance().setEntry(entries);
                                     }
