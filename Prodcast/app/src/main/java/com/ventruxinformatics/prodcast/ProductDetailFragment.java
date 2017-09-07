@@ -1,5 +1,7 @@
 package com.ventruxinformatics.prodcast;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
@@ -23,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -53,6 +56,7 @@ public class ProductDetailFragment extends Fragment {
     TextView unitPrice;
     EditText qty;
     TextView subTotal;
+    ImageView img;
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -152,7 +156,7 @@ public class ProductDetailFragment extends Fragment {
                     unitPrice = (TextView) diaView.findViewById(R.id.unitPrice);
                     qty = (EditText) diaView.findViewById(R.id.qty);
                     subTotal = (TextView) diaView.findViewById(R.id.subTotal);
-
+                    img = (ImageView) diaView.findViewById(R.id.img);
                     productName.setText("Product Name :" + product.getProductName());
                     unitPrice.setText("Unit Price : " + product.getUnitPrice());
 
@@ -186,6 +190,13 @@ public class ProductDetailFragment extends Fragment {
                         try{
                             quantity = Integer.parseInt(s.toString());
 
+                            ObjectAnimator animX = ObjectAnimator.ofFloat(img, "x", 10);
+                            ObjectAnimator animY = ObjectAnimator.ofFloat(img, "y", 10);
+                            AnimatorSet animSetXY = new AnimatorSet();
+                            animSetXY.playTogether(animX, animY);
+                            animSetXY.setDuration(1000);
+                            animSetXY.start();
+
 
                         }
                         catch (Exception e){
@@ -218,6 +229,10 @@ public class ProductDetailFragment extends Fragment {
                                         SessionInformations.getInstance().getEntry().add(orderDetails);
                                         //SessionInformations.getInstance().setEntry(null);
                                         // SessionInformations.getInstance().setEntry(entries);
+
+
+
+
                                     }
 
 
