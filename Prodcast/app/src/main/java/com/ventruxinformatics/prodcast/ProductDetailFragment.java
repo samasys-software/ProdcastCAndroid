@@ -109,7 +109,6 @@ public class ProductDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.product_detail, container, false);
 
 
-
         List<Category> categories = SessionInformations.getInstance().getCategoryDetails();
         List<Product> products = SessionInformations.getInstance().getProductDetails();
         int count = 0;
@@ -142,12 +141,11 @@ public class ProductDetailFragment extends Fragment {
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertTheme);
                     alertDialog.setTitle("Prodcast Notification");
-                    alertDialog.setCancelable(true);
 
+                    alertDialog.setCancelable(true);
                     LayoutInflater inflater = getActivity().getLayoutInflater();
                      View diaView = inflater.inflate(R.layout.qty_dialog, null);
                     alertDialog.setView(diaView);
-
 
 
                     productName = (TextView) diaView.findViewById(R.id.productName);
@@ -155,8 +153,6 @@ public class ProductDetailFragment extends Fragment {
                     qty = (EditText) diaView.findViewById(R.id.qty);
                     subTotal = (TextView) diaView.findViewById(R.id.subTotal);
 
-
- // Add action buttons
                     productName.setText("Product Name :" + product.getProductName());
                     unitPrice.setText("Unit Price : " + product.getUnitPrice());
 
@@ -202,15 +198,6 @@ public class ProductDetailFragment extends Fragment {
                     }
                 });
 
-
-
-
-
-
-
-
-
-
                     alertDialog.setIcon(R.drawable.customer_icon);
 
 
@@ -225,8 +212,6 @@ public class ProductDetailFragment extends Fragment {
                                     }
                                     if (!TextUtils.isEmpty(quantity)) {
                                         final OrderDetails orderDetails = new OrderDetails();
-
-
                                         orderDetails.setProduct(product);
                                         orderDetails.setQuantity(Integer.parseInt(quantity));
 
