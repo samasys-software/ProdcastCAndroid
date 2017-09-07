@@ -107,6 +107,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             category.setCategoryName(selectedCategoryName);
 
             fragment.setSelectedCategory(category);
+            fragment.setProductDetailActivity(ProductDetailActivity.this);
 
 
             //fragment.setArguments(arguments);
@@ -140,25 +141,31 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    MenuItem menuItem;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        MenuItem menuItem = menu.findItem(R.id.testAction);
+        menuItem = menu.findItem(R.id.testAction);
+
+        setOrderTotal();
+
+        return true;
+    }
+
+    public void setOrderTotal(){
         int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
         for(OrderDetails orderDetails:entries)
         {
             count=count+orderDetails.getQuantity();
         }
-        menuItem.setIcon(buildCounterDrawable(count, R.drawable.wrench));
+        menuItem.setIcon(buildCounterDrawable(count));
 
-        return true;
     }
 
-    private Drawable buildCounterDrawable(int count, int backgroundImageId) {
+    private Drawable buildCounterDrawable(int count) {
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.content_dd_to_cart, null);
         //view.setBackgroundResource(backgroundImageId);
