@@ -18,12 +18,20 @@
         android:layout_marginTop="10dp"
         />
 
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:textColor="@color/colorAccent"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="horizontal" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="75dp">
+        android:layout_marginTop="110dp">
 
 
         <TextView
@@ -90,7 +98,7 @@
 
     <ListView
         android:id="@+id/listofentries"
-        android:layout_marginTop="120sp"
+        android:layout_marginTop="160sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>

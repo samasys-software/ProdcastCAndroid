@@ -11,8 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
     Inflater inflater;
     Button order;
 
+
     @Override
     public String getProdcastTitle() {
         return "Orders Screen";
@@ -60,16 +63,25 @@ public class EntryActivity extends ProdcastCBaseActivity {
             //View convertView = (View) inflater.inflate(R.layout.activity_all_products, null);
             //alertDialog.setView(convertView);
             // alertDialog.setTitle("List");
-            ListView listView = (ListView) findViewById(R.id.listofentries);
+            final ListView listView = (ListView) findViewById(R.id.listofentries);
+            final TextView total=(TextView) findViewById(R.id.total);
+
             order = (Button) findViewById(R.id.order);
-            EntriesCustomAdapter adapter = new EntriesCustomAdapter(EntryActivity.this, entries);
+            final EntriesCustomAdapter adapter = new EntriesCustomAdapter(EntryActivity.this, entries);
 
             listView.setAdapter(adapter);
+
+
+
+
+
+            //total.setText("Total:"+getOrdersEntry());
 
 
             order.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    OrderDetailDTO dto = new OrderDetailDTO();
                     List<OrderEntryDTO> orderEntries=new ArrayList<OrderEntryDTO>();
 
                     List<OrderDetails> orderDetails = SessionInformations.getInstance().getEntry();
@@ -78,10 +90,12 @@ public class EntryActivity extends ProdcastCBaseActivity {
                         OrderEntryDTO orderEntry=new OrderEntryDTO();
                         orderEntry.setProductId(String.valueOf(d1.getProduct().getId()));
                         orderEntry.setQuantity(String.valueOf(d1.getQuantity()));
+                        //subtotal=subtotal+d1.getSubTotal();
                         orderEntries.add(orderEntry);
 
+
                     }
-                    OrderDetailDTO dto = new OrderDetailDTO();
+                    //return subtotal;
 
                     dto.setEntries(orderEntries);
                     dto.setCustomerId(String.valueOf(emp.getCustomerId()));
@@ -132,6 +146,4 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
         }
     }
-
-
 }
