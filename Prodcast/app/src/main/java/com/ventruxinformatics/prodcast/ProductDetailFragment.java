@@ -59,7 +59,7 @@ public class ProductDetailFragment extends Fragment {
     EditText qty;
     TextView subTotal;
     ImageView img;
-    public static NumberFormat numberFormat= GlobalUsage.getNumberFormat();
+    //NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -177,7 +177,7 @@ public class ProductDetailFragment extends Fragment {
                     } else {
                         price = product.getUnitPrice();
                     }
-                    unitPrice.setText("Unit Price : " +numberFormat.format( price));
+                    unitPrice.setText("Unit Price : " +GlobalUsage.getNumberFormat().format( price));
 
                     subTotal.setText("Sub Total : 0.00");
 
@@ -343,7 +343,7 @@ public class ProductDetailFragment extends Fragment {
             subtotal = (retailPrice * quantity * (1 + (salesTax + otherTax) / 100));
         else
             subtotal = (unitPrice * quantity * (1 + (salesTax + otherTax) / 100));
-        return numberFormat.format(subtotal);
+        return GlobalUsage.getNumberFormat().format(subtotal);
 
     }
 
@@ -352,7 +352,7 @@ public class ProductDetailFragment extends Fragment {
         final OrderDetails orderDetails = new OrderDetails();
         orderDetails.setProduct(product);
         orderDetails.setQuantity(quantity);
-        orderDetails.setSubTotal(Float.parseFloat(calculateTotal(product,quantity)));
+//        orderDetails.setSubTotal(Float.parseFloat(calculateTotal(product,quantity)));
         SessionInformations.getInstance().getEntry().add(orderDetails);
         if(productDetailActivity!=null)
             productDetailActivity.setOrderTotal();
