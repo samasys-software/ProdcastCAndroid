@@ -130,8 +130,8 @@ public class ProductDetailFragment extends Fragment {
         for (Category category : categories)
             if (category.getCategoryId() == getSelectedCategory().getCategoryId()) {
                 for (Product product : products) {
-                    System.out.println("Selected Category Id" + category.getCategoryId());
-                    System.out.println("Product Category Id" + product.getCategoryId());
+                  //  System.out.println("Selected Category Id" + category.getCategoryId());
+                   // System.out.println("Product Category Id" + product.getCategoryId());
                     if (product.getCategoryId() == category.getCategoryId()) {
                         productDetails.add(count, product);
                         count++;

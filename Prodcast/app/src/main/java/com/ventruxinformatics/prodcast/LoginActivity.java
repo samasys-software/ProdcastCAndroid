@@ -269,7 +269,7 @@ public class LoginActivity extends AppCompatActivity {
             });
 
 
-            System.out.println("successfully Login");
+           // System.out.println("successfully Login");
         }
     }
 
@@ -299,7 +299,7 @@ public class LoginActivity extends AppCompatActivity {
                         focusView = mobileNumber;
 
                     } else {
-                        Toast.makeText(context, "Message Has Been Sent To The Mobile Number with the pin", Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(context, "Message Has Been Sent To The Mobile Number with the pin", Toast.LENGTH_LONG).show();
                     }
 
                 }

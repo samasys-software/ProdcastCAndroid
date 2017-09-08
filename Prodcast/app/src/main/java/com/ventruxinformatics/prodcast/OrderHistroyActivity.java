@@ -36,10 +36,10 @@ public class OrderHistroyActivity extends AppCompatActivity {
                 CustomerReportDTO dto = response.body();
                 if (dto.isError()) {
 
-                    Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                   // Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
                 } else {
 
-                    Toast.makeText(context, "jhjhj", Toast.LENGTH_LONG).show();
+                 //   Toast.makeText(context, "jhjhj", Toast.LENGTH_LONG).show();
 
 
 

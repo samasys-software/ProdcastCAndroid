@@ -82,7 +82,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
                 public void onResponse(Call<CustomerDTO> call, Response<CustomerDTO> response) {
                     CustomerDTO dto = response.body();
                     if (dto.isError()) {
-                        Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
                     } else {
                         Customer customer = dto.getCustomer();
@@ -118,7 +118,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
 
                     TextView c = (TextView) view.findViewById(R.id.billNo);
                     String selectedBillIndex = c.getText().toString();
-                    System.out.println(selectedBillIndex);
+                  //  System.out.println(selectedBillIndex);
                     Intent intent = new Intent(OutstandingBillsActivity.this, BillDetailsActivity.class);
                     intent.putExtra("billId",selectedBillIndex);
                     startActivity(intent);

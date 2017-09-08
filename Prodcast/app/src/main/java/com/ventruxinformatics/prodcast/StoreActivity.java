@@ -52,7 +52,7 @@ public class StoreActivity extends ProdcastCBaseActivity {
         context = this;
         listhistory = (ListView) findViewById(R.id.listOfStores);
         final long accessId = SessionInformations.getInstance().getCustomerDetails().getAccessId();
-        System.out.println(accessId);
+      //  System.out.println(accessId);
 
         mProgressDialog=getProgressDialog(context);
         mProgressDialog.show();
@@ -65,9 +65,9 @@ public class StoreActivity extends ProdcastCBaseActivity {
 
 
                     CustomerLoginDTO dto = response.body();
-                    System.out.println(dto.toString());
+                //    System.out.println(dto.toString());
                     if (dto.isError()) {
-                        Toast.makeText(context, "Nothing To show", Toast.LENGTH_LONG).show();
+                     //   Toast.makeText(context, "Nothing To show", Toast.LENGTH_LONG).show();
                     } else {
 
 
@@ -100,12 +100,12 @@ public class StoreActivity extends ProdcastCBaseActivity {
                                     AdminDTO<EmployeeDetails> dto = response.body();
                                     if (dto.isError()) {
 
-                                        Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                                      //  Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
                                         mProgressDialog.dismiss();
                                     } else {
                                         SessionInformations.getInstance().setEmployee(dto.getResult());
                                         EmployeeDetails emp = SessionInformations.getInstance().getEmployee();
-                                        Toast.makeText(context, "customerId " + emp.getCustomerId() + " distributorId" + emp.getDistributor().getDistributorId(), Toast.LENGTH_LONG).show();
+                                     //   Toast.makeText(context, "customerId " + emp.getCustomerId() + " distributorId" + emp.getDistributor().getDistributorId(), Toast.LENGTH_LONG).show();
 
 
                                         Intent intent = new Intent(StoreActivity.this, HomeActivity.class);

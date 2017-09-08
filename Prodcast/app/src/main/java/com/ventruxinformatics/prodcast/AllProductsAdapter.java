@@ -32,10 +32,10 @@ public class AllProductsAdapter extends BaseAdapter {
 
         // TODO Auto-generated constructor stub
         products=product;
-        System.out.println(products.size());
+     //   System.out.println(products.size());
 
         context=mainActivity;
-        System.out.println(context);
+       // System.out.println(context);
 
         inflater = LayoutInflater.from(context);
     }
