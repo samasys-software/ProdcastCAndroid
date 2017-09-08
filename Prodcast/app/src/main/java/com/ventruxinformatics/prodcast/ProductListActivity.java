@@ -57,7 +57,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
     @Override
     public String getProdcastTitle(){
 
-            return "Change Password";
+            return "Categories";
     }
 
     @Override
@@ -192,8 +192,8 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = categories.get(position);
-            holder.mIdView.setText(String.valueOf(categories.get(position).getCategoryId()));
-            holder.mContentView.setText(categories.get(position).getCategoryName());
+            holder.mIdView.setText(String.valueOf(categories.get(position).getCategoryName()));
+           // holder.mContentView.setText(categories.get(position).getCategory());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -228,19 +228,19 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mIdView;
-            public final TextView mContentView;
+            //public final TextView mContentView;
             public Category mItem;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mIdView = (TextView) view.findViewById(R.id.categoryName);
+               // mContentView = (TextView) view.findViewById(R.id.categoryDescription);
             }
 
             @Override
             public String toString() {
-                return super.toString() + " '" + mContentView.getText() + "'";
+                return super.toString() + " '" + mIdView.getText() + "'";
             }
         }
     }

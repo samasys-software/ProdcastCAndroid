@@ -155,7 +155,7 @@ public class ProductDetailFragment extends Fragment {
                     final Product product = SessionInformations.getInstance().getProductDetails().get(position);
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertTheme);
-                    alertDialog.setTitle("Prodcast Notification");
+                    alertDialog.setTitle("Please Enter A Quantity");
 
                     alertDialog.setCancelable(true);
                     LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -212,7 +212,7 @@ public class ProductDetailFragment extends Fragment {
                         }
                     });
 
-                    alertDialog.setIcon(R.drawable.customer_icon);
+                    //alertDialog.setIcon(R.drawable.customer_icon);
                     alertDialog.setNegativeButton("CANCEL",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
@@ -222,7 +222,7 @@ public class ProductDetailFragment extends Fragment {
                                 }
                             });
 
-                    alertDialog.setPositiveButton("SUBMIT", null);
+                    alertDialog.setPositiveButton("Add To Order", null);
                     final AlertDialog theDialog = alertDialog.show();
                     theDialog.getButton(
                             DialogInterface.BUTTON_POSITIVE)
