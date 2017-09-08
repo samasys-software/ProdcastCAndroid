@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,6 +35,8 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
     Context context;
     String customerId=null;
     boolean companyName=false;
+    boolean valid = false;
+    View focusView = null;
 
     @Override
     public String getProdcastTitle() {
@@ -70,6 +73,9 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         country.setAdapter(adapter);
 
         Bundle bundle = intent.getExtras();
+
+
+
 
 
 
@@ -156,6 +162,15 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
             }
         });
 
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                reset();
+            }
+        });
+
+
 
     }
 
@@ -184,78 +199,154 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
             sms=false;
         }
 
-      /*  if(TextUtils.isEmpty(firstName1)) {
-
-            firstName.setError(getString(R.string.error_field_required));
-
+        boolean validation=  validation(firstName1,lastName1,email,address1,address2,phone,city1,state1,code,ctry);
+        if (validation) {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
+            return;
         }
-        if(TextUtils.isEmpty(lastName1)){
-            lastName.setError(getString(R.string.error_field_required));
+        //validation(firstName1,lastName1,email,address1,address2,phone,code,city1,state1,ctry);
+        else {
+            String cellPhone = SessionInformations.getInstance().getCustomerDetails().getUsername();
+            Call<CustomerListDTO> saveCustomerDTO = new ProdcastServiceManager().getClient().saveNewCustomer(customerId, firstName1,
+                    lastName1, email, cellPhone, phone, address1, address2, address3, city1, state1, selectedCountryId, code, sms);
+            saveCustomerDTO.enqueue(new Callback<CustomerListDTO>() {
+                @Override
+                public void onResponse(Call<CustomerListDTO> call, Response<CustomerListDTO> response) {
+                    String responseString = null;
+                    CustomerListDTO dto = response.body();
+                    if (dto.isError()) {
+
+                        Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                    } else {
+
+                        Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
 
 
-        }
-        if(TextUtils.isEmpty(email)){
-            emailAddress.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(address1)){
-            billingAddress1.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(address2)){
-            billingAddress2.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(phone)){
-            homePhoneNumber.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(city1)){
-            city.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(state1)) {
-            state.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(code)){
-            postalCode.setError(getString(R.string.error_field_required));
-
-        }
-        */
-
-      String cellPhone=SessionInformations.getInstance().getCustomerDetails().getUsername();
-        Call<CustomerListDTO> saveCustomerDTO = new ProdcastServiceManager().getClient().saveNewCustomer(customerId,firstName1,
-                lastName1,email,cellPhone,phone,address1,address2,address3,city1,state1,selectedCountryId,code,sms);
-        saveCustomerDTO.enqueue(new Callback<CustomerListDTO>() {
-            @Override
-            public void onResponse(Call<CustomerListDTO> call, Response<CustomerListDTO> response) {
-                String responseString = null;
-                CustomerListDTO dto = response.body();
-                if (dto.isError()) {
-
-                    Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
-                } else {
-
-                    Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
-
-
+                    }
 
                 }
 
-            }
+                @Override
+                public void onFailure(Call<CustomerListDTO> call, Throwable t) {
+                    t.printStackTrace();
 
-            @Override
-            public void onFailure(Call<CustomerListDTO> call, Throwable t) {
-                t.printStackTrace();
-
-            }
-        });
+                }
+            });
+        }
     }
 
     @Override
     public boolean getCompanyName() {
         return companyName;
+    }
+
+    public boolean validation(String firstName1,String lastName1,String email,String address1,String address2,String phone,String city1,String state1,String code,int ctry){
+        //  public boolean validation(){
+
+        // Reset errors.
+        valid = false;
+        firstName.setError(null);
+        lastName.setError(null);
+        emailAddress.setError(null);
+        billingAddress1.setError(null);
+        billingAddress2.setError(null);
+        billingAddress3.setError(null);
+        homePhoneNumber.setError(null);
+        city.setError(null);
+        state.setError(null);
+        postalCode.setError(null);
+        if(TextUtils.isEmpty(firstName1)){
+            firstName.setError("This Field is Required");
+            focusView = firstName;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(lastName1)){
+            lastName.setError("This Field is Required");
+            focusView = lastName;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(email)){
+            emailAddress.setError("This Field is Required");
+            focusView = emailAddress;
+            valid = true;
+            return  valid;
+        }
+       /* if (!isValidEmail(email)) {
+            emailAddress.setError("Invalid Email");
+            valid = true;
+            return  valid;
+        }*/
+        if(TextUtils.isEmpty(address1)){
+            billingAddress1.setError("This Field is Required");
+            focusView = billingAddress1;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(address2)){
+            billingAddress2.setError("This Field is Required");
+            focusView = billingAddress2;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(city1)){
+            city.setError("This Field is Required");
+            focusView = city;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(state1)){
+            state.setError("This Field is Required");
+            focusView = state;
+            valid = true;
+            return  valid;
+        }
+
+        if(TextUtils.isEmpty(phone)){
+            homePhoneNumber.setError("This Field is Required");
+            focusView = homePhoneNumber;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(code)){
+            postalCode.setError("This Field is Required");
+            focusView = postalCode;
+            valid = true;
+            return  valid;
+        }
+        if (ctry<= 0) {
+            //   country.setError("This Field is Required");
+            focusView=country;
+            valid = true;
+            return  valid;
+        }
+        return valid;
+    }
+
+    // validating email id
+   /* private boolean isValidEmail(String email) {
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }*/
+    public void reset(){
+        firstName.setText("");
+        lastName.setText("");
+        emailAddress.setText("");
+        billingAddress1.setText("");
+        billingAddress2.setText("");
+        billingAddress3.setText("");
+        homePhoneNumber.setText("");
+        city.setText("");
+        state.setText("");
+        postalCode.setText("");
+
     }
 
 

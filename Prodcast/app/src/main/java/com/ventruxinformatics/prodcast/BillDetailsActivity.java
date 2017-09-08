@@ -2,10 +2,12 @@ package com.ventruxinformatics.prodcast;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.util.DiffUtil;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,22 +41,49 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
 
     ListView orderListView;
     ListView paymentListView;
+    ImageButton refresh;
     Context context;
     Button Close;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_details);
-        Intent data=getIntent();
-        String billId=data.getStringExtra("billId");
+
 
         paymentListView=(ListView) findViewById(R.id.paymentEntriesAdapter);
         orderListView=(ListView) findViewById(R.id.orderEntriesAdapter);
+        refresh = (ImageButton) findViewById(R.id.refresh);
         //   Close=(Button) findViewById(R.id.close);
         context=this;
+        getServerResponse();
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getServerResponse();
+            }
+
+        });
+
+
+
+      /*  Close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(BillDetailsActivity.this,OutstandingBillsActivity.class);
+                startActivity(intent);
+
+            }
+        });*/
+    }
+
+    private void getServerResponse(){
+        Intent data=getIntent();
+        String billId=data.getStringExtra("billId");
         EmployeeDetails employeeDetails= SessionInformations.getInstance().getEmployee();
         long employeeId = employeeDetails.getEmployeeId();
         String userRole=employeeDetails.getUserRole();
+
 
         Call<OrderDTO> billDetailsDTO = new ProdcastServiceManager().getClient().getBillDetails(Long.parseLong(billId),employeeId,userRole);
 
@@ -88,21 +117,12 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
             }
             @Override
             public void onFailure(Call<OrderDTO> call, Throwable t) {
-                t.printStackTrace();
+                //t.printStackTrace();
+               getalertDialog().show();
 
             }
         });
-      /*  Close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(BillDetailsActivity.this,OutstandingBillsActivity.class);
-                startActivity(intent);
-
-            }
-        });*/
     }
-
-
 
     public void setBillDetails(Order order){
         TextView tv = (TextView) findViewById(R.id.distName);

@@ -44,6 +44,9 @@ public class StoreActivity extends ProdcastCBaseActivity {
         return false;
     }
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +55,7 @@ public class StoreActivity extends ProdcastCBaseActivity {
         listhistory = (ListView) findViewById(R.id.listOfStores);
         final long accessId = SessionInformations.getInstance().getCustomerDetails().getAccessId();
         System.out.println(accessId);
-        final ProgressDialog mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setIndeterminate(true);
-        mProgressDialog.setMessage("One Moment Please");
-                mProgressDialog.show();
+        getProgressDialog().show();
         Call<CustomerLoginDTO> distributorDTO = new ProdcastServiceManager().getClient().getAllDistributors(accessId);
         distributorDTO.enqueue(new Callback<CustomerLoginDTO>() {
             @Override
@@ -82,15 +82,15 @@ public class StoreActivity extends ProdcastCBaseActivity {
                         SessionInformations.getInstance().setAllDistributors(distributors);
                     }
                     listhistory.setAdapter(new CustomStoreAdapter(StoreActivity.this, distributors));
-                    if (mProgressDialog.isShowing())
-                        mProgressDialog.dismiss();
+                    if (getProgressDialog().isShowing())
+                        getProgressDialog().dismiss();
 
                     listhistory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                           long distributorId = SessionInformations.getInstance().getAllDistributors().get(position).getDistributorId();
-                            mProgressDialog.show();
+                            getProgressDialog().show();
 
                             Call<AdminDTO<EmployeeDetails>> getCustomerDTO = new ProdcastServiceManager().getClient().getCustomerDetails(accessId, distributorId);
                             getCustomerDTO.enqueue(new Callback<AdminDTO<EmployeeDetails>>() {
@@ -105,7 +105,7 @@ public class StoreActivity extends ProdcastCBaseActivity {
                                         SessionInformations.getInstance().setEmployee(dto.getResult());
                                         EmployeeDetails emp = SessionInformations.getInstance().getEmployee();
                                         Toast.makeText(context, "customerId " + emp.getCustomerId() + " distributorId" + emp.getDistributor().getDistributorId(), Toast.LENGTH_LONG).show();
-                                        mProgressDialog.dismiss();
+                                        getProgressDialog().dismiss();
                                         Intent intent = new Intent(StoreActivity.this, HomeActivity.class);
                                         startActivity(intent);
 

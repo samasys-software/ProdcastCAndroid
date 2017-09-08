@@ -1,5 +1,7 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -29,6 +32,8 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
 
 
     }
+
+
 
     @Override
     public void setContentView(int layoutId){
@@ -127,7 +132,7 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
                 startActivity(intent);
         }else if(id == R.id.nav_logOut){
             File dir = getFilesDir();
-            File file = new File(dir, "prodcastCLogin.txt");
+            File file = new File(dir, "prodcastCustomerLogin.txt");
             SessionInformations.getInstance().destroy();
             boolean deleted = file.delete();
             intent = new Intent(this,LoginActivity.class);
@@ -138,7 +143,26 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
     }
     public abstract String getProdcastTitle();
     public abstract boolean getCompanyName();
+    public ProgressDialog getProgressDialog(){
+        ProgressDialog mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.setMessage("One Moment Please");
+        return mProgressDialog;
 
+    }
+
+    public AlertDialog.Builder getalertDialog(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Oops! Something went Wrong.");
+        alert.setMessage("Connection Timeout.please try again later");
+        alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        return alert;
+    }
 
 
 }

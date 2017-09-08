@@ -327,6 +327,8 @@ public class ProductDetailFragment extends Fragment {
 
                                                 });
 
+                                                animSetXY.start();
+
                                             }
 
 
