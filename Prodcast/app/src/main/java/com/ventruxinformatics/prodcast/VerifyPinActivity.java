@@ -81,12 +81,12 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
                     CustomerLoginDTO<CustomersLogin> dto = response.body();
                     if(dto.isError())
                     {
-                        System.out.println(dto.getErrorMessage());
+                     //   System.out.println(dto.getErrorMessage());
                         progressDialog.dismiss();
                     }
                     else{
 
-                       Toast.makeText(context,"Successfully Verified",Toast.LENGTH_LONG).show();
+                     //  Toast.makeText(context,"Successfully Verified",Toast.LENGTH_LONG).show();
                         CustomersLogin cust1 = dto.getResult();
 
                         SessionInformations.getInstance().setCustomerDetails(cust1);
@@ -126,12 +126,12 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
                     AdminDTO dto = response.body();
                     if(dto.isError())
                     {
-                        System.out.println(dto.getErrorMessage());
+                      //  System.out.println(dto.getErrorMessage());
                         progressDialog.dismiss();
                     }
                     else{
 
-                        Toast.makeText(context,"Successfully Send To U",Toast.LENGTH_LONG).show();
+                     //   Toast.makeText(context,"Successfully Send To U",Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
 
                     }

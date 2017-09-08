@@ -85,12 +85,12 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                 String responseString = null;
                 OrderDTO dto = response.body();
                 if (dto.isError()) {
-                    Toast.makeText(BillDetailsActivity.this, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                 //   Toast.makeText(BillDetailsActivity.this, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
                 } else {
                     Order order = dto.getOrder();
                     setBillDetails(order);
-                    Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
 
 
                     if (order.getCollectionEntries().size() > 0) {

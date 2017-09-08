@@ -102,7 +102,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                     List<OrderEntryDTO> orderEntries=new ArrayList<OrderEntryDTO>();
 
                     List<OrderDetails> orderDetails = SessionInformations.getInstance().getEntry();
-                    System.out.println("Size:" + orderDetails.size());
+                  //  System.out.println("Size:" + orderDetails.size());
                     for (OrderDetails d1 : orderDetails) {
                         OrderEntryDTO orderEntry=new OrderEntryDTO();
                         orderEntry.setProductId(String.valueOf(d1.getProduct().getId()));
@@ -137,7 +137,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                                 progressDialog.dismiss();
 
                             } else {
-                                System.out.println("success");
+                              //  System.out.println("success");
                                 SessionInformations.getInstance().setEntry(null);
                                 Customer customer=dto.getCustomer();
                                 SessionInformations.getInstance().setBillsForCustomer(customer);
