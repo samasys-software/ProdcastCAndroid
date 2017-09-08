@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/testAction"
-        android:title="Test Counter Action"
+        android:title=""
         android:orderInCategory="1000"
         android:width="500dp"
         android:height="500dp"

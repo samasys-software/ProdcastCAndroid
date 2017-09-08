@@ -84,7 +84,8 @@ public class EntriesCustomAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
         final Holder holder;
-        if (convertView == null) {
+        //if (convertView == null)
+        {
             holder=new Holder();
             convertView = inflater.inflate(R.layout.entry_list, null);
             holder.img= (ImageButton) convertView.findViewById(R.id.removebtn);
@@ -92,11 +93,11 @@ public class EntriesCustomAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
 
-                    orderEntries.remove(orderEntries.get(position));
+                    orderEntries.remove(position);
 
 
                    notifyDataSetChanged();//notify();
-                    SessionInformations.getInstance().setEntry(orderEntries);
+                    //SessionInformations.getInstance().setEntry(orderEntries);
 
 
                 }
@@ -137,14 +138,14 @@ public class EntriesCustomAdapter extends BaseAdapter {
                     if( newValue.trim().length()==0) newValue="0";
                     int newQuantity = Integer.parseInt(newValue);
                     orders.setQuantity( newQuantity );
-                    holder.tv2.setText( String.valueOf( orders.getQuantity()*orders.getProduct().getUnitPrice()));
+                    holder.tv2.setText( ProductDetailFragment.calculateTotal(orders.getProduct(),newQuantity));
 
                 }
             });
         }
-        else{
+        /*else{
             holder=(Holder) convertView.getTag();
-        }
+        }*/
 
 
 
