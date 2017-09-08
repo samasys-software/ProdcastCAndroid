@@ -1,5 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,6 +42,9 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
     Context context;
     String customerId=null;
     boolean companyName=false;
+    ProgressDialog progressDialog;
+
+
 
     @Override
     public String getProdcastTitle() {
@@ -54,6 +58,7 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_registration);
         context=this;
+        progressDialog=getProgressDialog(context);
         Intent intent = getIntent();
 
         //String[] countries = { "IN", "USA"  };
@@ -81,6 +86,7 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
 
 
         long accessId=SessionInformations.getInstance().getCustomerDetails().getAccessId();
+        progressDialog.show();
         Call<CustomerListDTO<NewCustomerRegistrationDetails>> getNewCustomerDTO = new ProdcastServiceManager().getClient().getNewCustomerRegistrationDetails(accessId);
         getNewCustomerDTO.enqueue(new Callback<CustomerListDTO<NewCustomerRegistrationDetails>>() {
             @Override
@@ -90,6 +96,7 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                 if (dto.isError()) {
 
                     Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
                 } else {
 
                     NewCustomerRegistrationDetails newCustomerRegistrationDetails=dto.getResult();
@@ -116,9 +123,11 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                         customerId=String.valueOf(newCustomerRegistrationDetails.getCustomerId());
 
 
+                        progressDialog.dismiss();
                     }
                     else{
                         customerId=null;
+                        progressDialog.dismiss();
 
                     }
 
@@ -133,6 +142,9 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
             @Override
             public void onFailure(Call<CustomerListDTO<NewCustomerRegistrationDetails>> call, Throwable t) {
                 t.printStackTrace();
+                getAlertBox(context).show();
+                progressDialog.dismiss();
+
 
             }
         });
@@ -206,7 +218,7 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         }
         validation(firstName1,lastName1,email,address1,address2,phone,code,city1,state1,ctry);
 
-
+        progressDialog.show();
       String cellPhone=SessionInformations.getInstance().getCustomerDetails().getUsername();
         Call<CustomerListDTO> saveCustomerDTO = new ProdcastServiceManager().getClient().saveNewCustomer(customerId,firstName1,
                 lastName1,email,cellPhone,phone,address1,address2,address3,city1,state1,selectedCountryId,code,sms);
@@ -218,9 +230,11 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                 if (dto.isError()) {
 
                     Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
                 } else {
 
                     Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
 
 
 
@@ -231,6 +245,8 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
             @Override
             public void onFailure(Call<CustomerListDTO> call, Throwable t) {
                 t.printStackTrace();
+                getAlertBox(context).show();
+                progressDialog.dismiss();
 
             }
         });

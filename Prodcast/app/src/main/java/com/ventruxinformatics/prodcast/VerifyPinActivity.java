@@ -1,5 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,12 +39,13 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
     }
 
 
-
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_pin);
         context=this;
+        progressDialog=getProgressDialog(this);
         verificationCode=(EditText) findViewById(R.id.verficationCode);
         verify=(Button) findViewById(R.id.verify);
         resendConfirmationCode=(TextView)findViewById(R.id.resendConfirmationCode);
@@ -69,6 +71,7 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
         }
         else{
             long accessId=SessionInformations.getInstance().getRegisteredCustomer().getConfirmationId();
+            progressDialog.show();
             Call<CustomerLoginDTO<CustomersLogin>> verificationDTO = new ProdcastServiceManager().getClient().verify( accessId,code);
 
             verificationDTO.enqueue(new Callback<CustomerLoginDTO<CustomersLogin>>() {
@@ -79,6 +82,7 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
                     if(dto.isError())
                     {
                         System.out.println(dto.getErrorMessage());
+                        progressDialog.dismiss();
                     }
                     else{
 
@@ -91,7 +95,7 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
                         extras.putString("status", "save");
                         i.putExtras(extras);
                         startActivity(i);
-
+                        progressDialog.dismiss();
 
                     }
 
@@ -100,6 +104,8 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
                 @Override
                 public void onFailure(Call<CustomerLoginDTO<CustomersLogin>> call, Throwable t) {
                     t.printStackTrace();
+                    progressDialog.dismiss();
+                    getAlertBox(context).show();
 
                 }
             });
@@ -110,6 +116,7 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
 
     public void resendCode(){
             long accessId=SessionInformations.getInstance().getRegisteredCustomer().getConfirmationId();
+        progressDialog.show();
             Call<AdminDTO> verificationDTO = new ProdcastServiceManager().getClient().resendConfirmationCode( accessId);
 
             verificationDTO.enqueue(new Callback<AdminDTO>() {
@@ -120,10 +127,12 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
                     if(dto.isError())
                     {
                         System.out.println(dto.getErrorMessage());
+                        progressDialog.dismiss();
                     }
                     else{
 
                         Toast.makeText(context,"Successfully Send To U",Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
 
                     }
 
@@ -132,6 +141,8 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
                 @Override
                 public void onFailure(Call<AdminDTO> call, Throwable t) {
                     t.printStackTrace();
+                    progressDialog.dismiss();
+                    getAlertBox(context).show();
 
                 }
             });

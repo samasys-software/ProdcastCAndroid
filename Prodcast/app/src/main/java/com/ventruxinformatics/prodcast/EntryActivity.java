@@ -1,6 +1,8 @@
 package com.ventruxinformatics.prodcast;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -37,8 +39,9 @@ import retrofit2.Response;
 public class EntryActivity extends ProdcastCBaseActivity {
 
     Inflater inflater;
-    Button order;
-
+    Button order,backButton;
+    ProgressDialog progressDialog;
+    Context context;
 
     @Override
     public String getProdcastTitle() {
@@ -54,6 +57,8 @@ public class EntryActivity extends ProdcastCBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
+        context=this;
+        progressDialog=getProgressDialog(this);
 
          List<OrderDetails> entries = SessionInformations.getInstance().getEntry();
         if (entries.size() != 0) {
@@ -67,15 +72,25 @@ public class EntryActivity extends ProdcastCBaseActivity {
             final TextView total=(TextView) findViewById(R.id.total);
 
             order = (Button) findViewById(R.id.order);
+            backButton = (Button) findViewById(R.id.backButton);
             final EntriesCustomAdapter adapter = new EntriesCustomAdapter(EntryActivity.this, entries);
-
+            progressDialog.show();
             listView.setAdapter(adapter);
+            progressDialog.dismiss();
 
 
 
 
 
             //total.setText("Total:"+getOrdersEntry());
+            backButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+
+
+                }
+            });
 
 
             order.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +122,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                     dto.setPaymentType(null);
                     dto.setRefDetail(null);
                     dto.setRefNO(null);
-
+                    progressDialog.show();
 
                     Call<CustomerDTO> saveOrderDTO = new ProdcastServiceManager().getClient().saveOrder(dto);
 
@@ -117,6 +132,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                             String responseString = null;
                             CustomerDTO dto = response.body();
                             if (dto.isError()) {
+                                progressDialog.dismiss();
 
                             } else {
                                 System.out.println("success");
@@ -126,6 +142,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                                 Intent i=new Intent(EntryActivity.this,OutstandingBillsActivity.class);
                                 i.putExtra("useCache",true);
                                 startActivity(i);
+                                progressDialog.dismiss();
 
 
                             }
@@ -135,6 +152,8 @@ public class EntryActivity extends ProdcastCBaseActivity {
                         @Override
                         public void onFailure(Call<CustomerDTO> call, Throwable t) {
                             t.printStackTrace();
+                            getAlertBox(context).show();
+                            progressDialog.dismiss();
 
                         }
                     });

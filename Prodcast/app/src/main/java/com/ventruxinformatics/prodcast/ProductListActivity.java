@@ -1,5 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,8 +49,10 @@ public class ProductListActivity extends ProdcastCBaseActivity {
      * device.
      */
     private boolean mTwoPane;
+    ProgressDialog progressDialog;
     //List<Category> categories=new ArrayList<Category>();
     View recyclerView;
+    Context context;
 
     @Override
     public String getProdcastTitle(){
@@ -67,10 +70,13 @@ public class ProductListActivity extends ProdcastCBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
+        context=this;
+        progressDialog=getProgressDialog(this);
         recyclerView= findViewById(R.id.product_list);
 
         long employeeId=SessionInformations.getInstance().getEmployee().getEmployeeId();
         SessionInformations.getInstance().setEntry(new ArrayList<OrderDetails>());
+        progressDialog.show();
 
         Call<AdminDTO<List<Category>>> categoryDTO = new ProdcastServiceManager().getClient().getCategory( employeeId );
 
@@ -80,6 +86,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
                 String responseString = null;
                 AdminDTO<List<Category>> dto = response.body();
                 if(dto.isError()) {
+                    progressDialog.dismiss();
 
                 }
                 else {
@@ -89,6 +96,8 @@ public class ProductListActivity extends ProdcastCBaseActivity {
                     // System.out.println(categories.get(0).getCategoryId());
                     setupRecyclerView((RecyclerView) recyclerView);
 
+                    progressDialog.dismiss();
+
 
                 }
 
@@ -97,11 +106,13 @@ public class ProductListActivity extends ProdcastCBaseActivity {
             @Override
             public void onFailure(Call<AdminDTO<List<Category>>> call, Throwable t) {
                 t.printStackTrace();
+                progressDialog.dismiss();
+                getAlertBox(context).show();
 
             }
         });
 
-
+        progressDialog.show();
 
         Call<AdminDTO<List<Product>>> productDTO = new ProdcastServiceManager().getClient().getProducts( employeeId );
 
@@ -111,12 +122,13 @@ public class ProductListActivity extends ProdcastCBaseActivity {
                 String responseString = null;
                 AdminDTO<List<Product>> dto = response.body();
                 if(dto.isError()) {
-
+                    progressDialog.dismiss();
                 }
                 else {
 
                     //List<Product> products = dto.getResult();
                     SessionInformations.getInstance().setProductDetails(dto.getResult());
+                    progressDialog.dismiss();
 
 
 
@@ -127,6 +139,8 @@ public class ProductListActivity extends ProdcastCBaseActivity {
             @Override
             public void onFailure(Call<AdminDTO<List<Product>>> call, Throwable t) {
                 t.printStackTrace();
+                progressDialog.dismiss();
+                getAlertBox(context).show();
 
             }
         });
@@ -155,6 +169,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(SessionInformations.getInstance().getCategoryDetails()));
     }
 

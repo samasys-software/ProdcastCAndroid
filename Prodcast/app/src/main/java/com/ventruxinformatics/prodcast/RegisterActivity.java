@@ -1,5 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class RegisterActivity extends ProdcastCBaseActivity {
     EditText mobilePhone,pinNumber,confirmPin;
     Button register,clear;
     View focusView = null;
-
+    ProgressDialog progressDialog;
     @Override
     public String getProdcastTitle(){
         return "Registration";
@@ -50,6 +51,7 @@ public class RegisterActivity extends ProdcastCBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_cust);
         context=this;
+        progressDialog=getProgressDialog(this);
        // String[] country = { "IN", "USA"  };
         country = (Spinner) findViewById(R.id.countryRegister);
         mobilePhone = (EditText) findViewById(R.id.MobileNumber);
@@ -100,6 +102,7 @@ public class RegisterActivity extends ProdcastCBaseActivity {
             return;
         }
         else {
+            progressDialog.show();
             Call<CustomerLoginDTO<CustomerRegistration>> registrationDTO = new ProdcastServiceManager().getClient().register(selectedCountryId, mobileNumber, pin);
 
             registrationDTO.enqueue(new Callback<CustomerLoginDTO<CustomerRegistration>>() {
@@ -109,6 +112,7 @@ public class RegisterActivity extends ProdcastCBaseActivity {
                     CustomerLoginDTO<CustomerRegistration> dto = response.body();
                     if (dto.isError()) {
                         System.out.println(dto.getErrorMessage());
+                        progressDialog.dismiss();
                     } else {
 
                         Toast.makeText(context, "Successfully Registered", Toast.LENGTH_LONG).show();
@@ -116,6 +120,7 @@ public class RegisterActivity extends ProdcastCBaseActivity {
                         SessionInformations.getInstance().setRegisteredCustomer(dto.getResult());
                         Intent intent = new Intent(RegisterActivity.this, VerifyPinActivity.class);
                         startActivity(intent);
+                        progressDialog.dismiss();
 
                     }
 
@@ -124,7 +129,8 @@ public class RegisterActivity extends ProdcastCBaseActivity {
                 @Override
                 public void onFailure(Call<CustomerLoginDTO<CustomerRegistration>> call, Throwable t) {
                     t.printStackTrace();
-
+                    progressDialog.dismiss();
+                    getAlertBox(context).show();
                 }
             });
         }

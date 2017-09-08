@@ -1,5 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
     Button newOrderPin;
     ListView listHistroy;
     Context context;
+    ProgressDialog progressDialog;
 
     @Override
     public String getProdcastTitle() {
@@ -46,6 +48,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outstanding_bill);
         context = this;
+        progressDialog=getProgressDialog(context);
         listHistroy=(ListView) findViewById(R.id.billsListView);
         newOrderPin = (Button) findViewById(R.id.newOrderPin);
         newOrderPin.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +66,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
             setBills(customer);
         }
         else {
+            progressDialog.show();
             EmployeeDetails employeeDetails=SessionInformations.getInstance().getEmployee();
             long customerId = employeeDetails.getCustomerId();
             long employeeId = employeeDetails.getEmployeeId();
@@ -73,9 +77,11 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
                     CustomerDTO dto = response.body();
                     if (dto.isError()) {
                         Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
                     } else {
                         Customer customer = dto.getCustomer();
                         setBills(customer);
+                        progressDialog.dismiss();
 
                     }
 
@@ -84,6 +90,8 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
                 @Override
                 public void onFailure(Call<CustomerDTO> call, Throwable t) {
                     t.printStackTrace();
+                    progressDialog.dismiss();
+                    getAlertBox(context).show();
 
                 }
             });
@@ -94,9 +102,10 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
     private void setBills(Customer customer)
     {
         List<Bill> bills=customer.getOutstandingBill();
+        progressDialog.show();
         if(bills.size()>0) {
             listHistroy.setAdapter(new OutstandingBillsDetailsAdapter(OutstandingBillsActivity.this, bills));
-
+            progressDialog.dismiss();
             listHistroy.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

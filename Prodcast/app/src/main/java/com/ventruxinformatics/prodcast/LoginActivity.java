@@ -1,7 +1,10 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -67,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
         Call<CountryDTO> countryDTOCall = new ProdcastServiceManager().getClient().getCountries();
         countryDTOCall.enqueue(new Callback<CountryDTO>() {
             @Override
@@ -89,7 +91,17 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<CountryDTO> call, Throwable t) {
-                t.printStackTrace();
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                alert.setTitle("Oops! Something went Wrong.");
+                alert.setMessage("Connection Timeout.please try again later");
+                alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                alert.show();
 
             }
         });
@@ -243,8 +255,16 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<CustomerLoginDTO<CustomersLogin>> call, Throwable t) {
-                    t.printStackTrace();
-
+                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                    alert.setTitle("Oops! Something went Wrong.");
+                    alert.setMessage("Connection Timeout.please try again later");
+                    alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+                    alert.show();
                 }
             });
 
@@ -286,8 +306,16 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<AdminDTO> call, Throwable t) {
-                    t.printStackTrace();
-
+                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                    alert.setTitle("Oops! Something went Wrong.");
+                    alert.setMessage("Connection Timeout.please try again later");
+                    alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+                    alert.show();
                 }
             });
         }

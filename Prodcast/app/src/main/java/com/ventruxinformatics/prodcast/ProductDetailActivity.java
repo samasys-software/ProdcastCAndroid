@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -53,6 +54,8 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         this.selectedCategory = selectedCategory;
     }
 
+    ProgressDialog progressDialog;
+
     @Override
     public String getProdcastTitle(){
 
@@ -69,6 +72,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
+        progressDialog=getProgressDialog(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
@@ -101,6 +105,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             //Category selectedCategory=intent.getExtra(ARG_ITEM_ID,0);
+            progressDialog.show();
             ProductDetailFragment fragment = new ProductDetailFragment();
 
             Intent i=getIntent();
@@ -118,6 +123,8 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.product_detail_container, fragment)
                     .commit();
+            progressDialog.dismiss();
+
         }
     }
 
@@ -161,13 +168,9 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
     public void setOrderTotal()  {
         int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
-        for(OrderDetails orderDetails:entries)
-        {
-            count=count+orderDetails.getQuantity();
-        }
 
-            if( count>0)
-            menuItem.setIcon(buildCounterDrawable(count));
+            if( entries.size()>0)
+            menuItem.setIcon(buildCounterDrawable(entries.size()));
 
 /*
         if( menuItem != null ) {

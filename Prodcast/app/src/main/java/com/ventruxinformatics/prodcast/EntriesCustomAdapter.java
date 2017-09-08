@@ -1,10 +1,12 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -92,14 +94,31 @@ public class EntriesCustomAdapter extends BaseAdapter {
             holder.img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                    alert.setTitle("Prodcast Notification");
+                    alert.setMessage("This Order Has Been Deleted Permanently...Do You Want To Continue?");
+                    alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                    orderEntries.remove(position);
+                            //alert.show();
+
+                            orderEntries.remove(position);
 
 
-                   notifyDataSetChanged();//notify();
-                    //SessionInformations.getInstance().setEntry(orderEntries);
+                           notifyDataSetChanged();//notify();
+                            Toast.makeText(context,"Your Order has Been Deleted Successfully",Toast.LENGTH_LONG);
+                            //SessionInformations.getInstance().setEntry(orderEntries);
 
-
+                        }
+                    });
+                    alert.show();
                 }
             });
 
