@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import businessObjects.connect.ProdcastServiceManager;
 
@@ -25,12 +28,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.R.attr.password;
+
 public class EditRegistrationActivity extends ProdcastCBaseActivity {
     EditText firstName,lastName,emailAddress,billingAddress1,billingAddress2,billingAddress3,homePhoneNumber,city,state,postalCode;
     Spinner country;
     CheckBox smsAllowed;
     TextView skip;
     Button edit,cancel;
+    boolean valid = false;
+    View focusView = null;
     Context context;
     String customerId=null;
     boolean companyName=false;
@@ -64,9 +71,9 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         skip=(TextView)findViewById(R.id.skipRegisteration);
         smsAllowed=(CheckBox)findViewById(R.id.smsAllowed);
         edit=(Button)findViewById(R.id.edit);
-        cancel=(Button)findViewById(R.id.cancel);
+        cancel=(Button)findViewById(R.id.reset);
         List<Country> countryList=SessionInformations.getInstance().getCountries();
-        ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(EditRegistrationActivity.this, android.R.layout.simple_list_item_1, countryList);
+        final ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(EditRegistrationActivity.this, android.R.layout.simple_list_item_1, countryList);
         country.setAdapter(adapter);
 
         Bundle bundle = intent.getExtras();
@@ -97,6 +104,8 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                         city.setText(newCustomerRegistrationDetails.getCity());
                         state.setText(newCustomerRegistrationDetails.getState());
                         postalCode.setText(newCustomerRegistrationDetails.getPostalCode());
+
+                       // country.setText(newCustomerRegistrationDetails.getCountry());
                         //country.(newCustomerRegistrationDetails.getFirstName());
                         //skip.setText(newCustomerRegistrationDetails.getFirstName());
                         boolean checked=false;
@@ -155,7 +164,12 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                 editRegistration(customerId);
             }
         });
-
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reset();
+            }
+        });
 
     }
 
@@ -183,46 +197,15 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         else{
             sms=false;
         }
-
-      /*  if(TextUtils.isEmpty(firstName1)) {
-
-            firstName.setError(getString(R.string.error_field_required));
-
+        boolean validation=  validation(firstName1,lastName1,email,address1,address2,phone,city1,state1,code,ctry);
+        if (validation) {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
+            return;
         }
-        if(TextUtils.isEmpty(lastName1)){
-            lastName.setError(getString(R.string.error_field_required));
+        validation(firstName1,lastName1,email,address1,address2,phone,code,city1,state1,ctry);
 
-
-        }
-        if(TextUtils.isEmpty(email)){
-            emailAddress.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(address1)){
-            billingAddress1.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(address2)){
-            billingAddress2.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(phone)){
-            homePhoneNumber.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(city1)){
-            city.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(state1)) {
-            state.setError(getString(R.string.error_field_required));
-
-        }
-        if(TextUtils.isEmpty(code)){
-            postalCode.setError(getString(R.string.error_field_required));
-
-        }
-        */
 
       String cellPhone=SessionInformations.getInstance().getCustomerDetails().getUsername();
         Call<CustomerListDTO> saveCustomerDTO = new ProdcastServiceManager().getClient().saveNewCustomer(customerId,firstName1,
@@ -252,7 +235,112 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
             }
         });
     }
+    public boolean validation(String firstName1,String lastName1,String email,String address1,String address2,String phone,String city1,String state1,String code,int ctry){
+      //  public boolean validation(){
 
+            // Reset errors.
+        valid = false;
+        firstName.setError(null);
+        lastName.setError(null);
+        emailAddress.setError(null);
+        billingAddress1.setError(null);
+        billingAddress2.setError(null);
+        billingAddress3.setError(null);
+        homePhoneNumber.setError(null);
+        city.setError(null);
+        state.setError(null);
+        postalCode.setError(null);
+        if(TextUtils.isEmpty(firstName1)){
+            firstName.setError("This Field is Required");
+            focusView = firstName;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(lastName1)){
+            lastName.setError("This Field is Required");
+            focusView = lastName;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(email)){
+            emailAddress.setError("This Field is Required");
+            focusView = emailAddress;
+            valid = true;
+            return  valid;
+        }
+       /* if (!isValidEmail(email)) {
+            emailAddress.setError("Invalid Email");
+            valid = true;
+            return  valid;
+        }*/
+        if(TextUtils.isEmpty(address1)){
+            billingAddress1.setError("This Field is Required");
+            focusView = billingAddress1;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(address2)){
+            billingAddress2.setError("This Field is Required");
+            focusView = billingAddress2;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(city1)){
+            city.setError("This Field is Required");
+            focusView = city;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(state1)){
+            state.setError("This Field is Required");
+            focusView = state;
+            valid = true;
+            return  valid;
+        }
+
+        if(TextUtils.isEmpty(phone)){
+            homePhoneNumber.setError("This Field is Required");
+            focusView = homePhoneNumber;
+            valid = true;
+            return  valid;
+        }
+        if(TextUtils.isEmpty(code)){
+            postalCode.setError("This Field is Required");
+            focusView = postalCode;
+            valid = true;
+            return  valid;
+        }
+        if (ctry<= 0) {
+         //   country.setError("This Field is Required");
+            focusView=country;
+            valid = true;
+            return  valid;
+        }
+        return valid;
+    }
+
+    // validating email id
+   /* private boolean isValidEmail(String email) {
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }*/
+    public void reset(){
+        firstName.setText("");
+        lastName.setText("");
+        emailAddress.setText("");
+        billingAddress1.setText("");
+        billingAddress2.setText("");
+        billingAddress3.setText("");
+        homePhoneNumber.setText("");
+        city.setText("");
+        state.setText("");
+        postalCode.setText("");
+
+    }
     @Override
     public boolean getCompanyName() {
         return companyName;

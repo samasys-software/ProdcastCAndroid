@@ -1,11 +1,14 @@
 package com.ventruxinformatics.prodcast;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.util.DiffUtil;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,23 +43,35 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
     ListView orderListView;
     ListView paymentListView;
     Context context;
+    ImageView refresh;
     Button Close;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_details);
-        Intent data=getIntent();
-        String billId=data.getStringExtra("billId");
-
-        paymentListView=(ListView) findViewById(R.id.paymentEntriesAdapter);
-        orderListView=(ListView) findViewById(R.id.orderEntriesAdapter);
         //   Close=(Button) findViewById(R.id.close);
-        context=this;
-        EmployeeDetails employeeDetails= SessionInformations.getInstance().getEmployee();
-        long employeeId = employeeDetails.getEmployeeId();
-        String userRole=employeeDetails.getUserRole();
+        paymentListView = (ListView) findViewById(R.id.paymentEntriesAdapter);
+        orderListView = (ListView) findViewById(R.id.orderEntriesAdapter);
+        refresh = (ImageView) findViewById(R.id.refresh);
+        context = this;
+        getServerResponse();
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getServerResponse();
+            }
 
-        Call<OrderDTO> billDetailsDTO = new ProdcastServiceManager().getClient().getBillDetails(Long.parseLong(billId),employeeId,userRole);
+        });
+
+    }
+
+    public void getServerResponse(){
+        Intent data = getIntent();
+        String billId = data.getStringExtra("billId");
+        EmployeeDetails employeeDetails = SessionInformations.getInstance().getEmployee();
+        long employeeId = employeeDetails.getEmployeeId();
+        String userRole = employeeDetails.getUserRole();
+        Call<OrderDTO> billDetailsDTO = new ProdcastServiceManager().getClient().getBillDetails(Long.parseLong(billId), employeeId, userRole);
 
         billDetailsDTO.enqueue(new Callback<OrderDTO>() {
             @Override
@@ -66,44 +81,55 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                 if (dto.isError()) {
                     Toast.makeText(BillDetailsActivity.this, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
                 } else {
-                    Order order=dto.getOrder();
+                    Order order = dto.getOrder();
                     setBillDetails(order);
-                    Toast.makeText(context, "vvgfv", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
 
-                    if(order.getCollectionEntries().size()>0 ) {
+                    if (order.getCollectionEntries().size() > 0) {
                         paymentListView.setAdapter(new PaymentDetailsListAdapter(BillDetailsActivity.this, order.getCollectionEntries()));
-                    }
-                    else{
+                    } else {
 
-                        LinearLayout txView=(LinearLayout) findViewById(R.id.llpayment);
-                        LinearLayout txView1=(LinearLayout) findViewById(R.id.paymentDetailsInvisible);
+                        LinearLayout txView = (LinearLayout) findViewById(R.id.llpayment);
+                        LinearLayout txView1 = (LinearLayout) findViewById(R.id.paymentDetailsInvisible);
 
                         txView.setVisibility(View.INVISIBLE);
                         txView1.setVisibility(View.INVISIBLE);
                     }
-                    if(order.getOrderEntries().size()>0){
-                        orderListView.setAdapter(new BillDetailsListAdapter(BillDetailsActivity.this,order.getOrderEntries()));
+                    if (order.getOrderEntries().size() > 0) {
+                        orderListView.setAdapter(new BillDetailsListAdapter(BillDetailsActivity.this, order.getOrderEntries()));
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<OrderDTO> call, Throwable t) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(BillDetailsActivity.this);
+                alert.setTitle("Oops! Something went Wrong.");
+                alert.setMessage("Connection Timeout.please try again later");
+                alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                alert.show();
                 t.printStackTrace();
+
 
             }
         });
-      /*  Close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(BillDetailsActivity.this,OutstandingBillsActivity.class);
-                startActivity(intent);
 
-            }
-        });*/
+
     }
 
+    /*  Close.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              Intent intent=new Intent(BillDetailsActivity.this,OutstandingBillsActivity.class);
+              startActivity(intent);
 
-
+          }
+      });*/
     public void setBillDetails(Order order){
         TextView tv = (TextView) findViewById(R.id.distName);
         TextView tv1 = (TextView) findViewById(R.id.custName);
