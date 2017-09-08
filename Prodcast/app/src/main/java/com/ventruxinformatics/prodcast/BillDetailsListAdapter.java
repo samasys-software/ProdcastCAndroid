@@ -20,6 +20,7 @@ import java.text.NumberFormat;
 import java.util.List;
 
 import businessObjects.GlobalUsage;
+import businessObjects.SessionInformations;
 import businessObjects.domain.OrderEntry;
 
 /**
@@ -40,6 +41,7 @@ public class BillDetailsListAdapter extends BaseAdapter {
     public BillDetailsListAdapter(BillDetailsActivity billdetailsActivity, List<OrderEntry> orders) {
         orderDetails = orders;
         context = billdetailsActivity;
+        currencySymbol= SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -82,6 +84,7 @@ public class BillDetailsListAdapter extends BaseAdapter {
             //order details
             holder.productName.setText(orderDetails.get(position).getProductName());
             holder.qty.setText(String.valueOf(orderDetails.get(position).getQuantity()));
+
             holder.price.setText(numberFormat.format(orderDetails.get(position).getUnitPrice()));
             //holder.salesTax.setText(String.valueOf(orderDetails.get(position).getSalesTax()));
             //holder.otherTax.setText(String.valueOf(orderDetails.get(position).getOtherTax()));

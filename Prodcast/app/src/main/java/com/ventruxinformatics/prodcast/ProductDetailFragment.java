@@ -154,7 +154,7 @@ public class ProductDetailFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    final Product product = SessionInformations.getInstance().getProductDetails().get(position);
+                    final Product product = productDetails.get(position);
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertTheme);
                     alertDialog.setTitle("Please Enter A Quantity");
@@ -171,7 +171,7 @@ public class ProductDetailFragment extends Fragment {
                     subTotal = (TextView) diaView.findViewById(R.id.subTotal);
                     img = (ImageView) diaView.findViewById(R.id.img);
                     productName.setText("Product Name :" + product.getProductName());
-                    final float price;
+                    float price;
                     if (SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")) {
                         price = product.getRetailPrice();
                     } else {
