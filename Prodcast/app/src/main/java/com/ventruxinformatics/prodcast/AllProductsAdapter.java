@@ -108,7 +108,12 @@ public class AllProductsAdapter extends BaseAdapter {
             productName=product.getProductName()+" *";
         }
         //holder.tv.setText(String.valueOf(product.getId()));
-        holder.tv1.setText(productName+" - "+currencySymbol+""+numberFormat.format(product.getUnitPrice()));
+        float unitPrice=product.getUnitPrice();
+        if(SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")){
+            unitPrice=product.getRetailPrice();
+
+        }
+        holder.tv1.setText(productName+" - "+currencySymbol+""+numberFormat.format(unitPrice));
         //holder.tv2.setText();
         holder.tv3.setText(String.valueOf(product.getProductDesc()));
        // holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));

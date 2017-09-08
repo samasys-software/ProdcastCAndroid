@@ -82,7 +82,7 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
         }
     }
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation_drawer, menu);
@@ -101,7 +101,7 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
 
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
