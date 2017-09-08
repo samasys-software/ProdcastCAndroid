@@ -31,6 +31,7 @@ public class StoreActivity extends ProdcastCBaseActivity {
     List<Distributor> distributors = new ArrayList<>();
     List<Distributor> dist=null;
     List<Distributor> distOpen=null;
+    ProgressDialog mProgressDialog;
 
 
     @Override
@@ -52,10 +53,9 @@ public class StoreActivity extends ProdcastCBaseActivity {
         listhistory = (ListView) findViewById(R.id.listOfStores);
         final long accessId = SessionInformations.getInstance().getCustomerDetails().getAccessId();
         System.out.println(accessId);
-        final ProgressDialog mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setIndeterminate(true);
-        mProgressDialog.setMessage("One Moment Please");
-                mProgressDialog.show();
+
+        mProgressDialog=getProgressDialog(context);
+        mProgressDialog.show();
         Call<CustomerLoginDTO> distributorDTO = new ProdcastServiceManager().getClient().getAllDistributors(accessId);
         distributorDTO.enqueue(new Callback<CustomerLoginDTO>() {
             @Override
@@ -82,7 +82,7 @@ public class StoreActivity extends ProdcastCBaseActivity {
                         SessionInformations.getInstance().setAllDistributors(distributors);
                     }
                     listhistory.setAdapter(new CustomStoreAdapter(StoreActivity.this, distributors));
-                    if (mProgressDialog.isShowing())
+                    //if (mProgressDialog.isShowing())
                         mProgressDialog.dismiss();
 
                     listhistory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -101,13 +101,17 @@ public class StoreActivity extends ProdcastCBaseActivity {
                                     if (dto.isError()) {
 
                                         Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                                        mProgressDialog.dismiss();
                                     } else {
                                         SessionInformations.getInstance().setEmployee(dto.getResult());
                                         EmployeeDetails emp = SessionInformations.getInstance().getEmployee();
                                         Toast.makeText(context, "customerId " + emp.getCustomerId() + " distributorId" + emp.getDistributor().getDistributorId(), Toast.LENGTH_LONG).show();
-                                        mProgressDialog.dismiss();
+
+
                                         Intent intent = new Intent(StoreActivity.this, HomeActivity.class);
                                         startActivity(intent);
+
+                                        mProgressDialog.dismiss();
 
 
                                     }
@@ -117,12 +121,15 @@ public class StoreActivity extends ProdcastCBaseActivity {
                                 @Override
                                 public void onFailure(Call<AdminDTO<EmployeeDetails>> call, Throwable t) {
                                     t.printStackTrace();
+                                    mProgressDialog.dismiss();
+                                    getAlertBox(context).show();
 
                                 }
                             });
                         }
                     });
                 } catch (Exception e) {
+                    e.printStackTrace();
 
                 }
             }
@@ -130,6 +137,9 @@ public class StoreActivity extends ProdcastCBaseActivity {
             @Override
             public void onFailure(Call<CustomerLoginDTO> call, Throwable t) {
                 t.printStackTrace();
+                t.printStackTrace();
+                mProgressDialog.dismiss();
+                getAlertBox(context).show();
 
             }
         });

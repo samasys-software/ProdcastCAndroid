@@ -1,4 +1,5 @@
 package com.ventruxinformatics.prodcast;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -45,10 +46,12 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
     Context context;
     ImageView refresh;
     Button Close;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_details);
+        progressDialog=getProgressDialog(this);
         //   Close=(Button) findViewById(R.id.close);
         paymentListView = (ListView) findViewById(R.id.paymentEntriesAdapter);
         orderListView = (ListView) findViewById(R.id.orderEntriesAdapter);
@@ -71,6 +74,9 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         EmployeeDetails employeeDetails = SessionInformations.getInstance().getEmployee();
         long employeeId = employeeDetails.getEmployeeId();
         String userRole = employeeDetails.getUserRole();
+
+
+        progressDialog.show();
         Call<OrderDTO> billDetailsDTO = new ProdcastServiceManager().getClient().getBillDetails(Long.parseLong(billId), employeeId, userRole);
 
         billDetailsDTO.enqueue(new Callback<OrderDTO>() {
@@ -80,13 +86,16 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                 OrderDTO dto = response.body();
                 if (dto.isError()) {
                     Toast.makeText(BillDetailsActivity.this, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
                 } else {
                     Order order = dto.getOrder();
                     setBillDetails(order);
                     Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
 
+
                     if (order.getCollectionEntries().size() > 0) {
                         paymentListView.setAdapter(new PaymentDetailsListAdapter(BillDetailsActivity.this, order.getCollectionEntries()));
+
                     } else {
 
                         LinearLayout txView = (LinearLayout) findViewById(R.id.llpayment);
@@ -98,26 +107,23 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                     if (order.getOrderEntries().size() > 0) {
                         orderListView.setAdapter(new BillDetailsListAdapter(BillDetailsActivity.this, order.getOrderEntries()));
                     }
+                    progressDialog.dismiss();
                 }
+
             }
 
             @Override
             public void onFailure(Call<OrderDTO> call, Throwable t) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(BillDetailsActivity.this);
-                alert.setTitle("Oops! Something went Wrong.");
-                alert.setMessage("Connection Timeout.please try again later");
-                alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-                alert.show();
+
                 t.printStackTrace();
+                progressDialog.dismiss();
+                getAlertBox(context).show();
 
 
             }
+
         });
+//        mProgressDialog.cancel();
 
 
     }

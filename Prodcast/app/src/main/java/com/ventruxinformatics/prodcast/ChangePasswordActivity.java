@@ -1,5 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -41,11 +42,14 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
     Context context;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_change_password);
+
 
         oldPinNumber = (EditText)findViewById(R.id.oldPinNumber);
         context=this;
@@ -132,6 +136,7 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
     }
 
     private void attemptChangePassword() {
+        final ProgressDialog mProgressDialog=getProgressDialog(context);
         String oldPassword = oldPinNumber.getText().toString();
         String newPassword = newPinNumber.getText().toString();
         String confirmPassword=confirmPinNumber.getText().toString();
@@ -143,6 +148,7 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
             return;
         }
         else {
+            mProgressDialog.show();
 
             long accessId=SessionInformations.getInstance().getCustomerDetails().getAccessId();
 
@@ -157,19 +163,27 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
                         oldPinNumber.setError(dto.getErrorMessage());
                         focusView=oldPinNumber;
                         focusView.requestFocus();
+                        mProgressDialog.cancel();
                     }
                     else {
                         Toast.makeText(context,"Your Pin Number Has Been Changed Successfully",Toast.LENGTH_LONG).show();
                         reset();
+                        mProgressDialog.cancel();
+
                     }
                 }
 
                 @Override
                 public void onFailure(Call<ProdcastDTO> call, Throwable t) {
                     t.printStackTrace();
+                    getAlertBox(context).show();
+                    mProgressDialog.dismiss();
+
 
                 }
             });
+
+
             /* Intent i = new Intent(LoginActivity.this,StoreActivity.class);
            startActivity(i);*/              //prev. code
             // Show a progress spinner, and kick off a background task to
