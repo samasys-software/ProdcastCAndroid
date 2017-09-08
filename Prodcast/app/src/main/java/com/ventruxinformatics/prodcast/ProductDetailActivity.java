@@ -207,7 +207,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             counterTextPanel.setVisibility(View.GONE);
         } else {
             TextView textView = (TextView) view.findViewById(R.id.count);
-            textView.setText("" + count);
+            textView.setText(" " + count+" ");
         }
 
 
