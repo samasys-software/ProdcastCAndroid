@@ -15,9 +15,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
 import businessObjects.domain.Bill;
 import businessObjects.domain.Product;
@@ -30,15 +32,19 @@ public class AllProductsAdapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
     String currencySymbol;
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     public AllProductsAdapter(Context mainActivity, List<Product> product){
 
         // TODO Auto-generated constructor stub
         products=product;
-        System.out.println(products.size());
+
         currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
 
+     //   System.out.println(products.size());
+
+
         context=mainActivity;
-        System.out.println(context);
+       // System.out.println(context);
 
         inflater = LayoutInflater.from(context);
     }
@@ -102,7 +108,7 @@ public class AllProductsAdapter extends BaseAdapter {
             productName=product.getProductName()+" *";
         }
         //holder.tv.setText(String.valueOf(product.getId()));
-        holder.tv1.setText(productName+" - "+currencySymbol+""+String.valueOf(product.getUnitPrice()));
+        holder.tv1.setText(productName+" - "+currencySymbol+""+numberFormat.format(product.getUnitPrice()));
         //holder.tv2.setText();
         holder.tv3.setText(String.valueOf(product.getProductDesc()));
        // holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));

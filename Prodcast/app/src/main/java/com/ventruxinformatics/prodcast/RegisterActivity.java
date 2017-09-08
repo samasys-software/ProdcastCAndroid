@@ -111,11 +111,11 @@ public class RegisterActivity extends ProdcastCBaseActivity {
                     String responseString = null;
                     CustomerLoginDTO<CustomerRegistration> dto = response.body();
                     if (dto.isError()) {
-                        System.out.println(dto.getErrorMessage());
+                       // System.out.println(dto.getErrorMessage());
                         progressDialog.dismiss();
                     } else {
 
-                        Toast.makeText(context, "Successfully Registered", Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(context, "Successfully Registered", Toast.LENGTH_LONG).show();
                         //CustomerRegistration cust1 = dto.getResult();
                         SessionInformations.getInstance().setRegisteredCustomer(dto.getResult());
                         Intent intent = new Intent(RegisterActivity.this, VerifyPinActivity.class);

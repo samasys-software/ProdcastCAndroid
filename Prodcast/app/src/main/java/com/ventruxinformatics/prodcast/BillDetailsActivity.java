@@ -18,6 +18,9 @@ import android.widget.Toast;
 import com.ventruxinformatics.prodcast.BillDetailsListAdapter;
 import com.ventruxinformatics.prodcast.R;
 
+import java.text.NumberFormat;
+
+import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
 import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.EmployeeDetails;
@@ -47,10 +50,13 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
     ImageView refresh;
     Button Close;
     ProgressDialog progressDialog;
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
+    String currencySymbol;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_details);
+        currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         progressDialog=getProgressDialog(this);
         //   Close=(Button) findViewById(R.id.close);
         paymentListView = (ListView) findViewById(R.id.paymentEntriesAdapter);
@@ -85,12 +91,12 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                 String responseString = null;
                 OrderDTO dto = response.body();
                 if (dto.isError()) {
-                    Toast.makeText(BillDetailsActivity.this, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                 //   Toast.makeText(BillDetailsActivity.this, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
                 } else {
                     Order order = dto.getOrder();
                     setBillDetails(order);
-                    Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
 
 
                     if (order.getCollectionEntries().size() > 0) {
@@ -162,8 +168,8 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         orderNo.setText(String.valueOf(order.getBillNumber()));
         billDate.setText(String.valueOf(order.getBillDate()));
         salesRep.setText(order.getEmployeeName());
-        total.setText(String.valueOf(order.getTotalAmount()));
-        balance.setText(String.valueOf(order.getOutstandingBalance()));
+        total.setText(currencySymbol+""+numberFormat.format(order.getTotalAmount()));
+        balance.setText(currencySymbol+""+numberFormat.format(order.getOutstandingBalance()));
         discount.setText(String.valueOf(order.getDiscount()));
 
     }

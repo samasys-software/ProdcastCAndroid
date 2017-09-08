@@ -16,8 +16,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
 import businessObjects.domain.OrderEntry;
 
 /**
@@ -32,6 +34,8 @@ public class BillDetailsListAdapter extends BaseAdapter {
 
     Context context;
     public static LayoutInflater inflater = null;
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
+    String currencySymbol;
 
     public BillDetailsListAdapter(BillDetailsActivity billdetailsActivity, List<OrderEntry> orders) {
         orderDetails = orders;
@@ -78,10 +82,10 @@ public class BillDetailsListAdapter extends BaseAdapter {
             //order details
             holder.productName.setText(orderDetails.get(position).getProductName());
             holder.qty.setText(String.valueOf(orderDetails.get(position).getQuantity()));
-            holder.price.setText(String.valueOf(orderDetails.get(position).getUnitPrice()));
-            holder.salesTax.setText(String.valueOf(orderDetails.get(position).getSalesTax()));
-            holder.otherTax.setText(String.valueOf(orderDetails.get(position).getOtherTax()));
-            holder.subTotal.setText(String.valueOf(orderDetails.get(position).getSubtotal()));
+            holder.price.setText(numberFormat.format(orderDetails.get(position).getUnitPrice()));
+            //holder.salesTax.setText(String.valueOf(orderDetails.get(position).getSalesTax()));
+            //holder.otherTax.setText(String.valueOf(orderDetails.get(position).getOtherTax()));
+            holder.subTotal.setText(currencySymbol+""+numberFormat.format(orderDetails.get(position).getSubtotal()));
         }
         return convertview;
     }

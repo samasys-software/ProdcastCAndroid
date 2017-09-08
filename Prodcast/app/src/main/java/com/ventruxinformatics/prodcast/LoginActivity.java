@@ -238,6 +238,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (dto.isError()) {
                         mobileNumber.setError(getString(R.string.error_incorrect_password));
                         focusView = mobileNumber;
+                        return;
                     } else {
                         if (dto.isVerified()) {
                             CustomersLogin cust1 = dto.getResult();
@@ -269,7 +270,7 @@ public class LoginActivity extends AppCompatActivity {
             });
 
 
-            System.out.println("successfully Login");
+           // System.out.println("successfully Login");
         }
     }
 
@@ -299,7 +300,7 @@ public class LoginActivity extends AppCompatActivity {
                         focusView = mobileNumber;
 
                     } else {
-                        Toast.makeText(context, "Message Has Been Sent To The Mobile Number with the pin", Toast.LENGTH_LONG).show();
+                       Toast.makeText(context, "Message Has Been Sent To The Mobile Number with the pin", Toast.LENGTH_LONG).show();
                     }
 
                 }

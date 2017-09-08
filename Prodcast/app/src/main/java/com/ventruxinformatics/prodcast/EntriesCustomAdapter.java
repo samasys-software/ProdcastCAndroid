@@ -54,7 +54,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
 
 
         context=mainActivity;
-        System.out.println(context);
+      //  System.out.println(context);
 
         inflater = LayoutInflater.from(context);
     }
@@ -113,7 +113,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
 
 
                            notifyDataSetChanged();//notify();
-                            Toast.makeText(context,"Your Order has Been Deleted Successfully",Toast.LENGTH_LONG);
+                           // Toast.makeText(context,"Your Order has Been Deleted Successfully",Toast.LENGTH_LONG);
                             //SessionInformations.getInstance().setEntry(orderEntries);
 
                         }
@@ -157,7 +157,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
                     if( newValue.trim().length()==0) newValue="0";
                     int newQuantity = Integer.parseInt(newValue);
                     orders.setQuantity( newQuantity );
-                    holder.tv2.setText( String.valueOf( orders.getQuantity()*orders.getProduct().getUnitPrice()));
+                    holder.tv2.setText(ProductDetailFragment.calculateTotal(orders.getProduct(),newQuantity));
 
                 }
             });

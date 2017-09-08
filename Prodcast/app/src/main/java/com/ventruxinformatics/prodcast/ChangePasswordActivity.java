@@ -166,7 +166,7 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
                         mProgressDialog.cancel();
                     }
                     else {
-                        Toast.makeText(context,"Your Pin Number Has Been Changed Successfully",Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(context,"Your Pin Number Has Been Changed Successfully",Toast.LENGTH_LONG).show();
                         reset();
                         mProgressDialog.cancel();
 

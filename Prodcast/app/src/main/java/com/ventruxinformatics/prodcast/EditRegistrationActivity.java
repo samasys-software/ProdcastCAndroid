@@ -95,7 +95,7 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                 CustomerListDTO<NewCustomerRegistrationDetails> dto = response.body();
                 if (dto.isError()) {
 
-                    Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
                 } else {
 
@@ -131,7 +131,7 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
 
                     }
 
-                    Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
 
 
 
@@ -152,8 +152,8 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         // 5. get status value from bundle
         String status = bundle.getString("status");
         if(status.equals("edit")){
-            skip.setVisibility(View.INVISIBLE);
-            edit.setText("Edit");
+            skip.setVisibility(View.GONE);
+            cancel.setVisibility(View.GONE);
             companyName=true;
         }
         /*ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,countries);
@@ -229,11 +229,11 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                 CustomerListDTO dto = response.body();
                 if (dto.isError()) {
 
-                    Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                   // Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
                 } else {
 
-                    Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
 
 
