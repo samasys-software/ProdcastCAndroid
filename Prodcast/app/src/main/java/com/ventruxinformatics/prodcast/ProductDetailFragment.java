@@ -1,5 +1,7 @@
 package com.ventruxinformatics.prodcast;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
@@ -27,6 +29,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //import com.ventruxinformatics.prodcast.dummy.DummyContent;
 
@@ -36,6 +39,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
 import businessObjects.domain.Category;
 import businessObjects.domain.OrderDetails;
@@ -59,7 +63,9 @@ public class ProductDetailFragment extends Fragment {
      */
     public static final String ARG_ITEM_ID = "item_id";
 
-    ProductDetailActivity productDetailActivity;
+    public static ProductDetailActivity productDetailActivity;
+
+    public static final NumberFormat numberFormat=GlobalUsage.getNumberFormat();
 
 
     public ProductDetailActivity getProductDetailActivity() {
@@ -93,7 +99,7 @@ public class ProductDetailFragment extends Fragment {
 
     }
 
-
+    int count=0;
     List<Product> productDetails=new ArrayList<Product>();
 
     @Override
@@ -150,6 +156,7 @@ public class ProductDetailFragment extends Fragment {
 
                     final Product product = SessionInformations.getInstance().getProductDetails().get(position);
 
+
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertTheme);
                     alertDialog.setTitle("Prodcast Notification");
 
@@ -163,18 +170,19 @@ public class ProductDetailFragment extends Fragment {
                     unitPrice = (TextView) diaView.findViewById(R.id.unitPrice);
                     qty = (EditText) diaView.findViewById(R.id.qty);
                     subTotal = (TextView) diaView.findViewById(R.id.subTotal);
+                    final float price;
+                    if (SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")) {
+                        price = product.getRetailPrice();
+                    } else {
+                        price = product.getUnitPrice();
+                    }
 
                     productName.setText("Product Name :" + product.getProductName());
-                    unitPrice.setText("Unit Price : " + product.getUnitPrice());
+                    unitPrice.setText("Unit Price : " + numberFormat.format(price));
 
                    subTotal.setText("Sub Total : 0.0");
 
-                    final float unitPrice;
-                    if (SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")) {
-                        unitPrice = product.getRetailPrice();
-                    } else {
-                        unitPrice = product.getUnitPrice();
-                    }
+
 
                     qty.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -189,7 +197,7 @@ public class ProductDetailFragment extends Fragment {
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        NumberFormat nf1 = NumberFormat.getInstance();
+                        //NumberFormat nf1 = NumberFormat.getInstance();
 
 
                         int quantity = 0;
@@ -204,7 +212,7 @@ public class ProductDetailFragment extends Fragment {
                             qty.setError("Please Enter valid number");
 
                         }
-                        subTotal.setText("Sub Total : " +nf1.format(quantity*unitPrice));
+                        subTotal.setText("Sub Total : "+calculateTotal(product,quantity));
 
                     }
                 });
@@ -214,25 +222,79 @@ public class ProductDetailFragment extends Fragment {
 
                     alertDialog.setPositiveButton("SUBMIT",
                             new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
+                                public void onClick(final DialogInterface dialog, int which) {
                                     // Write your code here to execute after dialog
-                                    String quantity = qty.getText().toString();
+                                    final String quantity = qty.getText().toString();
+
                                     if (TextUtils.isEmpty(quantity)) {
                                         qty.setError(getString(R.string.required_quantity));
                                         qty.requestFocus();
                                     }
                                     if (!TextUtils.isEmpty(quantity)) {
-                                        final OrderDetails orderDetails = new OrderDetails();
-                                        orderDetails.setProduct(product);
-                                        orderDetails.setQuantity(Integer.parseInt(quantity));
 
-                                        SessionInformations.getInstance().getEntry().add(orderDetails);
-                                        if(productDetailActivity!=null) {
-                                            productDetailActivity.setOrderTotal();
+                                        List<OrderDetails> orderEntries=SessionInformations.getInstance().getEntry();
+                                        boolean isProductAvailable=false;
+                                        OrderDetails matchedOrderEntry=null;
+
+                                        if(orderEntries.size()>0) {
+                                            final int counter=0;
+
+                                            for (OrderDetails orderEntry : orderEntries) {
+                                                //final OrderDetails oldOrderEntry=orderEntry;
+
+                                                if (orderEntry.getProduct().getId() == product.getId()) {
+                                                    isProductAvailable=true;
+                                                    matchedOrderEntry=orderEntry;
+                                                    break;
+                                                }
+                                            }
+                                           // dialog.cancel();
+
+                                            if(isProductAvailable){
+                                                    final OrderDetails fmatchedOrderEntry=matchedOrderEntry;
+                                                    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                                                alert.setTitle("Prodcast Notification");
+                                                alert.setMessage("You Have Already Entered This \"" + matchedOrderEntry.getProduct().getProductName() + "\" Product With " + matchedOrderEntry.getQuantity() + " Items...Do You Want To Continue?");
+                                                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogs, int which) {
+                                                        dialogs.cancel();
+                                                        dialog.cancel();
+                                                    }
+                                                });
+
+                                                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogs, int which) {
+                                                        //addProduct(product,quantity);
+                                                        fmatchedOrderEntry.setQuantity(fmatchedOrderEntry.getQuantity()+Integer.parseInt(quantity));
+                                                        fmatchedOrderEntry.setSubTotal(fmatchedOrderEntry.getSubTotal()+Float.parseFloat(calculateTotal(product,Integer.parseInt(quantity))));
+                                                        if(productDetailActivity!=null)
+                                                            productDetailActivity.setOrderTotal();
+                                                        Toast.makeText(getActivity(),"done",Toast.LENGTH_LONG);
+                                                        dialog.cancel();
+                                                    }
+                                                    
+                                                });
+                                                alert.show();
+
+                                            }
+                                            else{
+                                                addProduct(product,Integer.parseInt(quantity));
+
+                                            }
+
                                         }
+                                        else
+                                        {
+                                            addProduct(product,Integer.parseInt(quantity));
+                                        }
+
+
                                         //SessionInformations.getInstance().setEntry(null);
                                         // SessionInformations.getInstance().setEntry(entries);
                                     }
+
 
 
                                 }
@@ -271,13 +333,28 @@ public class ProductDetailFragment extends Fragment {
         double subtotal=0.0;
 
 
+
+
         //var subtotal = (Number(unitPrice) * Number(quantity)*( 1+(Number(salesTax)+Number(otherTax))/100  )).toFixed(2);
 
         if(SessionInformations.getInstance().getEmployee().getCustomerType().equals("R"))
             subtotal=(retailPrice * quantity*( 1+(salesTax+otherTax)/100  ));
         else
             subtotal=(unitPrice * quantity*( 1+(salesTax+otherTax)/100  ));
-        return String.valueOf(subtotal);
+        return numberFormat.format(subtotal);
+
+    }
+
+    public static void addProduct(Product product,int quantity){
+        final OrderDetails orderDetails = new OrderDetails();
+        orderDetails.setProduct(product);
+        orderDetails.setQuantity(quantity);
+        orderDetails.setSubTotal(Float.parseFloat(calculateTotal(product, quantity)));
+
+        SessionInformations.getInstance().getEntry().add(orderDetails);
+        if(productDetailActivity!=null) {
+            productDetailActivity.setOrderTotal();
+        }
 
     }
 

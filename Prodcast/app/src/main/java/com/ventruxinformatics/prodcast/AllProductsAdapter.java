@@ -15,9 +15,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
 import businessObjects.domain.Bill;
 import businessObjects.domain.Product;
 
@@ -28,6 +30,7 @@ public class AllProductsAdapter extends BaseAdapter {
     int count=0;
     Context context;
     LayoutInflater inflater;
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     public AllProductsAdapter(Context mainActivity, List<Product> product){
 
         // TODO Auto-generated constructor stub
@@ -91,9 +94,9 @@ public class AllProductsAdapter extends BaseAdapter {
         Product product=products.get(holder.position);
         holder.tv.setText(String.valueOf(product.getId()));
         holder.tv1.setText(String.valueOf(product.getProductName()));
-        holder.tv2.setText("Unit Price : "+String.valueOf(product.getUnitPrice()));
-        holder.tv3.setText("Sales Tax : "+String.valueOf(product.getSalesTax()));
-        holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));
+        holder.tv2.setText("Unit Price : "+numberFormat.format(product.getUnitPrice()));
+        holder.tv3.setText("Sales Tax : "+numberFormat.format(Double.parseDouble(product.getSalesTax())));
+        holder.tv4.setText("Other Tax : "+numberFormat.format(Double.parseDouble(product.getOtherTax())));
 
 
 

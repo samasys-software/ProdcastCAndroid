@@ -54,7 +54,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
     @Override
     public String getProdcastTitle(){
 
-            return "Change Password";
+            return "Categories";
     }
 
     @Override

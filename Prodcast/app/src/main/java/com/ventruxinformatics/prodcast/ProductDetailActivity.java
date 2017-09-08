@@ -155,6 +155,8 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
     }
 
     public void setOrderTotal(){
+
+
         int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
         for(OrderDetails orderDetails:entries)
