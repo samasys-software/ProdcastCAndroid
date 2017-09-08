@@ -1,5 +1,7 @@
 package com.ventruxinformatics.prodcast;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -18,6 +20,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -107,6 +111,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             category.setCategoryName(selectedCategoryName);
 
             fragment.setSelectedCategory(category);
+            fragment.setProductDetailActivity(ProductDetailActivity.this);
 
 
             //fragment.setArguments(arguments);
@@ -140,25 +145,57 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    MenuItem menuItem;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        MenuItem menuItem = menu.findItem(R.id.testAction);
+        menuItem = menu.findItem(R.id.testAction);
+
+        setOrderTotal();
+
+        return true;
+    }
+
+    public void setOrderTotal()  {
         int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
         for(OrderDetails orderDetails:entries)
         {
             count=count+orderDetails.getQuantity();
         }
-        menuItem.setIcon(buildCounterDrawable(count, R.drawable.wrench));
 
-        return true;
+            if( count>0)
+            menuItem.setIcon(buildCounterDrawable(count));
+
+/*
+        if( menuItem != null ) {
+            View icon = menuItem.getActionView();
+
+            if( icon == null ) return;
+            final ScaleAnimation growAnim = new ScaleAnimation(1.0f, 1.5f, 1.0f, 1.5f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            final ScaleAnimation shrinkAnim = new ScaleAnimation(1.5f, 1.0f, 1.5f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+
+            growAnim.setDuration(1000);
+            growAnim.start();
+
+            icon.setAnimation(growAnim);
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            icon.setAnimation(shrinkAnim);
+            shrinkAnim.start();
+        }
+*/
+
     }
 
-    private Drawable buildCounterDrawable(int count, int backgroundImageId) {
+    private Drawable buildCounterDrawable(int count) {
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.content_dd_to_cart, null);
         //view.setBackgroundResource(backgroundImageId);
@@ -170,15 +207,17 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             counterTextPanel.setVisibility(View.GONE);
         } else {
             TextView textView = (TextView) view.findViewById(R.id.count);
-            textView.setText("" + count);
-
-
-
+            textView.setText(" " + count+" ");
         }
+
+
         view.measure(
                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        int measureWidth = view.getMeasuredWidth();
+        int measureHeight = view.getMeasuredHeight();
         view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+
 
         view.setDrawingCacheEnabled(true);
         bitmap=Bitmap.createBitmap(view.getDrawingCache());
@@ -189,7 +228,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
 
         return new BitmapDrawable(getResources(), bitmap);
 
-
+        //return view;
     }
 
 

@@ -20,9 +20,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
 import businessObjects.domain.Bill;
 import businessObjects.domain.OrderDetails;
@@ -40,6 +42,8 @@ public class EntriesCustomAdapter extends BaseAdapter {
     EditText qty;
     TextView subTotal,productName,unitPrice;
     ImageButton rmv;
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
+
 
     public EntriesCustomAdapter(EntryActivity mainActivity, List<OrderDetails> orderDetails){
 
@@ -80,34 +84,39 @@ public class EntriesCustomAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
         final Holder holder;
-        if (convertView == null) {
+        //if (convertView == null)
+        {
             holder=new Holder();
             convertView = inflater.inflate(R.layout.entry_list, null);
             holder.img= (ImageButton) convertView.findViewById(R.id.removebtn);
-            holder.tv = (TextView) convertView.findViewById(R.id.productName);
-            holder.tv1 = (TextView) convertView.findViewById(R.id.unitPrice);
-            holder.qty=(EditText) convertView.findViewById(R.id.orderQuantity);
-            holder.tv2= (TextView) convertView.findViewById(R.id.subTotal);
-            convertView.setTag(holder);
-
-            final OrderDetails orders=orderEntries.get(position);
-            holder.tv.setText(orders.getProduct().getProductName());
-            holder.tv1.setText(String.valueOf(orders.getProduct().getUnitPrice()));
-            holder.qty.setText(String.valueOf(orders.getQuantity()));
-            holder.tv2.setText(ProductDetailFragment.calculateTotal(orders.getProduct(),Integer.parseInt(holder.qty.getText().toString())));
-
             holder.img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     orderEntries.remove(position);
 
-                    notifyDataSetChanged();
-                    // SessionInformations.getInstance().setEntry(orderEntries);
+
+                   notifyDataSetChanged();//notify();
+                    //SessionInformations.getInstance().setEntry(orderEntries);
 
 
                 }
             });
+
+            holder.tv = (TextView) convertView.findViewById(R.id.productName);
+            holder.tv1 = (TextView) convertView.findViewById(R.id.unitPrice);
+            holder.qty=(EditText) convertView.findViewById(R.id.orderQuantity);
+            holder.tv2= (TextView) convertView.findViewById(R.id.subTotal);
+
+            convertView.setTag(holder);
+            //img.setTag(holder);
+
+            final OrderDetails orders=orderEntries.get(position);
+            holder.tv.setText(orders.getProduct().getProductName());
+            holder.tv1.setText(numberFormat.format(orders.getProduct().getUnitPrice()));
+            holder.qty.setText(String.valueOf(orders.getQuantity()));
+            holder.tv2.setText(ProductDetailFragment.calculateTotal(orders.getProduct(),Integer.parseInt(holder.qty.getText().toString())));
+
 
 
 
@@ -134,9 +143,9 @@ public class EntriesCustomAdapter extends BaseAdapter {
                 }
             });
         }
-        else{
+        /*else{
             holder=(Holder) convertView.getTag();
-        }
+        }*/
 
 
 
@@ -166,4 +175,5 @@ public class EntriesCustomAdapter extends BaseAdapter {
 
         return convertView;
     }
+
 }
