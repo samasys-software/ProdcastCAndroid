@@ -40,6 +40,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
 import businessObjects.domain.Category;
 import businessObjects.domain.OrderDetails;
@@ -58,6 +59,7 @@ public class ProductDetailFragment extends Fragment {
     EditText qty;
     TextView subTotal;
     ImageView img;
+    public static NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -155,7 +157,7 @@ public class ProductDetailFragment extends Fragment {
                     final Product product = SessionInformations.getInstance().getProductDetails().get(position);
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertTheme);
-                    alertDialog.setTitle("Prodcast Notification");
+                    alertDialog.setTitle("Please Enter A Quantity");
 
                     alertDialog.setCancelable(true);
                     LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -169,16 +171,17 @@ public class ProductDetailFragment extends Fragment {
                     subTotal = (TextView) diaView.findViewById(R.id.subTotal);
                     img = (ImageView) diaView.findViewById(R.id.img);
                     productName.setText("Product Name :" + product.getProductName());
-                    unitPrice.setText("Unit Price : " + product.getUnitPrice());
-
-                    subTotal.setText("Sub Total : 0.0");
-
-                    final float unitPrice;
+                    final float price;
                     if (SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")) {
-                        unitPrice = product.getRetailPrice();
+                        price = product.getRetailPrice();
                     } else {
-                        unitPrice = product.getUnitPrice();
+                        price = product.getUnitPrice();
                     }
+                    unitPrice.setText("Unit Price : " +numberFormat.format( price));
+
+                    subTotal.setText("Sub Total : 0.00");
+
+
 
                     qty.addTextChangedListener(new TextWatcher() {
                         @Override
@@ -193,7 +196,7 @@ public class ProductDetailFragment extends Fragment {
 
                         @Override
                         public void afterTextChanged(Editable s) {
-                            NumberFormat nf1 = NumberFormat.getInstance();
+                           // NumberFormat nf1 = NumberFormat.getInstance();
 
 
                             int quantity = 0;
@@ -207,12 +210,12 @@ public class ProductDetailFragment extends Fragment {
                                 qty.setError("Please Enter valid number");
 
                             }
-                            subTotal.setText("Sub Total : " + nf1.format(quantity * unitPrice));
+                            subTotal.setText("Sub Total : " +calculateTotal(product,quantity));
 
                         }
                     });
 
-                    alertDialog.setIcon(R.drawable.customer_icon);
+                    //alertDialog.setIcon(R.drawable.customer_icon);
                     alertDialog.setNegativeButton("CANCEL",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
@@ -222,7 +225,7 @@ public class ProductDetailFragment extends Fragment {
                                 }
                             });
 
-                    alertDialog.setPositiveButton("SUBMIT", null);
+                    alertDialog.setPositiveButton("Add To Order", null);
                     final AlertDialog theDialog = alertDialog.show();
                     theDialog.getButton(
                             DialogInterface.BUTTON_POSITIVE)
@@ -340,7 +343,7 @@ public class ProductDetailFragment extends Fragment {
             subtotal = (retailPrice * quantity * (1 + (salesTax + otherTax) / 100));
         else
             subtotal = (unitPrice * quantity * (1 + (salesTax + otherTax) / 100));
-        return String.valueOf(subtotal);
+        return numberFormat.format(subtotal);
 
     }
 

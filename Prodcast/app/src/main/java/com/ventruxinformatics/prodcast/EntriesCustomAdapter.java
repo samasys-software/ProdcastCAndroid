@@ -157,7 +157,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
                     if( newValue.trim().length()==0) newValue="0";
                     int newQuantity = Integer.parseInt(newValue);
                     orders.setQuantity( newQuantity );
-                    holder.tv2.setText( String.valueOf( orders.getQuantity()*orders.getProduct().getUnitPrice()));
+                    holder.tv2.setText(ProductDetailFragment.calculateTotal(orders.getProduct(),newQuantity));
 
                 }
             });

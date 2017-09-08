@@ -15,9 +15,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
+import businessObjects.SessionInformations;
 import businessObjects.domain.Bill;
 import businessObjects.domain.Product;
 
@@ -28,11 +31,17 @@ public class AllProductsAdapter extends BaseAdapter {
     int count=0;
     Context context;
     LayoutInflater inflater;
+    String currencySymbol;
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     public AllProductsAdapter(Context mainActivity, List<Product> product){
 
         // TODO Auto-generated constructor stub
         products=product;
+
+        currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
+
      //   System.out.println(products.size());
+
 
         context=mainActivity;
        // System.out.println(context);
@@ -62,11 +71,11 @@ public class AllProductsAdapter extends BaseAdapter {
 
     public class Holder
     {
-        TextView tv;
+        //TextView tv;
         TextView tv1;
         TextView tv2;
         TextView tv3;
-        TextView tv4;
+        //TextView tv4;
         int position;
 
     }
@@ -77,11 +86,11 @@ public class AllProductsAdapter extends BaseAdapter {
         if (convertView == null) {
             holder=new Holder();
             convertView = inflater.inflate(R.layout.activity_all_products, parent,false);
-            holder.tv = (TextView) convertView.findViewById(R.id.id);
+            //holder.tv = (TextView) convertView.findViewById(R.id.id);
             holder.tv1 = (TextView) convertView.findViewById(R.id.productName);
             holder.tv2 = (TextView) convertView.findViewById(R.id.unitPrice);
-            holder.tv3 = (TextView) convertView.findViewById(R.id.salesTax);
-            holder.tv4 = (TextView) convertView.findViewById(R.id.otherTax);
+            holder.tv3 = (TextView) convertView.findViewById(R.id.productDescription);
+            //holder.tv4 = (TextView) convertView.findViewById(R.id.otherTax);
             convertView.setTag(holder);
         }
         else{
@@ -89,11 +98,20 @@ public class AllProductsAdapter extends BaseAdapter {
         }
         holder.position=position;
         Product product=products.get(holder.position);
-        holder.tv.setText(String.valueOf(product.getId()));
-        holder.tv1.setText(String.valueOf(product.getProductName()));
-        holder.tv2.setText("Unit Price : "+String.valueOf(product.getUnitPrice()));
-        holder.tv3.setText("Sales Tax : "+String.valueOf(product.getSalesTax()));
-        holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));
+        String productName=product.getProductName();
+        if(!product.getSalesTax().equals("0")){
+            productName=product.getProductName()+" *";
+
+        }
+        if(!product.getOtherTax().equals("0"))
+        {
+            productName=product.getProductName()+" *";
+        }
+        //holder.tv.setText(String.valueOf(product.getId()));
+        holder.tv1.setText(productName+" - "+currencySymbol+""+numberFormat.format(product.getUnitPrice()));
+        //holder.tv2.setText();
+        holder.tv3.setText(String.valueOf(product.getProductDesc()));
+       // holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));
 
 
 

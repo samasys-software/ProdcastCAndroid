@@ -6,11 +6,18 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.ventruxinformatics.prodcast.ProductListActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Please select a Category below to browse Products"
+        android:textSize="18sp"/>
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
