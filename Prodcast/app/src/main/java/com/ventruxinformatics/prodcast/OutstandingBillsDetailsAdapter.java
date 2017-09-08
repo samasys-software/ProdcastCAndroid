@@ -9,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
 import businessObjects.domain.Bill;
 
 public class OutstandingBillsDetailsAdapter extends BaseAdapter {
@@ -20,6 +22,7 @@ public class OutstandingBillsDetailsAdapter extends BaseAdapter {
         Context context;
         OutstandingBillsActivity activity;
         private static LayoutInflater inflater=null;
+    final NumberFormat numberFormat= GlobalUsage.getNumberFormat();
         public OutstandingBillsDetailsAdapter(OutstandingBillsActivity mainActivity, List<Bill> bills){
 
             // TODO Auto-generated constructor stub
@@ -82,8 +85,8 @@ public class OutstandingBillsDetailsAdapter extends BaseAdapter {
         }
         holder.tv1.setText(status);
         holder.tv2.setText(String.valueOf(outstandingBills.get(position).getBillDate()));
-        holder.tv3.setText(String.valueOf(outstandingBills.get(position).getBillAmount()));
-        holder.tv4.setText(String.valueOf(outstandingBills.get(position).getOutstandingBalance()));
+        holder.tv3.setText(numberFormat.format(outstandingBills.get(position).getBillAmount()));
+        holder.tv4.setText(numberFormat.format(outstandingBills.get(position).getOutstandingBalance()));
 
 
 

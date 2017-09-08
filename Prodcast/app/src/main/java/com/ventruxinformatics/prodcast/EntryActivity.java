@@ -82,6 +82,8 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
 
 
+
+
             //total.setText("Total:"+getOrdersEntry());
             backButton.setOnClickListener(new View.OnClickListener() {
                 @Override

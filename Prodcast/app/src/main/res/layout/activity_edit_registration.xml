@@ -39,11 +39,17 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
 
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="40dp">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
                 <EditText
                     android:id="@+id/firstName"
                     style="@style/editText"
@@ -52,15 +58,22 @@
                     android:inputType="text"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
+                </android.support.design.widget.TextInputLayout>
 
 </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
 
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="90dp">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
              <EditText
                     android:id="@+id/latName"
                     style="@style/editText"
@@ -69,14 +82,21 @@
                     android:inputType="text"
                  android:layout_alignParentTop="true"
                  android:layout_centerHorizontal="true" />
+                </android.support.design.widget.TextInputLayout>
                 </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
 
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="140dp">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
 
 
                 <EditText
@@ -87,16 +107,23 @@
                     android:hint="Email Address"
                     android:inputType="text|textWebEmailAddress"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" /> -->
+                    android:layout_centerHorizontal="true" />
+                </android.support.design.widget.TextInputLayout>
 
 </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
 
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="190dp">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
                          <EditText
                     android:id="@+id/billingAddress1"
                     android:inputType="text"
@@ -105,14 +132,21 @@
                     style="@style/editText"
                              android:layout_alignParentTop="true"
                              android:layout_centerHorizontal="true" />
+                </android.support.design.widget.TextInputLayout>
                 </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
 
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="240dp">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
                 <EditText
                     android:id="@+id/billingAddress2"
                     android:inputType="text"
@@ -121,14 +155,21 @@
                     style="@style/editText"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
+                </android.support.design.widget.TextInputLayout>
                 </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
 
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="290dp">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
 
                 <EditText
                     android:id="@+id/billingAddress3"
@@ -138,14 +179,21 @@
                     style="@style/editText"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
+                </android.support.design.widget.TextInputLayout>
                 </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
 
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="340dp">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
                 <EditText
                     android:id="@+id/homePhoneNumber"
                     android:inputType="text"
@@ -156,14 +204,21 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true" />
+                </android.support.design.widget.TextInputLayout>
                 </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
 
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="390dp">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
 
                 <EditText
                     android:id="@+id/city"
@@ -173,14 +228,21 @@
                     style="@style/editText"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
+                </android.support.design.widget.TextInputLayout>
 </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
 
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="440dp">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
                 <EditText
                     android:id="@+id/state"
                     android:inputType="text"
@@ -191,6 +253,7 @@
                     android:hint="State"
 
                     android:layout_centerHorizontal="true" />
+                </android.support.design.widget.TextInputLayout>
                 </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -221,11 +284,17 @@
                 </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
 
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="540dp">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
 
                 <EditText
                     android:id="@+id/postalCode"
@@ -235,6 +304,7 @@
 
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
+                </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
