@@ -30,6 +30,7 @@ import retrofit2.Response;
 public class OutstandingBillsActivity extends ProdcastCBaseActivity {
     Button newOrderPin;
     ListView listHistroy;
+
     Context context;
     ProgressDialog progressDialog;
 
@@ -51,6 +52,11 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         progressDialog=getProgressDialog(context);
         listHistroy=(ListView) findViewById(R.id.billsListView);
         newOrderPin = (Button) findViewById(R.id.newOrderPin);
+        TextView total=(TextView) findViewById(R.id.total);
+        TextView outstandingbalance=(TextView) findViewById(R.id.outstandingBalance);
+        String currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
+        total.setText("Total("+currencySymbol+")");
+        outstandingbalance.setText("Balance("+currencySymbol+")");
         newOrderPin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
