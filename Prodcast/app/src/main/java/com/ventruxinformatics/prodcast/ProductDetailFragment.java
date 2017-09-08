@@ -1,5 +1,8 @@
 package com.ventruxinformatics.prodcast;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
@@ -23,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -53,6 +57,7 @@ public class ProductDetailFragment extends Fragment {
     TextView unitPrice;
     EditText qty;
     TextView subTotal;
+    ImageView img;
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -163,7 +168,7 @@ public class ProductDetailFragment extends Fragment {
                     unitPrice = (TextView) diaView.findViewById(R.id.unitPrice);
                     qty = (EditText) diaView.findViewById(R.id.qty);
                     subTotal = (TextView) diaView.findViewById(R.id.subTotal);
-
+                    img = (ImageView) diaView.findViewById(R.id.img);
                     productName.setText("Product Name :" + product.getProductName());
                     unitPrice.setText("Unit Price : " + product.getUnitPrice());
 
@@ -198,6 +203,7 @@ public class ProductDetailFragment extends Fragment {
                             quantity = Integer.parseInt(s.toString());
 
 
+
                         }
                         catch (Exception e){
 
@@ -210,34 +216,6 @@ public class ProductDetailFragment extends Fragment {
                 });
 
                     alertDialog.setIcon(R.drawable.customer_icon);
-
-
-                    alertDialog.setPositiveButton("SUBMIT",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // Write your code here to execute after dialog
-                                    String quantity = qty.getText().toString();
-                                    if (TextUtils.isEmpty(quantity)) {
-                                        qty.setError(getString(R.string.required_quantity));
-                                        qty.requestFocus();
-                                    }
-                                    if (!TextUtils.isEmpty(quantity)) {
-                                        final OrderDetails orderDetails = new OrderDetails();
-                                        orderDetails.setProduct(product);
-                                        orderDetails.setQuantity(Integer.parseInt(quantity));
-
-                                        SessionInformations.getInstance().getEntry().add(orderDetails);
-                                        if(productDetailActivity!=null) {
-                                            productDetailActivity.setOrderTotal();
-                                        }
-                                        //SessionInformations.getInstance().setEntry(null);
-                                        // SessionInformations.getInstance().setEntry(entries);
-                                    }
-
-
-                                }
-                            });
-                    // Setting Negative "NO" Button
                     alertDialog.setNegativeButton("CANCEL",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
@@ -247,17 +225,70 @@ public class ProductDetailFragment extends Fragment {
                                 }
                             });
 
-                    // closed
+                    alertDialog.setPositiveButton("SUBMIT",null);
+                    final AlertDialog theDialog = alertDialog.show();
+                    theDialog.getButton(
+                            DialogInterface.BUTTON_POSITIVE)
+                            .setOnClickListener(
+                                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String quantity = qty.getText().toString();
+                            if (TextUtils.isEmpty(quantity)) {
+                                qty.setError(getString(R.string.required_quantity));
+                                qty.requestFocus();
+                            }
+                            if (!TextUtils.isEmpty(quantity)) {
+                                final OrderDetails orderDetails = new OrderDetails();
+                                orderDetails.setProduct(product);
+                                orderDetails.setQuantity(Integer.parseInt(quantity));
 
-                    // Showing Alert Message
-                    alertDialog.show();
+                                SessionInformations.getInstance().getEntry().add(orderDetails);
+                                //SessionInformations.getInstance().setEntry(null);
+                                // SessionInformations.getInstance().setEntry(entries);
+                                final long animationDuration = 1000;
+                                ObjectAnimator animX = ObjectAnimator.ofFloat(img, "x", 850);
+                                ObjectAnimator animY = ObjectAnimator.ofFloat(img, "y", 0);
+                                AnimatorSet animSetXY = new AnimatorSet();
+                                animSetXY.playTogether(animX, animY);
+                                animSetXY.setDuration(animationDuration);
+                                animSetXY.addListener(new Animator.AnimatorListener() {
+                                    @Override
+                                    public void onAnimationStart(Animator animation) {
+
+                                    img.setVisibility(View.VISIBLE);
+                                    }
+
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        if (productDetailActivity != null) {
+                                            productDetailActivity.setOrderTotal();
+                                        }
+
+                                        theDialog.dismiss();
+                                    }
+
+                                    @Override
+                                    public void onAnimationCancel(Animator animation) {
+
+                                    }
+
+                                    @Override
+                                    public void onAnimationRepeat(Animator animation) {
+
+                                    }
+                                });
+                                animSetXY.start();
 
 
+                            }
+                        }});
                 }
             });
         }
         return rootView;
     }
+
 
 
 
