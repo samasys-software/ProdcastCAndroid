@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import businessObjects.domain.Distributor;
-import businessObjects.font_design.NewTextView;
 
 /**
  * Created by AndroidUser on 12/13/2016.
@@ -51,7 +50,7 @@ public class CustomStoreAdapter extends BaseAdapter {
 
     public class Holder
     {
-        NewTextView tv,tv1;
+        TextView tv,tv1;
         ImageView img;
     }
     @Override
@@ -60,8 +59,8 @@ public class CustomStoreAdapter extends BaseAdapter {
         CustomStoreAdapter.Holder holder=new CustomStoreAdapter.Holder();
         View rowView;
         rowView = inflater.inflate(R.layout.store_list_items, null);
-        holder.tv=(NewTextView) rowView.findViewById(R.id.companyDetails);
-        holder.tv1=(NewTextView) rowView.findViewById(R.id.companyAddress);
+        holder.tv=(TextView) rowView.findViewById(R.id.companyDetails);
+        holder.tv1=(TextView) rowView.findViewById(R.id.companyAddress);
         holder.img=(ImageView) rowView.findViewById(R.id.companyLogo);
         holder.tv.setText(result.get(position).getCompanyName());
         holder.tv1.setText(result.get(position).getAddress1()+" "+result.get(position).getAddress2()+" "+result.get(position).getAddress3());

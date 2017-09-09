@@ -3,14 +3,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/colorInversePrimary"
     >
 
 
 
 
 
-    <businessObjects.font_design.NewTextView
+    <TextView
         android:id="@+id/productName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
 
         android:layout_marginTop="10dp"/>
 
-    <businessObjects.font_design.NewTextView
+    <TextView
         android:id="@+id/unitPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         android:layout_marginTop="10dp"/>
 
 
-    <businessObjects.font_design.NewEditText
+    <EditText
         android:id="@+id/qty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         android:hint="Enter Quantity"
         android:inputType="number" />
 
-    <businessObjects.font_design.NewTextView
+    <TextView
         android:id="@+id/subTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         android:visibility="invisible"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:tint="@color/colorPrimary"
+        android:tint="@color/colorInversePrimary"
         android:background="@drawable/ic_shopping_cart_black_24dp"/>
 
 </LinearLayout>

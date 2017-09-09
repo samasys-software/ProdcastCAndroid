@@ -1,17 +1,11 @@
 package com.ventruxinformatics.prodcast;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
@@ -20,9 +14,7 @@ import java.text.NumberFormat;
 import java.util.List;
 
 import businessObjects.GlobalUsage;
-import businessObjects.SessionInformations;
 import businessObjects.domain.OrderEntry;
-import businessObjects.font_design.NewTextView;
 
 /**
  * Created by nandhini on 01/09/17.
@@ -62,7 +54,7 @@ public class BillDetailsListAdapter extends BaseAdapter {
     }
 
     public class Holder {
-       NewTextView productName,qty,salesTax,otherTax,subTotal,price;
+       TextView productName,qty,salesTax,otherTax,subTotal,price;
     }
 
     @Override
@@ -70,12 +62,12 @@ public class BillDetailsListAdapter extends BaseAdapter {
         BillDetailsListAdapter.Holder holder = new BillDetailsListAdapter.Holder();
         if (convertview == null) {
             convertview = inflater.inflate(R.layout.activity_bill_details_list_adapter, null);
-            holder.productName=(NewTextView) convertview.findViewById(R.id.productName);
-            holder.qty=(NewTextView) convertview.findViewById(R.id.qty);
-            holder.price=(NewTextView) convertview.findViewById(R.id.price);
+            holder.productName=(TextView) convertview.findViewById(R.id.productName);
+            holder.qty=(TextView) convertview.findViewById(R.id.qty);
+            holder.price=(TextView) convertview.findViewById(R.id.price);
             //holder.salesTax=(TextView) convertview.findViewById(R.id.salesTax);
             //holder.otherTax=(TextView) convertview.findViewById(R.id.otherTax);
-            holder.subTotal=(NewTextView) convertview.findViewById(R.id.subTotal);
+            holder.subTotal=(TextView) convertview.findViewById(R.id.subTotal);
 
             //order details
             holder.productName.setText(orderDetails.get(position).getProductName());

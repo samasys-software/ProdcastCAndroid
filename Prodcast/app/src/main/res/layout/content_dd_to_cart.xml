@@ -14,7 +14,7 @@
         android:background="@drawable/ic_shopping_cart"
         />
 
-    <businessObjects.font_design.NewTextView
+    <TextView
         android:id="@+id/count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

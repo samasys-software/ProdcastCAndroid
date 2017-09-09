@@ -6,25 +6,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.io.File;
 
 import businessObjects.SessionInformations;
-import businessObjects.font_design.NewTextView;
 
 public abstract class ProdcastCBaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -43,7 +38,7 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
         FrameLayout activityContainer = (FrameLayout) fullView.findViewById(R.id.activity_content);
         getLayoutInflater().inflate(layoutId, activityContainer, true);
         initializeDrawer(fullView);
-        NewTextView distributorName = (NewTextView) fullView.findViewById(R.id.distributorName);
+        TextView distributorName = (TextView) fullView.findViewById(R.id.distributorName);
         boolean companyName=getCompanyName();
         if(companyName){
             distributorName.setText(SessionInformations.getInstance().getEmployee().getDistributor().getCompanyName()+ " - "+getProdcastTitle());

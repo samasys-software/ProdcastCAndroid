@@ -40,7 +40,7 @@
             android:layout_toRightOf="@+id/rlimagemain"
             android:layout_toEndOf="@+id/rlimagemain">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp"
                 android:text="SAMASYS PVT LTD"
@@ -51,7 +51,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/companyAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

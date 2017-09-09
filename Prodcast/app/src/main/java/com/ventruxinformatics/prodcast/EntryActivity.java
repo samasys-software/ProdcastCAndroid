@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -29,7 +28,6 @@ import businessObjects.domain.OrderDetails;
 import businessObjects.dto.CustomerDTO;
 import businessObjects.dto.OrderDetailDTO;
 import businessObjects.dto.OrderEntryDTO;
-import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -69,7 +67,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
             //alertDialog.setView(convertView);
             // alertDialog.setTitle("List");
             final SwipeMenuListView swipeMenuListView = (SwipeMenuListView) findViewById(R.id.listofentries);
-            final NewTextView total=(NewTextView) findViewById(R.id.total);
+            final TextView total=(TextView) findViewById(R.id.total);
 
             final SwipeMenuCreator creator = new SwipeMenuCreator() {
 

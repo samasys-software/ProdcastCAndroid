@@ -1,11 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +12,6 @@ import java.util.List;
 
 import businessObjects.GlobalUsage;
 import businessObjects.domain.Collection;
-import businessObjects.font_design.NewTextView;
 
 public class PaymentDetailsListAdapter extends BaseAdapter {
     List<Collection> collections;
@@ -48,9 +42,9 @@ public class PaymentDetailsListAdapter extends BaseAdapter {
 
     public class Holder {
 
-        NewTextView paymentDate;
-        NewTextView paymentReceiver;
-        NewTextView paymentAmount;
+        TextView paymentDate;
+        TextView paymentReceiver;
+        TextView paymentAmount;
     }
 
     @Override
@@ -58,9 +52,9 @@ public class PaymentDetailsListAdapter extends BaseAdapter {
         PaymentDetailsListAdapter.Holder holder = new PaymentDetailsListAdapter.Holder();
         if (convertview == null) {
             convertview = inflater.inflate(R.layout.activity_payment_details_list_adapter, null);
-            holder.paymentDate=(NewTextView) convertview.findViewById(R.id.paymentDate);
-            holder.paymentReceiver=(NewTextView) convertview.findViewById(R.id.paymentReceiver);
-            holder.paymentAmount=(NewTextView) convertview.findViewById(R.id.paymentAmount);
+            holder.paymentDate=(TextView) convertview.findViewById(R.id.paymentDate);
+            holder.paymentReceiver=(TextView) convertview.findViewById(R.id.paymentReceiver);
+            holder.paymentAmount=(TextView) convertview.findViewById(R.id.paymentAmount);
             holder.paymentDate.setText(String.valueOf(collections.get(position).getPaymentDate()));
             holder.paymentReceiver.setText(collections.get(position).getEmployeeName());
             holder.paymentAmount.setText(numberFormat.format(collections.get(position).getAmountPaid()));

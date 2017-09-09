@@ -22,17 +22,18 @@
 
     <RelativeLayout
         android:id="@+id/rloutbilltext"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rlseprator"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
 
 
         <Button
             android:id="@+id/newOrderPin"
             style="@style/submitButton"
-
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
             android:text="New Order" />
 
 
@@ -41,27 +42,27 @@
         android:id="@+id/rloutbillheaders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rlseprator"
+        android:layout_below="@+id/rloutbilltext"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="80dp">
+        android:layout_marginTop="5dp">
 
         <LinearLayout
             android:id="@+id/linearmain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
 
-            android:layout_marginRight="10dp">
+            android:layout_marginRight="5dp">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/billNo"
-                android:layout_width="50dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:text="BILL NO"
-                android:textAllCaps="true"
+                android:layout_weight="0.5"
+                android:text="Bill#"
+
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@drawable/border"
                 android:textSize="16sp"
@@ -69,27 +70,27 @@
                 />
 
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:text="Status"
                 android:gravity="center"
 
-                android:textAllCaps="true"
-                android:layout_width="75dp"
+
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
                 android:id="@+id/status"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
                 android:textStyle="bold"
 
 
                 />
-            <businessObjects.font_design.NewTextView
-                android:text="BILL DATE"
+            <TextView
+                android:text="Bill Date"
                 android:gravity="center"
-                android:textAllCaps="true"
-                android:layout_width="100dp"
+
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/billDate"
                 android:layout_weight="1"
@@ -100,25 +101,25 @@
 
 
                 />
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:text="Total($)"
                 android:gravity="center"
-                android:textAllCaps="true"
-                android:layout_width="75dp"
+
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/total"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@drawable/border"
                 android:textSize="16sp"
                 android:textStyle="bold"
 
                 />
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:text="Balance($)"
                 android:gravity="center"
-                android:textAllCaps="true"
-                android:layout_width="75dp"
+
+                android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:id="@+id/outstandingBalance"
@@ -136,9 +137,9 @@
     <RelativeLayout
         android:id="@+id/rlwebviewmain"
         android:layout_width="match_parent"
-        android:layout_marginTop="41dp"
+
         android:layout_height="match_parent"
-        android:layout_below="@+id/rloutbilltext"
+        android:layout_below="@+id/rloutbillheaders"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 

@@ -108,7 +108,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp" />
 
-            <businessObjects.font_design.NewEditText
+            <EditText
                 android:id="@+id/loginPinNumber"
                 style="@style/editText"
 
@@ -145,7 +145,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp" />
 
-            <businessObjects.font_design.NewEditText
+            <EditText
                 android:id="@+id/loginMobileNumber"
                 style="@style/editText"
 
@@ -194,7 +194,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp">
 
-        <businessObjects.font_design.NewTextView
+        <TextView
             android:text="Register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <businessObjects.font_design.NewTextView
+        <TextView
             android:text="Forgot Pin?"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

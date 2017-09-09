@@ -1,6 +1,5 @@
 package com.ventruxinformatics.prodcast;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,15 +24,12 @@ import java.util.List;
 
 import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.Country;
-import businessObjects.domain.Customer;
 import businessObjects.domain.CustomersLogin;
 
 import businessObjects.SessionInformations;
 import businessObjects.dto.AdminDTO;
 import businessObjects.dto.CountryDTO;
 import businessObjects.dto.CustomerLoginDTO;
-import businessObjects.font_design.NewEditText;
-import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,10 +40,10 @@ public class LoginActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "MyPrefsFile";
 
 
-    NewEditText mobileNumber, pinNumber;
+    EditText mobileNumber, pinNumber;
 
     Button signInButton, clearButton;
-    NewTextView forgotPin, register;
+    TextView forgotPin, register;
     Spinner country;
     boolean cancel = false;
     View focusView = null;
@@ -61,13 +57,13 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
         final LayoutInflater inflater = this.getLayoutInflater();
-        mobileNumber = (NewEditText) findViewById(R.id.loginMobileNumber);
+        mobileNumber = (EditText) findViewById(R.id.loginMobileNumber);
         context = this;
-        pinNumber = (NewEditText) findViewById(R.id.loginPinNumber);
+        pinNumber = (EditText) findViewById(R.id.loginPinNumber);
         signInButton = (Button) findViewById(R.id.logIn);
         clearButton = (Button) findViewById(R.id.logClear);
-        forgotPin = (NewTextView) findViewById(R.id.forgotPin);
-        register = (NewTextView) findViewById(R.id.register);
+        forgotPin = (TextView) findViewById(R.id.forgotPin);
+        register = (TextView) findViewById(R.id.register);
 
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
         country = (Spinner) findViewById(R.id.country);

@@ -2,13 +2,7 @@ package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -16,24 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import businessObjects.GlobalUsage;
-import businessObjects.SessionInformations;
-import businessObjects.domain.Bill;
 import businessObjects.domain.OrderDetails;
-import businessObjects.domain.Product;
 import businessObjects.dto.OrderEntryDTO;
-import businessObjects.font_design.NewEditText;
-import businessObjects.font_design.NewTextView;
 
 public class EntriesCustomAdapter extends BaseAdapter {
 
@@ -79,9 +65,9 @@ public class EntriesCustomAdapter extends BaseAdapter {
 
     public  class Holder
     {
-        NewTextView tv,tv1,tv2;
+        TextView tv,tv1,tv2;
         ImageButton img;
-        NewEditText qty;
+        EditText qty;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -123,10 +109,10 @@ public class EntriesCustomAdapter extends BaseAdapter {
                 }
             });
 
-            holder.tv = (NewTextView) convertView.findViewById(R.id.productName);
-            holder.tv1 = (NewTextView) convertView.findViewById(R.id.unitPrice);
-            holder.qty=(NewEditText) convertView.findViewById(R.id.orderQuantity);
-            holder.tv2= (NewTextView) convertView.findViewById(R.id.subTotal);
+            holder.tv = (TextView) convertView.findViewById(R.id.productName);
+            holder.tv1 = (TextView) convertView.findViewById(R.id.unitPrice);
+            holder.qty=(EditText) convertView.findViewById(R.id.orderQuantity);
+            holder.tv2= (TextView) convertView.findViewById(R.id.subTotal);
 
             convertView.setTag(holder);
             //img.setTag(holder);

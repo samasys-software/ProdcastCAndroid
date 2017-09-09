@@ -18,7 +18,7 @@
 
             android:orientation="vertical">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/skipRegisteration"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     >
-                <businessObjects.font_design.NewEditText
+                <EditText
                     android:id="@+id/firstName"
                     style="@style/editText"
 
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     >
-             <businessObjects.font_design.NewEditText
+             <EditText
                     android:id="@+id/latName"
                     style="@style/editText"
 
@@ -99,7 +99,7 @@
                     >
 
 
-                <businessObjects.font_design.NewEditText
+                <EditText
                     android:id="@+id/emailAddress"
                     style="@style/editText"
 
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     >
-                         <businessObjects.font_design.NewEditText
+                         <EditText
                     android:id="@+id/billingAddress1"
                     android:inputType="text"
 
@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     >
-                <businessObjects.font_design.NewEditText
+                <EditText
                     android:id="@+id/billingAddress2"
                     android:inputType="text"
 
@@ -171,7 +171,7 @@
                     android:layout_width="match_parent"
                     >
 
-                <businessObjects.font_design.NewEditText
+                <EditText
                     android:id="@+id/billingAddress3"
                     android:inputType="text"
 
@@ -194,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     >
-                <businessObjects.font_design.NewEditText
+                <EditText
                     android:id="@+id/homePhoneNumber"
                     android:inputType="text"
                     android:hint="Home PhoneNumber"
@@ -220,7 +220,7 @@
                     android:layout_width="match_parent"
                     >
 
-                <businessObjects.font_design.NewEditText
+                <EditText
                     android:id="@+id/city"
                     android:inputType="text"
                     android:hint="City"
@@ -243,7 +243,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     >
-                <businessObjects.font_design.NewEditText
+                <EditText
                     android:id="@+id/state"
                     android:inputType="text"
                     style="@style/editText"
@@ -298,7 +298,7 @@
                     android:layout_width="match_parent"
                     >
 
-                <businessObjects.font_design.NewEditText
+                <EditText
                     android:id="@+id/postalCode"
                     style="@style/editText"
                     android:hint="Postal Code"

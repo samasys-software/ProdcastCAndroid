@@ -1,25 +1,16 @@
 package com.ventruxinformatics.prodcast;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
-import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,14 +22,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import businessObjects.GlobalUsage;
@@ -48,7 +36,6 @@ import businessObjects.domain.Distributor;
 import businessObjects.domain.EmployeeDetails;
 import businessObjects.domain.Order;
 import businessObjects.dto.CustomerReportDTO;
-import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -67,9 +54,9 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
 
     private static final String TAG = "OrderHistoryActivity";
 
-    private NewTextView mDisplayDate1;
-    NewTextView totalAmount,totalPaid,totalBalance,orderTotal,orderBalance;
-    private NewTextView mDisplayDate2;
+    private TextView mDisplayDate1;
+    TextView totalAmount,totalPaid,totalBalance,orderTotal,orderBalance;
+    private TextView mDisplayDate2;
     private DatePickerDialog.OnDateSetListener mDateSetLisyener1;
     private DatePickerDialog.OnDateSetListener mDateSetLisyener2;
 
@@ -96,11 +83,11 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
         report = (Button) findViewById(R.id.report);
         reset = (Button) findViewById(R.id.reset);
         store = (Spinner) findViewById(R.id.storeSpinner);
-        totalAmount=(NewTextView) findViewById(R.id.billAmt);
-        totalPaid=(NewTextView) findViewById(R.id.totalPaid);
-        totalBalance=(NewTextView) findViewById(R.id.totBalance);
-        orderTotal=(NewTextView) findViewById(R.id.orderTotal);
-        orderBalance=(NewTextView) findViewById(R.id.orderBalance);
+        totalAmount=(TextView) findViewById(R.id.billAmt);
+        totalPaid=(TextView) findViewById(R.id.totalPaid);
+        totalBalance=(TextView) findViewById(R.id.totBalance);
+        orderTotal=(TextView) findViewById(R.id.orderTotal);
+        orderBalance=(TextView) findViewById(R.id.orderBalance);
 
 
         context=this;
@@ -115,8 +102,8 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
         ArrayAdapter storeDistributors = new ArrayAdapter(this,R.layout.drop_down_list,allDist);
         storeDistributors.setDropDownViewResource(R.layout.drop_down_list);
         final String currencySymbol=distributor.getCurrencySymbol();
-        totalAmount.setText("Total Bill Amount("+currencySymbol+")");
-        totalPaid.setText("Total Amount Paid("+currencySymbol+")");
+        totalAmount.setText("Total("+currencySymbol+")");
+        totalPaid.setText("Payments("+currencySymbol+")");
         totalBalance.setText("Balance("+currencySymbol+")");
         orderTotal.setText("Total("+currencySymbol+")");
         orderBalance.setText("Balance("+currencySymbol+")");
@@ -147,7 +134,7 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
         spinner.setAdapter(dataAdapter);
 
         //Datepicker
-        mDisplayDate1 = (NewTextView) findViewById(R.id.startDate);
+        mDisplayDate1 = (TextView) findViewById(R.id.startDate);
 
         mDisplayDate1.setOnClickListener(new View.OnClickListener()
         {
@@ -199,7 +186,7 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
             }
         };
 
-        mDisplayDate2 = (NewTextView) findViewById(R.id.endDate);
+        mDisplayDate2 = (TextView) findViewById(R.id.endDate);
 
         mDisplayDate2.setOnClickListener(new View.OnClickListener()
         {
@@ -320,7 +307,7 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
 
                                             @Override
                                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                                NewTextView billNumber = (NewTextView) findViewById(R.id.cusBillNo);
+                                                TextView billNumber = (TextView) findViewById(R.id.cusBillNo);
                                                 String selectedBillIndex = billNumber.getText().toString();
 
                                                 Intent intent = new Intent(OrderHistroyActivity.this, BillDetailsActivity.class);
@@ -419,7 +406,7 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
 
                                                 @Override
                                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                                    NewTextView billNumber = (NewTextView) findViewById(R.id.cusBillNo);
+                                                    TextView billNumber = (TextView) findViewById(R.id.cusBillNo);
 
                                                     String selectedBillIndex = billNumber.getText().toString();
 
@@ -473,9 +460,9 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
 
     public void setSummaryDetails(CustomerReportDTO customerReportDTO)
     {
-        NewTextView tv = (NewTextView) findViewById(R.id.totBillAmt);
-        NewTextView tv1 = (NewTextView) findViewById(R.id.totAmtPait);
-        NewTextView tv2 = (NewTextView) findViewById(R.id.sumBalance);
+        TextView tv = (TextView) findViewById(R.id.totBillAmt);
+        TextView tv1 = (TextView) findViewById(R.id.totAmtPait);
+        TextView tv2 = (TextView) findViewById(R.id.sumBalance);
 
         tv.setText(numberFormat.format(customerReportDTO.getAmount()));
         tv1.setText(numberFormat.format(customerReportDTO.getAmountPaid()));

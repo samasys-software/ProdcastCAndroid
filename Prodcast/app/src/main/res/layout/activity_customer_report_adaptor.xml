@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <businessObjects.font_design.NewTextView
+        <TextView
             android:id="@+id/cusBillNo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -21,7 +21,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"/>
 
-        <businessObjects.font_design.NewTextView
+        <TextView
             android:text="BILL DATE"
             android:gravity="center"
             android:textAllCaps="true"
@@ -33,7 +33,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"/>
 
-        <businessObjects.font_design.NewTextView
+        <TextView
             android:text="Total($)"
             android:gravity="center|right"
             android:textAllCaps="true"
@@ -45,7 +45,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"/>
 
-        <businessObjects.font_design.NewTextView
+        <TextView
             android:text="Balance($)"
             android:gravity="center|right"
             android:textAllCaps="true"

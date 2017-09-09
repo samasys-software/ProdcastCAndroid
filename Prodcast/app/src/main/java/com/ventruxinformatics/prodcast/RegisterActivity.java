@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,7 +20,6 @@ import businessObjects.domain.CustomerRegistration;
 
 import businessObjects.SessionInformations;
 import businessObjects.dto.CustomerLoginDTO;
-import businessObjects.font_design.NewEditText;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,7 +28,7 @@ public class RegisterActivity extends ProdcastCBaseActivity {
     Spinner country;
     Context context;
     boolean cancel=false;
-    NewEditText mobilePhone,pinNumber,confirmPin;
+    EditText mobilePhone,pinNumber,confirmPin;
     Button register,clear;
     View focusView = null;
     ProgressDialog progressDialog;
@@ -55,9 +53,9 @@ public class RegisterActivity extends ProdcastCBaseActivity {
         progressDialog=getProgressDialog(this);
        // String[] country = { "IN", "USA"  };
         country = (Spinner) findViewById(R.id.countryRegister);
-        mobilePhone = (NewEditText) findViewById(R.id.MobileNumber);
-        pinNumber = (NewEditText) findViewById(R.id.pin);
-        confirmPin = (NewEditText) findViewById(R.id.confirmPin);
+        mobilePhone = (EditText) findViewById(R.id.MobileNumber);
+        pinNumber = (EditText) findViewById(R.id.pin);
+        confirmPin = (EditText) findViewById(R.id.confirmPin);
         register = (Button) findViewById(R.id.registeration);
         clear = (Button) findViewById(R.id.clear);
         List<Country> countryList=SessionInformations.getInstance().getCountries();
