@@ -3,6 +3,8 @@ package com.ventruxinformatics.prodcast;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -113,7 +115,11 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         }
     }
 
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        setOrderTotal();
+    }
 
 
     @Override
@@ -154,7 +160,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
 
-            if( entries.size()>0)
+                if(menuItem != null)
             menuItem.setIcon(buildCounterDrawable(entries.size()));
 
 /*
@@ -183,7 +189,26 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
 
     }
 
+    public static Bitmap createImage(int width, int height) {
+
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(bitmap);
+
+        Paint paint = new Paint();
+
+
+        canvas.drawRect(0F, 0F, (float) width, (float) height, paint);
+
+        return bitmap;
+
+    }
+
+
     private Drawable buildCounterDrawable(int count) {
+        if(count ==0)
+            return new BitmapDrawable(getResources(), createImage(1,1)) ;
+
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.content_dd_to_cart, null);
         //view.setBackgroundResource(backgroundImageId);
@@ -193,7 +218,9 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         if (count == 0) {
             View counterTextPanel = view.findViewById(R.id.count);
             counterTextPanel.setVisibility(View.GONE);
+            view.setVisibility(View.GONE);
         } else {
+
             TextView textView = (TextView) view.findViewById(R.id.count);
             textView.setText(" " + count+" ");
         }

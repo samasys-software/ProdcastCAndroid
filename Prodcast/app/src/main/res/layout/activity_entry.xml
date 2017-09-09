@@ -36,6 +36,7 @@
 
         <TextView
             android:id="@+id/removebtn"
+            android:visibility="gone"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
 
