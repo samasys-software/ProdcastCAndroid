@@ -19,7 +19,7 @@
 
             />
 
-        <businessObjects.font_design.NewTextView
+        <TextView
             android:id="@+id/productName"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             android:text="Salt Lake City"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp" />
-        <businessObjects.font_design.NewTextView
+        <TextView
             android:id="@+id/unitPrice"
             android:layout_width="wrap_content"
             android:gravity="center"
@@ -41,7 +41,7 @@
             android:textSize="16sp"
 
             />
-        <businessObjects.font_design.NewEditText
+        <EditText
             android:id="@+id/orderQuantity"
             android:layout_width="wrap_content"
             android:gravity="center"
@@ -52,7 +52,7 @@
             android:textSize="16sp"
 
             />
-        <businessObjects.font_design.NewTextView
+        <TextView
             android:id="@+id/subTotal"
             android:layout_width="wrap_content"
             android:layout_weight="1"

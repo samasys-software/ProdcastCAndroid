@@ -3,27 +3,21 @@ package com.ventruxinformatics.prodcast;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import businessObjects.domain.EmployeeDetails;
-import businessObjects.dto.CustomerDTO;
-
-import businessObjects.connect.ProdcastServiceManager;
-
-import businessObjects.domain.Bill;
-import businessObjects.domain.Customer;
 
 import java.util.List;
 
 import businessObjects.SessionInformations;
-import businessObjects.font_design.NewTextView;
+import businessObjects.connect.ProdcastServiceManager;
+import businessObjects.domain.Bill;
+import businessObjects.domain.Customer;
+import businessObjects.domain.EmployeeDetails;
+import businessObjects.dto.CustomerDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,8 +47,8 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         progressDialog=getProgressDialog(context);
         listHistroy=(ListView) findViewById(R.id.billsListView);
         newOrderPin = (Button) findViewById(R.id.newOrderPin);
-        NewTextView total=(NewTextView) findViewById(R.id.total);
-        NewTextView outstandingbalance=(NewTextView) findViewById(R.id.outstandingBalance);
+        TextView total=(TextView) findViewById(R.id.total);
+        TextView outstandingbalance=(TextView) findViewById(R.id.outstandingBalance);
         String currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         total.setText("Total("+currencySymbol+")");
         outstandingbalance.setText("Balance("+currencySymbol+")");
@@ -120,7 +114,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    NewTextView c = (NewTextView) view.findViewById(R.id.billNo);
+                    TextView c = (TextView) view.findViewById(R.id.billNo);
                     String selectedBillIndex = c.getText().toString();
                   //  System.out.println(selectedBillIndex);
                     Intent intent = new Intent(OutstandingBillsActivity.this, BillDetailsActivity.class);

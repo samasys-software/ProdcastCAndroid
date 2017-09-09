@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,6 @@ import businessObjects.connect.ProdcastServiceManager;
 
 import businessObjects.SessionInformations;
 import businessObjects.dto.ProdcastDTO;
-import businessObjects.font_design.NewEditText;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +33,7 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
 
 
     //private UserChangePasswordTask mAuthTask = null;
-    NewEditText oldPinNumber,newPinNumber,confirmPinNumber;
+    EditText oldPinNumber,newPinNumber,confirmPinNumber;
 
     Button submitButton,resetButton;
     boolean cancel = false;
@@ -55,10 +53,10 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
 
         context=this;
 
-        oldPinNumber = (NewEditText) findViewById(R.id.oldPinNumber);
+        oldPinNumber = (EditText) findViewById(R.id.oldPinNumber);
 
-        newPinNumber = (NewEditText) findViewById(R.id.newPinNumber);
-        confirmPinNumber = (NewEditText) findViewById(R.id.confirmPinNumber);
+        newPinNumber = (EditText) findViewById(R.id.newPinNumber);
+        confirmPinNumber = (EditText) findViewById(R.id.confirmPinNumber);
         submitButton=(Button) findViewById(R.id.changePasswordSubmit);
         resetButton=(Button) findViewById(R.id.changePasswordReset);
 

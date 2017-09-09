@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -16,8 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import businessObjects.connect.ProdcastServiceManager;
 
@@ -25,19 +22,15 @@ import businessObjects.SessionInformations;
 import businessObjects.domain.Country;
 import businessObjects.domain.NewCustomerRegistrationDetails;
 import businessObjects.dto.CustomerListDTO;
-import businessObjects.font_design.NewEditText;
-import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.R.attr.password;
-
 public class EditRegistrationActivity extends ProdcastCBaseActivity {
-    NewEditText firstName,lastName,emailAddress,billingAddress1,billingAddress2,billingAddress3,homePhoneNumber,city,state,postalCode;
+    EditText firstName,lastName,emailAddress,billingAddress1,billingAddress2,billingAddress3,homePhoneNumber,city,state,postalCode;
     Spinner country;
     CheckBox smsAllowed;
-    NewTextView skip;
+    TextView skip;
     Button edit,cancel;
     boolean valid = false;
     View focusView = null;
@@ -64,18 +57,18 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         Intent intent = getIntent();
 
         //String[] countries = { "IN", "USA"  };
-        firstName=(NewEditText) findViewById(R.id.firstName);
-        lastName=(NewEditText) findViewById(R.id.latName);
-        emailAddress=(NewEditText) findViewById(R.id.emailAddress);
-        billingAddress1=(NewEditText) findViewById(R.id.billingAddress1);
-        billingAddress2=(NewEditText) findViewById(R.id.billingAddress2);
-        billingAddress3=(NewEditText) findViewById(R.id.billingAddress3);
-        homePhoneNumber=(NewEditText) findViewById(R.id.homePhoneNumber);
-        city=(NewEditText) findViewById(R.id.city);
-        state=(NewEditText) findViewById(R.id.state);
-        postalCode=(NewEditText) findViewById(R.id.postalCode);
+        firstName=(EditText) findViewById(R.id.firstName);
+        lastName=(EditText) findViewById(R.id.latName);
+        emailAddress=(EditText) findViewById(R.id.emailAddress);
+        billingAddress1=(EditText) findViewById(R.id.billingAddress1);
+        billingAddress2=(EditText) findViewById(R.id.billingAddress2);
+        billingAddress3=(EditText) findViewById(R.id.billingAddress3);
+        homePhoneNumber=(EditText) findViewById(R.id.homePhoneNumber);
+        city=(EditText) findViewById(R.id.city);
+        state=(EditText) findViewById(R.id.state);
+        postalCode=(EditText) findViewById(R.id.postalCode);
         country=(Spinner)findViewById(R.id.editCountry);
-        skip=(NewTextView) findViewById(R.id.skipRegisteration);
+        skip=(TextView) findViewById(R.id.skipRegisteration);
         smsAllowed=(CheckBox)findViewById(R.id.smsAllowed);
         edit=(Button)findViewById(R.id.edit);
         cancel=(Button)findViewById(R.id.reset);

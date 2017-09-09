@@ -20,7 +20,7 @@
                 android:logo="@drawable/logo"
                 android:minHeight="?attr/actionBarSize"
                 android:visibility="visible"/>
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/distributorName"
                 android:layout_width="match_parent"
                 android:gravity="center"

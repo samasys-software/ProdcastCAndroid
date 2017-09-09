@@ -29,8 +29,6 @@ import businessObjects.SessionInformations;
 import businessObjects.domain.Category;
 import businessObjects.domain.OrderDetails;
 import businessObjects.domain.Product;
-import businessObjects.font_design.NewEditText;
-import businessObjects.font_design.NewTextView;
 
 //import com.ventruxinformatics.prodcast.dummy.DummyContent;
 
@@ -42,10 +40,10 @@ import businessObjects.font_design.NewTextView;
  */
 public class ProductDetailFragment extends Fragment {
 
-    NewTextView productName;
-    NewTextView unitPrice;
-    NewEditText qty;
-    NewTextView subTotal;
+    TextView productName;
+    TextView unitPrice;
+    EditText qty;
+    TextView subTotal;
     ImageView img;
     //NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     /**
@@ -155,10 +153,10 @@ public class ProductDetailFragment extends Fragment {
                     alertDialog.setView(diaView);
 
 
-                    productName = (NewTextView) diaView.findViewById(R.id.productName);
-                    unitPrice = (NewTextView) diaView.findViewById(R.id.unitPrice);
-                    qty = (NewEditText) diaView.findViewById(R.id.qty);
-                    subTotal = (NewTextView) diaView.findViewById(R.id.subTotal);
+                    productName = (TextView) diaView.findViewById(R.id.productName);
+                    unitPrice = (TextView) diaView.findViewById(R.id.unitPrice);
+                    qty = (EditText) diaView.findViewById(R.id.qty);
+                    subTotal = (TextView) diaView.findViewById(R.id.subTotal);
                     img = (ImageView) diaView.findViewById(R.id.img);
                     productName.setText("Product Name :" + product.getProductName());
                     float price;

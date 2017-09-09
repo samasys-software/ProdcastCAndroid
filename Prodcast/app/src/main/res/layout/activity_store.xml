@@ -16,7 +16,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <businessObjects.font_design.NewTextView
+        <TextView
             android:id="@+id/findStroeHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

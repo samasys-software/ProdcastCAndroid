@@ -10,11 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,18 +18,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-import businessObjects.connect.ProdcastServiceManager;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import businessObjects.SessionInformations;
+import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.Category;
 import businessObjects.domain.OrderDetails;
 import businessObjects.domain.Product;
 import businessObjects.dto.AdminDTO;
-import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -245,13 +238,13 @@ public class ProductListActivity extends ProdcastCBaseActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            public final NewTextView mIdView;
+            public final TextView mIdView;
             public Category mItem;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (NewTextView) view.findViewById(R.id.categoryName);
+                mIdView = (TextView) view.findViewById(R.id.categoryName);
                // mContentView = (TextView) view.findViewById(R.id.categoryDescription);
             }
 
@@ -341,7 +334,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
             view.setVisibility(View.GONE);
         } else {
 
-            NewTextView textView = (NewTextView) view.findViewById(R.id.count);
+            TextView textView = (TextView) view.findViewById(R.id.count);
             textView.setText(" " + count+" ");
         }
 

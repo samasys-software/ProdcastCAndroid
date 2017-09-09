@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
@@ -48,7 +48,7 @@
 
                 android:text="Distributor"/>
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/distName"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -77,7 +77,7 @@
 
                 />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/custName"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/distAddress"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -106,7 +106,7 @@
 
                 />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/custAddress"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/distAddress1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -134,7 +134,7 @@
                 android:padding="3dp"
                 android:layout_weight="1"/>
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/custAddress1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/distPhonenumber"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -163,7 +163,7 @@
 
                 />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/custPhonenumber"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -185,7 +185,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -196,7 +196,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:text="Order No :"/>
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/orderNo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -214,7 +214,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="fill"
@@ -225,7 +225,7 @@
 
                 />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/billDate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -242,7 +242,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="fill"
@@ -252,7 +252,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/salesRep"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -268,7 +268,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="fill"
@@ -278,7 +278,7 @@
                 android:text="Discount :"
                 />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/discount"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -295,7 +295,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="fill"
@@ -305,7 +305,7 @@
                 android:text="Total  :"
                 />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/total"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -322,7 +322,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="fill"
@@ -332,7 +332,7 @@
                 android:text="Balance  :"
                 />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/balance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -353,7 +353,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
@@ -367,7 +367,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
@@ -377,7 +377,7 @@
 
                 android:text="Product"/>
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
@@ -387,7 +387,7 @@
 
                 android:text="Qty"/>
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
@@ -395,7 +395,7 @@
                 android:padding="5dp"
                 android:layout_weight="1"
                 android:text="Price "/>
-            <!--<NewTextView
+            <!--<TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:visibility="gone"
@@ -403,7 +403,7 @@
                 android:padding="5dp"
                 android:layout_weight="1"
                 android:text="Sales Tax "/>
-            <NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:visibility="gone"
@@ -412,7 +412,7 @@
                 android:layout_weight="1"
                 android:text="Other Tax "/>-->
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/subTotal"
@@ -434,7 +434,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -450,7 +450,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <businessObjects.font_design.NewTextView
+            <TextView
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -460,7 +460,7 @@
                 android:layout_weight="0.9"
                 android:text="Date"/>
 
-            <businessObjects.font_design.NewTextView
+            <TextView
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -470,7 +470,7 @@
                 android:layout_weight="2"
                 android:text="Received By"/>
 
-            <businessObjects.font_design.NewTextView
+            <TextView
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

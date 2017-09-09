@@ -21,7 +21,6 @@ import java.util.List;
 import businessObjects.SessionInformations;
 import businessObjects.domain.Category;
 import businessObjects.domain.OrderDetails;
-import businessObjects.font_design.NewTextView;
 
 /**
  * An activity representing a single Product detail screen. This
@@ -222,7 +221,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             view.setVisibility(View.GONE);
         } else {
 
-            NewTextView textView = (NewTextView) view.findViewById(R.id.count);
+            TextView textView = (TextView) view.findViewById(R.id.count);
             textView.setText(" " + count+" ");
         }
 

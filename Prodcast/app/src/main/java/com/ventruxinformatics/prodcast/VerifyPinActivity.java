@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -18,16 +17,14 @@ import businessObjects.SessionInformations;
 import businessObjects.domain.CustomersLogin;
 import businessObjects.dto.AdminDTO;
 import businessObjects.dto.CustomerLoginDTO;
-import businessObjects.font_design.NewEditText;
-import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class VerifyPinActivity extends ProdcastCBaseActivity {
-    NewEditText verificationCode;
+    EditText verificationCode;
     Button verify;
-    NewTextView resendConfirmationCode;
+    TextView resendConfirmationCode;
     Context context;
 
     @Override
@@ -48,9 +45,9 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
         setContentView(R.layout.activity_verify_pin);
         context=this;
         progressDialog=getProgressDialog(this);
-        verificationCode=(NewEditText) findViewById(R.id.verficationCode);
+        verificationCode=(EditText) findViewById(R.id.verficationCode);
         verify=(Button) findViewById(R.id.verify);
-        resendConfirmationCode=(NewTextView)findViewById(R.id.resendConfirmationCode);
+        resendConfirmationCode=(TextView)findViewById(R.id.resendConfirmationCode);
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

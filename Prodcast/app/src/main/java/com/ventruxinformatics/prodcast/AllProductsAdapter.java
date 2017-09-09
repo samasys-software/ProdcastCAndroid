@@ -13,7 +13,6 @@ import java.util.List;
 import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
 import businessObjects.domain.Product;
-import businessObjects.font_design.NewTextView;
 
 public class AllProductsAdapter extends BaseAdapter {
 
@@ -62,8 +61,8 @@ public class AllProductsAdapter extends BaseAdapter {
 
     public class Holder
     {
-        //NewTextView tv;
-        NewTextView tv1,tv2,tv3;
+        //TextView tv;
+        TextView tv1,tv2,tv3;
 
         int position;
 
@@ -75,11 +74,11 @@ public class AllProductsAdapter extends BaseAdapter {
         if (convertView == null) {
             holder=new Holder();
             convertView = inflater.inflate(R.layout.activity_all_products, parent,false);
-            //holder.tv = (NewTextView) convertView.findViewById(R.id.id);
-            holder.tv1 = (NewTextView) convertView.findViewById(R.id.productName);
-            holder.tv2 = (NewTextView) convertView.findViewById(R.id.productPrice);
-            holder.tv3 = (NewTextView) convertView.findViewById(R.id.productDescription);
-            //holder.tv4 = (NewTextView) convertView.findViewById(R.id.otherTax);
+            //holder.tv = (TextView) convertView.findViewById(R.id.id);
+            holder.tv1 = (TextView) convertView.findViewById(R.id.productName);
+            holder.tv2 = (TextView) convertView.findViewById(R.id.productPrice);
+            holder.tv3 = (TextView) convertView.findViewById(R.id.productDescription);
+            //holder.tv4 = (TextView) convertView.findViewById(R.id.otherTax);
             convertView.setTag(holder);
         }
         else{

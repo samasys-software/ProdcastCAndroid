@@ -27,7 +27,7 @@
                 android:layout_row="0"
                 app:srcCompat="@drawable/order_entry" />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/orderText"
                 android:layout_width="150sp"
                 android:layout_height="30sp"
@@ -61,7 +61,7 @@
                 android:layout_row="0"
                 app:srcCompat="@drawable/change_pwd" />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/changePasswordText"
                 android:layout_width="150sp"
                 android:layout_height="30sp"
@@ -102,7 +102,7 @@
                 android:layout_row="0"
                 app:srcCompat="@drawable/distribution_icon" />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/changeStoreText"
                 android:layout_width="150sp"
                 android:layout_height="30sp"
@@ -137,7 +137,7 @@
                 android:layout_row="1"
                 app:srcCompat="@drawable/report" />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/orderHistroyText"
                 android:layout_width="150sp"
                 android:layout_height="30sp"
@@ -181,7 +181,7 @@
                 android:layout_row="1"
                 app:srcCompat="@drawable/editreg" />
 
-            <businessObjects.font_design.NewTextView
+            <TextView
                 android:id="@+id/editRegistrationText"
                 android:layout_width="150sp"
                 android:layout_height="30sp"

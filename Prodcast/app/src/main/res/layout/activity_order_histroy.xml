@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/yellow_background"
+
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -47,7 +47,7 @@
                 android:enabled="false"
                 android:layout_marginTop="70dp">
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:id="@+id/reportType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                 android:layout_marginTop="170dp"
                 android:visibility="invisible">
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:id="@+id/startDate"
                     style="@style/datePicker"
                     android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
                     android:text="Start Date"
                     android:textSize="20dp" />
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:id="@+id/endDate"
                     style="@style/datePicker"
                     android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="15dp"
@@ -174,7 +174,7 @@
                 android:layout_marginTop="30dp"
                 android:orientation="horizontal">
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:layout_width="0dp"
                     android:id="@+id/billAmt"
                     android:layout_height="match_parent"
@@ -182,10 +182,10 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:padding="3dp"
-                    android:text="Total Bill Amount"
+                    android:text="Total"
                     android:textColor="#000000" />
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:layout_width="0dp"
                     android:id="@+id/totalPaid"
                     android:layout_height="match_parent"
@@ -193,10 +193,10 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:padding="3dp"
-                    android:text="Total Amount Paid"
+                    android:text="Payments"
                     android:textColor="#000000" />
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:id="@+id/totBalance"
@@ -215,7 +215,7 @@
                 android:layout_marginTop="65dp"
                 android:orientation="horizontal">
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:id="@+id/totBillAmt"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -225,7 +225,7 @@
                     android:padding="3dp"
                     android:textColor="#000000" />
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:id="@+id/totAmtPait"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -235,7 +235,7 @@
                     android:padding="3dp"
                     android:textColor="#000000" />
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:id="@+id/sumBalance"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -268,7 +268,7 @@
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bill Details"
@@ -283,7 +283,7 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
@@ -291,10 +291,10 @@
                     android:gravity="center"
                     android:padding="3dp"
 
-                    android:text="Bill No."
+                    android:text="Bill#"
                     android:textColor="#000000" />
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -304,7 +304,7 @@
                     android:text="Bill Date"
                     android:textColor="#000000" />
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -315,7 +315,7 @@
                     android:id="@+id/orderTotal"
                     android:textColor="#000000" />
 
-                <businessObjects.font_design.NewTextView
+                <TextView
                     android:layout_width="0dp"
                     android:id="@+id/orderBalance"
                     android:layout_height="match_parent"

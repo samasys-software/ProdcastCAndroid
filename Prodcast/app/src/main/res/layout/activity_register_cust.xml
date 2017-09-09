@@ -60,7 +60,7 @@
                 >
 
 
-            <businessObjects.font_design.NewEditText
+            <EditText
                 android:id="@+id/MobileNumber"
                 style="@style/editText"
                 android:hint="MobileNumber"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 >
-            <businessObjects.font_design.NewEditText
+            <EditText
                 android:id="@+id/pin"
                 style="@style/editText"
                 android:hint="PIN"
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 >
 
-            <businessObjects.font_design.NewEditText
+            <EditText
                 android:id="@+id/confirmPin"
                 style="@style/editText"
                 android:hint="Confirm PIN"
