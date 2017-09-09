@@ -7,7 +7,18 @@ import android.view.View;
 import android.widget.ImageView;
 
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends ProdcastCBaseActivity {
+
+    @Override
+    public boolean getCompanyName(){
+        return true;
+    }
+
+    @Override
+    public String getProdcastTitle(){
+        return "Dashboard";
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

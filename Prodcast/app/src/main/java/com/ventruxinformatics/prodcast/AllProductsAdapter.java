@@ -1,24 +1,17 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.text.NumberFormat;
 import java.util.List;
 
-import businessObjects.domain.Bill;
+import businessObjects.GlobalUsage;
+import businessObjects.SessionInformations;
 import businessObjects.domain.Product;
 
 public class AllProductsAdapter extends BaseAdapter {
@@ -28,14 +21,20 @@ public class AllProductsAdapter extends BaseAdapter {
     int count=0;
     Context context;
     LayoutInflater inflater;
+    String currencySymbol;
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     public AllProductsAdapter(Context mainActivity, List<Product> product){
 
         // TODO Auto-generated constructor stub
         products=product;
-        System.out.println(products.size());
+
+        currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
+
+     //   System.out.println(products.size());
+
 
         context=mainActivity;
-        System.out.println(context);
+       // System.out.println(context);
 
         inflater = LayoutInflater.from(context);
     }
@@ -62,11 +61,11 @@ public class AllProductsAdapter extends BaseAdapter {
 
     public class Holder
     {
-        TextView tv;
+        //TextView tv;
         TextView tv1;
         TextView tv2;
         TextView tv3;
-        TextView tv4;
+        //TextView tv4;
         int position;
 
     }
@@ -77,11 +76,11 @@ public class AllProductsAdapter extends BaseAdapter {
         if (convertView == null) {
             holder=new Holder();
             convertView = inflater.inflate(R.layout.activity_all_products, parent,false);
-            holder.tv = (TextView) convertView.findViewById(R.id.id);
+            //holder.tv = (TextView) convertView.findViewById(R.id.id);
             holder.tv1 = (TextView) convertView.findViewById(R.id.productName);
-            holder.tv2 = (TextView) convertView.findViewById(R.id.unitPrice);
-            holder.tv3 = (TextView) convertView.findViewById(R.id.salesTax);
-            holder.tv4 = (TextView) convertView.findViewById(R.id.otherTax);
+            holder.tv2 = (TextView) convertView.findViewById(R.id.productPrice);
+            holder.tv3 = (TextView) convertView.findViewById(R.id.productDescription);
+            //holder.tv4 = (TextView) convertView.findViewById(R.id.otherTax);
             convertView.setTag(holder);
         }
         else{
@@ -89,11 +88,21 @@ public class AllProductsAdapter extends BaseAdapter {
         }
         holder.position=position;
         Product product=products.get(holder.position);
-        holder.tv.setText(String.valueOf(product.getId()));
-        holder.tv1.setText(String.valueOf(product.getProductName()));
-        holder.tv2.setText("Unit Price : "+String.valueOf(product.getUnitPrice()));
-        holder.tv3.setText("Sales Tax : "+String.valueOf(product.getSalesTax()));
-        holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));
+        String productName=product.getProductName();
+        if(!product.getSalesTax().equals("0") || !product.getOtherTax().equals("0")){
+            productName=product.getProductName()+" *";
+
+        }
+        //holder.tv.setText(String.valueOf(product.getId()));
+        float unitPrice=product.getUnitPrice();
+        if(SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")){
+            unitPrice=product.getRetailPrice();
+
+        }
+        holder.tv1.setText(productName);
+        holder.tv2.setText(currencySymbol+numberFormat.format(unitPrice));
+        holder.tv3.setText(String.valueOf(product.getProductDesc()));
+       // holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));
 
 
 

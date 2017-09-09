@@ -2,6 +2,7 @@ package businessObjects;
 
 import businessObjects.domain.Bill;
 import businessObjects.domain.Category;
+import businessObjects.domain.Country;
 import businessObjects.domain.Customer;
 import businessObjects.domain.CustomerRegistration;
 import businessObjects.domain.CustomersLogin;
@@ -29,8 +30,10 @@ public class SessionInformations {
     private  List<Product> ProductDetails;
     private  List<OrderDetails> entry;
     private Customer billsForCustomer;
+    private List<Country> countries;
 
-    private static final SessionInformations ourInstance = new SessionInformations();
+
+    private static  SessionInformations ourInstance = new SessionInformations();
 
     public static SessionInformations getInstance() {
         return ourInstance;
@@ -117,5 +120,18 @@ public class SessionInformations {
 
     public void setBillsForCustomer(Customer billsForCustomer) {
         this.billsForCustomer = billsForCustomer;
+    }
+
+    public void destroy(){
+        ourInstance = new SessionInformations();
+    }
+
+
+    public List<Country> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(List<Country> countries) {
+        this.countries = countries;
     }
 }

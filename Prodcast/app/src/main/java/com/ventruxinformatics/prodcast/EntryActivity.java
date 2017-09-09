@@ -1,18 +1,20 @@
 package com.ventruxinformatics.prodcast;
 
-import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,26 +23,39 @@ import java.util.zip.Inflater;
 import businessObjects.SessionInformations;
 import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.Customer;
-import businessObjects.domain.CustomersLogin;
 import businessObjects.domain.EmployeeDetails;
 import businessObjects.domain.OrderDetails;
 import businessObjects.dto.CustomerDTO;
-import businessObjects.dto.CustomerLoginDTO;
 import businessObjects.dto.OrderDetailDTO;
 import businessObjects.dto.OrderEntryDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EntryActivity extends AppCompatActivity {
+public class EntryActivity extends ProdcastCBaseActivity {
 
     Inflater inflater;
-    Button order;
+    Button order,backButton;
+    ProgressDialog progressDialog;
+    Context context;
+
+    @Override
+    public String getProdcastTitle() {
+        return "Orders Screen";
+    }
+
+    @Override
+    public boolean getCompanyName() {
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
+        context=this;
+        progressDialog=getProgressDialog(this);
+
 
          List<OrderDetails> entries = SessionInformations.getInstance().getEntry();
         if (entries.size() != 0) {
@@ -50,28 +65,116 @@ public class EntryActivity extends AppCompatActivity {
             //View convertView = (View) inflater.inflate(R.layout.activity_all_products, null);
             //alertDialog.setView(convertView);
             // alertDialog.setTitle("List");
-            ListView listView = (ListView) findViewById(R.id.listofentries);
-            order = (Button) findViewById(R.id.order);
-            EntriesCustomAdapter adapter = new EntriesCustomAdapter(EntryActivity.this, entries);
+            final SwipeMenuListView swipeMenuListView = (SwipeMenuListView) findViewById(R.id.listofentries);
+            final TextView total=(TextView) findViewById(R.id.total);
 
-            listView.setAdapter(adapter);
+            final SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+                @Override
+                public void create(SwipeMenu menu) {
+
+                    SwipeMenuItem deleteItem = new SwipeMenuItem(getApplicationContext());
+                    //deleteItem.setBackground(getDrawable(R.drawable.yellow_background));
+                    deleteItem.setWidth(300);
+                    deleteItem.setIcon(R.drawable.icons8);
+                    menu.addMenuItem(deleteItem);
+
+                }
+            };
+
+
+                swipeMenuListView.setMenuCreator(creator);
+                swipeMenuListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick( final int position, SwipeMenu menu, int index) {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                        alert.setTitle("Prodcast Notification");
+                        alert.setMessage("This Order Has Been Deleted Permanently...Do You Want To Continue?");
+                        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                //alert.show();
+
+
+                                SessionInformations.getInstance().getEntry().remove(position);
+                                if(SessionInformations.getInstance().getEntry().size() >0) {
+                                    EntriesCustomAdapter entriesCustomAdapter = new EntriesCustomAdapter(EntryActivity.this, SessionInformations.getInstance().getEntry());
+                                    swipeMenuListView.setAdapter(entriesCustomAdapter);
+                                    entriesCustomAdapter.notifyDataSetChanged();
+                                }
+                                else{
+                                    Toast.makeText(context,"Cart is Empty",Toast.LENGTH_LONG);
+                                    dialog.dismiss();
+                                    finish();
+                                }
+
+
+
+
+                                // Toast.makeText(context,"Your Order has Been Deleted Successfully",Toast.LENGTH_LONG);
+                                //SessionInformations.getInstance().setEntry(orderEntries);
+
+                            }
+                        });
+                        alert.show();
+
+
+                        return false;
+                    }
+                });
+
+
+
+            order = (Button) findViewById(R.id.order);
+            backButton = (Button) findViewById(R.id.backButton);
+            final EntriesCustomAdapter adapter = new EntriesCustomAdapter(EntryActivity.this, entries);
+            progressDialog.show();
+            swipeMenuListView.setAdapter(adapter);
+            progressDialog.dismiss();
+
+
+
+
+
+
+
+            //total.setText("Total:"+getOrdersEntry());
+            backButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    finish();
+
+
+                }
+            });
 
 
             order.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    OrderDetailDTO dto = new OrderDetailDTO();
                     List<OrderEntryDTO> orderEntries=new ArrayList<OrderEntryDTO>();
 
                     List<OrderDetails> orderDetails = SessionInformations.getInstance().getEntry();
-                    System.out.println("Size:" + orderDetails.size());
+                  //  System.out.println("Size:" + orderDetails.size());
                     for (OrderDetails d1 : orderDetails) {
                         OrderEntryDTO orderEntry=new OrderEntryDTO();
                         orderEntry.setProductId(String.valueOf(d1.getProduct().getId()));
                         orderEntry.setQuantity(String.valueOf(d1.getQuantity()));
+                        //subtotal=subtotal+d1.getSubTotal();
                         orderEntries.add(orderEntry);
 
+
                     }
-                    OrderDetailDTO dto = new OrderDetailDTO();
+                    //return subtotal;
 
                     dto.setEntries(orderEntries);
                     dto.setCustomerId(String.valueOf(emp.getCustomerId()));
@@ -83,7 +186,7 @@ public class EntryActivity extends AppCompatActivity {
                     dto.setPaymentType(null);
                     dto.setRefDetail(null);
                     dto.setRefNO(null);
-
+                    progressDialog.show();
 
                     Call<CustomerDTO> saveOrderDTO = new ProdcastServiceManager().getClient().saveOrder(dto);
 
@@ -93,15 +196,17 @@ public class EntryActivity extends AppCompatActivity {
                             String responseString = null;
                             CustomerDTO dto = response.body();
                             if (dto.isError()) {
+                                progressDialog.dismiss();
 
                             } else {
-                                System.out.println("success");
+                              //  System.out.println("success");
                                 SessionInformations.getInstance().setEntry(null);
                                 Customer customer=dto.getCustomer();
                                 SessionInformations.getInstance().setBillsForCustomer(customer);
                                 Intent i=new Intent(EntryActivity.this,OutstandingBillsActivity.class);
                                 i.putExtra("useCache",true);
                                 startActivity(i);
+                                progressDialog.dismiss();
 
 
                             }
@@ -111,6 +216,8 @@ public class EntryActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<CustomerDTO> call, Throwable t) {
                             t.printStackTrace();
+                            getAlertBox(context).show();
+                            progressDialog.dismiss();
 
                         }
                     });
@@ -122,5 +229,4 @@ public class EntryActivity extends AppCompatActivity {
 
         }
     }
-
 }

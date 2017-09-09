@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+
+    <item
+        android:id="@+id/testAction"
+        android:title=""
+        android:orderInCategory="1000"
+        android:width="500dp"
+        android:height="500dp"
+        app:showAsAction="always" />
+
+</menu>

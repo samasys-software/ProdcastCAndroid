@@ -1,10 +1,12 @@
 package businessObjects.domain;
 
+import java.io.Serializable;
+
 /**
  * Created by sarathan732 on 8/9/2017.
  */
 
-public class CustomersLogin {
+public class CustomersLogin implements Serializable {
 
     private String username,isdCode,currencySymbol;
     private Long accessId;

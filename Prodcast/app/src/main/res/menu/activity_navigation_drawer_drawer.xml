@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_orderEntry"
+            android:icon="@drawable/order_entry_small"
+            android:title="Order Entry" />
+        <item
+            android:id="@+id/nav_changeStore"
+            android:icon="@drawable/truck_delivery"
+            android:title="Change Store" />
+        <item
+            android:id="@+id/nav_orderHistroy"
+            android:icon="@drawable/ic_insert_chart_black_24dp"
+            android:title="Order Histroy" />
+        <item
+            android:id="@+id/nav_editRegistration"
+            android:icon="@drawable/edit_registration_small"
+            android:title="Edit Registration" />
+        <item
+            android:id="@+id/nav_changePassword"
+            android:icon="@drawable/ic_lock_open_black_24dp"
+            android:title="Change Password" />
+        <item
+            android:id="@+id/nav_logOut"
+            android:icon="@drawable/logout_icon_small"
+            android:title="Logout"/>
+
+    </group>
+
+</menu>

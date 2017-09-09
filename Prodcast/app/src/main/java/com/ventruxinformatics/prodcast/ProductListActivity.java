@@ -1,5 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,28 +38,45 @@ import retrofit2.Response;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class ProductListActivity extends AppCompatActivity {
+
+public class ProductListActivity extends ProdcastCBaseActivity {
 
 
-    
+
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
     private boolean mTwoPane;
+    ProgressDialog progressDialog;
     //List<Category> categories=new ArrayList<Category>();
     View recyclerView;
+    Context context;
+
+    @Override
+    public String getProdcastTitle(){
+
+            return "Categories";
+    }
+
+    @Override
+    public boolean getCompanyName() {
+        return true;
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
+        context=this;
+        progressDialog=getProgressDialog(this);
         recyclerView= findViewById(R.id.product_list);
 
         long employeeId=SessionInformations.getInstance().getEmployee().getEmployeeId();
         SessionInformations.getInstance().setEntry(new ArrayList<OrderDetails>());
+        progressDialog.show();
 
         Call<AdminDTO<List<Category>>> categoryDTO = new ProdcastServiceManager().getClient().getCategory( employeeId );
 
@@ -68,14 +86,17 @@ public class ProductListActivity extends AppCompatActivity {
                 String responseString = null;
                 AdminDTO<List<Category>> dto = response.body();
                 if(dto.isError()) {
+                    progressDialog.dismiss();
 
                 }
                 else {
 
-                        //List<Category> categories = dto.getResult();
-                       SessionInformations.getInstance().setCategoryDetails(dto.getResult());
-                     // System.out.println(categories.get(0).getCategoryId());
+                    //List<Category> categories = dto.getResult();
+                    SessionInformations.getInstance().setCategoryDetails(dto.getResult());
+                    // System.out.println(categories.get(0).getCategoryId());
                     setupRecyclerView((RecyclerView) recyclerView);
+
+                    progressDialog.dismiss();
 
 
                 }
@@ -85,11 +106,13 @@ public class ProductListActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<AdminDTO<List<Category>>> call, Throwable t) {
                 t.printStackTrace();
+                progressDialog.dismiss();
+                getAlertBox(context).show();
 
             }
         });
 
-
+        progressDialog.show();
 
         Call<AdminDTO<List<Product>>> productDTO = new ProdcastServiceManager().getClient().getProducts( employeeId );
 
@@ -99,12 +122,13 @@ public class ProductListActivity extends AppCompatActivity {
                 String responseString = null;
                 AdminDTO<List<Product>> dto = response.body();
                 if(dto.isError()) {
-
+                    progressDialog.dismiss();
                 }
                 else {
 
                     //List<Product> products = dto.getResult();
                     SessionInformations.getInstance().setProductDetails(dto.getResult());
+                    progressDialog.dismiss();
 
 
 
@@ -115,24 +139,22 @@ public class ProductListActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<AdminDTO<List<Product>>> call, Throwable t) {
                 t.printStackTrace();
+                progressDialog.dismiss();
+                getAlertBox(context).show();
 
             }
         });
 
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
-
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
 
         assert recyclerView != null;
@@ -147,6 +169,7 @@ public class ProductListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(SessionInformations.getInstance().getCategoryDetails()));
     }
 
@@ -169,8 +192,8 @@ public class ProductListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = categories.get(position);
-            holder.mIdView.setText(String.valueOf(categories.get(position).getCategoryId()));
-            holder.mContentView.setText(categories.get(position).getCategoryName());
+            holder.mIdView.setText(String.valueOf(categories.get(position).getCategoryName()));
+           // holder.mContentView.setText(categories.get(position).getCategory());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -179,7 +202,7 @@ public class ProductListActivity extends AppCompatActivity {
                         Bundle bundle=new Bundle();
 
                         ProductDetailFragment fragment = new ProductDetailFragment();
-                       fragment.setSelectedCategory(holder.mItem);
+                        fragment.setSelectedCategory(holder.mItem);
                         //fragment.setSelected
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.product_detail_container, fragment)
@@ -205,20 +228,21 @@ public class ProductListActivity extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mIdView;
-            public final TextView mContentView;
+            //public final TextView mContentView;
             public Category mItem;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mIdView = (TextView) view.findViewById(R.id.categoryName);
+               // mContentView = (TextView) view.findViewById(R.id.categoryDescription);
             }
 
             @Override
             public String toString() {
-                return super.toString() + " '" + mContentView.getText() + "'";
+                return super.toString() + " '" + mIdView.getText() + "'";
             }
         }
     }
 }
+

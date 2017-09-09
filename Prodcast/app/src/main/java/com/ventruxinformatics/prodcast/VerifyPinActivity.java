@@ -1,5 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,18 +22,30 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VerifyPinActivity extends AppCompatActivity {
+public class VerifyPinActivity extends ProdcastCBaseActivity {
     EditText verificationCode;
     Button verify;
     TextView resendConfirmationCode;
     Context context;
 
+    @Override
+    public String getProdcastTitle() {
+        return "Verify Code";
+    }
 
+    @Override
+    public boolean getCompanyName() {
+        return false;
+    }
+
+
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_pin);
         context=this;
+        progressDialog=getProgressDialog(this);
         verificationCode=(EditText) findViewById(R.id.verficationCode);
         verify=(Button) findViewById(R.id.verify);
         resendConfirmationCode=(TextView)findViewById(R.id.resendConfirmationCode);
@@ -58,6 +71,7 @@ public class VerifyPinActivity extends AppCompatActivity {
         }
         else{
             long accessId=SessionInformations.getInstance().getRegisteredCustomer().getConfirmationId();
+            progressDialog.show();
             Call<CustomerLoginDTO<CustomersLogin>> verificationDTO = new ProdcastServiceManager().getClient().verify( accessId,code);
 
             verificationDTO.enqueue(new Callback<CustomerLoginDTO<CustomersLogin>>() {
@@ -67,11 +81,12 @@ public class VerifyPinActivity extends AppCompatActivity {
                     CustomerLoginDTO<CustomersLogin> dto = response.body();
                     if(dto.isError())
                     {
-                        System.out.println(dto.getErrorMessage());
+                     //   System.out.println(dto.getErrorMessage());
+                        progressDialog.dismiss();
                     }
                     else{
 
-                       Toast.makeText(context,"Successfully Verified",Toast.LENGTH_LONG).show();
+                     //  Toast.makeText(context,"Successfully Verified",Toast.LENGTH_LONG).show();
                         CustomersLogin cust1 = dto.getResult();
 
                         SessionInformations.getInstance().setCustomerDetails(cust1);
@@ -80,7 +95,7 @@ public class VerifyPinActivity extends AppCompatActivity {
                         extras.putString("status", "save");
                         i.putExtras(extras);
                         startActivity(i);
-
+                        progressDialog.dismiss();
 
                     }
 
@@ -89,6 +104,8 @@ public class VerifyPinActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<CustomerLoginDTO<CustomersLogin>> call, Throwable t) {
                     t.printStackTrace();
+                    progressDialog.dismiss();
+                    getAlertBox(context).show();
 
                 }
             });
@@ -99,6 +116,7 @@ public class VerifyPinActivity extends AppCompatActivity {
 
     public void resendCode(){
             long accessId=SessionInformations.getInstance().getRegisteredCustomer().getConfirmationId();
+        progressDialog.show();
             Call<AdminDTO> verificationDTO = new ProdcastServiceManager().getClient().resendConfirmationCode( accessId);
 
             verificationDTO.enqueue(new Callback<AdminDTO>() {
@@ -108,11 +126,13 @@ public class VerifyPinActivity extends AppCompatActivity {
                     AdminDTO dto = response.body();
                     if(dto.isError())
                     {
-                        System.out.println(dto.getErrorMessage());
+                      //  System.out.println(dto.getErrorMessage());
+                        progressDialog.dismiss();
                     }
                     else{
 
-                        Toast.makeText(context,"Successfully Send To U",Toast.LENGTH_LONG).show();
+                     //   Toast.makeText(context,"Successfully Send To U",Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
 
                     }
 
@@ -121,11 +141,14 @@ public class VerifyPinActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<AdminDTO> call, Throwable t) {
                     t.printStackTrace();
+                    progressDialog.dismiss();
+                    getAlertBox(context).show();
 
                 }
             });
 
 
         }
+
 
 }

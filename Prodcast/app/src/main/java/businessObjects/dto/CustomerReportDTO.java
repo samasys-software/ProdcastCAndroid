@@ -1,22 +1,19 @@
 package businessObjects.dto;
 
+import java.util.List;
+
+import businessObjects.domain.Order;
+
 /**
  * Created by nandhini on 29/08/17.
  */
 
-public class CustomerReportDTO extends  ProdcastDTO {
+public class CustomerReportDTO extends  ProdcastDTO  {
 
     private String header,attributes,reportName;
-    private Object result;
-    private float amount,outstandingBalance,amountPaid;
+    private List<Order> result;
+    private Float amount,outstandingBalance,amountPaid;
     private String reportDates;
-    public String getReportName() {
-        return reportName;
-    }
-
-    public void setReportName(String reportName) {
-        this.reportName = reportName;
-    }
 
     public String getHeader() {
         return header;
@@ -34,45 +31,51 @@ public class CustomerReportDTO extends  ProdcastDTO {
         this.attributes = attributes;
     }
 
+    public String getReportName() {
+        return reportName;
+    }
+
+    public void setReportName(String reportName) {
+        this.reportName = reportName;
+    }
+
+    public List<Order> getResult() {
+        return result;
+    }
+
+    public void setResult(List<Order> result) {
+        this.result = result;
+    }
+
+    public Float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Float amount) {
+        this.amount = amount;
+    }
+
+    public Float getOutstandingBalance() {
+        return outstandingBalance;
+    }
+
+    public void setOutstandingBalance(Float outstandingBalance) {
+        this.outstandingBalance = outstandingBalance;
+    }
+
+    public Float getAmountPaid() {
+        return amountPaid;
+    }
+
+    public void setAmountPaid(Float amountPaid) {
+        this.amountPaid = amountPaid;
+    }
+
     public String getReportDates() {
         return reportDates;
     }
 
     public void setReportDates(String reportDates) {
         this.reportDates = reportDates;
-    }
-
-
-    public Object getResult() {
-        return result;
-    }
-
-    public void setResult(Object result) {
-        this.result = result;
-    }
-    public Object getTotalAmount()
-    {
-        return amount;
-    }
-    public Object setTotalAmount(float amount)
-    {
-        return  this.amount=amount;
-    }
-
-    public float getTotalOutstandingBalance()
-    {
-        return outstandingBalance;
-    }
-    public void setTotalOutstandingBalance(float outstandingBalance)
-    {
-        this.outstandingBalance=outstandingBalance;
-    }
-    public float  getTotalAmountPaid()
-    {
-        return amountPaid;
-    }
-    public void  setTotalAmountPaid(float amountPaid)
-    {
-        this.amountPaid=amountPaid;
     }
 }

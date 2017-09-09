@@ -1,17 +1,18 @@
 <resources>
-    <string name="app_name">"Prodcast "</string>
+    <string name="app_name">"Prodcast Customers "</string>
     <string name="error_field_required">This field is Reqiured</string>
     <string name="error_invalid_username">This MobileNumber is invalid</string>
     <string name="error_invalid_password">This Pin Number is Invalid</string>
     <string name="error_incorrect_password">The Username or Password is wrong</string>
     <string name="error_oldpassword_and_newpassword_is_same">Your New Pin Number Is Same As The Old Pin Number</string>
+    <string name="error_confirmpassword_and_newpassword_is_not_same">Your Confirm Pin Number Is Not Valid</string>
     <string name="error_newpassword_is_minimum">Please Enter Minimum 6 Digits</string>
     <string name="title_activity_change_password">ChangePasswordActivity</string>
     <string name="title_activity_order_histroy">OrderHistroyActivity</string>
     <string name="title_ordernewactivity_list">Items</string>
     <string name="title_ordernewactivity_detail">OrdernewActivity Detail</string>
     <string name="title_product_list">Products</string>
-    <string name="title_product_detail">Product Detail</string>
+    <string name="title_product_detail">Products for Category</string>
     <string name="title_activity_bill_details_list">BillDetailsList</string>
     <string name="title_activity_lusu">lusuActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
@@ -22,4 +23,32 @@
     <string name="title_activity_entry">EntryActivity</string>
     <string name="title_activity_bill_details">BillDetailsActivity</string>
     <string name="required_quantity">Please Enter Quantity</string>
+    <string name="alert_title">PRODCAST NOTIFICATION</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_activity_payment_list_adapter">PaymentListAdapter</string>
+    <string name="title_activity_bill_details_list_adapter">BillDetailsListAdapter</string>
+    <string name="title_activity_prodcast_cbase">ProdcastCBaseActivity</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_prodcast_base">ProdcastBaseActivity</string>
+    <string name="title_activity_customers_maintenance">CustomersMaintenanceActivity</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_customer_create_edit">CustomerCreateEditActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_bottom_test">BottomTest</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+
+
+
 </resources>
