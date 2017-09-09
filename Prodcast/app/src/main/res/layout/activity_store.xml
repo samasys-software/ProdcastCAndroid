@@ -23,7 +23,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="Select Store"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp"
             android:textStyle="bold" />
 
