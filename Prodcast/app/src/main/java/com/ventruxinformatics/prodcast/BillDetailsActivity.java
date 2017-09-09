@@ -98,7 +98,7 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                 if(response.isSuccessful()) {
                     OrderDTO dto = response.body();
                     if (dto.isError()) {
-                        getErrorBox(context,dto.getErrorMessage());
+                        getErrorBox(context,dto.getErrorMessage()).show();
                         progressDialog.dismiss();
                     } else {
                         Order order = dto.getOrder();
