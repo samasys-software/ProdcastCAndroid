@@ -57,11 +57,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:text="Salt Lake City"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
                 android:layout_below="@+id/companyDetails"
                 android:layout_alignLeft="@+id/companyDetails"
-            />
+                />
         </RelativeLayout>
 
 
@@ -71,7 +71,7 @@
         android:id="@+id/rldivider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#629a1e"
+        android:background="@color/colorPrimaryDark"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"

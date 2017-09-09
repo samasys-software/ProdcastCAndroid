@@ -10,25 +10,25 @@
 
 
 
-        <businessObjects.font_design.NewTextView
-                android:id="@+id/productName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="40dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
+    <businessObjects.font_design.NewTextView
+        android:id="@+id/productName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
 
-                android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"/>
 
-            <businessObjects.font_design.NewTextView
-                android:id="@+id/unitPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+    <businessObjects.font_design.NewTextView
+        android:id="@+id/unitPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-                android:minHeight="40dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="10dp"/>
+        android:minHeight="40dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="10dp"/>
 
 
     <businessObjects.font_design.NewEditText
@@ -42,26 +42,22 @@
         android:inputType="number" />
 
     <businessObjects.font_design.NewTextView
-                android:id="@+id/subTotal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        android:id="@+id/subTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-                android:minHeight="40dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:inputType="number"
-                android:layout_marginTop="10dp"/>
+        android:minHeight="40dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:inputType="number"
+        android:layout_marginTop="10dp"/>
 
-            <ImageView
-                android:id="@+id/img"
-                android:visibility="invisible"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:tint="@color/colorPrimary"
-                android:background="@drawable/ic_shopping_cart_black_24dp"/>
+    <ImageView
+        android:id="@+id/img"
+        android:visibility="invisible"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:tint="@color/colorPrimary"
+        android:background="@drawable/ic_shopping_cart_black_24dp"/>
 
 </LinearLayout>
-
-
-
-

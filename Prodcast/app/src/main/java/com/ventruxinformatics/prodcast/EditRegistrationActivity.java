@@ -93,63 +93,62 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         getNewCustomerDTO.enqueue(new Callback<CustomerListDTO<NewCustomerRegistrationDetails>>() {
             @Override
             public void onResponse(Call<CustomerListDTO<NewCustomerRegistrationDetails>> call, Response<CustomerListDTO<NewCustomerRegistrationDetails>> response) {
-                String responseString = null;
-                CustomerListDTO<NewCustomerRegistrationDetails> dto = response.body();
-                if (dto.isError()) {
+                if(response.isSuccessful()) {
+                    CustomerListDTO<NewCustomerRegistrationDetails> dto = response.body();
+                    if (dto.isError()) {
+                        getErrorBox(context,dto.getErrorMessage()).show();
 
-                  //  Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
-                    progressDialog.dismiss();
-                } else {
+                        //  Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+                    } else {
 
-                    NewCustomerRegistrationDetails newCustomerRegistrationDetails=dto.getResult();
-                    if(newCustomerRegistrationDetails!=null){
-                        firstName.setText(newCustomerRegistrationDetails.getFirstName());
-                        lastName.setText(newCustomerRegistrationDetails.getLastName());
-                        emailAddress.setText(newCustomerRegistrationDetails.getEmail());
-                        billingAddress1.setText(newCustomerRegistrationDetails.getAddress1());
-                        billingAddress2.setText(newCustomerRegistrationDetails.getAddress2());
-                        billingAddress3.setText(newCustomerRegistrationDetails.getAddress3());
-                        homePhoneNumber.setText(newCustomerRegistrationDetails.getWorkPhone());
-                        city.setText(newCustomerRegistrationDetails.getCity());
-                        state.setText(newCustomerRegistrationDetails.getState());
-                        postalCode.setText(newCustomerRegistrationDetails.getPostalCode());
-                        ArrayAdapter<Country> adapter =(ArrayAdapter<Country>) country.getAdapter();
-                        int count =  adapter.getCount();
-                        for(int i = 0; i<count; i++)
-                        {
-                            Country aCountry= adapter.getItem(i);
+                        NewCustomerRegistrationDetails newCustomerRegistrationDetails = dto.getResult();
+                        if (newCustomerRegistrationDetails != null) {
+                            firstName.setText(newCustomerRegistrationDetails.getFirstName());
+                            lastName.setText(newCustomerRegistrationDetails.getLastName());
+                            emailAddress.setText(newCustomerRegistrationDetails.getEmail());
+                            billingAddress1.setText(newCustomerRegistrationDetails.getAddress1());
+                            billingAddress2.setText(newCustomerRegistrationDetails.getAddress2());
+                            billingAddress3.setText(newCustomerRegistrationDetails.getAddress3());
+                            homePhoneNumber.setText(newCustomerRegistrationDetails.getWorkPhone());
+                            city.setText(newCustomerRegistrationDetails.getCity());
+                            state.setText(newCustomerRegistrationDetails.getState());
+                            postalCode.setText(newCustomerRegistrationDetails.getPostalCode());
+                            ArrayAdapter<Country> adapter = (ArrayAdapter<Country>) country.getAdapter();
+                            int count = adapter.getCount();
+                            for (int i = 0; i < count; i++) {
+                                Country aCountry = adapter.getItem(i);
 
-                            if (aCountry.getCountryId().equals(newCustomerRegistrationDetails.getCountry()))
-                            //if(aCountry.getCountryName().equalsIgnoreCase(String.valueOf(state)))
-                            {
-                                country.setSelection(i);
-                                break;
+                                if (aCountry.getCountryId().equals(newCustomerRegistrationDetails.getCountry()))
+                                //if(aCountry.getCountryName().equalsIgnoreCase(String.valueOf(state)))
+                                {
+                                    country.setSelection(i);
+                                    break;
+                                }
                             }
+
+                            // country.setText(newCustomerRegistrationDetails.getCountry());
+                            //country.(newCustomerRegistrationDetails.getFirstName());
+                            //skip.setText(newCustomerRegistrationDetails.getFirstName());
+                            boolean checked = false;
+                            if (newCustomerRegistrationDetails.getSmsAllowed().equals("1")) {
+                                checked = true;
+                            }
+                            smsAllowed.setChecked(checked);
+                            customerId = String.valueOf(newCustomerRegistrationDetails.getCustomerId());
+
+
+                            progressDialog.dismiss();
+                        } else {
+                            customerId = null;
+                            progressDialog.dismiss();
+
                         }
 
-                       // country.setText(newCustomerRegistrationDetails.getCountry());
-                        //country.(newCustomerRegistrationDetails.getFirstName());
-                        //skip.setText(newCustomerRegistrationDetails.getFirstName());
-                        boolean checked=false;
-                        if(newCustomerRegistrationDetails.getSmsAllowed().equals("1")){
-                            checked=true;
-                        }
-                        smsAllowed.setChecked(checked);
-                        customerId=String.valueOf(newCustomerRegistrationDetails.getCustomerId());
+                        // Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
 
-
-                        progressDialog.dismiss();
-                    }
-                    else{
-                        customerId=null;
-                        progressDialog.dismiss();
 
                     }
-
-                   // Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
-
-
-
                 }
 
             }
@@ -240,19 +239,20 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         saveCustomerDTO.enqueue(new Callback<CustomerListDTO>() {
             @Override
             public void onResponse(Call<CustomerListDTO> call, Response<CustomerListDTO> response) {
-                String responseString = null;
-                CustomerListDTO dto = response.body();
-                if (dto.isError()) {
+                if(response.isSuccessful()) {
+                    CustomerListDTO dto = response.body();
+                    if (dto.isError()) {
+                        getErrorBox(context,dto.getErrorMessage()).show();
 
-                   // Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
-                    progressDialog.dismiss();
-                } else {
+                        // Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+                    } else {
 
-                   // Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
-                    progressDialog.dismiss();
+                        Toast.makeText(context, "Customer Had Registered Successfully", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
 
 
-
+                    }
                 }
 
             }
@@ -370,6 +370,7 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         city.setText("");
         state.setText("");
         postalCode.setText("");
+        country.setSelection(0);
 
     }
     @Override

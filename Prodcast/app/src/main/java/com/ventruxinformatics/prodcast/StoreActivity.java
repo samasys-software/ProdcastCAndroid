@@ -61,13 +61,15 @@ public class StoreActivity extends ProdcastCBaseActivity {
             @Override
             public void onResponse(Call<CustomerLoginDTO> call, Response<CustomerLoginDTO> response) {
                 try {
-                    String responseString = null;
 
 
                     CustomerLoginDTO dto = response.body();
                 //    System.out.println(dto.toString());
                     if (dto.isError()) {
-                     //   Toast.makeText(context, "Nothing To show", Toast.LENGTH_LONG).show();
+                     //   Toast.makeText(context, "Nothing To show", Toast.LENGTH_LONG).show()
+
+                        getErrorBox(context,dto.getErrorMessage()).show();
+                        mProgressDialog.dismiss();
                     } else {
 
 
@@ -80,10 +82,13 @@ public class StoreActivity extends ProdcastCBaseActivity {
                         distributors.addAll(distOpen);
 
                         SessionInformations.getInstance().setAllDistributors(distributors);
-                    }
-                    listhistory.setAdapter(new CustomStoreAdapter(StoreActivity.this, distributors));
-                    //if (mProgressDialog.isShowing())
+                        listhistory.setAdapter(new CustomStoreAdapter(StoreActivity.this, distributors));
                         mProgressDialog.dismiss();
+                    }
+
+
+                    //if (mProgressDialog.isShowing())
+                       // mProgressDialog.dismiss();
 
                     listhistory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -101,7 +106,9 @@ public class StoreActivity extends ProdcastCBaseActivity {
                                     if (dto.isError()) {
 
                                       //  Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                                        getErrorBox(context,dto.getErrorMessage()).show();
                                         mProgressDialog.dismiss();
+                                        getErrorBox(context,dto.getErrorMessage());
                                     } else {
                                         SessionInformations.getInstance().setEmployee(dto.getResult());
                                         EmployeeDetails emp = SessionInformations.getInstance().getEmployee();

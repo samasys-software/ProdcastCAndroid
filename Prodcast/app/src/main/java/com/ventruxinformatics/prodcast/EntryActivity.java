@@ -196,22 +196,27 @@ public class EntryActivity extends ProdcastCBaseActivity {
                     saveOrderDTO.enqueue(new Callback<CustomerDTO>() {
                         @Override
                         public void onResponse(Call<CustomerDTO> call, Response<CustomerDTO> response) {
-                            String responseString = null;
-                            CustomerDTO dto = response.body();
-                            if (dto.isError()) {
-                                progressDialog.dismiss();
+                            if(response.isSuccessful()) {
+                                CustomerDTO dto = response.body();
+                                if (dto.isError()) {
+                                    getErrorBox(context,dto.getErrorMessage()).show();
 
-                            } else {
-                              //  System.out.println("success");
-                                SessionInformations.getInstance().setEntry(null);
-                                Customer customer=dto.getCustomer();
-                                SessionInformations.getInstance().setBillsForCustomer(customer);
-                                Intent i=new Intent(EntryActivity.this,OutstandingBillsActivity.class);
-                                i.putExtra("useCache",true);
-                                startActivity(i);
-                                progressDialog.dismiss();
+                                    progressDialog.dismiss();
 
 
+                                } else {
+                                    //  System.out.println("success");
+                                    SessionInformations.getInstance().setEntry(null);
+                                    Customer customer = dto.getCustomer();
+
+                                    SessionInformations.getInstance().setBillsForCustomer(customer);
+                                    Intent i = new Intent(EntryActivity.this, OutstandingBillsActivity.class);
+                                    i.putExtra("useCache", true);
+                                    startActivity(i);
+                                    progressDialog.dismiss();
+
+
+                                }
                             }
 
                         }

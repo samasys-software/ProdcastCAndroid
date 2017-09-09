@@ -45,102 +45,102 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="80dp">
 
-    <LinearLayout
-        android:id="@+id/linearmain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
+        <LinearLayout
+            android:id="@+id/linearmain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
 
-        android:layout_marginRight="10dp">
+            android:layout_marginRight="10dp">
 
-        <businessObjects.font_design.NewTextView
-            android:id="@+id/billNo"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text="BILL NO"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/border"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            />
-
-
-        <businessObjects.font_design.NewTextView
-            android:text="Status"
-            android:gravity="center"
-
-            android:textAllCaps="true"
-            android:layout_width="75dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/border"
-            android:id="@+id/status"
-            android:layout_weight="1"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            <businessObjects.font_design.NewTextView
+                android:id="@+id/billNo"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="BILL NO"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@drawable/border"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
 
 
-            />
-        <businessObjects.font_design.NewTextView
-            android:text="BILL DATE"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:id="@+id/billDate"
-            android:layout_weight="1"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/border"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            <businessObjects.font_design.NewTextView
+                android:text="Status"
+                android:gravity="center"
+
+                android:textAllCaps="true"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:id="@+id/status"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:textStyle="bold"
 
 
-            />
-        <businessObjects.font_design.NewTextView
-            android:text="Total($)"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:layout_width="75dp"
-            android:layout_height="match_parent"
-            android:id="@+id/total"
-            android:layout_weight="1"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/border"
-            android:textSize="16sp"
-            android:textStyle="bold"
-
-            />
-        <businessObjects.font_design.NewTextView
-            android:text="Balance($)"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:layout_width="75dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:id="@+id/outstandingBalance"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/border"
-            android:textSize="16sp"
-            android:textStyle="bold"
-
-            />
+                />
+            <businessObjects.font_design.NewTextView
+                android:text="BILL DATE"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/billDate"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@drawable/border"
+                android:textSize="16sp"
+                android:textStyle="bold"
 
 
-    </LinearLayout>
-        </RelativeLayout>
+                />
+            <businessObjects.font_design.NewTextView
+                android:text="Total($)"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:id="@+id/total"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@drawable/border"
+                android:textSize="16sp"
+                android:textStyle="bold"
+
+                />
+            <businessObjects.font_design.NewTextView
+                android:text="Balance($)"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:layout_width="75dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:id="@+id/outstandingBalance"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@drawable/border"
+                android:textSize="16sp"
+                android:textStyle="bold"
+
+                />
+
+
+        </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
-    android:id="@+id/rlwebviewmain"
-    android:layout_width="match_parent"
-    android:layout_marginTop="41dp"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/rloutbilltext"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true">
+        android:id="@+id/rlwebviewmain"
+        android:layout_width="match_parent"
+        android:layout_marginTop="41dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rloutbilltext"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <ListView
             android:id="@+id/billsListView"

@@ -91,22 +91,23 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         categoryDTO.enqueue(new Callback<AdminDTO<List<Category>>>() {
             @Override
             public void onResponse(Call<AdminDTO<List<Category>>> call, Response<AdminDTO<List<Category>>> response) {
-                String responseString = null;
-                AdminDTO<List<Category>> dto = response.body();
-                if(dto.isError()) {
-                    progressDialog.dismiss();
+                if(response.isSuccessful()) {
+                    AdminDTO<List<Category>> dto = response.body();
+                    if (dto.isError()) {
+                        progressDialog.dismiss();
+                        getErrorBox(context,dto.getErrorMessage()).show();
 
-                }
-                else {
+                    } else {
 
-                    //List<Category> categories = dto.getResult();
-                    SessionInformations.getInstance().setCategoryDetails(dto.getResult());
-                    // System.out.println(categories.get(0).getCategoryId());
-                    setupRecyclerView((RecyclerView) recyclerView);
+                        //List<Category> categories = dto.getResult();
+                        SessionInformations.getInstance().setCategoryDetails(dto.getResult());
+                        // System.out.println(categories.get(0).getCategoryId());
+                        setupRecyclerView((RecyclerView) recyclerView);
 
-                    progressDialog.dismiss();
+                        progressDialog.dismiss();
 
 
+                    }
                 }
 
             }
@@ -127,19 +128,22 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         productDTO.enqueue(new Callback<AdminDTO<List<Product>>>() {
             @Override
             public void onResponse(Call<AdminDTO<List<Product>>> call, Response<AdminDTO<List<Product>>> response) {
-                String responseString = null;
-                AdminDTO<List<Product>> dto = response.body();
-                if(dto.isError()) {
-                    progressDialog.dismiss();
-                }
-                else {
-
-                    //List<Product> products = dto.getResult();
-                    SessionInformations.getInstance().setProductDetails(dto.getResult());
-                    progressDialog.dismiss();
+                if(response.isSuccessful()) {
 
 
+                    AdminDTO<List<Product>> dto = response.body();
+                    if (dto.isError()) {
 
+                        progressDialog.dismiss();
+                        getErrorBox(context,dto.getErrorMessage()).show();
+                    } else {
+
+                        //List<Product> products = dto.getResult();
+                        SessionInformations.getInstance().setProductDetails(dto.getResult());
+                        progressDialog.dismiss();
+
+
+                    }
                 }
 
             }

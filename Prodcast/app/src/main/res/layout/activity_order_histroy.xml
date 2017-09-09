@@ -6,343 +6,349 @@
     android:layout_height="match_parent"
     tools:context="com.ventruxinformatics.prodcast.OrderHistroyActivity">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/yellow_background"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/yellow_background"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
+
+            <!-- Text Box Start -->
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/form_box">
 
-                <!-- Text Box Start -->
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/form_box">
-
-                    <Spinner
-                        android:id="@+id/storeSpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="visible"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:enabled="false"
-                    android:layout_marginTop="70dp">
-
-                    <businessObjects.font_design.NewTextView
-                        android:id="@+id/reportType"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="12dp"
-                        android:text="SummaryReport"
-                        android:background="@drawable/form_box"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="120dp"
-                    android:background="@drawable/form_box">
-
-                    <Spinner
-                        android:id="@+id/reportDateSpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="visible"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
-
-                </RelativeLayout>
-
-                <!-- DatePicker Start-->
-
-                <LinearLayout
-                    android:id="@+id/selectDates"
+                <Spinner
+                    android:id="@+id/storeSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="170dp"
-                    android:visibility="invisible">
-
-                    <businessObjects.font_design.NewTextView
-                        android:id="@+id/startDate"
-                        style="@style/datePicker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Start Date"
-                        android:textSize="20dp" />
-
-                    <businessObjects.font_design.NewTextView
-                        android:id="@+id/endDate"
-                        style="@style/datePicker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
-                        android:layout_weight="1"
-                        android:text="End Date"
-                        android:textSize="20dp" />
-
-                </LinearLayout>
-
-                <!-- DatePicker End-->
-
-                <!-- Text Box End-->
+                    android:visibility="visible"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
             </RelativeLayout>
 
-            <!-- Button Start-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:enabled="false"
+                android:layout_marginTop="70dp">
+
+                <businessObjects.font_design.NewTextView
+                    android:id="@+id/reportType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="SummaryReport"
+                    android:background="@drawable/form_box"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="120dp"
+                android:background="@drawable/form_box">
+
+                <Spinner
+                    android:id="@+id/reportDateSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+            </RelativeLayout>
+
+            <!-- DatePicker Start-->
+
+            <LinearLayout
+                android:id="@+id/selectDates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="170dp"
+                android:visibility="invisible">
+
+                <businessObjects.font_design.NewTextView
+                    android:id="@+id/startDate"
+                    style="@style/datePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Start Date"
+                    android:textSize="20dp" />
+
+                <businessObjects.font_design.NewTextView
+                    android:id="@+id/endDate"
+                    style="@style/datePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_weight="1"
+                    android:text="End Date"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+            <!-- DatePicker End-->
+
+            <!-- Text Box End-->
+
+        </RelativeLayout>
+
+        <!-- Button Start-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/submitButton"
+                android:layout_marginTop="10dp"
+                android:text="Report"/>
+
+            <Button
+                android:id="@+id/reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/submitButton"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Reset"/>
+
+        </LinearLayout>
+
+        <!-- Button End-->
+
+        <!-- Summary Start-->
+
+        <RelativeLayout
+            android:id="@+id/summaryTable"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <businessObjects.font_design.NewTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:text="Summary"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/report"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <businessObjects.font_design.NewTextView
+                    android:layout_width="0dp"
+                    android:id="@+id/billAmt"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    style="@style/submitButton"
-                    android:layout_marginTop="10dp"
-                    android:text="Report"/>
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="Total Bill Amount"
+                    android:textColor="#000000" />
 
-                <Button
-                    android:id="@+id/reset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <businessObjects.font_design.NewTextView
+                    android:layout_width="0dp"
+                    android:id="@+id/totalPaid"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    style="@style/submitButton"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Reset"/>
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="Total Amount Paid"
+                    android:textColor="#000000" />
+
+                <businessObjects.font_design.NewTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/totBalance"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="Balance"
+                    android:textColor="#000000" />
 
             </LinearLayout>
 
-            <!-- Button End-->
-
-            <!-- Summary Start-->
-
-            <RelativeLayout
-                android:id="@+id/summaryTable"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:visibility="invisible">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
+                <businessObjects.font_design.NewTextView
+                    android:id="@+id/totBillAmt"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:textColor="#000000" />
+
+                <businessObjects.font_design.NewTextView
+                    android:id="@+id/totAmtPait"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:textColor="#000000" />
+
+                <businessObjects.font_design.NewTextView
+                    android:id="@+id/sumBalance"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:textColor="#000000" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!-- Summary End-->
+
+        <!-- Bill Details Start-->
+
+        <RelativeLayout
+            android:id="@+id/billDetailsTable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:id="@+id/bill1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <businessObjects.font_design.NewTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="Bill Details"
+                    android:textSize="16dp" />
 
-                    <businessObjects.font_design.NewTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="15dp"
-                        android:text="Summary"
-                        android:textSize="16dp" />
+            </LinearLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:orientation="horizontal">
-
-                    <businessObjects.font_design.NewTextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/border"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Total Bill Amount"
-                        android:textColor="#000000" />
-
-                    <businessObjects.font_design.NewTextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/border"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Total Amount Paid"
-                        android:textColor="#000000" />
-
-                    <businessObjects.font_design.NewTextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/border"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Balance"
-                        android:textColor="#000000" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="65dp"
-                    android:orientation="horizontal">
-
-                    <businessObjects.font_design.NewTextView
-                        android:id="@+id/totBillAmt"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/border"
-                        android:gravity="center|right"
-                        android:padding="3dp"
-                        android:textColor="#000000" />
-
-                    <businessObjects.font_design.NewTextView
-                        android:id="@+id/totAmtPait"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/border"
-                        android:gravity="center|right"
-                        android:padding="3dp"
-                        android:textColor="#000000" />
-
-                    <businessObjects.font_design.NewTextView
-                        android:id="@+id/sumBalance"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/border"
-                        android:gravity="center|right"
-                        android:padding="3dp"
-                        android:textColor="#000000" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <!-- Summary End-->
-
-            <!-- Bill Details Start-->
-
-            <RelativeLayout
-                android:id="@+id/billDetailsTable"
+            <LinearLayout
+                android:id="@+id/bill2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:visibility="invisible">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/bill1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                <businessObjects.font_design.NewTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="3dp"
 
-                    <businessObjects.font_design.NewTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bill Details"
-                        android:textSize="16dp" />
+                    android:text="Bill No."
+                    android:textColor="#000000" />
 
-                </LinearLayout>
+                <businessObjects.font_design.NewTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="Bill Date"
+                    android:textColor="#000000" />
 
-                <LinearLayout
-                    android:id="@+id/bill2"
+                <businessObjects.font_design.NewTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="Total"
+                    android:id="@+id/orderTotal"
+                    android:textColor="#000000" />
+
+                <businessObjects.font_design.NewTextView
+                    android:layout_width="0dp"
+                    android:id="@+id/orderBalance"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="Balance"
+                    android:textColor="#000000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bill3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal">
+
+                <ListView
+                    android:id="@+id/billDetailsList"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center" />
 
-                    <businessObjects.font_design.NewTextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/border"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Bill No."
-                        android:textColor="#000000" />
+            </LinearLayout>
 
-                    <businessObjects.font_design.NewTextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/border"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Bill Date"
-                        android:textColor="#000000" />
+        </RelativeLayout>
 
-                    <businessObjects.font_design.NewTextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/border"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Total"
-                        android:textColor="#000000" />
+        <!-- Bill Details End-->
 
-                    <businessObjects.font_design.NewTextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/border"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Balance"
-                        android:textColor="#000000" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/bill3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="52dp"
-                    android:orientation="horizontal"
-                    android:scrollbars="horizontal">
-
-                    <ListView
-                        android:id="@+id/billDetailsList"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <!-- Bill Details End-->
-
-        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

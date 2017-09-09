@@ -136,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 mobileNumber.setText("");
                 pinNumber.setText("");
+                country.setSelection(0);
             }
         });
 
@@ -240,21 +241,23 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<CustomerLoginDTO<CustomersLogin>> call, Response<CustomerLoginDTO<CustomersLogin>> response) {
                     String responseString = null;
-                    CustomerLoginDTO<CustomersLogin> dto = response.body();
-                    if (dto.isError()) {
-                        mobileNumber.setError(getString(R.string.error_incorrect_password));
-                        focusView = mobileNumber;
-                        return;
-                    } else {
-                        if (dto.isVerified()) {
-                            CustomersLogin cust1 = dto.getResult();
-                            SessionInformations.getInstance().setCustomerDetails(cust1);
-                            loginToFile(cust1);
-                            Intent intent = new Intent(LoginActivity.this, StoreActivity.class);
-                            startActivity(intent);
+                    if(response.isSuccessful()) {
+                        CustomerLoginDTO<CustomersLogin> dto = response.body();
+                        if (dto.isError()) {
+                            mobileNumber.setError(getString(R.string.error_incorrect_password));
+                            focusView = mobileNumber;
+                            return;
                         } else {
-                            Intent intent = new Intent(LoginActivity.this, VerifyPinActivity.class);
-                            startActivity(intent);
+                            if (dto.isVerified()) {
+                                CustomersLogin cust1 = dto.getResult();
+                                SessionInformations.getInstance().setCustomerDetails(cust1);
+                                loginToFile(cust1);
+                                Intent intent = new Intent(LoginActivity.this, StoreActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(LoginActivity.this, VerifyPinActivity.class);
+                                startActivity(intent);
+                            }
                         }
                     }
 
@@ -299,15 +302,16 @@ public class LoginActivity extends AppCompatActivity {
             retriveDTO.enqueue(new Callback<AdminDTO>() {
                 @Override
                 public void onResponse(Call<AdminDTO> call, Response<AdminDTO> response) {
-                    String responseString = null;
-                    AdminDTO dto = response.body();
-                    if (dto.isError()) {
-                        mobileNumber.setError(dto.getErrorMessage());
-                        focusView = mobileNumber;
+                   if(response.isSuccessful()) {
+                       AdminDTO dto = response.body();
+                       if (dto.isError()) {
+                           mobileNumber.setError(dto.getErrorMessage());
+                           focusView = mobileNumber;
 
-                    } else {
-                       Toast.makeText(context, "Message Has Been Sent To The Mobile Number with the pin", Toast.LENGTH_LONG).show();
-                    }
+                       } else {
+                           Toast.makeText(context, "Message Has Been Sent To The Mobile Number with the pin", Toast.LENGTH_LONG).show();
+                       }
+                   }
 
                 }
 

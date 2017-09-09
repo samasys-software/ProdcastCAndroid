@@ -7,7 +7,7 @@
         style="@style/submitButton"
         android:text="Submit Order"
         android:layout_marginTop="10dp"
-       />
+        />
 
     <Button
 

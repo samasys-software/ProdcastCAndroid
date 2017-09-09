@@ -30,7 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:background="@drawable/border"
-        android:gravity="center|right"
+        android:gravity="center"
         android:padding="3dp"
         android:layout_weight="1"
         />
@@ -60,7 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:background="@drawable/border"
-        android:gravity="center|right"
+        android:gravity="right"
         android:padding="3dp"
         android:layout_weight="1"
         />

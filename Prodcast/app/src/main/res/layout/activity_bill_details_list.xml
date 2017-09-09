@@ -23,11 +23,11 @@
             android:text="BILL NO"
             android:layout_weight="1"
             android:textAllCaps="true"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"
             android:textSize="16sp"
             android:textStyle="bold"
-          />
+            />
 
 
         <businessObjects.font_design.NewTextView
@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/border"
             android:id="@+id/status"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
 
@@ -53,7 +53,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:id="@+id/billDate"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -68,7 +68,7 @@
             android:layout_width="75dp"
             android:layout_height="match_parent"
             android:id="@+id/total"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -82,7 +82,7 @@
             android:layout_width="75dp"
             android:layout_height="match_parent"
             android:id="@+id/outstandingBalance"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -92,6 +92,3 @@
 
     </LinearLayout>
 </RelativeLayout>
-
-
-
