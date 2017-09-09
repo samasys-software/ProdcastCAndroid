@@ -84,6 +84,7 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
                     if(dto.isError())
                     {
                      //   System.out.println(dto.getErrorMessage());
+                        getErrorBox(context,dto.getErrorMessage());
                         progressDialog.dismiss();
                     }
                     else{
@@ -130,10 +131,11 @@ public class VerifyPinActivity extends ProdcastCBaseActivity {
                     {
                       //  System.out.println(dto.getErrorMessage());
                         progressDialog.dismiss();
+                        getErrorBox(context,dto.getErrorMessage());
                     }
                     else{
 
-                     //   Toast.makeText(context,"Successfully Send To U",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Code Has Been Send To Your Registered Mobile Number",Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
 
                     }

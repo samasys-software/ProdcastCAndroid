@@ -23,6 +23,7 @@
             <businessObjects.font_design.NewTextView
                 android:id="@+id/distributorName"
                 android:layout_width="match_parent"
+                android:gravity="center"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 

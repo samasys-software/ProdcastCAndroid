@@ -161,19 +161,20 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
             changePinDTO.enqueue(new Callback<ProdcastDTO>() {
                 @Override
                 public void onResponse(Call<ProdcastDTO> call, Response<ProdcastDTO> response) {
-                    String responseString = null;
-                    ProdcastDTO dto = response.body();
-                    if(dto.isError()) {
-                        oldPinNumber.setError(dto.getErrorMessage());
-                        focusView=oldPinNumber;
-                        focusView.requestFocus();
-                        mProgressDialog.cancel();
-                    }
-                    else {
-                      //  Toast.makeText(context,"Your Pin Number Has Been Changed Successfully",Toast.LENGTH_LONG).show();
-                        reset();
-                        mProgressDialog.cancel();
+                    if(response.isSuccessful()) {
+                        ProdcastDTO dto = response.body();
+                        if (dto.isError()) {
+                            oldPinNumber.setError(dto.getErrorMessage());
+                            focusView = oldPinNumber;
+                            focusView.requestFocus();
+                            mProgressDialog.cancel();
+                        } else {
 
+                            reset();
+                            mProgressDialog.cancel();
+                            Toast.makeText(context, "Your Pin Number Has Been Changed Successfully", Toast.LENGTH_LONG).show();
+
+                        }
                     }
                 }
 

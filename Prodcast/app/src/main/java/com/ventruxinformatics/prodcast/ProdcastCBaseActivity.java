@@ -168,4 +168,18 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
         //alert.show();
         return  alert;
     }
+
+    public static AlertDialog.Builder getErrorBox(Context context,String message){
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setTitle("Warning");
+        alert.setMessage(message);
+        alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        //alert.show();
+        return  alert;
+    }
 }

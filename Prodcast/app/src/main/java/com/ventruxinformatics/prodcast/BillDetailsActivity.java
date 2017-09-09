@@ -95,32 +95,33 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         billDetailsDTO.enqueue(new Callback<OrderDTO>() {
             @Override
             public void onResponse(Call<OrderDTO> call, Response<OrderDTO> response) {
-                String responseString = null;
-                OrderDTO dto = response.body();
-                if (dto.isError()) {
-                 //   Toast.makeText(BillDetailsActivity.this, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
-                    progressDialog.dismiss();
-                } else {
-                    Order order = dto.getOrder();
-                    setBillDetails(order);
-                  //  Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
-
-
-                    if (order.getCollectionEntries().size() > 0) {
-                        paymentListView.setAdapter(new PaymentDetailsListAdapter(BillDetailsActivity.this, order.getCollectionEntries()));
-
+                if(response.isSuccessful()) {
+                    OrderDTO dto = response.body();
+                    if (dto.isError()) {
+                        getErrorBox(context,dto.getErrorMessage());
+                        progressDialog.dismiss();
                     } else {
+                        Order order = dto.getOrder();
+                        setBillDetails(order);
+                        //  Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
 
-                        LinearLayout txView = (LinearLayout) findViewById(R.id.llpayment);
-                        LinearLayout txView1 = (LinearLayout) findViewById(R.id.paymentDetailsInvisible);
 
-                        txView.setVisibility(View.INVISIBLE);
-                        txView1.setVisibility(View.INVISIBLE);
+                        if (order.getCollectionEntries().size() > 0) {
+                            paymentListView.setAdapter(new PaymentDetailsListAdapter(BillDetailsActivity.this, order.getCollectionEntries()));
+
+                        } else {
+
+                            LinearLayout txView = (LinearLayout) findViewById(R.id.llpayment);
+                            LinearLayout txView1 = (LinearLayout) findViewById(R.id.paymentDetailsInvisible);
+
+                            txView.setVisibility(View.INVISIBLE);
+                            txView1.setVisibility(View.INVISIBLE);
+                        }
+                        if (order.getOrderEntries().size() > 0) {
+                            orderListView.setAdapter(new BillDetailsListAdapter(BillDetailsActivity.this, order.getOrderEntries()));
+                        }
+                        progressDialog.dismiss();
                     }
-                    if (order.getOrderEntries().size() > 0) {
-                        orderListView.setAdapter(new BillDetailsListAdapter(BillDetailsActivity.this, order.getOrderEntries()));
-                    }
-                    progressDialog.dismiss();
                 }
 
             }

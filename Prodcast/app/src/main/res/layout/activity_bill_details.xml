@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--<ScrollView
-
     android:layout_width="match_parent"
     android:layout_height="match_parent">-->
 <RelativeLayout
@@ -42,7 +41,7 @@
             <businessObjects.font_design.NewTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="8dp"
                 android:layout_weight="1"
@@ -52,7 +51,7 @@
             <businessObjects.font_design.NewTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="8dp"
                 android:layout_weight="1"
@@ -70,6 +69,7 @@
                 android:id="@+id/distName"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:textColor="@color/colorPrimaryDark"
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:padding="3dp"
@@ -82,6 +82,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="3dp"
                 android:layout_weight="1" />
@@ -98,6 +99,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -109,6 +111,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -126,6 +129,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="3dp"
                 android:layout_weight="1"/>
@@ -135,6 +139,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="3dp"
                 android:layout_weight="1"/>
@@ -151,6 +156,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -162,6 +168,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -186,12 +193,14 @@
                 android:layout_marginTop="20dp"
                 android:padding="3dp"
                 android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="Order No :"/>
 
             <businessObjects.font_design.NewTextView
                 android:id="@+id/orderNo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:layout_marginTop="20dp"
                 android:padding="3dp"
@@ -211,6 +220,7 @@
                 android:gravity="fill"
                 android:padding="3dp"
                 android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="Bill Date:"
 
                 />
@@ -219,6 +229,7 @@
                 android:id="@+id/billDate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -238,12 +249,14 @@
                 android:padding="3dp"
                 android:layout_weight="1"
                 android:text="Sales Rep :"
+                android:textColor="@color/colorPrimaryDark"
                 />
 
             <businessObjects.font_design.NewTextView
                 android:id="@+id/salesRep"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -261,6 +274,7 @@
                 android:gravity="fill"
                 android:padding="3dp"
                 android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="Discount :"
                 />
 
@@ -268,6 +282,7 @@
                 android:id="@+id/discount"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -286,6 +301,7 @@
                 android:gravity="fill"
                 android:padding="3dp"
                 android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="Total  :"
                 />
 
@@ -293,6 +309,7 @@
                 android:id="@+id/total"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -311,6 +328,7 @@
                 android:gravity="fill"
                 android:padding="3dp"
                 android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="Balance  :"
                 />
 
@@ -318,6 +336,7 @@
                 android:id="@+id/balance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -337,6 +356,7 @@
             <businessObjects.font_design.NewTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:paddingTop="5dp"
                 android:text="Order Details" />
 
@@ -350,7 +370,7 @@
             <businessObjects.font_design.NewTextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="2"
@@ -360,7 +380,7 @@
             <businessObjects.font_design.NewTextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="0.5"
@@ -370,7 +390,7 @@
             <businessObjects.font_design.NewTextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="1"
@@ -396,7 +416,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/subTotal"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="1"
@@ -418,6 +438,7 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:paddingTop="5dp"
                 android:text="Payment Details" />
 
@@ -433,7 +454,7 @@
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="0.9"
@@ -443,7 +464,7 @@
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="2"
@@ -453,6 +474,7 @@
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/paymentAmount"
                 android:gravity="center"
                 android:padding="5dp"
@@ -476,19 +498,16 @@
               style="@style/submitButton"
               android:text="Close"
               />
-
           <Button
-
               android:id="@+id/cloneOrder"
               style="@style/submitButton"
               android:text="CloneOrder"
               android:layout_alignParentRight="true"
               />
-
       </LinearLayout>-->
 
     </LinearLayout>
 
 
 </RelativeLayout>
-<!--</ScrollView> -->
+    <!--</ScrollView> -->

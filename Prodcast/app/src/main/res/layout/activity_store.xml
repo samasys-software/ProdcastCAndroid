@@ -23,7 +23,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="Select Store"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/relativeLayout"
         android:layout_alignParentTop="true"
-       android:layout_alignParentLeft="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
         <ListView

@@ -94,7 +94,7 @@ public class RegisterActivity extends ProdcastCBaseActivity {
         Country selectedCountry = (Country) country.getSelectedItem();
         String selectedCountryId = selectedCountry.getCountryId();
 
-        String mobileNumber=mobilePhone.getText().toString();
+        final String mobileNumber=mobilePhone.getText().toString();
         String pin=pinNumber.getText().toString();
         String confirmPinNumber=confirmPin.getText().toString();
         boolean cancelled=checkValid(ctry,mobileNumber,pin,confirmPinNumber);
@@ -109,20 +109,29 @@ public class RegisterActivity extends ProdcastCBaseActivity {
             registrationDTO.enqueue(new Callback<CustomerLoginDTO<CustomerRegistration>>() {
                 @Override
                 public void onResponse(Call<CustomerLoginDTO<CustomerRegistration>> call, Response<CustomerLoginDTO<CustomerRegistration>> response) {
-                    String responseString = null;
-                    CustomerLoginDTO<CustomerRegistration> dto = response.body();
-                    if (dto.isError()) {
-                       // System.out.println(dto.getErrorMessage());
-                        progressDialog.dismiss();
-                    } else {
+                    if(response.isSuccessful()) {
+                        CustomerLoginDTO<CustomerRegistration> dto = response.body();
+                        if (dto.isError()) {
+                            // System.out.println(dto.getErrorMessage());
 
-                      //  Toast.makeText(context, "Successfully Registered", Toast.LENGTH_LONG).show();
-                        //CustomerRegistration cust1 = dto.getResult();
-                        SessionInformations.getInstance().setRegisteredCustomer(dto.getResult());
-                        Intent intent = new Intent(RegisterActivity.this, VerifyPinActivity.class);
-                        startActivity(intent);
-                        progressDialog.dismiss();
 
+                            progressDialog.dismiss();
+                            mobilePhone.setError(dto.getErrorMessage());
+                            focusView = mobilePhone;
+                            focusView.requestFocus();
+                            return;
+                        } else {
+
+                            Toast.makeText(context, "Successfully Registered", Toast.LENGTH_LONG).show();
+                            //CustomerRegistration cust1 = dto.getResult();
+                            SessionInformations.getInstance().setRegisteredCustomer(dto.getResult());
+                            Intent intent = new Intent(RegisterActivity.this, VerifyPinActivity.class);
+                            startActivity(intent);
+
+                            progressDialog.dismiss();
+                            attemptClear();
+
+                        }
                     }
 
                 }
@@ -142,6 +151,11 @@ public class RegisterActivity extends ProdcastCBaseActivity {
 
 
     public void attemptClear(){
+        country.setSelection(0);
+        mobilePhone.setText("");
+        pinNumber.setText("");
+        confirmPin.setText("");
+
 
     }
 

@@ -68,6 +68,7 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
     private static final String TAG = "OrderHistoryActivity";
 
     private NewTextView mDisplayDate1;
+    NewTextView totalAmount,totalPaid,totalBalance,orderTotal,orderBalance;
     private NewTextView mDisplayDate2;
     private DatePickerDialog.OnDateSetListener mDateSetLisyener1;
     private DatePickerDialog.OnDateSetListener mDateSetLisyener2;
@@ -95,6 +96,12 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
         report = (Button) findViewById(R.id.report);
         reset = (Button) findViewById(R.id.reset);
         store = (Spinner) findViewById(R.id.storeSpinner);
+        totalAmount=(NewTextView) findViewById(R.id.billAmt);
+        totalPaid=(NewTextView) findViewById(R.id.totalPaid);
+        totalBalance=(NewTextView) findViewById(R.id.totBalance);
+        orderTotal=(NewTextView) findViewById(R.id.orderTotal);
+        orderBalance=(NewTextView) findViewById(R.id.orderBalance);
+
 
         context=this;
         final ProgressDialog progressDialog=getProgressDialog(context);
@@ -107,6 +114,12 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
 
         ArrayAdapter storeDistributors = new ArrayAdapter(this,R.layout.drop_down_list,allDist);
         storeDistributors.setDropDownViewResource(R.layout.drop_down_list);
+        final String currencySymbol=distributor.getCurrencySymbol();
+        totalAmount.setText("Total Bill Amount("+currencySymbol+")");
+        totalPaid.setText("Total Amount Paid("+currencySymbol+")");
+        totalBalance.setText("Balance("+currencySymbol+")");
+        orderTotal.setText("Total("+currencySymbol+")");
+        orderBalance.setText("Balance("+currencySymbol+")");
 
         //Setting the ArrayAdapter data on the Spinner
         store.setAdapter(storeDistributors);
@@ -276,58 +289,56 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
                 }
                 else if(reportType.equals("today") || reportType.equals("yesterday") || reportType.equals("week"))
                 {
+                    progressDialog.show();
                     Call<CustomerReportDTO> reportDTO = new ProdcastServiceManager().getClient().reportForCustomers(reportType,accessId,startDate,endDate,distributorId,reportId);
                     reportDTO.enqueue(new Callback<CustomerReportDTO>()
                     {
                         @Override
                         public void onResponse(Call<CustomerReportDTO> call, Response<CustomerReportDTO> response)
                         {
-                            CustomerReportDTO dto = response.body();
+                            if(response.isSuccessful()) {
+                                CustomerReportDTO dto = response.body();
 
-                            if (dto.isError())
-                            {
-                                Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
-                            }
-                            else
-                            {
-                                List<Order> customerReport = dto.getResult();
 
-                                if (customerReport.size()>0)
-                                {
-                                    billDetailsList.setAdapter(new CustomerReportAdaptor(OrderHistroyActivity.this, customerReport));
-                                    setSummaryDetails(dto);
+                                if (dto.isError()) {
+                                    getErrorBox(context,dto.getErrorMessage());
+                                    progressDialog.dismiss();
+                                } else {
+                                    List<Order> customerReport = dto.getResult();
 
-                                    RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
-                                    RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
+                                    if (customerReport.size() > 0) {
+                                        billDetailsList.setAdapter(new CustomerReportAdaptor(OrderHistroyActivity.this, customerReport));
+                                        setSummaryDetails(dto);
 
-                                    txtView.setVisibility(View.VISIBLE);
-                                    txtView1.setVisibility(View.VISIBLE);
+                                        RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
+                                        RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
 
-                                    billDetailsList.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                                    {
+                                        txtView.setVisibility(View.VISIBLE);
+                                        txtView1.setVisibility(View.VISIBLE);
 
-                                        @Override
-                                        public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-                                        {
-                                            NewTextView billNumber = (NewTextView) findViewById(R.id.cusBillNo);
-                                            String selectedBillIndex = billNumber.getText().toString();
+                                        billDetailsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                                            Intent intent = new Intent(OrderHistroyActivity.this,BillDetailsActivity.class);
-                                            intent.putExtra("billId",selectedBillIndex);
-                                            startActivity(intent);
-                                        }
-                                    });
-                                }
-                                else
-                                {
-                                    Toast.makeText(context, "No Reports available Please try again..!", Toast.LENGTH_LONG).show();
-                                    //billDetailsList.setEmptyView(findViewById(R.id.billDetailsList));
+                                            @Override
+                                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                                NewTextView billNumber = (NewTextView) findViewById(R.id.cusBillNo);
+                                                String selectedBillIndex = billNumber.getText().toString();
 
-                                    RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
-                                    RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
+                                                Intent intent = new Intent(OrderHistroyActivity.this, BillDetailsActivity.class);
+                                                intent.putExtra("billId", selectedBillIndex);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                    } else {
+                                        Toast.makeText(context, "No Reports available Please try again..!", Toast.LENGTH_LONG).show();
+                                        //billDetailsList.setEmptyView(findViewById(R.id.billDetailsList));
 
-                                    txtView.setVisibility(View.INVISIBLE);
-                                    txtView1.setVisibility(View.INVISIBLE);
+                                        RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
+                                        RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
+
+                                        txtView.setVisibility(View.INVISIBLE);
+                                        txtView1.setVisibility(View.INVISIBLE);
+                                    }
+                                    progressDialog.dismiss();
                                 }
                             }
                         }
@@ -335,6 +346,8 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
                         public void onFailure(Call<CustomerReportDTO> call, Throwable t)
                         {
                             t.printStackTrace();
+                            getAlertBox(context);
+                            progressDialog.dismiss();
                         }
                     });
                 }
@@ -375,59 +388,57 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
                     }
                     else
                     {
+                        progressDialog.show();;
                         Call<CustomerReportDTO> reportDTO = new ProdcastServiceManager().getClient().reportForCustomers(reportType,accessId,startDate,endDate,distributorId,reportId);
                         reportDTO.enqueue(new Callback<CustomerReportDTO>()
                         {
                             @Override
                             public void onResponse(Call<CustomerReportDTO> call, Response<CustomerReportDTO> response)
                             {
-                                CustomerReportDTO dto = response.body();
+                                if(response.isSuccessful()) {
+                                    CustomerReportDTO dto = response.body();
 
-                                if (dto.isError())
-                                {
-                                    Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
-                                }
-                                else
-                                {
-                                    List<Order> customerReport = dto.getResult();
+                                    if (dto.isError()) {
+                                        //Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                                        getErrorBox(context,dto.getErrorMessage());
+                                        progressDialog.dismiss();
+                                    } else {
+                                        List<Order> customerReport = dto.getResult();
 
-                                    if (customerReport.size()>0)
-                                    {
-                                        billDetailsList.setAdapter(new CustomerReportAdaptor(OrderHistroyActivity.this, customerReport));
-                                        setSummaryDetails(dto);
+                                        if (customerReport.size() > 0) {
+                                            billDetailsList.setAdapter(new CustomerReportAdaptor(OrderHistroyActivity.this, customerReport));
+                                            setSummaryDetails(dto);
 
-                                        RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
-                                        RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
+                                            RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
+                                            RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
 
-                                        txtView.setVisibility(View.VISIBLE);
-                                        txtView1.setVisibility(View.VISIBLE);
+                                            txtView.setVisibility(View.VISIBLE);
+                                            txtView1.setVisibility(View.VISIBLE);
 
-                                        billDetailsList.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                                        {
+                                            billDetailsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                                            @Override
-                                            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-                                            {
-                                                NewTextView billNumber = (NewTextView) findViewById(R.id.cusBillNo);
+                                                @Override
+                                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                                    NewTextView billNumber = (NewTextView) findViewById(R.id.cusBillNo);
 
-                                                String selectedBillIndex = billNumber.getText().toString();
+                                                    String selectedBillIndex = billNumber.getText().toString();
 
-                                                Intent intent = new Intent(OrderHistroyActivity.this,BillDetailsActivity.class);
-                                                intent.putExtra("billId",selectedBillIndex);
-                                                startActivity(intent);
-                                            }
-                                        });
-                                    }
-                                    else
-                                    {
-                                        Toast.makeText(context, "No Reports available Please try again..!", Toast.LENGTH_LONG).show();
-                                        //billDetailsList.setEmptyView(findViewById(R.id.billDetailsList));
+                                                    Intent intent = new Intent(OrderHistroyActivity.this, BillDetailsActivity.class);
+                                                    intent.putExtra("billId", selectedBillIndex);
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                        } else {
+                                            Toast.makeText(context, "No Reports available Please try again..!", Toast.LENGTH_LONG).show();
+                                            //billDetailsList.setEmptyView(findViewById(R.id.billDetailsList));
 
-                                        RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
-                                        RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
+                                            RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
+                                            RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
 
-                                        txtView.setVisibility(View.INVISIBLE);
-                                        txtView1.setVisibility(View.INVISIBLE);
+                                            txtView.setVisibility(View.INVISIBLE);
+                                            txtView1.setVisibility(View.INVISIBLE);
+                                        }
+                                        progressDialog.dismiss();
                                     }
                                 }
                             }
@@ -435,6 +446,8 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity implements Adapt
                             public void onFailure(Call<CustomerReportDTO> call, Throwable t)
                             {
                                 t.printStackTrace();
+                                getAlertBox(context);
+                                progressDialog.dismiss();
                             }
                         });
                     }

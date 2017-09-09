@@ -33,16 +33,15 @@
 
 
 
-            <businessObjects.font_design.NewTextView
-                android:id="@+id/productName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-
-                android:gravity="left"
-                android:text="SAMASYS PVT LTD"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="23sp" />
+                <businessObjects.font_design.NewTextView
+                    android:id="@+id/productName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:gravity="left"
+                    android:text="SAMASYS PVT LTD"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="23sp" />
 
                 <businessObjects.font_design.NewTextView
                     android:id="@+id/productPrice"
@@ -80,7 +79,6 @@
                 android:layout_below="@+id/id"
                 android:layout_alignStart="@+id/id"
                 android:layout_marginTop="18dp" />
-
             <TextView
                 android:id="@+id/otherTax"
                 android:layout_width="wrap_content"
@@ -102,7 +100,7 @@
         android:id="@+id/rldivider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#629a1e"
+        android:background="@color/colorPrimary"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_below="@+id/linearmain"
@@ -110,6 +108,3 @@
 
     </RelativeLayout>
 </RelativeLayout>
-
-
-

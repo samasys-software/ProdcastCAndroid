@@ -81,15 +81,18 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
             custDTO.enqueue(new Callback<CustomerDTO>() {
                 @Override
                 public void onResponse(Call<CustomerDTO> call, Response<CustomerDTO> response) {
-                    CustomerDTO dto = response.body();
-                    if (dto.isError()) {
-                      //  Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
-                    } else {
-                        Customer customer = dto.getCustomer();
-                        setBills(customer);
-                        progressDialog.dismiss();
+                    if(response.isSuccessful()) {
+                        CustomerDTO dto = response.body();
+                        if (dto.isError()) {
+                            //  Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                            getErrorBox(context,dto.getErrorMessage());
+                        } else {
+                            Customer customer = dto.getCustomer();
+                            setBills(customer);
+                            progressDialog.dismiss();
 
+                        }
                     }
 
                 }

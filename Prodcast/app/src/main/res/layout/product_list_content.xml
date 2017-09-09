@@ -34,8 +34,8 @@
 
                 android:layout_marginTop="12dp"
                 android:gravity="center"
-                android:text="SAMASYS PVT LTD"
-                android:textColor="#345904"
+
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="23sp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
