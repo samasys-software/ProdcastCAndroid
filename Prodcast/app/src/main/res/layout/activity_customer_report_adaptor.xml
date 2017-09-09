@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cusBillNo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="BILL NO"
+            android:layout_weight="0.5"
+            android:padding="3dp"
+            android:textAllCaps="true"
+            android:textColor="#629a1e"
+            android:background="@drawable/border"/>
+
+        <TextView
+            android:text="BILL DATE"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:layout_width="0dp"
+            android:padding="3dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/cusBillDate"
+            android:textColor="#629a1e"
+            android:background="@drawable/border"/>
+
+        <TextView
+            android:text="Total($)"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:layout_width="0dp"
+            android:padding="3dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/cusTotal"
+            android:textColor="#629a1e"
+            android:background="@drawable/border"/>
+
+        <TextView
+            android:text="Total($)"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:layout_width="0dp"
+            android:padding="3dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/cusBalance"
+            android:textColor="#629a1e"
+            android:background="@drawable/border"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
