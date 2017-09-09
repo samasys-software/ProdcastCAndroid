@@ -1,43 +1,63 @@
 package com.ventruxinformatics.prodcast;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import businessObjects.SessionInformations;
 import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.Distributor;
+import businessObjects.domain.EmployeeDetails;
 import businessObjects.domain.Order;
 import businessObjects.dto.CustomerReportDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OrderHistroyActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class OrderHistroyActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
+{
     Context context;
-    //Spinner reportDates;
+
+    Spinner store;
     Button report,reset;
     ListView billDetailsList;
+
+    String cusReportType = "SummaryReport";
 
     private static final String TAG = "OrderHistoryActivity";
 
@@ -53,18 +73,23 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
         setContentView(R.layout.activity_order_histroy);
         billDetailsList = (ListView) findViewById(R.id.billDetailsList);
 
-        //String[] reportDateList = { "today", "yesterday", "week", "custom"  };
-
         report = (Button) findViewById(R.id.report);
         reset = (Button) findViewById(R.id.reset);
-        //reportDates = (Spinner) findViewById(R.id.reportDateSpinner);
+        store = (Spinner) findViewById(R.id.storeSpinner);
+
         context=this;
 
-        //ArrayAdapter dates = new ArrayAdapter(this,android.R.layout.simple_spinner_item,reportDateList);
-        //dates.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Distributor distributor= SessionInformations.getInstance().getEmployee().getDistributor();
+
+        String dist = distributor.getCompanyName();
+        List<String> allDist = new ArrayList<String>();
+        allDist.add(dist);
+
+        ArrayAdapter storeDistributors = new ArrayAdapter(this,android.R.layout.simple_spinner_item,allDist);
+        storeDistributors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         //Setting the ArrayAdapter data on the Spinner
-        //reportDates.setAdapter(dates);
+        store.setAdapter(storeDistributors);
 
         // Spinner element
         final Spinner spinner = (Spinner) findViewById(R.id.reportDateSpinner);
@@ -117,11 +142,27 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
             @Override
             public void onDateSet(DatePicker datePicker, int syear, int smonth, int sday)
             {
-                smonth = smonth + 1;
-                Log.d(TAG, "onDateSet: date: "+ sday + "/" + smonth + "/" + syear);
 
-                String date1 = sday + "/" + smonth + "/" + syear;
+                int month1 = smonth + 1;
+                String formattedMonth1 = "" + month1;
+                String formattedDayOfMonth1 = "" + sday;
+
+                if(month1 < 10)
+                {
+                    formattedMonth1 = "0" + month1;
+                }
+                if(sday < 10)
+                {
+                    formattedDayOfMonth1 = "0" + sday;
+                }
+
+                smonth = smonth + 1;
+                Log.d(TAG, "onDateSet: date: "+ formattedDayOfMonth1 + "/" + formattedMonth1 + "/" + syear);
+
+                String date1 = formattedDayOfMonth1 + "/" + formattedMonth1 + "/" + syear;
                 mDisplayDate1.setText(date1);
+
+                Toast.makeText(context, date1, Toast.LENGTH_LONG).show();
             }
         };
 
@@ -153,13 +194,33 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
             @Override
             public void onDateSet(DatePicker datePicker, int eyear, int emonth, int eday)
             {
-                emonth = emonth + 1;
-                Log.d(TAG, "onDateSet: date: "+ eday+ "/" + emonth  + "/" + eyear);
 
-                String date2 = eday + "/" + emonth + "/" + eyear;
+                int month2 = emonth + 1;
+                String formattedMonth2 = "" + month2;
+                String formattedDayOfMonth2 = "" + eday;
+
+                if(month2 < 10)
+                {
+                    formattedMonth2 = "0" + month2;
+                }
+                if(eday < 10)
+                {
+                    formattedDayOfMonth2 = "0" + eday;
+                }
+
+                //emonth = emonth + 1;
+                Log.d(TAG, "onDateSet: date: "+ formattedDayOfMonth2+ "/" + formattedMonth2  + "/" + eyear);
+
+                String date2 = formattedDayOfMonth2 + "/" + formattedMonth2 + "/" + eyear;
                 mDisplayDate2.setText(date2);
+
+                Toast.makeText(context, date2, Toast.LENGTH_LONG).show();
             }
         };
+
+        //Calendar cal  = Calendar.getInstance();
+
+        //Toast.makeText(context, "Selected: " + thisDate, Toast.LENGTH_LONG).show();
 
         report.setOnClickListener(new View.OnClickListener()
         {
@@ -167,55 +228,196 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
             public void onClick(View v)
             {
                 String reportType =spinner.getSelectedItem().toString();
+                String reportId = cusReportType;
 
+                EmployeeDetails emp = SessionInformations.getInstance().getEmployee();
+                Distributor distributor = emp.getDistributor();
+
+                long distributorId = distributor.getDistributorId();
                 long accessId= SessionInformations.getInstance().getCustomerDetails().getAccessId();
 
-                Call<CustomerReportDTO> reportDTO = new ProdcastServiceManager().getClient().reportForCustomers(reportType,accessId,null,null,249,"SummaryReport");
-                reportDTO.enqueue(new Callback<CustomerReportDTO>()
+                String startDate;
+                String endDate;
+
+                if (reportType.equals("custom"))
                 {
-                    @Override
-                    public void onResponse(Call<CustomerReportDTO> call, Response<CustomerReportDTO> response)
+                    startDate = mDisplayDate1.getText().toString();
+                    endDate = mDisplayDate2.getText().toString();
+                }
+                else
+                {
+                    startDate = null;
+                    endDate = null;
+                }
+
+                if (reportType.equals("custom") && (startDate.equals("Start Date") || endDate.equals("End Date")))
+                {
+                    Toast.makeText(context, "Please fill mandatory fields", Toast.LENGTH_LONG).show();
+                }
+                else if(reportType.equals("today") || reportType.equals("yesterday") || reportType.equals("week"))
+                {
+                    Call<CustomerReportDTO> reportDTO = new ProdcastServiceManager().getClient().reportForCustomers(reportType,accessId,startDate,endDate,distributorId,reportId);
+                    reportDTO.enqueue(new Callback<CustomerReportDTO>()
                     {
-                        CustomerReportDTO dto = response.body();
-
-                        if (dto.isError())
+                        @Override
+                        public void onResponse(Call<CustomerReportDTO> call, Response<CustomerReportDTO> response)
                         {
-                            Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
-                        }
-                        else
-                        {
-                            List<Order> customerReport = dto.getResult();
+                            CustomerReportDTO dto = response.body();
 
-                            if (customerReport.size()>0)
+                            if (dto.isError())
                             {
-                                billDetailsList.setAdapter(new CustomerReportAdaptor(OrderHistroyActivity.this, customerReport));
-                                setSummaryDetails(dto);
-
-                                RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
-                                RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
-
-                                txtView.setVisibility(View.VISIBLE);
-                                txtView1.setVisibility(View.VISIBLE);
+                                Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
                             }
                             else
                             {
-                                Toast.makeText(context, "No Reports available Please try again..!", Toast.LENGTH_LONG).show();
-                                //billDetailsList.setEmptyView(findViewById(R.id.billDetailsList));
+                                List<Order> customerReport = dto.getResult();
 
-                                RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
-                                RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
+                                if (customerReport.size()>0)
+                                {
+                                    billDetailsList.setAdapter(new CustomerReportAdaptor(OrderHistroyActivity.this, customerReport));
+                                    setSummaryDetails(dto);
 
-                                txtView.setVisibility(View.INVISIBLE);
-                                txtView1.setVisibility(View.INVISIBLE);
+                                    RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
+                                    RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
+
+                                    txtView.setVisibility(View.VISIBLE);
+                                    txtView1.setVisibility(View.VISIBLE);
+
+                                    billDetailsList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                                    {
+
+                                        @Override
+                                        public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                                        {
+                                            TextView billNumber = (TextView) findViewById(R.id.cusBillNo);
+                                            String selectedBillIndex = billNumber.getText().toString();
+
+                                            Intent intent = new Intent(OrderHistroyActivity.this,BillDetailsActivity.class);
+                                            intent.putExtra("billId",selectedBillIndex);
+                                            startActivity(intent);
+                                        }
+                                    });
+                                }
+                                else
+                                {
+                                    Toast.makeText(context, "No Reports available Please try again..!", Toast.LENGTH_LONG).show();
+                                    //billDetailsList.setEmptyView(findViewById(R.id.billDetailsList));
+
+                                    RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
+                                    RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
+
+                                    txtView.setVisibility(View.INVISIBLE);
+                                    txtView1.setVisibility(View.INVISIBLE);
+                                }
                             }
                         }
-                    }
-                    @Override
-                    public void onFailure(Call<CustomerReportDTO> call, Throwable t)
+                        @Override
+                        public void onFailure(Call<CustomerReportDTO> call, Throwable t)
+                        {
+                            t.printStackTrace();
+                        }
+                    });
+                }
+                else
+                {
+
+                    SimpleDateFormat currentDate = new SimpleDateFormat("dd/MM/yyyy");
+                    Date todayDate = new Date();
+                    String thisDate = currentDate.format(todayDate);
+
+                    /*try
                     {
-                        t.printStackTrace();
+                        Date sDate = currentDate.parse(startDate);
+                        Date eDate = currentDate.parse(endDate);
+
+                        if (sDate.after(eDate))
+                        {
+                            Toast.makeText(context, "Please select valid dates", Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(context, "Please select valid dates", Toast.LENGTH_LONG).show();
+                        }
                     }
-                });
+                    catch (ParseException e)
+                    {
+                        e.printStackTrace();
+                    }*/
+
+                    //int sd = Integer.parseInt(startDate);
+                    //int ed = Integer.parseInt(endDate);
+                    //int td = Integer.parseInt(thisDate);
+
+                    //if (sd > ed || sd > td  || ed > td)
+                    if (startDate.compareTo(endDate) > 0 || startDate.compareTo(thisDate) > 0 || endDate.compareTo(thisDate) > 0)
+                    {
+                        Toast.makeText(context, "Please select valid dates", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Call<CustomerReportDTO> reportDTO = new ProdcastServiceManager().getClient().reportForCustomers(reportType,accessId,startDate,endDate,distributorId,reportId);
+                        reportDTO.enqueue(new Callback<CustomerReportDTO>()
+                        {
+                            @Override
+                            public void onResponse(Call<CustomerReportDTO> call, Response<CustomerReportDTO> response)
+                            {
+                                CustomerReportDTO dto = response.body();
+
+                                if (dto.isError())
+                                {
+                                    Toast.makeText(context, dto.getErrorMessage(), Toast.LENGTH_LONG).show();
+                                }
+                                else
+                                {
+                                    List<Order> customerReport = dto.getResult();
+
+                                    if (customerReport.size()>0)
+                                    {
+                                        billDetailsList.setAdapter(new CustomerReportAdaptor(OrderHistroyActivity.this, customerReport));
+                                        setSummaryDetails(dto);
+
+                                        RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
+                                        RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
+
+                                        txtView.setVisibility(View.VISIBLE);
+                                        txtView1.setVisibility(View.VISIBLE);
+
+                                        billDetailsList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                                        {
+
+                                            @Override
+                                            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                                            {
+                                                TextView billNumber = (TextView) findViewById(R.id.cusBillNo);
+                                                String selectedBillIndex = billNumber.getText().toString();
+
+                                                Intent intent = new Intent(OrderHistroyActivity.this,BillDetailsActivity.class);
+                                                intent.putExtra("billId",selectedBillIndex);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(context, "No Reports available Please try again..!", Toast.LENGTH_LONG).show();
+                                        //billDetailsList.setEmptyView(findViewById(R.id.billDetailsList));
+
+                                        RelativeLayout txtView1 = (RelativeLayout) findViewById(R.id.summaryTable);
+                                        RelativeLayout txtView = (RelativeLayout) findViewById(R.id.billDetailsTable);
+
+                                        txtView.setVisibility(View.INVISIBLE);
+                                        txtView1.setVisibility(View.INVISIBLE);
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<CustomerReportDTO> call, Throwable t)
+                            {
+                                t.printStackTrace();
+                            }
+                        });
+                    }
+                }
             }
         });
 
@@ -252,14 +454,17 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
 
-        if(item == "custom")
+        if(item.equals("custom"))
         {
-            RelativeLayout txtView = (RelativeLayout)findViewById(R.id.selectDates);
+            LinearLayout txtView = (LinearLayout)findViewById(R.id.selectDates);
             txtView.setVisibility(View.VISIBLE);
         }
-
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        else
+        {
+            LinearLayout txtView = (LinearLayout)findViewById(R.id.selectDates);
+            txtView.setVisibility(View.INVISIBLE);
+        }
+        //Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
 
     @Override

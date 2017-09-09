@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,7 +22,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -53,19 +53,17 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="80dp"
-                    android:background="@drawable/form_box">
+                    android:enabled="false"
+                    android:layout_marginTop="80dp">
 
                     <TextView
                         android:id="@+id/reportType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="visible"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
+                        android:padding="12dp"
+                        android:text="SummaryReport"
                         android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
+                        android:layout_centerHorizontal="true" />
 
                 </RelativeLayout>
 
@@ -90,7 +88,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
                 <!-- DatePicker Start-->
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/selectDates"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -99,31 +97,24 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
                     <TextView
                         android:id="@+id/startDate"
+                        style="@style/datePicker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="@dimen/item_widthLeft"
+                        android:layout_weight="1"
                         android:text="Start Date"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/endDate"
+                        style="@style/datePicker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="@dimen/item_width"
+                        android:layout_marginLeft="50dp"
+                        android:layout_weight="1"
                         android:text="End Date"
                         android:textSize="20dp" />
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <!-- DatePicker End-->
 
@@ -144,7 +135,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     style="@style/submitButton"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="Report"/>
 
                 <Button
@@ -154,7 +145,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_weight="1"
                     style="@style/submitButton"
                     android:layout_marginLeft="50dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="Reset"/>
 
             </LinearLayout>
@@ -188,12 +179,12 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="35dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="35dp">
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/border"
                         android:gravity="center"
@@ -203,7 +194,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/border"
                         android:gravity="center"
@@ -213,7 +204,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/border"
                         android:gravity="center"
@@ -226,8 +217,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="60dp">
 
                     <TextView
                         android:id="@+id/totBillAmt"
@@ -270,7 +261,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <RelativeLayout
                 android:id="@+id/billDetailsTable"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:visibility="invisible">
@@ -284,8 +275,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:text="Bill Details" />
+                        android:text="Bill Details"
+                        android:textSize="16dp" />
 
                 </LinearLayout>
 
@@ -293,7 +284,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/bill2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -342,13 +333,14 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/bill3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="55dp"
-                    android:orientation="horizontal">
+                    android:scrollbars="horizontal"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="45dp">
 
                     <ListView
                         android:id="@+id/billDetailsList"
-                        android:layout_width="wrap_content"
-                        android:layout_height="200dp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center" />
 
