@@ -5,11 +5,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -17,26 +12,15 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-//import com.ventruxinformatics.prodcast.dummy.DummyContent;
-
-import org.w3c.dom.Text;
-
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +29,8 @@ import businessObjects.SessionInformations;
 import businessObjects.domain.Category;
 import businessObjects.domain.OrderDetails;
 import businessObjects.domain.Product;
+
+//import com.ventruxinformatics.prodcast.dummy.DummyContent;
 
 /**
  * A fragment representing a single Product detail screen.
@@ -115,7 +101,9 @@ public class ProductDetailFragment extends Fragment {
         Activity activity = this.getActivity();
         Toolbar appBarLayout = (Toolbar) activity.findViewById(R.id.detail_toolbar);
 
-        appBarLayout.setSubtitle(getSelectedCategory().getCategoryName());
+       // appBarLayout.setTitle(getSelectedCategory().getCategoryName());
+        activity.setTitle(getSelectedCategory().getCategoryName());
+        appBarLayout.setSubtitle("Items");
 
 
     }

@@ -1,39 +1,24 @@
 package com.ventruxinformatics.prodcast;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.View;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageButton;
-import android.widget.ListView;
+import android.view.View;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import businessObjects.SessionInformations;
 import businessObjects.domain.Category;
 import businessObjects.domain.OrderDetails;
-import businessObjects.domain.Product;
 
 /**
  * An activity representing a single Product detail screen. This
@@ -59,7 +44,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
     @Override
     public String getProdcastTitle(){
 
-        return "Product";
+        return " Browse Products ";
     }
 
     @Override
