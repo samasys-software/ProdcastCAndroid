@@ -25,6 +25,8 @@ import businessObjects.SessionInformations;
 import businessObjects.domain.Country;
 import businessObjects.domain.NewCustomerRegistrationDetails;
 import businessObjects.dto.CustomerListDTO;
+import businessObjects.font_design.NewEditText;
+import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,10 +34,10 @@ import retrofit2.Response;
 import static android.R.attr.password;
 
 public class EditRegistrationActivity extends ProdcastCBaseActivity {
-    EditText firstName,lastName,emailAddress,billingAddress1,billingAddress2,billingAddress3,homePhoneNumber,city,state,postalCode;
+    NewEditText firstName,lastName,emailAddress,billingAddress1,billingAddress2,billingAddress3,homePhoneNumber,city,state,postalCode;
     Spinner country;
     CheckBox smsAllowed;
-    TextView skip;
+    NewTextView skip;
     Button edit,cancel;
     boolean valid = false;
     View focusView = null;
@@ -62,23 +64,23 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         Intent intent = getIntent();
 
         //String[] countries = { "IN", "USA"  };
-        firstName=(EditText) findViewById(R.id.firstName);
-        lastName=(EditText) findViewById(R.id.latName);
-        emailAddress=(EditText) findViewById(R.id.emailAddress);
-        billingAddress1=(EditText) findViewById(R.id.billingAddress1);
-        billingAddress2=(EditText) findViewById(R.id.billingAddress2);
-        billingAddress3=(EditText) findViewById(R.id.billingAddress3);
-        homePhoneNumber=(EditText) findViewById(R.id.homePhoneNumber);
-        city=(EditText) findViewById(R.id.city);
-        state=(EditText) findViewById(R.id.state);
-        postalCode=(EditText) findViewById(R.id.postalCode);
+        firstName=(NewEditText) findViewById(R.id.firstName);
+        lastName=(NewEditText) findViewById(R.id.latName);
+        emailAddress=(NewEditText) findViewById(R.id.emailAddress);
+        billingAddress1=(NewEditText) findViewById(R.id.billingAddress1);
+        billingAddress2=(NewEditText) findViewById(R.id.billingAddress2);
+        billingAddress3=(NewEditText) findViewById(R.id.billingAddress3);
+        homePhoneNumber=(NewEditText) findViewById(R.id.homePhoneNumber);
+        city=(NewEditText) findViewById(R.id.city);
+        state=(NewEditText) findViewById(R.id.state);
+        postalCode=(NewEditText) findViewById(R.id.postalCode);
         country=(Spinner)findViewById(R.id.editCountry);
-        skip=(TextView)findViewById(R.id.skipRegisteration);
+        skip=(NewTextView) findViewById(R.id.skipRegisteration);
         smsAllowed=(CheckBox)findViewById(R.id.smsAllowed);
         edit=(Button)findViewById(R.id.edit);
         cancel=(Button)findViewById(R.id.reset);
         List<Country> countryList=SessionInformations.getInstance().getCountries();
-        final ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(EditRegistrationActivity.this, android.R.layout.simple_list_item_1, countryList);
+        final ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(EditRegistrationActivity.this, R.layout.drop_down_list, countryList);
         country.setAdapter(adapter);
 
         Bundle bundle = intent.getExtras();
@@ -111,6 +113,19 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                         city.setText(newCustomerRegistrationDetails.getCity());
                         state.setText(newCustomerRegistrationDetails.getState());
                         postalCode.setText(newCustomerRegistrationDetails.getPostalCode());
+                        ArrayAdapter<Country> adapter =(ArrayAdapter<Country>) country.getAdapter();
+                        int count =  adapter.getCount();
+                        for(int i = 0; i<count; i++)
+                        {
+                            Country aCountry= adapter.getItem(i);
+
+                            if (aCountry.getCountryId().equals(newCustomerRegistrationDetails.getCountry()))
+                            //if(aCountry.getCountryName().equalsIgnoreCase(String.valueOf(state)))
+                            {
+                                country.setSelection(i);
+                                break;
+                            }
+                        }
 
                        // country.setText(newCustomerRegistrationDetails.getCountry());
                         //country.(newCustomerRegistrationDetails.getFirstName());

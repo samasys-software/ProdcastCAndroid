@@ -3,6 +3,7 @@ package com.ventruxinformatics.prodcast;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 
 import android.content.DialogInterface;
@@ -31,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,32 +41,49 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
 import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.Distributor;
 import businessObjects.domain.EmployeeDetails;
 import businessObjects.domain.Order;
 import businessObjects.dto.CustomerReportDTO;
+import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OrderHistroyActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
+public class OrderHistroyActivity extends ProdcastCBaseActivity implements AdapterView.OnItemSelectedListener
 {
     Context context;
 
     Spinner store;
     Button report,reset;
     ListView billDetailsList;
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
+
 
     String cusReportType = "SummaryReport";
 
     private static final String TAG = "OrderHistoryActivity";
 
-    private TextView mDisplayDate1;
-    private TextView mDisplayDate2;
+    private NewTextView mDisplayDate1;
+    private NewTextView mDisplayDate2;
     private DatePickerDialog.OnDateSetListener mDateSetLisyener1;
     private DatePickerDialog.OnDateSetListener mDateSetLisyener2;
+
+    @Override
+    public String getProdcastTitle(){
+        return "Order History";
+    }
+
+
+
+    @Override
+    public boolean getCompanyName(){
+        return false;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -78,6 +97,7 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
         store = (Spinner) findViewById(R.id.storeSpinner);
 
         context=this;
+        final ProgressDialog progressDialog=getProgressDialog(context);
 
         Distributor distributor= SessionInformations.getInstance().getEmployee().getDistributor();
 
@@ -85,8 +105,8 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
         List<String> allDist = new ArrayList<String>();
         allDist.add(dist);
 
-        ArrayAdapter storeDistributors = new ArrayAdapter(this,android.R.layout.simple_spinner_item,allDist);
-        storeDistributors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter storeDistributors = new ArrayAdapter(this,R.layout.drop_down_list,allDist);
+        storeDistributors.setDropDownViewResource(R.layout.drop_down_list);
 
         //Setting the ArrayAdapter data on the Spinner
         store.setAdapter(storeDistributors);
@@ -105,16 +125,16 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
         categories.add("custom");
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.drop_down_list, categories);
 
         // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataAdapter.setDropDownViewResource(R.layout.drop_down_list);
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
 
         //Datepicker
-        mDisplayDate1 = (TextView) findViewById(R.id.startDate);
+        mDisplayDate1 = (NewTextView) findViewById(R.id.startDate);
 
         mDisplayDate1.setOnClickListener(new View.OnClickListener()
         {
@@ -166,7 +186,7 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
             }
         };
 
-        mDisplayDate2 = (TextView) findViewById(R.id.endDate);
+        mDisplayDate2 = (NewTextView) findViewById(R.id.endDate);
 
         mDisplayDate2.setOnClickListener(new View.OnClickListener()
         {
@@ -289,7 +309,7 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
                                         @Override
                                         public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                                         {
-                                            TextView billNumber = (TextView) findViewById(R.id.cusBillNo);
+                                            NewTextView billNumber = (NewTextView) findViewById(R.id.cusBillNo);
                                             String selectedBillIndex = billNumber.getText().toString();
 
                                             Intent intent = new Intent(OrderHistroyActivity.this,BillDetailsActivity.class);
@@ -388,7 +408,8 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
                                             @Override
                                             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                                             {
-                                                TextView billNumber = (TextView) findViewById(R.id.cusBillNo);
+                                                NewTextView billNumber = (NewTextView) findViewById(R.id.cusBillNo);
+
                                                 String selectedBillIndex = billNumber.getText().toString();
 
                                                 Intent intent = new Intent(OrderHistroyActivity.this,BillDetailsActivity.class);
@@ -439,13 +460,13 @@ public class OrderHistroyActivity extends AppCompatActivity implements AdapterVi
 
     public void setSummaryDetails(CustomerReportDTO customerReportDTO)
     {
-        TextView tv = (TextView) findViewById(R.id.totBillAmt);
-        TextView tv1 = (TextView) findViewById(R.id.totAmtPait);
-        TextView tv2 = (TextView) findViewById(R.id.sumBalance);
+        NewTextView tv = (NewTextView) findViewById(R.id.totBillAmt);
+        NewTextView tv1 = (NewTextView) findViewById(R.id.totAmtPait);
+        NewTextView tv2 = (NewTextView) findViewById(R.id.sumBalance);
 
-        tv.setText(String.valueOf(customerReportDTO.getAmount()));
-        tv1.setText(String.valueOf(customerReportDTO.getAmountPaid()));
-        tv2.setText(String.valueOf(customerReportDTO.getOutstandingBalance()));
+        tv.setText(numberFormat.format(customerReportDTO.getAmount()));
+        tv1.setText(numberFormat.format(customerReportDTO.getAmountPaid()));
+        tv2.setText(numberFormat.format(customerReportDTO.getOutstandingBalance()));
     }
 
     @Override

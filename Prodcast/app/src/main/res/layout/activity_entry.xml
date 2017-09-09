@@ -18,13 +18,14 @@
         android:layout_marginTop="10dp"
         />
 
-    <TextView
+    <businessObjects.font_design.NewTextView
         android:id="@+id/total"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
         android:gravity="center"
         android:textSize="16dp"
+
         android:textColor="@color/colorAccent"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -34,7 +35,7 @@
         android:layout_marginTop="110dp">
 
 
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:id="@+id/removebtn"
             android:visibility="gone"
             android:layout_width="40dp"
@@ -48,7 +49,7 @@
 
             />
 
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:id="@+id/productName"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
@@ -61,7 +62,7 @@
             android:textColor="#629a1e"
             android:textSize="16sp" />
 
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:id="@+id/unitPrice"
             android:layout_width="75dp"
             android:gravity="center"
@@ -72,7 +73,7 @@
             android:textSize="16sp"
 
             />
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:id="@+id/orderQuantity"
             android:layout_width="wrap_content"
             android:gravity="center"
@@ -83,7 +84,7 @@
             android:textSize="16sp"
 
             />
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:id="@+id/subTotal"
             android:layout_width="wrap_content"
             android:background="@drawable/small_form"

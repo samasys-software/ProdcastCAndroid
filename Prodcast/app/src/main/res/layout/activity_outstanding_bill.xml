@@ -54,7 +54,7 @@
 
         android:layout_marginRight="10dp">
 
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:id="@+id/billNo"
             android:layout_width="50dp"
             android:layout_height="match_parent"
@@ -69,7 +69,7 @@
             />
 
 
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:text="Status"
             android:gravity="center"
 
@@ -84,7 +84,7 @@
 
 
             />
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:text="BILL DATE"
             android:gravity="center"
             android:textAllCaps="true"
@@ -98,7 +98,7 @@
 
 
             />
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:text="Total($)"
             android:gravity="center"
             android:textAllCaps="true"
@@ -111,7 +111,7 @@
             android:textStyle="bold"
 
             />
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:text="Balance($)"
             android:gravity="center"
             android:textAllCaps="true"

@@ -14,6 +14,7 @@ import java.util.List;
 
 import businessObjects.GlobalUsage;
 import businessObjects.domain.Bill;
+import businessObjects.font_design.NewTextView;
 
 public class OutstandingBillsDetailsAdapter extends BaseAdapter {
 
@@ -54,11 +55,8 @@ public class OutstandingBillsDetailsAdapter extends BaseAdapter {
 
         public class Holder
         {
-            TextView tv;
-            TextView tv1;
-            TextView tv2;
-            TextView tv3;
-            TextView tv4;
+            NewTextView tv,tv1,tv2,tv3,tv4;
+
 
         }
     @Override
@@ -70,11 +68,11 @@ public class OutstandingBillsDetailsAdapter extends BaseAdapter {
         if(convertView==null)
 
             convertView = inflater.inflate(R.layout.activity_bill_details_list, null);
-        holder.tv=(TextView) convertView.findViewById(R.id.billNo);
-        holder.tv1=(TextView) convertView.findViewById(R.id.status);
-        holder.tv2=(TextView) convertView.findViewById(R.id.billDate);
-        holder.tv3=(TextView) convertView.findViewById(R.id.total);
-        holder.tv4=(TextView) convertView.findViewById(R.id.outstandingBalance);
+        holder.tv=(NewTextView) convertView.findViewById(R.id.billNo);
+        holder.tv1=(NewTextView) convertView.findViewById(R.id.status);
+        holder.tv2=(NewTextView) convertView.findViewById(R.id.billDate);
+        holder.tv3=(NewTextView) convertView.findViewById(R.id.total);
+        holder.tv4=(NewTextView) convertView.findViewById(R.id.outstandingBalance);
         //holder.img=(ImageView) rowView.findViewById(R.id.companyLogo);
         //  holder.tv.setText(result[position]);                  //prev. code
         holder.tv.setText(String.valueOf(outstandingBills.get(position).getBillNumber()));

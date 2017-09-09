@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,6 +32,8 @@ import businessObjects.SessionInformations;
 import businessObjects.dto.AdminDTO;
 import businessObjects.dto.CountryDTO;
 import businessObjects.dto.CustomerLoginDTO;
+import businessObjects.font_design.NewEditText;
+import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,10 +44,10 @@ public class LoginActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "MyPrefsFile";
 
 
-    EditText mobileNumber, pinNumber;
+    NewEditText mobileNumber, pinNumber;
 
     Button signInButton, clearButton;
-    TextView forgotPin, register;
+    NewTextView forgotPin, register;
     Spinner country;
     boolean cancel = false;
     View focusView = null;
@@ -57,13 +60,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-        mobileNumber = (EditText) findViewById(R.id.loginMobileNumber);
+        final LayoutInflater inflater = this.getLayoutInflater();
+        mobileNumber = (NewEditText) findViewById(R.id.loginMobileNumber);
         context = this;
-        pinNumber = (EditText) findViewById(R.id.loginPinNumber);
+        pinNumber = (NewEditText) findViewById(R.id.loginPinNumber);
         signInButton = (Button) findViewById(R.id.logIn);
         clearButton = (Button) findViewById(R.id.logClear);
-        forgotPin = (TextView) findViewById(R.id.forgotPin);
-        register = (TextView) findViewById(R.id.register);
+        forgotPin = (NewTextView) findViewById(R.id.forgotPin);
+        register = (NewTextView) findViewById(R.id.register);
 
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
         country = (Spinner) findViewById(R.id.country);
@@ -82,7 +86,9 @@ public class LoginActivity extends AppCompatActivity {
                     defaultCountry.setCountryId("");
                     defaultCountry.setCountryName("Select Country");
                     countryList.add(0, defaultCountry  );
-                    ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(LoginActivity.this, android.R.layout.simple_list_item_1, countryList);
+
+
+                    ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(LoginActivity.this,R.layout.drop_down_list, countryList);
                     country.setAdapter(adapter);
 
                 }

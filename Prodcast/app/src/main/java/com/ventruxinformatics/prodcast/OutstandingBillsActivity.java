@@ -23,6 +23,7 @@ import businessObjects.domain.Customer;
 import java.util.List;
 
 import businessObjects.SessionInformations;
+import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,8 +53,8 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         progressDialog=getProgressDialog(context);
         listHistroy=(ListView) findViewById(R.id.billsListView);
         newOrderPin = (Button) findViewById(R.id.newOrderPin);
-        TextView total=(TextView) findViewById(R.id.total);
-        TextView outstandingbalance=(TextView) findViewById(R.id.outstandingBalance);
+        NewTextView total=(NewTextView) findViewById(R.id.total);
+        NewTextView outstandingbalance=(NewTextView) findViewById(R.id.outstandingBalance);
         String currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         total.setText("Total("+currencySymbol+")");
         outstandingbalance.setText("Balance("+currencySymbol+")");
@@ -116,7 +117,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    TextView c = (TextView) view.findViewById(R.id.billNo);
+                    NewTextView c = (NewTextView) view.findViewById(R.id.billNo);
                     String selectedBillIndex = c.getText().toString();
                   //  System.out.println(selectedBillIndex);
                     Intent intent = new Intent(OutstandingBillsActivity.this, BillDetailsActivity.class);

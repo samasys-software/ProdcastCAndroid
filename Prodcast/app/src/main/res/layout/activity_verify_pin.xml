@@ -20,7 +20,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:layout_width="250dp"
 
             android:layout_height="50dp"
@@ -43,7 +43,7 @@
             android:layout_alignParentEnd="true">
 
 
-            <EditText
+            <businessObjects.font_design.NewEditText
                 android:id="@+id/verficationCode"
                 style="@style/editText"
                 android:hint="Verfication Code"
@@ -55,7 +55,7 @@
     </RelativeLayout>
 
 
-    <TextView
+    <businessObjects.font_design.NewTextView
         android:layout_width="match_parent"
 
         android:layout_height="30dp"

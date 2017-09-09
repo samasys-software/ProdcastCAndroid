@@ -32,6 +32,8 @@ import businessObjects.domain.Bill;
 import businessObjects.domain.OrderDetails;
 import businessObjects.domain.Product;
 import businessObjects.dto.OrderEntryDTO;
+import businessObjects.font_design.NewEditText;
+import businessObjects.font_design.NewTextView;
 
 public class EntriesCustomAdapter extends BaseAdapter {
 
@@ -41,8 +43,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
     int count=0;
     Context context;
     LayoutInflater inflater;
-    EditText qty;
-    TextView subTotal,productName,unitPrice;
+
     ImageButton rmv;
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
 
@@ -78,9 +79,9 @@ public class EntriesCustomAdapter extends BaseAdapter {
 
     public  class Holder
     {
-        TextView tv,tv1,tv2;
+        NewTextView tv,tv1,tv2;
         ImageButton img;
-        EditText qty;
+        NewEditText qty;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -122,10 +123,10 @@ public class EntriesCustomAdapter extends BaseAdapter {
                 }
             });
 
-            holder.tv = (TextView) convertView.findViewById(R.id.productName);
-            holder.tv1 = (TextView) convertView.findViewById(R.id.unitPrice);
-            holder.qty=(EditText) convertView.findViewById(R.id.orderQuantity);
-            holder.tv2= (TextView) convertView.findViewById(R.id.subTotal);
+            holder.tv = (NewTextView) convertView.findViewById(R.id.productName);
+            holder.tv1 = (NewTextView) convertView.findViewById(R.id.unitPrice);
+            holder.qty=(NewEditText) convertView.findViewById(R.id.orderQuantity);
+            holder.tv2= (NewTextView) convertView.findViewById(R.id.subTotal);
 
             convertView.setTag(holder);
             //img.setTag(holder);

@@ -27,7 +27,7 @@
             android:layout_toRightOf="@+id/rlimagemain">
 
 
-            <TextView
+            <businessObjects.font_design.NewTextView
                 android:id="@+id/categoryName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

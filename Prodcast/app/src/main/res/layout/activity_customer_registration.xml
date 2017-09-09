@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_store"
-    tools:context="com.ventruxinformatics.prodcast.CustomerRegistrationActivity">
+    >
 
     <RelativeLayout
         android:id="@+id/rlimageprodcast"
@@ -107,7 +107,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp" />
 
-            <EditText
+            <businessObjects.font_design.NewEditText
                 android:id="@+id/loginPinNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp" />
 
-            <EditText
+            <businessObjects.font_design.NewEditText
                 android:id="@+id/loginMobileNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

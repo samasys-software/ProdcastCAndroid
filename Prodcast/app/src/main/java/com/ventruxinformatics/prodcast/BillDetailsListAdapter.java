@@ -22,6 +22,7 @@ import java.util.List;
 import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
 import businessObjects.domain.OrderEntry;
+import businessObjects.font_design.NewTextView;
 
 /**
  * Created by nandhini on 01/09/17.
@@ -61,12 +62,7 @@ public class BillDetailsListAdapter extends BaseAdapter {
     }
 
     public class Holder {
-        TextView productName;
-        TextView qty;
-        TextView salesTax;
-        TextView otherTax;
-        TextView subTotal;
-        TextView price;
+       NewTextView productName,qty,salesTax,otherTax,subTotal,price;
     }
 
     @Override
@@ -74,12 +70,12 @@ public class BillDetailsListAdapter extends BaseAdapter {
         BillDetailsListAdapter.Holder holder = new BillDetailsListAdapter.Holder();
         if (convertview == null) {
             convertview = inflater.inflate(R.layout.activity_bill_details_list_adapter, null);
-            holder.productName=(TextView) convertview.findViewById(R.id.productName);
-            holder.qty=(TextView) convertview.findViewById(R.id.qty);
-            holder.price=(TextView) convertview.findViewById(R.id.price);
+            holder.productName=(NewTextView) convertview.findViewById(R.id.productName);
+            holder.qty=(NewTextView) convertview.findViewById(R.id.qty);
+            holder.price=(NewTextView) convertview.findViewById(R.id.price);
             //holder.salesTax=(TextView) convertview.findViewById(R.id.salesTax);
             //holder.otherTax=(TextView) convertview.findViewById(R.id.otherTax);
-            holder.subTotal=(TextView) convertview.findViewById(R.id.subTotal);
+            holder.subTotal=(NewTextView) convertview.findViewById(R.id.subTotal);
 
             //order details
             holder.productName.setText(orderDetails.get(position).getProductName());

@@ -5,7 +5,7 @@
 
     android:orientation="horizontal"
     >
-    <TextView
+    <businessObjects.font_design.NewTextView
         android:id="@+id/productName"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -15,7 +15,7 @@
         android:layout_weight="2"
         />
 
-    <TextView
+    <businessObjects.font_design.NewTextView
         android:id="@+id/qty"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -25,7 +25,7 @@
         android:layout_weight="0.5"
         />
 
-    <TextView
+    <businessObjects.font_design.NewTextView
         android:id="@+id/price"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -55,7 +55,7 @@
 -->
 
 
-    <TextView
+    <businessObjects.font_design.NewTextView
         android:id="@+id/subTotal"
         android:layout_width="0dp"
         android:layout_height="match_parent"

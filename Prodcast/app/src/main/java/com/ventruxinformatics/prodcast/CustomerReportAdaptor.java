@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
 import businessObjects.domain.Order;
+import businessObjects.font_design.NewTextView;
 
 public class CustomerReportAdaptor extends BaseAdapter {
 
@@ -17,6 +20,7 @@ public class CustomerReportAdaptor extends BaseAdapter {
     Context context;
     //OrderHistroyActivity activity;
     private static LayoutInflater inflater=null;
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
 
     public CustomerReportAdaptor(OrderHistroyActivity orderHistroyActivity, List<Order> reports)
     {
@@ -52,10 +56,7 @@ public class CustomerReportAdaptor extends BaseAdapter {
 
     public class Holder
     {
-        TextView tv;
-        TextView tv1;
-        TextView tv2;
-        TextView tv3;
+        NewTextView tv,tv1,tv2,tv3;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -63,15 +64,15 @@ public class CustomerReportAdaptor extends BaseAdapter {
         CustomerReportAdaptor.Holder holder=new CustomerReportAdaptor.Holder();
 
             convertView = inflater.inflate(R.layout.activity_customer_report_adaptor, null);
-        holder.tv=(TextView) convertView.findViewById(R.id.cusBillNo);
-        holder.tv1=(TextView) convertView.findViewById(R.id.cusBillDate);
-        holder.tv2=(TextView) convertView.findViewById(R.id.cusTotal);
-        holder.tv3=(TextView) convertView.findViewById(R.id.cusBalance);
+        holder.tv=(NewTextView) convertView.findViewById(R.id.cusBillNo);
+        holder.tv1=(NewTextView) convertView.findViewById(R.id.cusBillDate);
+        holder.tv2=(NewTextView) convertView.findViewById(R.id.cusTotal);
+        holder.tv3=(NewTextView) convertView.findViewById(R.id.cusBalance);
 
         holder.tv.setText(String.valueOf(customerReportList.get(position).getBillNumber()));
         holder.tv1.setText(String.valueOf(customerReportList.get(position).getBillDate()));
-        holder.tv2.setText(String.valueOf(customerReportList.get(position).getTotalAmount()));
-        holder.tv3.setText(String.valueOf(customerReportList.get(position).getOutstandingBalance()));
+        holder.tv2.setText(numberFormat.format(customerReportList.get(position).getTotalAmount()));
+        holder.tv3.setText(numberFormat.format(customerReportList.get(position).getOutstandingBalance()));
 
         return convertView;
     }

@@ -26,6 +26,7 @@ import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.EmployeeDetails;
 import businessObjects.domain.Order;
 import businessObjects.dto.OrderDTO;
+import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,7 +49,7 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
     ListView paymentListView;
     Context context;
     ImageView refresh;
-    TextView subTotal,paymentAmount;
+    NewTextView subTotal,paymentAmount;
     Button Close;
     ProgressDialog progressDialog;
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
@@ -57,12 +58,13 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_details);
-        currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         progressDialog=getProgressDialog(this);
         //   Close=(Button) findViewById(R.id.close);
+        currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
+        progressDialog=getProgressDialog(this);
         paymentListView = (ListView) findViewById(R.id.paymentEntriesAdapter);
-        subTotal=(TextView) findViewById(R.id.subTotal);
-        paymentAmount=(TextView) findViewById(R.id.paymentAmount);
+        subTotal=(NewTextView) findViewById(R.id.subTotal);
+        paymentAmount=(NewTextView) findViewById(R.id.paymentAmount);
         subTotal.setText("Sub Total("+currencySymbol+")");
         paymentAmount.setText("Amount("+currencySymbol+")");
         orderListView = (ListView) findViewById(R.id.orderEntriesAdapter);
@@ -148,20 +150,20 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
           }
       });*/
     public void setBillDetails(Order order){
-        TextView tv = (TextView) findViewById(R.id.distName);
-        TextView tv1 = (TextView) findViewById(R.id.custName);
-        TextView tv2 = (TextView) findViewById(R.id.distAddress);
-        TextView tv3 = (TextView) findViewById(R.id.custAddress);
-        TextView tv4 = (TextView) findViewById(R.id.distAddress1);
-        TextView tv5 = (TextView) findViewById(R.id.custAddress1);
-        TextView tv6 = (TextView) findViewById(R.id.distPhonenumber);
-        TextView tv7 = (TextView) findViewById(R.id.custPhonenumber);
-        TextView orderNo = (TextView) findViewById(R.id.orderNo);
-        TextView billDate = (TextView) findViewById(R.id.billDate);
-        TextView total = (TextView) findViewById(R.id.total);
-        TextView salesRep = (TextView) findViewById(R.id.salesRep);
-        TextView balance = (TextView) findViewById(R.id.balance);
-        TextView discount = (TextView) findViewById(R.id.discount);
+        NewTextView tv = (NewTextView) findViewById(R.id.distName);
+        NewTextView tv1 = (NewTextView) findViewById(R.id.custName);
+        NewTextView tv2 = (NewTextView) findViewById(R.id.distAddress);
+        NewTextView tv3 = (NewTextView) findViewById(R.id.custAddress);
+        NewTextView tv4 = (NewTextView) findViewById(R.id.distAddress1);
+        NewTextView tv5 = (NewTextView) findViewById(R.id.custAddress1);
+        NewTextView tv6 = (NewTextView) findViewById(R.id.distPhonenumber);
+        NewTextView tv7 = (NewTextView) findViewById(R.id.custPhonenumber);
+        NewTextView orderNo = (NewTextView) findViewById(R.id.orderNo);
+        NewTextView billDate = (NewTextView) findViewById(R.id.billDate);
+        NewTextView total = (NewTextView) findViewById(R.id.total);
+        NewTextView salesRep = (NewTextView) findViewById(R.id.salesRep);
+        NewTextView balance = (NewTextView) findViewById(R.id.balance);
+        NewTextView discount = (NewTextView) findViewById(R.id.discount);
         tv.setText(order.getDistributorName());
         tv2.setText(order.getDistributor().getAddress1() + " " + order.getDistributor().getAddress2() + " " + order.getDistributor().getAddress3());
         tv4.setText(order.getDistributor().getCity() + " " + order.getDistributor().getState() + " " + order.getDistributor().getPostalCode());

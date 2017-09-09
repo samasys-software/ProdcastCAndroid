@@ -21,6 +21,7 @@ import businessObjects.domain.CustomerRegistration;
 
 import businessObjects.SessionInformations;
 import businessObjects.dto.CustomerLoginDTO;
+import businessObjects.font_design.NewEditText;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,7 +30,7 @@ public class RegisterActivity extends ProdcastCBaseActivity {
     Spinner country;
     Context context;
     boolean cancel=false;
-    EditText mobilePhone,pinNumber,confirmPin;
+    NewEditText mobilePhone,pinNumber,confirmPin;
     Button register,clear;
     View focusView = null;
     ProgressDialog progressDialog;
@@ -54,13 +55,13 @@ public class RegisterActivity extends ProdcastCBaseActivity {
         progressDialog=getProgressDialog(this);
        // String[] country = { "IN", "USA"  };
         country = (Spinner) findViewById(R.id.countryRegister);
-        mobilePhone = (EditText) findViewById(R.id.MobileNumber);
-        pinNumber = (EditText) findViewById(R.id.pin);
-        confirmPin = (EditText) findViewById(R.id.confirmPin);
+        mobilePhone = (NewEditText) findViewById(R.id.MobileNumber);
+        pinNumber = (NewEditText) findViewById(R.id.pin);
+        confirmPin = (NewEditText) findViewById(R.id.confirmPin);
         register = (Button) findViewById(R.id.registeration);
         clear = (Button) findViewById(R.id.clear);
         List<Country> countryList=SessionInformations.getInstance().getCountries();
-        ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(RegisterActivity.this, android.R.layout.simple_list_item_1, countryList);
+        ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(RegisterActivity.this, R.layout.drop_down_list, countryList);
         country.setAdapter(adapter);
 
 
@@ -145,7 +146,7 @@ public class RegisterActivity extends ProdcastCBaseActivity {
     }
 
     public boolean checkValid(int ctry,String mobileNumber,String pin,String confirmPinNumber){
-        //cancel=false;
+        cancel=false;
         if(ctry<=0){
             focusView=country;
             cancel=true;
@@ -169,7 +170,14 @@ public class RegisterActivity extends ProdcastCBaseActivity {
             cancel = true;
             return cancel;
         }
-        if(confirmPinNumber.equals(pin))
+        if(TextUtils.isEmpty(confirmPinNumber))
+        {
+            confirmPin.setError(getString(R.string.error_field_required));
+            focusView=confirmPin;
+            cancel=true;
+            return cancel;
+        }
+        if(!confirmPinNumber.equals(pin))
         {
             confirmPin.setError(getString(R.string.error_field_required));
             focusView=confirmPin;

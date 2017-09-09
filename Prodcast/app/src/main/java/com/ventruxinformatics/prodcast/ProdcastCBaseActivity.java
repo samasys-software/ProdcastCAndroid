@@ -24,6 +24,7 @@ import android.widget.TextView;
 import java.io.File;
 
 import businessObjects.SessionInformations;
+import businessObjects.font_design.NewTextView;
 
 public abstract class ProdcastCBaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,7 +43,7 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
         FrameLayout activityContainer = (FrameLayout) fullView.findViewById(R.id.activity_content);
         getLayoutInflater().inflate(layoutId, activityContainer, true);
         initializeDrawer(fullView);
-        TextView distributorName = (TextView)fullView.findViewById(R.id.distributorName);
+        NewTextView distributorName = (NewTextView) fullView.findViewById(R.id.distributorName);
         boolean companyName=getCompanyName();
         if(companyName){
             distributorName.setText(SessionInformations.getInstance().getEmployee().getDistributor().getCompanyName()+ " - "+getProdcastTitle());

@@ -3,6 +3,11 @@ package com.ventruxinformatics.prodcast;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -26,6 +33,7 @@ import businessObjects.domain.Category;
 import businessObjects.domain.OrderDetails;
 import businessObjects.domain.Product;
 import businessObjects.dto.AdminDTO;
+import businessObjects.font_design.NewTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -168,6 +176,12 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         }
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        setOrderTotal();
+    }
+
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
 
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(SessionInformations.getInstance().getCategoryDetails()));
@@ -227,14 +241,13 @@ public class ProductListActivity extends ProdcastCBaseActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            public final TextView mIdView;
-            //public final TextView mContentView;
+            public final NewTextView mIdView;
             public Category mItem;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.categoryName);
+                mIdView = (NewTextView) view.findViewById(R.id.categoryName);
                // mContentView = (TextView) view.findViewById(R.id.categoryDescription);
             }
 
@@ -243,6 +256,110 @@ public class ProductListActivity extends ProdcastCBaseActivity {
                 return super.toString() + " '" + mIdView.getText() + "'";
             }
         }
+    }
+
+
+    MenuItem menuItem;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        menuItem = menu.findItem(R.id.testAction);
+
+        setOrderTotal();
+
+        return true;
+    }
+
+    public void setOrderTotal()  {
+        int count=0;
+        List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
+
+        if(menuItem != null)
+            menuItem.setIcon(buildCounterDrawable(entries.size()));
+
+/*
+        if( menuItem != null ) {
+            View icon = menuItem.getActionView();
+
+            if( icon == null ) return;
+            final ScaleAnimation growAnim = new ScaleAnimation(1.0f, 1.5f, 1.0f, 1.5f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            final ScaleAnimation shrinkAnim = new ScaleAnimation(1.5f, 1.0f, 1.5f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+
+            growAnim.setDuration(1000);
+            growAnim.start();
+
+            icon.setAnimation(growAnim);
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            icon.setAnimation(shrinkAnim);
+            shrinkAnim.start();
+        }
+*/
+
+    }
+
+    public static Bitmap createImage(int width, int height) {
+
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(bitmap);
+
+        Paint paint = new Paint();
+
+
+        canvas.drawRect(0F, 0F, (float) width, (float) height, paint);
+
+        return bitmap;
+
+    }
+
+
+    private Drawable buildCounterDrawable(int count) {
+        if(count ==0)
+            return new BitmapDrawable(getResources(), createImage(1,1)) ;
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.content_dd_to_cart, null);
+        //view.setBackgroundResource(backgroundImageId);
+        Bitmap bitmap = null;
+
+
+        if (count == 0) {
+            View counterTextPanel = view.findViewById(R.id.count);
+            counterTextPanel.setVisibility(View.GONE);
+            view.setVisibility(View.GONE);
+        } else {
+
+            NewTextView textView = (NewTextView) view.findViewById(R.id.count);
+            textView.setText(" " + count+" ");
+        }
+
+
+        view.measure(
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        int measureWidth = view.getMeasuredWidth();
+        int measureHeight = view.getMeasuredHeight();
+        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+
+
+        view.setDrawingCacheEnabled(true);
+        bitmap=Bitmap.createBitmap(view.getDrawingCache());
+        view.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        view.setDrawingCacheEnabled(false);
+
+
+
+        return new BitmapDrawable(getResources(), bitmap);
+
+        //return view;
     }
 }
 

@@ -21,6 +21,7 @@ import java.util.List;
 import businessObjects.SessionInformations;
 import businessObjects.domain.Category;
 import businessObjects.domain.OrderDetails;
+import businessObjects.font_design.NewTextView;
 
 /**
  * An activity representing a single Product detail screen. This
@@ -160,7 +161,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
 
-                if(menuItem != null)
+        if(menuItem != null)
             menuItem.setIcon(buildCounterDrawable(entries.size()));
 
 /*
@@ -221,7 +222,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             view.setVisibility(View.GONE);
         } else {
 
-            TextView textView = (TextView) view.findViewById(R.id.count);
+            NewTextView textView = (NewTextView) view.findViewById(R.id.count);
             textView.setText(" " + count+" ");
         }
 

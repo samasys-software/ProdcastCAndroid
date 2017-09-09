@@ -10,7 +10,7 @@
 
 
 
-        <TextView
+        <businessObjects.font_design.NewTextView
                 android:id="@+id/productName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
 
                 android:layout_marginTop="10dp"/>
 
-            <TextView
+            <businessObjects.font_design.NewTextView
                 android:id="@+id/unitPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
                 android:layout_marginTop="10dp"/>
 
 
-    <EditText
+    <businessObjects.font_design.NewEditText
         android:id="@+id/qty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
 
         android:inputType="number" />
 
-    <TextView
+    <businessObjects.font_design.NewTextView
                 android:id="@+id/subTotal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

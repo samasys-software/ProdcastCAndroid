@@ -9,13 +9,13 @@
     <LinearLayout
         android:id="@+id/linearmain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
 
         android:layout_marginRight="10dp">
 
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:id="@+id/billNo"
             android:layout_width="50dp"
             android:layout_height="match_parent"
@@ -30,7 +30,7 @@
           />
 
 
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:text="Status"
             android:gravity="center"
             android:textAllCaps="true"
@@ -44,7 +44,7 @@
 
 
             />
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:text="Samasys"
             android:gravity="center"
             android:textAllCaps="true"
@@ -58,9 +58,9 @@
 
 
             />
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:text="Total($)"
-            android:gravity="right"
+            android:gravity="center|right"
             android:textAllCaps="true"
             android:layout_width="75dp"
             android:layout_height="match_parent"
@@ -71,9 +71,9 @@
             android:textStyle="bold"
 
             />
-        <TextView
+        <businessObjects.font_design.NewTextView
             android:text="Total($)"
-            android:gravity="right"
+            android:gravity="center|right"
             android:textAllCaps="true"
             android:layout_width="75dp"
             android:layout_height="match_parent"

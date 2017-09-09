@@ -15,6 +15,7 @@ import businessObjects.connect.ProdcastServiceManager;
 
 import businessObjects.SessionInformations;
 import businessObjects.dto.ProdcastDTO;
+import businessObjects.font_design.NewEditText;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,7 +35,7 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
 
 
     //private UserChangePasswordTask mAuthTask = null;
-    EditText oldPinNumber,newPinNumber,confirmPinNumber;
+    NewEditText oldPinNumber,newPinNumber,confirmPinNumber;
 
     Button submitButton,resetButton;
     boolean cancel = false;
@@ -51,10 +52,13 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
         setContentView(R.layout.activity_change_password);
 
 
-        oldPinNumber = (EditText)findViewById(R.id.oldPinNumber);
+
         context=this;
-        newPinNumber = (EditText)findViewById(R.id.newPinNumber);
-        confirmPinNumber = (EditText)findViewById(R.id.confirmPinNumber);
+
+        oldPinNumber = (NewEditText) findViewById(R.id.oldPinNumber);
+
+        newPinNumber = (NewEditText) findViewById(R.id.newPinNumber);
+        confirmPinNumber = (NewEditText) findViewById(R.id.confirmPinNumber);
         submitButton=(Button) findViewById(R.id.changePasswordSubmit);
         resetButton=(Button) findViewById(R.id.changePasswordReset);
 
