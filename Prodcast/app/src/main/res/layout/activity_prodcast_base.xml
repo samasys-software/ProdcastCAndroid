@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background ="@drawable/green_bg"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout">
     <LinearLayout
@@ -18,12 +18,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:logo="@drawable/logo"
+                android:background="@color/colorPrimaryDark"
                 android:minHeight="?attr/actionBarSize"
                 android:visibility="visible"/>
             <TextView
                 android:id="@+id/distributorName"
                 android:layout_width="match_parent"
                 android:gravity="center"
+                android:textColor="@color/colorInversePrimary"
+                android:background="@color/colorPrimaryDark"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -35,7 +38,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="5dp"
-            android:background="@drawable/wallpaper"/>
+            />
     </LinearLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

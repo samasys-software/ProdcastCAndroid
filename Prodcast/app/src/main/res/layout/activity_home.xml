@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/green_bg">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,12 +33,12 @@
                 android:layout_height="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_column="0"
                 android:gravity="center"
                 android:layout_marginStart="25sp"
                 android:layout_marginTop="140sp"
-                android:background="@drawable/form_box"
+
                 android:layout_row="0"
                 android:text="Order Entry" />
 
@@ -67,13 +67,13 @@
                 android:layout_height="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_column="1"
                 android:gravity="center"
                 android:layout_marginStart="30sp"
                 android:layout_marginTop="140sp"
                 android:layout_row="0"
-                android:background="@drawable/form_box"
+
                 android:text="Change Password" />
 
         </RelativeLayout>
@@ -108,13 +108,13 @@
                 android:layout_height="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_column="2"
                 android:layout_marginStart="25sp"
                 android:layout_marginTop="300sp"
                 android:layout_row="0"
                 android:gravity="center"
-                android:background="@drawable/form_box"
+
                 android:text="Change Store" />
 
         </RelativeLayout>
@@ -144,13 +144,13 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_column="2"
                 android:layout_marginStart="30sp"
                 android:layout_marginTop="300sp"
                 android:layout_row="1"
                 android:gravity="center"
-                android:background="@drawable/form_box"
+
                 android:text="Order History" />
 
         </RelativeLayout>
@@ -187,13 +187,13 @@
                 android:layout_height="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_column="1"
                 android:layout_marginStart="120sp"
                 android:layout_marginTop="460sp"
                 android:layout_row="1"
                 android:gravity="center"
-                android:background="@drawable/form_box"
+
                 android:text="Edit Registration" />
 
         </RelativeLayout>
