@@ -39,7 +39,6 @@
         android:layout_marginRight="4dp"
         android:layout_marginTop="10dp"
         android:hint="Enter Quantity"
-
         android:inputType="number" />
 
     <businessObjects.font_design.NewTextView

@@ -18,7 +18,7 @@
             android:layout_weight="0.5"
             android:padding="3dp"
             android:textAllCaps="true"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"/>
 
         <businessObjects.font_design.NewTextView
@@ -30,31 +30,31 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/cusBillDate"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"/>
 
         <businessObjects.font_design.NewTextView
             android:text="Total($)"
-            android:gravity="center"
+            android:gravity="center|right"
             android:textAllCaps="true"
             android:layout_width="0dp"
             android:padding="3dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/cusTotal"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"/>
 
         <businessObjects.font_design.NewTextView
-            android:text="Total($)"
-            android:gravity="center"
+            android:text="Balance($)"
+            android:gravity="center|right"
             android:textAllCaps="true"
             android:layout_width="0dp"
             android:padding="3dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/cusBalance"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border"/>
 
     </LinearLayout>

@@ -10,10 +10,9 @@
             android:id="@+id/removebtn"
             android:visibility="gone"
             android:layout_width="40dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-
             app:srcCompat="@android:drawable/ic_delete"
-
             android:background="@drawable/small_form"
             android:textColor="#629a1e"
             android:textSize="12sp"
@@ -26,17 +25,19 @@
             android:layout_height="wrap_content"
             android:background="@drawable/small_form"
             android:gravity="center"
+            android:layout_weight="1"
             android:text="Salt Lake City"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp" />
         <businessObjects.font_design.NewTextView
             android:id="@+id/unitPrice"
-            android:layout_width="75dp"
+            android:layout_width="wrap_content"
             android:gravity="center"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:background="@drawable/small_form"
             android:text="Salt Lake City"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
 
             />
@@ -44,8 +45,9 @@
             android:id="@+id/orderQuantity"
             android:layout_width="wrap_content"
             android:gravity="center"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/small_form"
             android:textSize="16sp"
 
@@ -53,10 +55,11 @@
         <businessObjects.font_design.NewTextView
             android:id="@+id/subTotal"
             android:layout_width="wrap_content"
+            android:layout_weight="1"
             android:background="@drawable/small_form"
             android:layout_height="wrap_content"
             android:text="0.00"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:gravity="center"
 

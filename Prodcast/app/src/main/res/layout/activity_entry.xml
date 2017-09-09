@@ -39,12 +39,11 @@
             android:id="@+id/removebtn"
             android:visibility="gone"
             android:layout_width="40dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-
             android:gravity="center"
             android:background="@drawable/small_form"
-
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
 
             />
@@ -55,21 +54,22 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/companyDetails"
             android:layout_below="@+id/companyDetails"
-
+            android:layout_weight="1"
             android:background="@drawable/small_form"
             android:gravity="center"
             android:text="Product Name"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp" />
 
         <businessObjects.font_design.NewTextView
             android:id="@+id/unitPrice"
             android:layout_width="75dp"
             android:gravity="center"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:background="@drawable/small_form"
             android:text="Unit Price"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
 
             />
@@ -78,7 +78,8 @@
             android:layout_width="wrap_content"
             android:gravity="center"
             android:layout_height="wrap_content"
-            android:textColor="#629a1e"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimaryDark"
             android:text="Quantity"
             android:background="@drawable/small_form"
             android:textSize="16sp"
@@ -88,9 +89,10 @@
             android:id="@+id/subTotal"
             android:layout_width="wrap_content"
             android:background="@drawable/small_form"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="SubTotal"
-            android:textColor="#629a1e"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:gravity="center"
 
