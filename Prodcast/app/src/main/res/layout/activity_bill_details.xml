@@ -375,7 +375,7 @@
                 android:padding="5dp"
                 android:layout_weight="1"
                 android:text="Price "/>
-            <TextView
+            <!--<TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:visibility="gone"
@@ -390,11 +390,12 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="1"
-                android:text="Other Tax "/>
+                android:text="Other Tax "/>-->
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:id="@+id/subTotal"
 
                 android:gravity="center"
                 android:padding="5dp"
@@ -452,7 +453,7 @@
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
+                android:id="@+id/paymentAmount"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="1"

@@ -12,14 +12,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.List;
 
+import businessObjects.GlobalUsage;
 import businessObjects.domain.Collection;
 
 public class PaymentDetailsListAdapter extends BaseAdapter {
     List<Collection> collections;
     Context context;
     public static LayoutInflater inflater = null;
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
 
     public PaymentDetailsListAdapter(BillDetailsActivity billdetailsActivity, List<Collection> orders) {
         collections = orders;
@@ -59,7 +62,7 @@ public class PaymentDetailsListAdapter extends BaseAdapter {
             holder.paymentAmount=(TextView) convertview.findViewById(R.id.paymentAmount);
             holder.paymentDate.setText(String.valueOf(collections.get(position).getPaymentDate()));
             holder.paymentReceiver.setText(collections.get(position).getEmployeeName());
-            holder.paymentAmount.setText(String.valueOf(collections.get(position).getAmountPaid()));
+            holder.paymentAmount.setText(numberFormat.format(collections.get(position).getAmountPaid()));
         }
         return convertview;
     }

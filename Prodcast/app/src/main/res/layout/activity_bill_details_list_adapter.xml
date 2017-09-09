@@ -34,7 +34,7 @@
         android:padding="3dp"
         android:layout_weight="1"
         />
-    <TextView
+  <!--  <TextView
         android:id="@+id/salesTax"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -52,7 +52,7 @@
         android:padding="3dp"
         android:layout_weight="1"
         />
-
+-->
 
 
     <TextView
@@ -60,7 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:background="@drawable/border"
-        android:gravity="center"
+        android:gravity="right"
         android:padding="3dp"
         android:layout_weight="1"
         />
