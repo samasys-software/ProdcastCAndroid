@@ -36,12 +36,12 @@ public class BillDetailsListAdapter extends BaseAdapter {
     Context context;
     public static LayoutInflater inflater = null;
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
-    String currencySymbol;
+    //String currencySymbol;
 
     public BillDetailsListAdapter(BillDetailsActivity billdetailsActivity, List<OrderEntry> orders) {
         orderDetails = orders;
         context = billdetailsActivity;
-        currencySymbol= SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
+        //currencySymbol= SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -77,8 +77,8 @@ public class BillDetailsListAdapter extends BaseAdapter {
             holder.productName=(TextView) convertview.findViewById(R.id.productName);
             holder.qty=(TextView) convertview.findViewById(R.id.qty);
             holder.price=(TextView) convertview.findViewById(R.id.price);
-            holder.salesTax=(TextView) convertview.findViewById(R.id.salesTax);
-            holder.otherTax=(TextView) convertview.findViewById(R.id.otherTax);
+            //holder.salesTax=(TextView) convertview.findViewById(R.id.salesTax);
+            //holder.otherTax=(TextView) convertview.findViewById(R.id.otherTax);
             holder.subTotal=(TextView) convertview.findViewById(R.id.subTotal);
 
             //order details
@@ -88,7 +88,7 @@ public class BillDetailsListAdapter extends BaseAdapter {
             holder.price.setText(numberFormat.format(orderDetails.get(position).getUnitPrice()));
             //holder.salesTax.setText(String.valueOf(orderDetails.get(position).getSalesTax()));
             //holder.otherTax.setText(String.valueOf(orderDetails.get(position).getOtherTax()));
-            holder.subTotal.setText(currencySymbol+""+numberFormat.format(orderDetails.get(position).getSubtotal()));
+            holder.subTotal.setText(numberFormat.format(orderDetails.get(position).getSubtotal()));
         }
         return convertview;
     }

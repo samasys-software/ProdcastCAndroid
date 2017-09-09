@@ -48,6 +48,7 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
     ListView paymentListView;
     Context context;
     ImageView refresh;
+    TextView subTotal,paymentAmount;
     Button Close;
     ProgressDialog progressDialog;
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
@@ -60,6 +61,10 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         progressDialog=getProgressDialog(this);
         //   Close=(Button) findViewById(R.id.close);
         paymentListView = (ListView) findViewById(R.id.paymentEntriesAdapter);
+        subTotal=(TextView) findViewById(R.id.subTotal);
+        paymentAmount=(TextView) findViewById(R.id.paymentAmount);
+        subTotal.setText("Sub Total("+currencySymbol+")");
+        paymentAmount.setText("Amount("+currencySymbol+")");
         orderListView = (ListView) findViewById(R.id.orderEntriesAdapter);
         refresh = (ImageView) findViewById(R.id.refresh);
         context = this;

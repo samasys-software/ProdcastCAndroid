@@ -60,7 +60,7 @@
             />
         <TextView
             android:text="Total($)"
-            android:gravity="center"
+            android:gravity="right"
             android:textAllCaps="true"
             android:layout_width="75dp"
             android:layout_height="match_parent"
@@ -73,7 +73,7 @@
             />
         <TextView
             android:text="Total($)"
-            android:gravity="center"
+            android:gravity="right"
             android:textAllCaps="true"
             android:layout_width="75dp"
             android:layout_height="match_parent"
