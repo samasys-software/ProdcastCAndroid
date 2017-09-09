@@ -1,22 +1,17 @@
 package com.ventruxinformatics.prodcast;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
+
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +20,9 @@ import java.util.zip.Inflater;
 import businessObjects.SessionInformations;
 import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.Customer;
-import businessObjects.domain.CustomersLogin;
 import businessObjects.domain.EmployeeDetails;
 import businessObjects.domain.OrderDetails;
 import businessObjects.dto.CustomerDTO;
-import businessObjects.dto.CustomerLoginDTO;
 import businessObjects.dto.OrderDetailDTO;
 import businessObjects.dto.OrderEntryDTO;
 import retrofit2.Call;
@@ -60,6 +53,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
         context=this;
         progressDialog=getProgressDialog(this);
 
+
          List<OrderDetails> entries = SessionInformations.getInstance().getEntry();
         if (entries.size() != 0) {
             final EmployeeDetails emp = SessionInformations.getInstance().getEmployee();
@@ -68,14 +62,44 @@ public class EntryActivity extends ProdcastCBaseActivity {
             //View convertView = (View) inflater.inflate(R.layout.activity_all_products, null);
             //alertDialog.setView(convertView);
             // alertDialog.setTitle("List");
-            final ListView listView = (ListView) findViewById(R.id.listofentries);
+            final SwipeMenuListView swipeMenuListView = (SwipeMenuListView) findViewById(R.id.listofentries);
             final TextView total=(TextView) findViewById(R.id.total);
+
+            final SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+                @Override
+                public void create(SwipeMenu menu) {
+
+                    SwipeMenuItem deleteItem = new SwipeMenuItem(getApplicationContext());
+                    //deleteItem.setBackground(getDrawable(R.drawable.yellow_background));
+                    deleteItem.setWidth(300);
+                    deleteItem.setIcon(R.drawable.icons8);
+                    menu.addMenuItem(deleteItem);
+
+                }
+            };
+
+
+                swipeMenuListView.setMenuCreator(creator);
+                swipeMenuListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                        SessionInformations.getInstance().getEntry().remove(position);
+                        EntriesCustomAdapter entriesCustomAdapter = new EntriesCustomAdapter(EntryActivity.this, SessionInformations.getInstance().getEntry());
+                        swipeMenuListView.setAdapter(entriesCustomAdapter);
+                        entriesCustomAdapter.notifyDataSetChanged();
+
+                        return false;
+                    }
+                });
+
+
 
             order = (Button) findViewById(R.id.order);
             backButton = (Button) findViewById(R.id.backButton);
             final EntriesCustomAdapter adapter = new EntriesCustomAdapter(EntryActivity.this, entries);
             progressDialog.show();
-            listView.setAdapter(adapter);
+            swipeMenuListView.setAdapter(adapter);
             progressDialog.dismiss();
 
 
