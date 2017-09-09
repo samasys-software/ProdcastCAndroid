@@ -2,11 +2,14 @@ package com.ventruxinformatics.prodcast;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -83,11 +86,45 @@ public class EntryActivity extends ProdcastCBaseActivity {
                 swipeMenuListView.setMenuCreator(creator);
                 swipeMenuListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
                     @Override
-                    public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-                        SessionInformations.getInstance().getEntry().remove(position);
-                        EntriesCustomAdapter entriesCustomAdapter = new EntriesCustomAdapter(EntryActivity.this, SessionInformations.getInstance().getEntry());
-                        swipeMenuListView.setAdapter(entriesCustomAdapter);
-                        entriesCustomAdapter.notifyDataSetChanged();
+                    public boolean onMenuItemClick( final int position, SwipeMenu menu, int index) {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                        alert.setTitle("Prodcast Notification");
+                        alert.setMessage("This Order Has Been Deleted Permanently...Do You Want To Continue?");
+                        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                //alert.show();
+
+
+                                SessionInformations.getInstance().getEntry().remove(position);
+                                if(SessionInformations.getInstance().getEntry().size() >0) {
+                                    EntriesCustomAdapter entriesCustomAdapter = new EntriesCustomAdapter(EntryActivity.this, SessionInformations.getInstance().getEntry());
+                                    swipeMenuListView.setAdapter(entriesCustomAdapter);
+                                    entriesCustomAdapter.notifyDataSetChanged();
+                                }
+                                else{
+                                    Toast.makeText(context,"Cart is Empty",Toast.LENGTH_LONG);
+                                    dialog.dismiss();
+                                    finish();
+                                }
+
+
+
+
+                                // Toast.makeText(context,"Your Order has Been Deleted Successfully",Toast.LENGTH_LONG);
+                                //SessionInformations.getInstance().setEntry(orderEntries);
+
+                            }
+                        });
+                        alert.show();
+
 
                         return false;
                     }
@@ -112,6 +149,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
             backButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     finish();
 
 

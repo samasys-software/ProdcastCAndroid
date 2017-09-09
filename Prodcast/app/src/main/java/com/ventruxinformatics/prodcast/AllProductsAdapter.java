@@ -1,27 +1,17 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
-import businessObjects.domain.Bill;
 import businessObjects.domain.Product;
 
 public class AllProductsAdapter extends BaseAdapter {
@@ -88,7 +78,7 @@ public class AllProductsAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.activity_all_products, parent,false);
             //holder.tv = (TextView) convertView.findViewById(R.id.id);
             holder.tv1 = (TextView) convertView.findViewById(R.id.productName);
-            holder.tv2 = (TextView) convertView.findViewById(R.id.unitPrice);
+            holder.tv2 = (TextView) convertView.findViewById(R.id.productPrice);
             holder.tv3 = (TextView) convertView.findViewById(R.id.productDescription);
             //holder.tv4 = (TextView) convertView.findViewById(R.id.otherTax);
             convertView.setTag(holder);
@@ -99,13 +89,9 @@ public class AllProductsAdapter extends BaseAdapter {
         holder.position=position;
         Product product=products.get(holder.position);
         String productName=product.getProductName();
-        if(!product.getSalesTax().equals("0")){
+        if(!product.getSalesTax().equals("0") || !product.getOtherTax().equals("0")){
             productName=product.getProductName()+" *";
 
-        }
-        if(!product.getOtherTax().equals("0"))
-        {
-            productName=product.getProductName()+" *";
         }
         //holder.tv.setText(String.valueOf(product.getId()));
         float unitPrice=product.getUnitPrice();
@@ -113,8 +99,8 @@ public class AllProductsAdapter extends BaseAdapter {
             unitPrice=product.getRetailPrice();
 
         }
-        holder.tv1.setText(productName+" - "+currencySymbol+""+numberFormat.format(unitPrice));
-        //holder.tv2.setText();
+        holder.tv1.setText(productName);
+        holder.tv2.setText(currencySymbol+numberFormat.format(unitPrice));
         holder.tv3.setText(String.valueOf(product.getProductDesc()));
        // holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));
 
