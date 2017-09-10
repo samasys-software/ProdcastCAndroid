@@ -1,6 +1,7 @@
 package businessObjects;
 
-import businessObjects.domain.Bill;
+import java.util.List;
+
 import businessObjects.domain.Category;
 import businessObjects.domain.Country;
 import businessObjects.domain.Customer;
@@ -10,11 +11,6 @@ import businessObjects.domain.Distributor;
 import businessObjects.domain.EmployeeDetails;
 import businessObjects.domain.OrderDetails;
 import businessObjects.domain.Product;
-import businessObjects.dto.OrderEntryDTO;
-
-import org.json.JSONObject;
-
-import java.util.List;
 
 /**
  * Created by God on 4/22/2017.
@@ -110,6 +106,7 @@ public class SessionInformations {
     }
 
     public void setEntry(List<OrderDetails> entry) {
+
         this.entry = entry;
     }
 

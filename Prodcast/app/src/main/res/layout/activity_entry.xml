@@ -2,99 +2,98 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <LinearLayout android:id="@+id/reviewOrderHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+
+
     <Button
         android:id="@+id/order"
         style="@style/submitButton"
         android:text="Submit Order"
-        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+
         />
 
     <Button
 
         android:id="@+id/backButton"
         style="@style/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Back"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
+        android:layout_weight="1"
         />
 
     <TextView
         android:id="@+id/total"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
         android:gravity="center"
-        android:textSize="16dp"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:layout_weight="1"/>
 
-        android:textColor="@color/colorAccent"/>
-
+    </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="horizontal" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="110dp">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reviewOrderHeader"
+        android:id="@+id/reviewOrderTableHeader"
+        android:layout_marginTop="10dp">
 
 
-        <TextView
-            android:id="@+id/removebtn"
-            android:visibility="gone"
-            android:layout_width="40dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@drawable/small_form"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-
-            />
 
         <TextView
             android:id="@+id/productName"
-            android:layout_width="140dp"
             android:layout_height="wrap_content"
+            android:layout_width="0dp"
             android:layout_alignLeft="@+id/companyDetails"
             android:layout_below="@+id/companyDetails"
             android:layout_weight="1"
-            android:background="@drawable/small_form"
             android:gravity="center"
             android:text="Product Name"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp" />
+            android:background="@drawable/border_headerends"
+            style="@style/TableHeader"
+            />
 
         <TextView
             android:id="@+id/unitPrice"
-            android:layout_width="75dp"
             android:gravity="center"
-            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
-            android:background="@drawable/small_form"
-            android:text="Unit Price"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-
+            android:text="Price"
+            android:background="@drawable/border_headermiddle"
+            style="@style/TableHeader"
             />
         <TextView
             android:id="@+id/orderQuantity"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/colorPrimaryDark"
+            android:layout_weight="0.5"
             android:text="Quantity"
-            android:background="@drawable/small_form"
-            android:textSize="16sp"
+            android:background="@drawable/border_headermiddle"
+            style="@style/TableHeader"
 
             />
         <TextView
             android:id="@+id/subTotal"
-            android:layout_width="wrap_content"
-            android:background="@drawable/small_form"
-            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_weight="0.75"
             android:layout_height="wrap_content"
             android:text="SubTotal"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:gravity="center"
+            android:background="@drawable/border_headermiddle"
+            style="@style/TableHeader"
 
             />
 
@@ -102,9 +101,10 @@
 
     <com.baoyz.swipemenulistview.SwipeMenuListView
         android:id="@+id/listofentries"
-        android:layout_marginTop="160sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:layout_below="@id/reviewOrderTableHeader">
     </com.baoyz.swipemenulistview.SwipeMenuListView>
 
 </RelativeLayout>

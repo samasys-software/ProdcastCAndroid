@@ -13,7 +13,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:largeHeap="true">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,10 +35,6 @@
         <activity
             android:name=".OrderHistroyActivity"
             android:label="@string/title_activity_order_histroy"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".OutstandingBillsDetailsAdapter"
-            android:label="@string/title_activity_bill_details_list"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".RegisterActivity"
@@ -65,14 +62,6 @@
                 android:value="com.ventruxinformatics.prodcast.ProductListActivity" />
         </activity>
         <activity
-            android:name=".AllProductsAdapter"
-            android:label="@string/title_activity_all_products"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".EntriesCustomAdapter"
-            android:label="@string/title_activity_entries_custom_adapter"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".EntryActivity"
             android:label="@string/title_activity_entry"
             android:theme="@style/AppTheme" />
@@ -80,18 +69,6 @@
             android:name=".BillDetailsActivity"
             android:label="@string/title_activity_bill_details"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".BillDetailsListAdapter"
-            android:label="@string/title_activity_bill_details"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".PaymentDetailsListAdapter"
-            android:label="@string/title_activity_payment_list_adapter"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".ProdcastCBaseActivity"
-            android:label="@string/title_activity_prodcast_cbase"
-            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

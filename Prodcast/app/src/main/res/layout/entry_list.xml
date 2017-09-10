@@ -6,62 +6,50 @@
     android:layout_height="match_parent">
 
 
-        <ImageButton
-            android:id="@+id/removebtn"
-            android:visibility="gone"
-            android:layout_width="40dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_delete"
-            android:background="@drawable/small_form"
-            android:textColor="#629a1e"
-            android:textSize="12sp"
 
-            />
 
         <TextView
             android:id="@+id/productName"
-            android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/small_form"
+            android:layout_width="0dp"
             android:gravity="center"
             android:layout_weight="1"
             android:text="Salt Lake City"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp" />
+            android:background="@drawable/border_entryends"
+            style="@style/TableEntry"
+
+             />
         <TextView
             android:id="@+id/unitPrice"
-            android:layout_width="wrap_content"
             android:gravity="center"
-            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
-            android:background="@drawable/small_form"
             android:text="Salt Lake City"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
+            android:background="@drawable/border_entrymiddle"
+            style="@style/TableEntry"
 
             />
         <EditText
             android:id="@+id/orderQuantity"
-            android:layout_width="wrap_content"
+
+            android:layout_width="0dp"
             android:gravity="center"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/small_form"
-            android:textSize="16sp"
+            android:background="@drawable/border_entrymiddle"
+            style="@style/TableEntry"
 
             />
         <TextView
             android:id="@+id/subTotal"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/small_form"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="0.00"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
             android:gravity="center"
+            android:layout_weight="0.75"
+            android:background="@drawable/border_entrymiddle"
+            style="@style/TableEntry"
 
             />
 

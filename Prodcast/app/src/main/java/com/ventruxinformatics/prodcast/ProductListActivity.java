@@ -269,37 +269,17 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        return super.onOptionsItemSelected(item);
+    }
+
     public void setOrderTotal()  {
         int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
 
         if(menuItem != null)
             menuItem.setIcon(buildCounterDrawable(entries.size()));
-
-/*
-        if( menuItem != null ) {
-            View icon = menuItem.getActionView();
-
-            if( icon == null ) return;
-            final ScaleAnimation growAnim = new ScaleAnimation(1.0f, 1.5f, 1.0f, 1.5f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-            final ScaleAnimation shrinkAnim = new ScaleAnimation(1.5f, 1.0f, 1.5f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-
-            growAnim.setDuration(1000);
-            growAnim.start();
-
-            icon.setAnimation(growAnim);
-
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            icon.setAnimation(shrinkAnim);
-            shrinkAnim.start();
-        }
-*/
-
     }
 
     public static Bitmap createImage(int width, int height) {
