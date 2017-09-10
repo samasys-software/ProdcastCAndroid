@@ -39,15 +39,16 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
         getLayoutInflater().inflate(layoutId, activityContainer, true);
         initializeDrawer(fullView);
         TextView distributorName = (TextView) fullView.findViewById(R.id.distributorName);
+        TextView screenName = (TextView)fullView.findViewById(R.id.screenName);
         boolean companyName=getCompanyName();
         if(companyName){
-            distributorName.setText(SessionInformations.getInstance().getEmployee().getDistributor().getCompanyName()+ " - "+getProdcastTitle());
+            distributorName.setText((SessionInformations.getInstance().getEmployee().getDistributor().getCompanyName()).toUpperCase());
 
         }
-        else{
-            distributorName.setText(getProdcastTitle());
 
-        }
+        screenName.setText(getProdcastTitle().toUpperCase());
+
+
 
         super.setContentView(fullView);
 
