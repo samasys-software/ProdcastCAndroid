@@ -155,23 +155,27 @@
             android:visibility="invisible">
 
             <LinearLayout
+                android:id="@+id/summaryText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="15dp"
                     android:text="Summary"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/summaryHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/summaryText"
                 android:orientation="horizontal">
 
                 <TextView
@@ -179,22 +183,18 @@
                     android:id="@+id/billAmt"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
-                    android:padding="3dp"
-                    android:text="Total"
-                    android:textColor="#000000" />
+                    android:background="@drawable/border_headerends"
+                    style="@style/TableHeader" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:id="@+id/totalPaid"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
-                    android:padding="3dp"
-                    android:text="Payments"
-                    android:textColor="#000000" />
+                    android:background="@drawable/border_headerends"
+                    style="@style/TableHeader" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -203,16 +203,14 @@
                     android:layout_weight="1"
                     android:background="@drawable/border"
                     android:gravity="center"
-                    android:padding="3dp"
-                    android:text="Balance"
-                    android:textColor="#000000" />
+                    style="@style/TableHeader"/>
 
             </LinearLayout>
 
             <LinearLayout
+                android:layout_below="@id/summaryHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="65dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -220,30 +218,24 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
-                    android:padding="3dp"
-                    android:textColor="#000000" />
+                    style="@style/TableEntry" />
 
                 <TextView
                     android:id="@+id/totAmtPait"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
-                    android:padding="3dp"
-                    android:textColor="#000000" />
+                    style="@style/TableEntry"/>
 
                 <TextView
                     android:id="@+id/sumBalance"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
-                    android:padding="3dp"
-                    android:textColor="#000000" />
+                   style="@style/TableEntry" />
 
             </LinearLayout>
 
@@ -272,7 +264,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bill Details"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -280,51 +272,42 @@
                 android:id="@+id/bill2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/bill1">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:background="@drawable/border"
-                    android:gravity="center"
-                    android:padding="3dp"
-
                     android:text="Bill#"
-                    android:textColor="#000000" />
+                    style="@style/TableHeader" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
-                    android:padding="3dp"
                     android:text="Bill Date"
-                    android:textColor="#000000" />
+                    style="@style/TableHeader"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
-                    android:padding="3dp"
                     android:text="Total"
                     android:id="@+id/orderTotal"
-                    android:textColor="#000000" />
+                    style="@style/TableHeader"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:id="@+id/orderBalance"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
-                    android:padding="3dp"
                     android:text="Balance"
-                    android:textColor="#000000" />
+                    style="@style/TableHeader" />
 
             </LinearLayout>
 
@@ -332,9 +315,10 @@
                 android:id="@+id/bill3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
                 android:orientation="horizontal"
-                android:scrollbars="horizontal">
+                android:scrollbars="horizontal"
+                android:layout_below="@id/bill2"
+                >
 
                 <ListView
                     android:id="@+id/billDetailsList"

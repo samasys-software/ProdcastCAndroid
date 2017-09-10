@@ -46,7 +46,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
     @Override
     public String getProdcastTitle(){
 
-        return " Browse Products ";
+        return " Browse Items ";
     }
 
     @Override
@@ -132,7 +132,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            navigateUpTo(new Intent(this, ProductListActivity.class));
+            finish();
             return true;
         }
         else

@@ -6,4 +6,6 @@
     <color name="colorAccent">#345904</color>
     <color name="orange">#F06D2F</color>
     <color name="colorInversePrimary">#FFFFFF</color>
+    <color name="headerBackground">#575757</color>
+    <color name="entryBorder">#E3E3E3</color>
 </resources>

@@ -100,6 +100,7 @@ public class ProductDetailFragment extends Fragment {
 
         Activity activity = this.getActivity();
         Toolbar appBarLayout = (Toolbar) activity.findViewById(R.id.detail_toolbar);
+        setHasOptionsMenu(true);
 
        // appBarLayout.setTitle(getSelectedCategory().getCategoryName());
         activity.setTitle(getSelectedCategory().getCategoryName());
