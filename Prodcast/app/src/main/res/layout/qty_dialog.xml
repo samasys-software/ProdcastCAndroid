@@ -10,54 +10,68 @@
 
 
 
-    <TextView
-        android:id="@+id/productName"
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/unitPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="40dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
+        android:orientation="horizontal">
+        <!--<android.support.design.widget.TextInputLayout
 
-        android:layout_marginTop="10dp"/>
+            android:layout_height="wrap_content"
+            android:layout_width="50dp"
 
-    <TextView
-        android:id="@+id/unitPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            >-->
+            <EditText
+                android:id="@+id/qty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="2dp"
+                android:hint="Enter Quantity"
+                android:minHeight="25dp"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:inputType="number" />
+       <!-- </android.support.design.widget.TextInputLayout>-->
+            <TextView
+                android:id="@+id/subTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:minHeight="25dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:layout_marginTop="5dp"/>
+    </LinearLayout>
 
-        android:minHeight="40dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="10dp"/>
-
-
-    <EditText
-        android:id="@+id/qty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="10dp"
-        android:hint="Enter Quantity"
-        android:inputType="number" />
-
-    <TextView
-        android:id="@+id/subTotal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:minHeight="40dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:inputType="number"
-        android:layout_marginTop="10dp"/>
-
-    <ImageView
-        android:id="@+id/img"
-        android:visibility="invisible"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:tint="@color/colorInversePrimary"
-        android:background="@drawable/ic_shopping_cart_black_24dp"/>
+            <ImageView
+                android:id="@+id/img"
+                android:visibility="invisible"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:tint="@color/colorInversePrimary"
+                android:background="@drawable/ic_shopping_cart_black_24dp"/>
 
 </LinearLayout>

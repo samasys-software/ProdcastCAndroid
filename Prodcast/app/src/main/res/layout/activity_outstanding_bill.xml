@@ -9,7 +9,7 @@
 
 
 
-    <RelativeLayout
+   <!-- <RelativeLayout
         android:id="@+id/rlseprator"
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -20,7 +20,7 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+   --> <RelativeLayout
         android:id="@+id/rloutbilltext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
