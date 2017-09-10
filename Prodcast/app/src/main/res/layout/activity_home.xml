@@ -21,6 +21,7 @@
                 android:layout_height="96sp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
+
                 android:layout_column="0"
                 android:layout_marginStart="25sp"
                 android:layout_marginTop="35sp"
@@ -38,7 +39,8 @@
                 android:gravity="center"
                 android:layout_marginStart="25sp"
                 android:layout_marginTop="140sp"
-
+                android:textAllCaps="true"
+                android:textSize="16dp"
                 android:layout_row="0"
                 android:text="Order Entry" />
 
@@ -73,7 +75,8 @@
                 android:layout_marginStart="30sp"
                 android:layout_marginTop="140sp"
                 android:layout_row="0"
-
+                android:textAllCaps="true"
+                android:textSize="16dp"
                 android:text="Change Password" />
 
         </RelativeLayout>
@@ -114,7 +117,8 @@
                 android:layout_marginTop="300sp"
                 android:layout_row="0"
                 android:gravity="center"
-
+                android:textAllCaps="true"
+                android:textSize="16dp"
                 android:text="Change Store" />
 
         </RelativeLayout>
@@ -150,7 +154,8 @@
                 android:layout_marginTop="300sp"
                 android:layout_row="1"
                 android:gravity="center"
-
+                android:textAllCaps="true"
+                android:textSize="16dp"
                 android:text="Order History" />
 
         </RelativeLayout>
@@ -193,7 +198,8 @@
                 android:layout_marginTop="460sp"
                 android:layout_row="1"
                 android:gravity="center"
-
+                android:textAllCaps="true"
+                android:textSize="16dp"
                 android:text="Edit Registration" />
 
         </RelativeLayout>
