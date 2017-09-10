@@ -1,8 +1,6 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -77,37 +75,6 @@ public class EntriesCustomAdapter extends BaseAdapter {
         {
             holder=new Holder();
             convertView = inflater.inflate(R.layout.entry_list, null);
-            holder.img= (ImageButton) convertView.findViewById(R.id.removebtn);
-            holder.img.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
-                    alert.setTitle("Prodcast Notification");
-                    alert.setMessage("This Order Has Been Deleted Permanently...Do You Want To Continue?");
-                    alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-                    alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                            //alert.show();
-
-                            orderEntries.remove(position);
-
-
-                           notifyDataSetChanged();//notify();
-                           // Toast.makeText(context,"Your Order has Been Deleted Successfully",Toast.LENGTH_LONG);
-                            //SessionInformations.getInstance().setEntry(orderEntries);
-
-                        }
-                    });
-                    alert.show();
-                }
-            });
 
             holder.tv = (TextView) convertView.findViewById(R.id.productName);
             holder.tv1 = (TextView) convertView.findViewById(R.id.unitPrice);
