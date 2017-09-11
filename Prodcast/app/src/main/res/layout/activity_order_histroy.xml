@@ -80,7 +80,13 @@
                     android:layout_weight="1"
                     android:text="Start Date"
                     android:textSize="20dp" />
+                <!--<DatePicker
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
+                    android:id="@+id/startDatePicker">
+
+                </DatePicker>-->
                 <TextView
                     android:id="@+id/endDate"
                     style="@style/datePicker"
@@ -90,6 +96,14 @@
                     android:layout_weight="1"
                     android:text="End Date"
                     android:textSize="20dp" />
+                <!--<DatePicker
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+
+                    android:id="@+id/endDatePicker">
+
+                </DatePicker>-->
+
 
             </LinearLayout>
 
@@ -134,7 +148,7 @@
         <RelativeLayout
             android:id="@+id/summaryTable"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:visibility="invisible">

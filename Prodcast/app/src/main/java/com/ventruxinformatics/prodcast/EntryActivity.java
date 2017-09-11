@@ -16,10 +16,12 @@ import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
 
+import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
 import businessObjects.connect.ProdcastServiceManager;
 import businessObjects.domain.Customer;
@@ -38,6 +40,9 @@ public class EntryActivity extends ProdcastCBaseActivity {
     Button order,backButton;
     ProgressDialog progressDialog;
     Context context;
+    String currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
+    NumberFormat numberFormat= GlobalUsage.getNumberFormat();
+
 
 
     @Override
@@ -58,6 +63,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
         progressDialog=getProgressDialog(this);
 
 
+
          List<OrderDetails> entries = SessionInformations.getInstance().getEntry();
         if (entries.size() != 0) {
             final EmployeeDetails emp = SessionInformations.getInstance().getEmployee();
@@ -67,7 +73,9 @@ public class EntryActivity extends ProdcastCBaseActivity {
             //alertDialog.setView(convertView);
             // alertDialog.setTitle("List");
             final SwipeMenuListView swipeMenuListView = (SwipeMenuListView) findViewById(R.id.listofentries);
-            final TextView total=(TextView) findViewById(R.id.total);
+
+            TextView txtView=(TextView) findViewById(R.id.subTotal);
+            txtView.setText("Sub Tot("+currencySymbol+")");
 
             final SwipeMenuCreator creator = new SwipeMenuCreator() {
 
@@ -85,6 +93,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
 
                 swipeMenuListView.setMenuCreator(creator);
+
                 swipeMenuListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick( final int position, SwipeMenu menu, int index) {
@@ -109,6 +118,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                                     EntriesCustomAdapter entriesCustomAdapter = new EntriesCustomAdapter(EntryActivity.this, SessionInformations.getInstance().getEntry());
                                     swipeMenuListView.setAdapter(entriesCustomAdapter);
                                     entriesCustomAdapter.notifyDataSetChanged();
+                                    getValueForTotal(SessionInformations.getInstance().getEntry());
                                 }
                                 else{
                                     Toast.makeText(context,"Cart is Empty",Toast.LENGTH_LONG);
@@ -138,7 +148,10 @@ public class EntryActivity extends ProdcastCBaseActivity {
             final EntriesCustomAdapter adapter = new EntriesCustomAdapter(EntryActivity.this, entries);
             progressDialog.show();
             swipeMenuListView.setAdapter(adapter);
+            getValueForTotal(entries);
+
             progressDialog.dismiss();
+
 
 
 
@@ -234,5 +247,25 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
 
         }
+    }
+
+    public void getValueForTotal(List<OrderDetails> entries)
+    {
+        final TextView total=(TextView) findViewById(R.id.total);
+        final TextView subTotal=(TextView) findViewById(R.id.totalSubTotal);
+        final TextView tax=(TextView) findViewById(R.id.totalTax);
+        float total_value=0;
+        float sub_total=0;
+        float total_tax=0;
+        for(OrderDetails entry:entries)
+        {
+            total_value=total_value+Float.parseFloat(ProductDetailFragment.calculateTotal(entry.getProduct(),entry.getQuantity()));
+            sub_total=sub_total+ProductDetailFragment.calculateSubTotal(entry.getProduct(),entry.getQuantity());
+            total_tax=total_tax+ProductDetailFragment.calculateTax(entry.getProduct());
+
+        }
+        total.setText("Total Value : "+currencySymbol+""+numberFormat.format(total_value));
+        subTotal.setText("Sub Total : "+currencySymbol+""+numberFormat.format(sub_total));
+        tax.setText("Total Tax: "+currencySymbol+""+numberFormat.format(total_tax));
     }
 }

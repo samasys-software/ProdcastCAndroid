@@ -319,22 +319,45 @@ public class ProductDetailFragment extends Fragment {
 
 
     public static final String calculateTotal(Product pro, int quantity) {
+
+
+        float subTotal=calculateSubTotal(pro,quantity);
+        float tax=calculateTax(pro);
+        double total=subTotal*(1+(tax)/100);
+
+
+        return GlobalUsage.getNumberFormat().format(total);
+
+    }
+    public static final float calculateTax(Product pro) {
+
+        float salesTax = Float.valueOf(pro.getSalesTax());
+         float otherTax = Float.valueOf(pro.getOtherTax());
+        float tax = salesTax + otherTax ;
+
+
+        return tax;
+
+    }
+
+    public static final float calculateSubTotal(Product pro, int quantity) {
         float unitPrice = pro.getUnitPrice();
         float retailPrice = pro.getRetailPrice();
-        float salesTax = Float.valueOf(pro.getSalesTax());
-        float otherTax = Float.valueOf(pro.getOtherTax());
-        double subtotal = 0.0;
+        //float salesTax = Float.valueOf(pro.getSalesTax());
+        // float otherTax = Float.valueOf(pro.getOtherTax());
+        float subtotal = 0;
+
 
 
         //var subtotal = (Number(unitPrice) * Number(quantity)*( 1+(Number(salesTax)+Number(otherTax))/100  )).toFixed(2);
-
         if (SessionInformations.getInstance().getEmployee().getCustomerType().equals("R"))
-            subtotal = (retailPrice * quantity * (1 + (salesTax + otherTax) / 100));
+            subtotal = (retailPrice * quantity);
         else
-            subtotal = (unitPrice * quantity * (1 + (salesTax + otherTax) / 100));
-        return GlobalUsage.getNumberFormat().format(subtotal);
+            subtotal = (unitPrice * quantity);
+        return subtotal;
 
     }
+
 
     private void addProduct(Product product,int quantity) {
 

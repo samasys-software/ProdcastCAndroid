@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import businessObjects.GlobalUsage;
+import businessObjects.SessionInformations;
 import businessObjects.domain.OrderDetails;
 import businessObjects.dto.OrderEntryDTO;
 
@@ -86,7 +87,15 @@ public class EntriesCustomAdapter extends BaseAdapter {
 
             final OrderDetails orders=orderEntries.get(position);
             holder.tv.setText(orders.getProduct().getProductName());
-            holder.tv1.setText(numberFormat.format(orders.getProduct().getUnitPrice()));
+            float price=0;
+            if(SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")){
+                price=orders.getProduct().getRetailPrice();
+            }
+            else{
+                price=orders.getProduct().getUnitPrice();
+            }
+            holder.tv1.setText(numberFormat.format(price));
+
             holder.qty.setText(String.valueOf(orders.getQuantity()));
             holder.tv2.setText(ProductDetailFragment.calculateTotal(orders.getProduct(),Integer.parseInt(holder.qty.getText().toString())));
 

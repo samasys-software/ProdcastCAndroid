@@ -1,0 +1,53 @@
+[9/11, 9:39 AM] Dhaya: n outstanding Bills page - Show the text “Outstanding Bills (<numberofoutstandingbills>)”-done
+[9/11, 9:40 AM] Dhaya: In the next line Display the total value of order ,  SubTotal : <subtotal> Tax : <sumof taxes>  Total :<TotalValue>
+[9/11, 9:41 AM] Dhaya: Currency is not displayed in the review Order
+9/11, 9:42 AM] Dhaya: The report by default when opened should show for Today
+[9/11, 9:42 AM] Dhaya: for this report page
+[9/11, 9:43 AM] Dhaya: make report as separate method
+[9/11, 9:43 AM] Dhaya: and call it
+[9/11, 9:43 AM] Dhaya: in prodcastD i did same way
+[9/11, 9:44 AM] Dhaya: As soon as we select the WEEK or YESTERDAY or TODAY the report has to fire immediately.
+[9/11, 9:41 AM] Dhaya: Show it below one in each line
+[9/11, 9:41 AM] Dhaya: Align Right
+[9/11, 9:42 AM] Dhaya: Report and Reset fonts are different
+
+
+
+
+
+
+
+[9/11, 9:39 AM] Dhaya: Change the color of CANCEL and ADD TO ORDER links
+[9/11, 9:48 AM] Dhaya: Print : https://developer.android.com/reference/android/graphics/pdf/PdfDocument.html
+[9/11, 9:50 AM] Dhaya: still one more page modification there
+[9/11, 9:50 AM] Dhaya: After the Order is Saved show a Toast Message
+[9/11, 9:50 AM] Dhaya: Rename title for Orders Screen to Checkout
+[9/11, 9:50 AM] Dhaya: order
+[9/11, 9:53 AM] Dhaya: Change the Font in Navigation Drawer
+[9/11, 10:37 AM] Dhaya: Order no left side
+[9/11, 10:38 AM] Dhaya: Down same like this
+Item subtotal
+Tax
+Total
+[9/11, 10:38 AM] Dhaya: Right aligned
+
+
+[9/11, 9:46 AM] Dhaya: Order Details page-done
+[9/11, 9:46 AM] Dhaya: Remove Customer Data-done
+[9/11, 9:46 AM] Dhaya: Move distributor to right-done
+[9/11, 9:46 AM] Dhaya: mmmm sure
+[9/11, 9:47 AM] Dhaya: move Order No. , Bill Date , Total and Balance
+[9/11, 9:47 AM] Dhaya: To the left of Distributor
+[9/11, 9:47 AM] Dhaya: Sub Total is coming in two lines . Make it come in a single line .
+[9/11, 9:47 AM] Dhaya: Use Sub Tot. Instead of Sub Total
+[9/11, 9:47 AM] Dhaya: Remove Refresh Button
+[9/11, 9:48 AM] Dhaya: Add a Print icon at the top
+
+
+[9/11, 9:39 AM] Dhaya: Font for the Dialog Title , Add to Order , Cancel button is different - Change it
+[9/11, 9:39 AM] Dhaya: change the font in the alert dialog box
+[9/11, 9:40 AM] Dhaya: https://stackoverflow.com/questions/13051956/how-to-set-custom-font-for-alert-dialog-in-android
+
+
+
+[9/11, 9:44 AM] Dhaya: start date should be a text box with calendar icon at the right end . Same for End Date as well.

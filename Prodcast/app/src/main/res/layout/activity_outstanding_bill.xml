@@ -40,7 +40,7 @@
             android:id="@+id/newOrderPin"
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
-            android:text="New Order"
+            android:text="+"
             android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
