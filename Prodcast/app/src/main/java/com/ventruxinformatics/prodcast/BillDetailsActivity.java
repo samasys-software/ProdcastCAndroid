@@ -141,15 +141,16 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
 
           }
       });*/
+
     public void setBillDetails(Order order){
         TextView tv = (TextView) findViewById(R.id.distName);
-        TextView tv1 = (TextView) findViewById(R.id.custName);
+        //  TextView tv1 = (TextView) findViewById(R.id.custName);
         TextView tv2 = (TextView) findViewById(R.id.distAddress);
-        TextView tv3 = (TextView) findViewById(R.id.custAddress);
+        //  TextView tv3 = (TextView) findViewById(R.id.custAddress);
         TextView tv4 = (TextView) findViewById(R.id.distAddress1);
-        TextView tv5 = (TextView) findViewById(R.id.custAddress1);
+        //   TextView tv5 = (TextView) findViewById(R.id.custAddress1);
         TextView tv6 = (TextView) findViewById(R.id.distPhonenumber);
-        TextView tv7 = (TextView) findViewById(R.id.custPhonenumber);
+        //  TextView tv7 = (TextView) findViewById(R.id.custPhonenumber);
         TextView orderNo = (TextView) findViewById(R.id.orderNo);
         TextView billDate = (TextView) findViewById(R.id.billDate);
         TextView total = (TextView) findViewById(R.id.total);
@@ -160,17 +161,18 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         tv2.setText(order.getDistributor().getAddress1() + " " + order.getDistributor().getAddress2() + " " + order.getDistributor().getAddress3());
         tv4.setText(order.getDistributor().getCity() + " " + order.getDistributor().getState() + " " + order.getDistributor().getPostalCode());
         tv6.setText(order.getDistributor().getHomePhone());
-        tv1.setText(order.getCustomerName());
-        tv3.setText(order.getCustomer().getBillingAddress1() + " " + order.getCustomer().getBillingAddress2() + " " + order.getCustomer().getBillingAddress3());
-        tv5.setText(order.getCustomer().getCity() + " " + order.getCustomer().getState() + " " + order.getCustomer().getPostalCode());
-        tv7.setText(order.getCustomer().getCellPhone());
-        orderNo.setText(String.valueOf(order.getBillNumber()));
-        billDate.setText(String.valueOf(order.getBillDate()));
+        //  tv1.setText(order.getCustomerName());
+        //  tv3.setText(order.getCustomer().getBillingAddress1() + " " + order.getCustomer().getBillingAddress2() + " " + order.getCustomer().getBillingAddress3());
+        //  tv5.setText(order.getCustomer().getCity() + " " + order.getCustomer().getState() + " " + order.getCustomer().getPostalCode());
+        //  tv7.setText(order.getCustomer().getCellPhone());
+
+        orderNo.setText("Order No:"+" "+String.valueOf(order.getBillNumber())+"");
+        billDate.setText("BillDate:"+" "+String.valueOf(order.getBillDate())+"");
         salesRep.setText(order.getEmployeeName());
-        total.setText(currencySymbol+""+numberFormat.format(order.getTotalAmount()));
-        balance.setText(currencySymbol+""+numberFormat.format(order.getOutstandingBalance()));
+        total.setText("Total:"+" "+currencySymbol+""+numberFormat.format(order.getTotalAmount())+"");
+        balance.setText("Balance:"+" "+currencySymbol+""+numberFormat.format(order.getOutstandingBalance())+"");
         discount.setText(String.valueOf(order.getDiscount()));
 
     }
-
+   
 }

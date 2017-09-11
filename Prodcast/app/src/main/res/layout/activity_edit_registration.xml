@@ -4,13 +4,6 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
@@ -22,7 +15,7 @@
                 android:layout_height="50dp"
                 style="@style/ProdcastFonts"
                 android:layout_marginLeft="260dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:textSize="36sp"
                 android:gravity="end"
                 android:textColor="@color/orange"
@@ -37,292 +30,231 @@
                 android:background="@drawable/yellow_background">
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="40dp">
 
                 <android.support.design.widget.TextInputLayout
-
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    >
+                    android:layout_width="wrap_content">
+
                 <EditText
                     android:id="@+id/firstName"
-                    style="@style/editText"
+                    android:layout_width="160dp"
+                    style="@style/dualText"
+                    android:layout_marginLeft="5dp"
                     android:hint="First Name"
                     android:inputType="text"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
                 </android.support.design.widget.TextInputLayout>
 
-</RelativeLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+
+                 <EditText
+                     android:id="@+id/latName"
+                     style="@style/dualText"
+                     android:layout_width="160dp"
+                     android:hint="Last Name"
+                     android:layout_marginLeft="180dp"
+                     android:inputType="text"
+                     android:layout_alignParentTop="true"
+                     android:layout_centerHorizontal="true" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </RelativeLayout>
+
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="90dp">
 
                 <android.support.design.widget.TextInputLayout
-
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    >
-             <EditText
-                    android:id="@+id/latName"
-                    style="@style/editText"
-
-                 android:hint="Last Name"
-                    android:inputType="text"
-                 android:layout_alignParentTop="true"
-                 android:layout_centerHorizontal="true" />
-                </android.support.design.widget.TextInputLayout>
-                </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="140dp">
-
-                <android.support.design.widget.TextInputLayout
-
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    >
-
+                    android:layout_width="wrap_content">
 
                 <EditText
                     android:id="@+id/emailAddress"
-                    style="@style/editText"
-
-
+                    style="@style/dualText"
+                    android:layout_width="160dp"
+                    android:layout_marginLeft="5dp"
                     android:hint="Email Address"
                     android:inputType="text|textWebEmailAddress"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
                 </android.support.design.widget.TextInputLayout>
 
-</RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="190dp">
-
                 <android.support.design.widget.TextInputLayout
-
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    >
+                    android:layout_width="wrap_content">
                          <EditText
                     android:id="@+id/billingAddress1"
                     android:inputType="text"
-
                     android:hint="Billing Address1"
-                    style="@style/editText"
-                             android:layout_alignParentTop="true"
-                             android:layout_centerHorizontal="true" />
+                     style="@style/dualText"
+                     android:layout_width="160dp"
+                     android:layout_marginLeft="180dp"
+                     android:layout_alignParentTop="true"
+                     android:layout_centerHorizontal="true" />
                 </android.support.design.widget.TextInputLayout>
                 </RelativeLayout>
+
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="240dp">
+                android:layout_marginTop="140dp">
 
                 <android.support.design.widget.TextInputLayout
-
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    >
+                    android:layout_width="wrap_content">
                 <EditText
                     android:id="@+id/billingAddress2"
                     android:inputType="text"
-
                     android:hint="Billing Address2"
-                    style="@style/editText"
+                    style="@style/dualText"
+                    android:layout_width="160dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
                 </android.support.design.widget.TextInputLayout>
-                </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="290dp">
 
                 <android.support.design.widget.TextInputLayout
-
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    >
+                    android:layout_width="wrap_content">
 
                 <EditText
                     android:id="@+id/billingAddress3"
                     android:inputType="text"
-
                     android:hint="Billing Address3"
-                    style="@style/editText"
+                    style="@style/dualText"
+                    android:layout_width="160dp"
+                    android:layout_marginLeft="180dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
                 </android.support.design.widget.TextInputLayout>
+
                 </RelativeLayout>
+
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="340dp">
+                android:layout_marginTop="190dp">
 
                 <android.support.design.widget.TextInputLayout
-
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    >
+                    android:layout_width="wrap_content">
+
                 <EditText
                     android:id="@+id/homePhoneNumber"
                     android:inputType="text"
                     android:hint="Home PhoneNumber"
-
-                     style="@style/editText"
-
+                    style="@style/dualText"
+                    android:layout_width="160dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true" />
                 </android.support.design.widget.TextInputLayout>
-                </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="390dp">
 
                 <android.support.design.widget.TextInputLayout
-
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    >
+                    android:layout_width="wrap_content">
 
                 <EditText
                     android:id="@+id/city"
                     android:inputType="text"
                     android:hint="City"
-
-                    style="@style/editText"
+                    style="@style/dualText"
+                    android:layout_width="160dp"
+                    android:layout_marginLeft="180dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
                 </android.support.design.widget.TextInputLayout>
-</RelativeLayout>
+
+            </RelativeLayout>
+
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="440dp">
+                android:layout_marginTop="240dp">
 
                 <android.support.design.widget.TextInputLayout
-
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    >
+                    android:layout_width="wrap_content">
+
                 <EditText
                     android:id="@+id/state"
                     android:inputType="text"
-                    style="@style/editText"
+                    style="@style/dualText"
+                    android:layout_width="160dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_alignParentTop="true"
-
-
                     android:hint="State"
-
                     android:layout_centerHorizontal="true" />
                 </android.support.design.widget.TextInputLayout>
-                </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginRight="10dp"
-
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="490dp"
-                android:background="@drawable/form_box"
-
-               >
-
 
                 <Spinner
                     android:id="@+id/editCountry"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-
-
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    style="@style/dualText"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="180dp"
+                    android:layout_marginRight="20dp"
                     android:visibility="visible"
-                    android:hint="Country"
-
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:hint="Country"/>
 
                 </RelativeLayout>
+
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="540dp">
+                android:layout_marginTop="290dp">
 
                 <android.support.design.widget.TextInputLayout
-
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    >
+                    android:layout_width="wrap_content">
 
                 <EditText
                     android:id="@+id/postalCode"
-                    style="@style/editText"
+                    style="@style/dualText"
+                    android:layout_width="160dp"
+                    android:layout_marginLeft="5dp"
                     android:hint="Postal Code"
                     android:inputType="text"
-
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
                 </android.support.design.widget.TextInputLayout>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="590dp">
 
                 <CheckBox
                     android:id="@+id/smsAllowed"
-                    android:layout_width="wrap_content"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginLeft="180dp"
                     android:checked="true"
                     android:hint="Sms Allowed"
+					android:textSize="16dp"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="15dp" />
 
             </RelativeLayout>
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -330,15 +262,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp">
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="-150dp">
+
             <Button
                 android:id="@+id/edit"
                 android:text="Save"
                 style="@style/submitButton"
                 android:visibility="visible"
-                android:layout_marginTop="20dp"
-
-                />
+                android:layout_marginTop="20dp" />
 
             <Button
                 android:id="@+id/reset"
@@ -346,11 +278,10 @@
                 android:visibility="visible"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="200dp"
+                android:hint="Reset"/>
 
-                android:hint="Reset"
-                />
             </RelativeLayout>
 
         </LinearLayout>
-    </ScrollView>
+
 </RelativeLayout>

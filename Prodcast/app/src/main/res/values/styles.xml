@@ -108,5 +108,16 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
+    <style name="dualText">
+        <!-- Customize your theme here. -->
+        <item name="android:background">@drawable/form_box</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:ems">10</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
 
 </resources>

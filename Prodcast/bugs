@@ -1,14 +1,7 @@
 [9/11, 9:39 AM] Dhaya: n outstanding Bills page - Show the text “Outstanding Bills (<numberofoutstandingbills>)”-done
-[9/11, 9:40 AM] Dhaya: In the next line Display the total value of order ,  SubTotal : <subtotal> Tax : <sumof taxes>  Total :<TotalValue>
-[9/11, 9:41 AM] Dhaya: Currency is not displayed in the review Order
-9/11, 9:42 AM] Dhaya: The report by default when opened should show for Today
-[9/11, 9:42 AM] Dhaya: for this report page
-[9/11, 9:43 AM] Dhaya: make report as separate method
-[9/11, 9:43 AM] Dhaya: and call it
-[9/11, 9:43 AM] Dhaya: in prodcastD i did same way
-[9/11, 9:44 AM] Dhaya: As soon as we select the WEEK or YESTERDAY or TODAY the report has to fire immediately.
-[9/11, 9:41 AM] Dhaya: Show it below one in each line
-[9/11, 9:41 AM] Dhaya: Align Right
+[9/11, 9:40 AM] Dhaya: In the next line Display the total value of order ,  SubTotal : <subtotal> Tax : <sumof taxes>  Total :<TotalValue>-partially done-donr
+[9/11, 9:41 AM] Dhaya: Currency is not displayed in the review Order-done
+9/11, 9:42 AM] Dhaya: The report by default when opened should show for Today-done
 [9/11, 9:42 AM] Dhaya: Report and Reset fonts are different
 
 
@@ -30,6 +23,8 @@ Item subtotal
 Tax
 Total
 [9/11, 10:38 AM] Dhaya: Right aligned
+
+
 
 
 [9/11, 9:46 AM] Dhaya: Order Details page-done

@@ -75,7 +75,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
             final SwipeMenuListView swipeMenuListView = (SwipeMenuListView) findViewById(R.id.listofentries);
 
             TextView txtView=(TextView) findViewById(R.id.subTotal);
-            txtView.setText("Sub Tot("+currencySymbol+")");
+            txtView.setText("Sub Total("+currencySymbol+")");
 
             final SwipeMenuCreator creator = new SwipeMenuCreator() {
 
@@ -221,8 +221,10 @@ public class EntryActivity extends ProdcastCBaseActivity {
                                     Customer customer = dto.getCustomer();
 
                                     SessionInformations.getInstance().setBillsForCustomer(customer);
+                                    Toast.makeText(EntryActivity.this,"Your Order Has Been Placed Successfully",Toast.LENGTH_LONG);
                                     Intent i = new Intent(EntryActivity.this, OutstandingBillsActivity.class);
                                     i.putExtra("useCache", true);
+                                    Toast.makeText(EntryActivity.this,"Your Order Has Been Placed Successfully",Toast.LENGTH_LONG);
                                     startActivity(i);
                                     progressDialog.dismiss();
 

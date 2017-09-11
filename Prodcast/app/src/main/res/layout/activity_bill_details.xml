@@ -18,17 +18,17 @@
         android:orientation="vertical"
         android:padding="10dip" >
 
-        <LinearLayout
+    <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/refresh"
+                android:id="@+id/printBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="300dp"
-                android:src="@drawable/refresh"/>
+                android:src="@drawable/print"/>
 
         </LinearLayout>
 
@@ -41,24 +41,23 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="8dp"
+                android:layout_marginLeft="150dp"
                 android:layout_weight="1"
 
                 android:text="Distributor"/>
 
-            <TextView
+           <!-- <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="8dp"
                 android:layout_weight="1"
 
-                android:text="Customer"/>
+                android:text="Customer"/>-->
 
         </LinearLayout>
 
@@ -66,30 +65,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+            <TextView
+                android:id="@+id/orderNo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
 
+                android:gravity="left"
+                android:padding="3dp"
+                android:text="Order No: "
+                android:layout_weight="1" />
             <TextView
                 android:id="@+id/distName"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:padding="3dp"
+
                 android:layout_weight="1"
 
                 />
 
-            <TextView
-                android:id="@+id/custName"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:background="@drawable/border"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:padding="3dp"
-                android:layout_weight="1" />
+
 
         </LinearLayout>
 
@@ -97,157 +95,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/distAddress"
-                android:layout_width="0dp"
-                style="@style/ProdcastFonts"
-                android:layout_height="match_parent"
-                android:background="@drawable/border"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:padding="3dp"
-                android:layout_weight="1"
-
-                />
-
-            <TextView
-                android:id="@+id/custAddress"
-                android:layout_width="0dp"
-                style="@style/ProdcastFonts"
-                android:layout_height="match_parent"
-                android:background="@drawable/border"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:padding="3dp"
-                android:layout_weight="1"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/distAddress1"
-                android:layout_width="0dp"
-                style="@style/ProdcastFonts"
-                android:layout_height="match_parent"
-                android:background="@drawable/border"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:padding="3dp"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/custAddress1"
-                android:layout_width="0dp"
-                style="@style/ProdcastFonts"
-                android:layout_height="match_parent"
-                android:background="@drawable/border"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:padding="3dp"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/distPhonenumber"
-                android:layout_width="0dp"
-                style="@style/ProdcastFonts"
-                android:layout_height="match_parent"
-                android:background="@drawable/border"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:padding="3dp"
-                android:layout_weight="1"
-
-                />
-
-            <TextView
-                android:id="@+id/custPhonenumber"
-                android:layout_width="0dp"
-                style="@style/ProdcastFonts"
-                android:layout_height="match_parent"
-                android:background="@drawable/border"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:padding="3dp"
-                android:layout_weight="1"
-                />
-
-        </LinearLayout>
-
-        <!-- 1St Table End-->
-
-        <!-- 2ND Table sTART-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:gravity="fill"
-                android:layout_marginTop="20dp"
-                android:padding="3dp"
-                android:layout_weight="1"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Order No :"/>
-
-            <TextView
-                android:id="@+id/orderNo"
-                android:layout_width="0dp"
-                style="@style/ProdcastFonts"
-                android:layout_height="match_parent"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="left"
-                android:layout_marginTop="20dp"
-                android:padding="3dp"
-                android:layout_weight="1"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:gravity="fill"
-                android:padding="3dp"
-                android:layout_weight="1"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Bill Date:"
-
-                />
-
             <TextView
                 android:id="@+id/billDate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:textColor="@color/colorPrimaryDark"
+
                 android:gravity="left"
                 android:padding="3dp"
+                android:text="billDate:"
                 android:layout_weight="1"
                 />
+            <TextView
+                android:id="@+id/distAddress"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:padding="3dp"
+
+                android:layout_weight="1"
+
+                />
+
+
 
         </LinearLayout>
 
@@ -255,85 +126,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:gravity="fill"
-                android:padding="3dp"
-                android:layout_weight="1"
-                android:text="Sales Rep :"
-                android:textColor="@color/colorPrimaryDark"
-                />
-
-            <TextView
-                android:id="@+id/salesRep"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="left"
-                android:padding="3dp"
-                android:layout_weight="1"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:gravity="fill"
-                android:padding="3dp"
-                android:layout_weight="1"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Discount :"
-                />
-
-            <TextView
-                android:id="@+id/discount"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="left"
-                android:padding="3dp"
-                android:layout_weight="1"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:gravity="fill"
-                android:padding="3dp"
-                android:layout_weight="1"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Total  :"
-                />
-
             <TextView
                 android:id="@+id/total"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
+
+                android:gravity="left"
+                android:padding="3dp"
+                android:text="Total:"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/distAddress1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
-                android:layout_weight="1"
-                />
+
+                android:layout_weight="1"/>
+
+
 
         </LinearLayout>
 
@@ -341,30 +155,204 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:gravity="fill"
-                android:padding="3dp"
-                android:layout_weight="1"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Balance  :"
-                />
 
             <TextView
                 android:id="@+id/balance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                style="@style/ProdcastFonts"
-                android:textColor="@color/colorPrimaryDark"
+
                 android:gravity="left"
                 android:padding="3dp"
+                android:text="Balance:"
                 android:layout_weight="1"
                 />
+            <TextView
+                android:id="@+id/distPhonenumber"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:padding="3dp"
 
-        </LinearLayout>
+                android:layout_weight="1"
+
+                />
+
+
+
+</LinearLayout>
+
+        <!-- 1St Table End-->
+
+        <!-- 2ND Table sTART-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="fill"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="Sales Rep :"
+                    android:textColor="@color/colorPrimaryDark"
+                    />
+
+                <TextView
+                    android:id="@+id/salesRep"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:gravity="left"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="fill"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="Discount :"
+                    />
+
+                <TextView
+                    android:id="@+id/discount"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:gravity="left"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+
+            <!--  <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+
+                   <TextView
+
+                       android:layout_width="0dp"
+                       android:layout_height="match_parent"
+                       android:gravity="fill"
+                       android:layout_marginTop="20dp"
+                       android:padding="3dp"
+                       android:layout_weight="1"
+                       android:textColor="@color/colorPrimaryDark"
+                       android:text="Order No :"/>
+
+                   <TextView
+                       android:id="@+id/orderNo"
+                       android:layout_width="0dp"
+                       android:layout_height="match_parent"
+                       android:textColor="@color/colorPrimaryDark"
+                       android:gravity="left"
+                       android:layout_marginTop="20dp"
+                       android:padding="3dp"
+                       android:layout_weight="1"
+                       />
+
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+
+                   <TextView
+                       android:layout_width="0dp"
+                       android:layout_height="match_parent"
+                       android:gravity="fill"
+                       android:padding="3dp"
+                       android:layout_weight="1"
+                       android:textColor="@color/colorPrimaryDark"
+                       android:text="Bill Date:"
+
+                       />
+
+                   <TextView
+                       android:id="@+id/billDate"
+                       android:layout_width="0dp"
+                       android:layout_height="match_parent"
+                       android:textColor="@color/colorPrimaryDark"
+                       android:gravity="left"
+                       android:padding="3dp"
+                       android:layout_weight="1"
+                       />
+
+               </LinearLayout>
+
+
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+
+                   <TextView
+                       android:layout_width="0dp"
+                       android:layout_height="match_parent"
+                       android:gravity="fill"
+                       android:padding="3dp"
+                       android:layout_weight="1"
+                       android:textColor="@color/colorPrimaryDark"
+                       android:text="Total  :"
+                       />
+
+                   <TextView
+                       android:id="@+id/total"
+                       android:layout_width="0dp"
+                       android:layout_height="match_parent"
+                       android:textColor="@color/colorPrimaryDark"
+                       android:gravity="left"
+                       android:padding="3dp"
+                       android:layout_weight="1"
+                       />
+
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+
+                   <TextView
+                       android:layout_width="0dp"
+                       android:layout_height="match_parent"
+                       android:gravity="fill"
+                       android:padding="3dp"
+                       android:layout_weight="1"
+                       android:textColor="@color/colorPrimaryDark"
+                       android:text="Balance  :"
+                       />
+
+                   <TextView
+                       android:id="@+id/balance"
+                       android:layout_width="0dp"
+                       android:layout_height="match_parent"
+                       android:textColor="@color/colorPrimaryDark"
+                       android:gravity="left"
+                       android:padding="3dp"
+                       android:layout_weight="1"
+                       />
+
+               </LinearLayout>-->
 
         <!-- 2ND Table End-->
 
@@ -378,7 +366,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:paddingTop="5dp"
                 android:text="Order Details" />
@@ -395,7 +382,6 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
-                style="@style/ProdcastFonts"
                 android:padding="5dp"
                 android:layout_weight="2"
 
@@ -406,7 +392,6 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
-                style="@style/ProdcastFonts"
                 android:padding="5dp"
                 android:layout_weight="0.5"
 
@@ -417,7 +402,6 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
-                style="@style/ProdcastFonts"
                 android:padding="5dp"
                 android:layout_weight="1"
                 android:text="Price "/>
@@ -442,7 +426,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/subTotal"
-                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="5dp"
@@ -465,7 +448,6 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:paddingTop="5dp"
                 android:text="Payment Details" />
@@ -483,7 +465,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
-                style="@style/ProdcastFonts"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="0.9"
@@ -494,7 +475,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
-                style="@style/ProdcastFonts"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="2"
@@ -505,7 +485,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
-                style="@style/ProdcastFonts"
                 android:id="@+id/paymentAmount"
                 android:gravity="center"
                 android:padding="5dp"
@@ -538,6 +517,7 @@
       </LinearLayout>-->
 
     </LinearLayout>
+
 
 
 </RelativeLayout>

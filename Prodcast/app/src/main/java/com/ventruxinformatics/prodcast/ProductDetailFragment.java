@@ -45,6 +45,7 @@ public class ProductDetailFragment extends Fragment {
     EditText qty;
     TextView subTotal;
     ImageView img;
+    String currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
     //NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     /**
      * The fragment argument representing the item ID that this fragment
@@ -168,7 +169,7 @@ public class ProductDetailFragment extends Fragment {
                     }
                     unitPrice.setText("Unit Price : " +GlobalUsage.getNumberFormat().format( price));
 
-                    subTotal.setText("Sub Total : 0.00");
+                    subTotal.setText("Sub Total : "+currencySymbol+" 0.00");
 
 
 
@@ -199,7 +200,7 @@ public class ProductDetailFragment extends Fragment {
                                 qty.setError("Please Enter valid number");
 
                             }
-                            subTotal.setText("Sub Total : " +calculateTotal(product,quantity));
+                            subTotal.setText("Sub Total : " +currencySymbol+""+calculateTotal(product,quantity));
 
                         }
                     });

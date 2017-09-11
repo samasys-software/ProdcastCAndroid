@@ -89,6 +89,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
                         } else {
                             Customer customer = dto.getCustomer();
                             setBills(customer);
+                            setCount();
                             progressDialog.dismiss();
 
                         }
@@ -136,6 +137,11 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
             startActivity(intent);
         }
 
+    }
+
+    private void setCount(){
+        TextView billSize = (TextView) findViewById(R.id.outstandingBillText);
+        billSize.setText("Outstanding Bills("+listHistroy.getAdapter().getCount()+")");
     }
 
 
