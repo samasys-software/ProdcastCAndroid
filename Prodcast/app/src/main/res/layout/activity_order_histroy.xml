@@ -22,32 +22,24 @@
 
             <!-- Text Box Start -->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/form_box">
 
                 <Spinner
                     android:id="@+id/storeSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
 
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:enabled="false"
-                android:layout_marginTop="70dp">
+
+
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/reportType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -57,12 +49,12 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
 
-            </RelativeLayout>
+
 
             <RelativeLayout
+                android:id="@+id/reportPicker"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="120dp"
                 android:background="@drawable/form_box">
 
                 <Spinner
@@ -84,7 +76,7 @@
                 android:id="@+id/selectDates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="170dp"
+                android:layout_below="@id/reportPicker"
                 android:visibility="invisible">
 
                 <TextView
@@ -123,7 +115,7 @@
 
             <Button
                 android:id="@+id/report"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="@style/submitButton"
@@ -132,7 +124,7 @@
 
             <Button
                 android:id="@+id/reset"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="@style/submitButton"
@@ -201,8 +193,9 @@
                     android:layout_height="match_parent"
                     android:id="@+id/totBalance"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
+
                     android:gravity="center"
+                    android:background="@drawable/border_headerends"
                     style="@style/TableHeader"/>
 
             </LinearLayout>
@@ -219,7 +212,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    style="@style/TableEntry" />
+                    style="@style/TableEntry"
+                    android:background="@drawable/border_entryends"/>
 
                 <TextView
                     android:id="@+id/totAmtPait"
@@ -227,7 +221,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    style="@style/TableEntry"/>
+                    style="@style/TableEntry"
+                    android:background="@drawable/border_entrymiddle"/>
 
                 <TextView
                     android:id="@+id/sumBalance"
@@ -235,7 +230,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                   style="@style/TableEntry" />
+                    style="@style/TableEntry"
+                    android:background="@drawable/border_entrymiddle"/>
 
             </LinearLayout>
 
@@ -263,7 +259,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bill Details"
+                    android:text="Orders"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -281,6 +277,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="Bill#"
+                    android:background="@drawable/border_headerends"
                     style="@style/TableHeader" />
 
                 <TextView
@@ -288,8 +285,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Bill Date"
-                    style="@style/TableHeader"/>
+                    android:text="Date"
+                    style="@style/TableHeader"
+                    android:background="@drawable/border_headermiddle"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -298,7 +296,8 @@
                     android:gravity="center"
                     android:text="Total"
                     android:id="@+id/orderTotal"
-                    style="@style/TableHeader"/>
+                    style="@style/TableHeader"
+                    android:background="@drawable/border_headermiddle"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -307,7 +306,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="Balance"
-                    style="@style/TableHeader" />
+                    style="@style/TableHeader"
+                    android:background="@drawable/border_headermiddle"/>
 
             </LinearLayout>
 
@@ -325,6 +325,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:divider="@null"
                     android:gravity="center" />
 
             </LinearLayout>

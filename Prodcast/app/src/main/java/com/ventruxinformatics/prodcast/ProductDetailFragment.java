@@ -159,7 +159,7 @@ public class ProductDetailFragment extends Fragment {
                     qty = (EditText) diaView.findViewById(R.id.qty);
                     subTotal = (TextView) diaView.findViewById(R.id.subTotal);
                     img = (ImageView) diaView.findViewById(R.id.img);
-                    productName.setText("Product Name :" + product.getProductName());
+                    productName.setText("Item :" + product.getProductName());
                     float price;
                     if (SessionInformations.getInstance().getEmployee().getCustomerType().equals("R")) {
                         price = product.getRetailPrice();
