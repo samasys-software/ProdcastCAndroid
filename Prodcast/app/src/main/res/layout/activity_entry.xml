@@ -13,19 +13,19 @@
         android:id="@+id/order"
         style="@style/submitButton"
         android:text="Submit Order"
+        android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
-        android:layout_weight="1"
         android:layout_height="wrap_content"/>
 
     <Button
 
         android:id="@+id/backButton"
         style="@style/submitButton"
+        android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:layout_alignParentRight="true"
-        android:layout_weight="1"/>
+        android:layout_alignParentRight="true"/>
 
     <TextView
         android:id="@+id/total"
