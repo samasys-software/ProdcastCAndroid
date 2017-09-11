@@ -248,7 +248,7 @@ public class ProductDetailFragment extends Fragment {
                                                     final OrderDetails selectedProduct=existingProduct;
                                                     AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                                                     alert.setTitle("Prodcast Notification");
-                                                    alert.setMessage("You Have Already Enter this "+selectedProduct.getProduct().getProductName()+" Product with "+selectedProduct.getQuantity()+" Items....Do You Want To Continue?");
+                                                    alert.setMessage("Your order already has  "+selectedProduct.getQuantity()+"of the Item"+selectedProduct.getProduct().getProductName()+"Would you like to add more to it?");
                                                     alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                                         @Override
                                                         public void onClick(DialogInterface dialogs, int which) {

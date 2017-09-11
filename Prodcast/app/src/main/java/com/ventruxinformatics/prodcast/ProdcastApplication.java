@@ -20,6 +20,8 @@ public class ProdcastApplication extends Application {
         super.onCreate();
         //overrideFont(getApplicationContext(),"SERIF","fonts/GothamBook.ttf");
         FontsOverride.setDefaultFont(this, "SERIF","fonts/GothamBook.ttf");
+        FontsOverride.setDefaultFont(this, "DEFAULT","fonts/GothamBook.ttf");
+        FontsOverride.setDefaultFont(this, "MONOSPACE","fonts/GothamBook.ttf");
     }
     public static void overrideFont(Context context, String defaultFontNameToOverride, String customFontFileNameInAssets) {
 
@@ -27,7 +29,7 @@ public class ProdcastApplication extends Application {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Map<String, Typeface> newMap = new HashMap<String, Typeface>();
-            newMap.put("serif", customFontTypeface);
+            newMap.put(defaultFontNameToOverride.toLowerCase(), customFontTypeface);
             try {
                 final Field staticField = Typeface.class
                         .getDeclaredField("sSystemFontMap");

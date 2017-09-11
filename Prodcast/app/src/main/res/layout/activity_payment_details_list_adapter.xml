@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/paymentDate"
         android:layout_width="0dp"
-        style="@style/ProdcastFonts"
+
         android:layout_height="match_parent"
         android:background="@drawable/border"
         android:gravity="center"
@@ -16,7 +16,7 @@
     <TextView
         android:id="@+id/paymentReceiver"
         android:layout_width="0dp"
-        style="@style/ProdcastFonts"
+
         android:layout_height="match_parent"
         android:background="@drawable/border"
         android:gravity="center"
@@ -26,7 +26,7 @@
     <TextView
         android:id="@+id/paymentAmount"
         android:layout_width="0dp"
-        style="@style/ProdcastFonts"
+
         android:layout_height="match_parent"
         android:background="@drawable/border"
         android:gravity="right"

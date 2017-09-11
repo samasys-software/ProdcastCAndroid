@@ -19,7 +19,7 @@
 
         <TextView
             android:layout_width="250dp"
-            style="@style/ProdcastFonts"
+
             android:layout_height="50dp"
             android:text="Please enter the confirmation code from the text sent to your registered mobile number"
             android:layout_marginTop="22dp"
@@ -52,7 +52,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        style="@style/ProdcastFonts"
+
         android:layout_height="30dp"
         android:text="Resend confirmation code"
         android:id="@+id/resendConfirmationCode"

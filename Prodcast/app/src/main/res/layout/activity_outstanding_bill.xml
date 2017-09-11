@@ -30,8 +30,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="5"
-        style="@style/ProdcastFonts"
-        android:text="outstanding"
+
+        android:text="Outstanding"
         android:textSize="16sp"
         android:gravity="center"
         android:layout_gravity="center|center_vertical"/>
@@ -39,6 +39,7 @@
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/newOrderPin"
             android:layout_centerInParent="true"
+            app:srcCompat="@android:drawable/ic_input_add"
             android:layout_gravity="center_horizontal"
             android:text="+"
             android:layout_weight="0.5"

@@ -34,7 +34,7 @@
             <TextView
                 android:id="@+id/distributorName"
                 android:layout_width="match_parent"
-                style="@style/ProdcastFonts"
+
                 android:gravity="bottom|right"
                 android:textColor="@color/colorInversePrimary"
                 android:background="@color/colorPrimaryDark"
@@ -49,7 +49,7 @@
 
                     android:layout_width="match_parent"
                     android:gravity="center_vertical|right"
-                    style="@style/ProdcastFonts"
+
                     android:textColor="@color/colorInversePrimary"
                     android:background="@color/colorPrimaryDark"
                     android:layout_height="0dp"
