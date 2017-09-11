@@ -41,6 +41,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="8dp"
@@ -51,6 +52,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="8dp"
@@ -69,6 +71,7 @@
                 android:id="@+id/distName"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@drawable/border"
                 android:gravity="center"
@@ -81,6 +84,7 @@
                 android:id="@+id/custName"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:background="@drawable/border"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
@@ -97,6 +101,7 @@
             <TextView
                 android:id="@+id/distAddress"
                 android:layout_width="0dp"
+                style="@style/ProdcastFonts"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
                 android:textColor="@color/colorPrimaryDark"
@@ -109,6 +114,7 @@
             <TextView
                 android:id="@+id/custAddress"
                 android:layout_width="0dp"
+                style="@style/ProdcastFonts"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
                 android:textColor="@color/colorPrimaryDark"
@@ -127,6 +133,7 @@
             <TextView
                 android:id="@+id/distAddress1"
                 android:layout_width="0dp"
+                style="@style/ProdcastFonts"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
                 android:textColor="@color/colorPrimaryDark"
@@ -137,6 +144,7 @@
             <TextView
                 android:id="@+id/custAddress1"
                 android:layout_width="0dp"
+                style="@style/ProdcastFonts"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
                 android:textColor="@color/colorPrimaryDark"
@@ -154,6 +162,7 @@
             <TextView
                 android:id="@+id/distPhonenumber"
                 android:layout_width="0dp"
+                style="@style/ProdcastFonts"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
                 android:textColor="@color/colorPrimaryDark"
@@ -166,6 +175,7 @@
             <TextView
                 android:id="@+id/custPhonenumber"
                 android:layout_width="0dp"
+                style="@style/ProdcastFonts"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
                 android:textColor="@color/colorPrimaryDark"
@@ -189,6 +199,7 @@
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:gravity="fill"
                 android:layout_marginTop="20dp"
                 android:padding="3dp"
@@ -199,6 +210,7 @@
             <TextView
                 android:id="@+id/orderNo"
                 android:layout_width="0dp"
+                style="@style/ProdcastFonts"
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
@@ -217,6 +229,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:gravity="fill"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -229,6 +242,7 @@
                 android:id="@+id/billDate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
@@ -245,6 +259,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:gravity="fill"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -256,6 +271,7 @@
                 android:id="@+id/salesRep"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
@@ -271,6 +287,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:gravity="fill"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -282,6 +299,7 @@
                 android:id="@+id/discount"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
@@ -298,6 +316,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:gravity="fill"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -309,6 +328,7 @@
                 android:id="@+id/total"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
@@ -325,6 +345,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:gravity="fill"
                 android:padding="3dp"
                 android:layout_weight="1"
@@ -336,6 +357,7 @@
                 android:id="@+id/balance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
@@ -356,6 +378,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:paddingTop="5dp"
                 android:text="Order Details" />
@@ -372,6 +395,7 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
+                style="@style/ProdcastFonts"
                 android:padding="5dp"
                 android:layout_weight="2"
 
@@ -382,6 +406,7 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
+                style="@style/ProdcastFonts"
                 android:padding="5dp"
                 android:layout_weight="0.5"
 
@@ -392,6 +417,7 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
+                style="@style/ProdcastFonts"
                 android:padding="5dp"
                 android:layout_weight="1"
                 android:text="Price "/>
@@ -416,6 +442,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/subTotal"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="5dp"
@@ -438,6 +465,7 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/ProdcastFonts"
                 android:textColor="@color/colorPrimaryDark"
                 android:paddingTop="5dp"
                 android:text="Payment Details" />
@@ -455,6 +483,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
+                style="@style/ProdcastFonts"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="0.9"
@@ -465,6 +494,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
+                style="@style/ProdcastFonts"
                 android:gravity="center"
                 android:padding="5dp"
                 android:layout_weight="2"
@@ -475,6 +505,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
+                style="@style/ProdcastFonts"
                 android:id="@+id/paymentAmount"
                 android:gravity="center"
                 android:padding="5dp"

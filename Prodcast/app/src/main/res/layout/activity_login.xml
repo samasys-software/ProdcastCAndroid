@@ -16,17 +16,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
-
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/logo"
             android:id="@+id/prodcastLogo"
-
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 
 
@@ -39,7 +37,6 @@
         android:layout_below="@+id/rlimageprodcast"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
-
 
         <RelativeLayout
             android:id="@+id/rlcountry"
@@ -68,9 +65,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/country"
                 android:layout_marginLeft="45dp"
-
                 android:paddingLeft="10dp"
-
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true" />
 
@@ -94,6 +89,7 @@
             android:background="@drawable/form_bg"
             android:layout_below="@+id/rlmobile"
             android:layout_marginTop="10dp"
+            style="@style/ProdcastFonts"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp">
 
@@ -111,15 +107,11 @@
             <EditText
                 android:id="@+id/loginPinNumber"
                 style="@style/editText"
-
                 android:layout_marginLeft="50dp"
                 android:background="@null"
-
                 android:hint="PIN NUMBER"
                 android:inputType="numberPassword"
-
-                android:textAllCaps="true"
-                 />
+                android:textAllCaps="true"/>
 
         </RelativeLayout>
 
@@ -129,6 +121,7 @@
             android:layout_height="40dp"
             android:background="@drawable/form_bg"
             android:layout_centerVertical="true"
+            style="@style/ProdcastFonts"
             android:layout_alignLeft="@+id/rlcountry"
             android:layout_alignStart="@+id/rlcountry"
             android:layout_alignRight="@+id/rlcountry"
@@ -148,15 +141,11 @@
             <EditText
                 android:id="@+id/loginMobileNumber"
                 style="@style/editText"
-
                 android:layout_marginLeft="50dp"
                 android:background="@null"
-
                 android:hint="MOBILE NUMBER"
                 android:inputType="phone"
-
-                android:textAllCaps="true"
-              />
+                android:textAllCaps="true"/>
 
         </RelativeLayout>
     </RelativeLayout>
@@ -173,16 +162,14 @@
         <Button
             android:id="@+id/logIn"
             style="@style/submitButton"
-            android:text="Log In"
-     />
+            android:text="Log In"/>
 
         <Button
-
             android:id="@+id/logClear"
             style="@style/submitButton"
             android:text="Clear"
-            android:layout_alignParentRight="true"
-            />
+            android:layout_alignParentRight="true"/>
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -200,6 +187,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginStart="30dp"
+            style="@style/ProdcastFonts"
             android:id="@+id/register"
             android:textColor="#345904"
             android:textSize="16sp"
@@ -213,12 +201,14 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
             android:layout_marginEnd="30dp"
+            style="@style/ProdcastFonts"
             android:id="@+id/forgotPin"
             android:textColor="#345904"
             android:textSize="16sp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
     </RelativeLayout>
 
 </RelativeLayout>

@@ -2,7 +2,6 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ScrollView
@@ -15,13 +14,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/skipRegisteration"
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
+                style="@style/ProdcastFonts"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="40dp"
                 android:textSize="36sp"
@@ -41,7 +40,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="40dp">
 
@@ -53,7 +51,6 @@
                 <EditText
                     android:id="@+id/firstName"
                     style="@style/editText"
-
                     android:hint="First Name"
                     android:inputType="text"
                     android:layout_alignParentTop="true"
@@ -312,20 +309,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginRight="10dp"
-
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="590dp">
 
                 <CheckBox
                     android:id="@+id/smsAllowed"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-
                     android:hint="Sms Allowed"
-
-
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="12dp" />

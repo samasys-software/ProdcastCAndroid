@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.ventruxinformatics.prodcast.ProductDetailActivity"
-    >
+    tools:context="com.ventruxinformatics.prodcast.ProductDetailActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -32,8 +31,6 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-
-
         <!--</android.support.design.widget.CollapsingToolbarLayout>-->
     </android.support.design.widget.AppBarLayout>
 
@@ -43,10 +40,7 @@
         android:id="@+id/product_detail_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:layout_below="@id/app_bar"
-       >
-
+        android:layout_below="@id/app_bar">
 
     </RelativeLayout>
 
@@ -61,7 +55,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="37dp" />-->
-
 
 </RelativeLayout>
 

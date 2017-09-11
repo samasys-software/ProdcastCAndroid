@@ -20,6 +20,7 @@
             android:id="@+id/findStroeHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/ProdcastFonts"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="Select Store"
@@ -42,11 +43,8 @@
         <ListView
             android:id="@+id/listOfStores"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
             android:divider="@null" />
     </RelativeLayout>
-
-
 
 </RelativeLayout>

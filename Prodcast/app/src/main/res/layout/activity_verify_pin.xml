@@ -8,9 +8,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-
-
     <RelativeLayout
         android:id="@+id/registerLayout"
         android:layout_width="match_parent"
@@ -22,7 +19,7 @@
 
         <TextView
             android:layout_width="250dp"
-
+            style="@style/ProdcastFonts"
             android:layout_height="50dp"
             android:text="Please enter the confirmation code from the text sent to your registered mobile number"
             android:layout_marginTop="22dp"
@@ -30,7 +27,6 @@
             android:id="@+id/textView2"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/relativeLayout5" />
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -42,7 +38,6 @@
             android:layout_below="@+id/textView2"
             android:layout_alignParentEnd="true">
 
-
             <EditText
                 android:id="@+id/verficationCode"
                 style="@style/editText"
@@ -50,14 +45,14 @@
                 android:inputType="phone"
                 android:layout_marginStart="22dp"
                 android:layout_alignParentStart="true" />
+
         </RelativeLayout>
 
     </RelativeLayout>
 
-
     <TextView
         android:layout_width="match_parent"
-
+        style="@style/ProdcastFonts"
         android:layout_height="30dp"
         android:text="Resend confirmation code"
         android:id="@+id/resendConfirmationCode"
@@ -68,13 +63,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginBottom="66dp"
         android:id="@+id/relativeLayout6"
         android:layout_alignBottom="@+id/registerLayout"
         android:layout_alignParentStart="true">
-
-
 
         <Button
             android:id="@+id/verify"
@@ -85,10 +77,6 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
 
-
-
     </RelativeLayout>
-
-
 
 </RelativeLayout>

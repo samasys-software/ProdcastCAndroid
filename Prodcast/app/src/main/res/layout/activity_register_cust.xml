@@ -8,9 +8,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-
-
     <RelativeLayout
         android:id="@+id/registerLayout"
         android:layout_width="match_parent"
@@ -20,6 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -27,6 +25,7 @@
             android:background="@drawable/form_box"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="48dp">
+
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -34,6 +33,7 @@
                 android:paddingLeft="10dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true" />
+
             <ImageButton
                 android:id="@+id/imageButton2"
                 android:layout_width="20dp"
@@ -45,6 +45,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/dropdown_icon"
                 android:visibility="invisible" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -53,12 +54,11 @@
             android:layout_marginTop="102dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="15dp">
+
             <android.support.design.widget.TextInputLayout
 
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                >
-
+                android:layout_width="match_parent">
 
             <EditText
                 android:id="@+id/MobileNumber"
@@ -67,19 +67,22 @@
                 android:inputType="phone"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true" />
+
             </android.support.design.widget.TextInputLayout>
+
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="157dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="15dp">
-            <android.support.design.widget.TextInputLayout
 
+            <android.support.design.widget.TextInputLayout
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                >
+                android:layout_width="match_parent">
+
             <EditText
                 android:id="@+id/pin"
                 style="@style/editText"
@@ -87,19 +90,21 @@
                 android:inputType="text"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true" />
+
             </android.support.design.widget.TextInputLayout>
+
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="210dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="15dp">
-            <android.support.design.widget.TextInputLayout
 
+            <android.support.design.widget.TextInputLayout
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                >
+                android:layout_width="match_parent">
 
             <EditText
                 android:id="@+id/confirmPin"
@@ -108,42 +113,36 @@
                 android:inputType="text"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true" />
+
             </android.support.design.widget.TextInputLayout>
+
         </RelativeLayout>
+
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_below="@+id/registerLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_below="@+id/registerLayout">
 
         <Button
             android:id="@+id/registeration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
             style="@style/submitButton"
             android:text="Register"
-            android:layout_marginLeft="31dp"
-            android:layout_marginStart="31dp"
             android:layout_alignBaseline="@+id/clear"
-            android:layout_alignBottom="@+id/clear"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignBottom="@+id/clear"/>
 
         <Button
             android:id="@+id/clear"
             style="@style/submitButton"
-            android:text="Cancel"
-            android:layout_marginRight="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:text="Cancel"/>
 
     </RelativeLayout>
-
-
 
 </RelativeLayout>

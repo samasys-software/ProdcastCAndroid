@@ -3,16 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
-
-
-
-
-
-
-
+    android:layout_height="match_parent">
 
         <ListView
             android:id="@+id/product_detail"
@@ -21,13 +12,5 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             tools:listitem="@layout/activity_all_products" />
-
-
-
-
-
-
-
-
 
 </RelativeLayout>
