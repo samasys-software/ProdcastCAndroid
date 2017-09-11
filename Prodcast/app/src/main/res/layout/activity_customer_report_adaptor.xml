@@ -16,46 +16,46 @@
             android:gravity="center"
             android:text="BILL NO"
             android:layout_weight="0.5"
-            android:padding="3dp"
+
             android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/border"/>
+            style="@style/TableEntry"
+            android:background="@drawable/border_entryends"/>
 
         <TextView
             android:text="BILL DATE"
             android:gravity="center"
             android:textAllCaps="true"
             android:layout_width="0dp"
-            android:padding="3dp"
+
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/cusBillDate"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/border"/>
+            style="@style/TableEntry"
+            android:background="@drawable/border_entrymiddle"/>
 
         <TextView
             android:text="Total($)"
             android:gravity="center|right"
             android:textAllCaps="true"
             android:layout_width="0dp"
-            android:padding="3dp"
+
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/cusTotal"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/border"/>
+            style="@style/TableEntry"
+            android:background="@drawable/border_entrymiddle"/>
 
         <TextView
             android:text="Balance($)"
             android:gravity="center|right"
             android:textAllCaps="true"
             android:layout_width="0dp"
-            android:padding="3dp"
+
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/cusBalance"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/border"/>
+            style="@style/TableEntry"
+            android:background="@drawable/border_entrymiddle"/>
 
     </LinearLayout>
 

@@ -4,9 +4,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,15 +23,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OutstandingBillsActivity extends ProdcastCBaseActivity {
-    Button newOrderPin;
+    FloatingActionButton newOrderPin;
     ListView listHistroy;
+    TextView outstandingBillText;
 
     Context context;
     ProgressDialog progressDialog;
 
     @Override
     public String getProdcastTitle() {
-        return "Outstanding Bills";
+        return "Outstanding Orders";
     }
 
     @Override
@@ -46,12 +47,16 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         context = this;
         progressDialog=getProgressDialog(context);
         listHistroy=(ListView) findViewById(R.id.billsListView);
-        newOrderPin = (Button) findViewById(R.id.newOrderPin);
+        newOrderPin = (FloatingActionButton) findViewById(R.id.newOrderPin);
+        outstandingBillText = (TextView) findViewById(R.id.outstandingBillText);
         TextView total=(TextView) findViewById(R.id.total);
         TextView outstandingbalance=(TextView) findViewById(R.id.outstandingBalance);
         String currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         total.setText("Total("+currencySymbol+")");
         outstandingbalance.setText("Balance("+currencySymbol+")");
+
+        outstandingBillText.setText("Outstanding Bills");
+
         newOrderPin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
