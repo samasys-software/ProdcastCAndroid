@@ -17,31 +17,25 @@
     <style name="TableHeader" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorInversePrimary</item>
-
-        <item name="android:typeface">serif</item>
-
         <item name="android:paddingTop">4pt</item>
         <item name="android:paddingBottom">4pt</item>
         <item name="android:lineSpacingExtra">0dp</item>
-        <item name="android:padding">2pt</item>
+        <item name="android:padding">2dp</item>
     </style>
 
     <style name="TableEntry" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
-
-        <item name="android:typeface">serif</item>
-
         <item name="android:paddingTop">4pt</item>
         <item name="android:paddingBottom">4pt</item>
         <item name="android:lineSpacingExtra">0dp</item>
-        <item name="android:padding">2pt</item>
+        <item name="android:padding">2dp</item>
 
     </style>
 
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-       <item name="color">@color/colorInversePrimary</item>
+        <item name="color">@color/colorInversePrimary</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -50,6 +44,7 @@
 
     <style name="AlertTheme" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorInversePrimary</item>
 
     </style>
 
@@ -59,14 +54,13 @@
         <item name="android:background">@drawable/form_box</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40dp</item>
-
-        <item name="android:typeface">serif</item>
-
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_alignParentBottom">true</item>
+
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:ems">10</item>
+
         <item name="android:paddingLeft">10dp</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:layout_gravity">center</item>
@@ -82,41 +76,29 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
 
-        <item name="android:typeface">serif</item>
-
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/colorInversePrimary</item>
+
         <item name="android:layout_marginLeft">3dp</item>
         <item name="android:layout_marginRight">3dp</item>
 
 
     </style>
-	
-	<style name="datePicker">
+
+    <style name="datePicker">
         <!-- Customize your theme here. -->
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+
         <item name="android:layout_marginLeft">30dp</item>
         <item name="android:layout_marginRight">30dp</item>
 
-        <item name="android:typeface">serif</item>
 
     </style>
 
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
-    </style>
-
-    <style name="dualText">
-        <!-- Customize your theme here. -->
-        <item name="android:background">@drawable/form_box</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:typeface">serif</item>
-        <item name="android:ems">10</item>
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">10dp</item>
-        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
 

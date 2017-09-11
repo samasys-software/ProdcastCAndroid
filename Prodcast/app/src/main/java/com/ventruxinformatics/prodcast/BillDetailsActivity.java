@@ -59,16 +59,11 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         subTotal.setText("Sub Total("+currencySymbol+")");
         paymentAmount.setText("Amount("+currencySymbol+")");
         orderListView = (ListView) findViewById(R.id.orderEntriesAdapter);
-        refresh = (ImageView) findViewById(R.id.refresh);
+
         context = this;
         getServerResponse();
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getServerResponse();
-            }
 
-        });
+
 
     }
 
@@ -154,7 +149,7 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         TextView orderNo = (TextView) findViewById(R.id.orderNo);
         TextView billDate = (TextView) findViewById(R.id.billDate);
         TextView total = (TextView) findViewById(R.id.total);
-        TextView salesRep = (TextView) findViewById(R.id.salesRep);
+
         TextView balance = (TextView) findViewById(R.id.balance);
         TextView discount = (TextView) findViewById(R.id.discount);
         tv.setText(order.getDistributorName());
@@ -168,7 +163,6 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
 
         orderNo.setText("Order No:"+" "+String.valueOf(order.getBillNumber())+"");
         billDate.setText("BillDate:"+" "+String.valueOf(order.getBillDate())+"");
-        salesRep.setText(order.getEmployeeName());
         total.setText("Total:"+" "+currencySymbol+""+numberFormat.format(order.getTotalAmount())+"");
         balance.setText("Balance:"+" "+currencySymbol+""+numberFormat.format(order.getOutstandingBalance())+"");
         discount.setText(String.valueOf(order.getDiscount()));

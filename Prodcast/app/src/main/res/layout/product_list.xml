@@ -6,7 +6,7 @@
     android:id="@+id/product_list"
     android:name="com.ventruxinformatics.prodcast.ProductListFragment"
     android:layout_width="match_parent"
-    style="@style/ProdcastFonts"
+
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"

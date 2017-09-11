@@ -10,7 +10,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="25dp"
-                style="@style/ProdcastFonts"
+
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:textSize="16sp"
@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="25dp"
-                style="@style/ProdcastFonts"
+
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:textSize="16sp"
@@ -31,32 +31,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <!--<android.support.design.widget.TextInputLayout
+        <android.support.design.widget.TextInputLayout
 
             android:layout_height="wrap_content"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
 
-            >-->
+            >
             <EditText
                 android:id="@+id/qty"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:layout_marginRight="3dp"
                 android:layout_marginTop="2dp"
-                style="@style/ProdcastFonts"
                 android:hint="Enter Quantity"
+
                 android:minHeight="25dp"
                 android:textSize="16sp"
-                android:layout_weight="1"
+
                 android:inputType="number" />
-       <!-- </android.support.design.widget.TextInputLayout>-->
+
+        </android.support.design.widget.TextInputLayout>
             <TextView
                 android:id="@+id/subTotal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                style="@style/ProdcastFonts"
+                android:gravity="bottom"
                 android:minHeight="25dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
