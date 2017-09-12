@@ -1,6 +1,7 @@
 package com.ventruxinformatics.prodcast;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -121,7 +122,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
                     int newQuantity = Integer.parseInt(newValue);
                     orders.setQuantity( newQuantity );
                     holder.tv2.setText(GlobalUsage.getNumberFormat().format(ProductDetailFragment.calculateTotal(orders.getProduct(),newQuantity)));
-                   // EntryActivitygetValueForTotal(orderEntries);
+                    ((EntryActivity)context).getValueForTotal(orderEntries);
 
                 }
             });

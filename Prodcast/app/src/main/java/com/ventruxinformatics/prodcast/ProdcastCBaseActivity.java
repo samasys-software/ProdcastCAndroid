@@ -129,6 +129,10 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
         }else if (id == R.id.nav_orderHistroy ){
                 intent =new Intent(this, OrderHistroyActivity.class);
                 startActivity(intent);
+        }
+        else if (id == R.id.nav_register ){
+            intent =new Intent(this, RegisterActivity.class);
+            startActivity(intent);
         }else if(id == R.id.nav_logOut){
             File dir = getFilesDir();
             File file = new File(dir, "prodcastCustomerLogin.txt");

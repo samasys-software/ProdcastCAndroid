@@ -250,9 +250,13 @@ public class ProductDetailFragment extends Fragment {
                                                 }
                                                 if(productActive){
                                                     final OrderDetails selectedProduct=existingProduct;
-                                                    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                                                    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity(),R.style.AlertTheme);
                                                     alert.setTitle("Prodcast Notification");
-                                                    alert.setMessage("Your order already has  "+selectedProduct.getQuantity()+" of the Item "+selectedProduct.getProduct().getProductName()+" Would you like to add more to it? ");
+                                                    LayoutInflater inflater = getActivity().getLayoutInflater();
+                                                    View layoutView = inflater.inflate(R.layout.alert_dialog, null);
+                                                    alert.setView(layoutView);
+                                                    TextView message = (TextView) layoutView.findViewById(R.id.alertName);
+                                                    message.setText("Your order already has  "+selectedProduct.getQuantity()+" of the Item "+selectedProduct.getProduct().getProductName()+" Would you like to add more to it? ");
                                                     alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                                         @Override
                                                         public void onClick(DialogInterface dialogs, int which) {
