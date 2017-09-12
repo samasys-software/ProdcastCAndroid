@@ -3,6 +3,7 @@ package com.ventruxinformatics.prodcast;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -172,6 +173,25 @@ public class LoginActivity extends AppCompatActivity {
         pinNumber.setError(null);
 
         // Store values at the time of the login attempt.
+
+
+        //check for a valid country
+        if (ctry <= 0) {
+            TextView errorText = (TextView)country.getSelectedView();
+            errorText.setError(getString(R.string.error_field_required));
+            //errorText.setText(getString(R.string.error_field_required));
+            focusView=country;
+            cancel = true;
+            return  cancel;
+        }
+        // Check for a valid username
+        if (TextUtils.isEmpty(username)) {
+            mobileNumber.setError(getString(R.string.error_field_required));
+            focusView = mobileNumber;
+            cancel = true;
+            return  cancel;
+        }
+        //check for valid password
         if(password!=null) {
             // Check for a valid password, if the user entered one.
             if (TextUtils.isEmpty(password)) {
@@ -186,21 +206,10 @@ public class LoginActivity extends AppCompatActivity {
                 cancel = true;
                 return  cancel;
             }
-            return  cancel;
-        }
 
-        // Check for a valid username
-        if (TextUtils.isEmpty(username)) {
-            mobileNumber.setError(getString(R.string.error_field_required));
-            focusView = mobileNumber;
-            cancel = true;
-            return  cancel;
-        }
 
-        //check for a valid country
-        if (ctry <= 0) {
-            focusView=country;
-            cancel = true;
+
+
             return  cancel;
         }
         return  cancel;

@@ -1,0 +1,34 @@
+
+
+navigation drawer	make it slick and thin
+alert dialogue title have to fix padding
+product detail fragment page	disable add to order button after a click in the alret dialogue
+enable it after by onResume
+
+show shopping cart as floating action bar
+
+
+
+
+
+
+
+login page	if country is not selected vlaidation is not showing
+order page	after submit order saved show alert message (nandhini)
+(productdetailfragment)	instead of alert message show message in the alert dialogue page  and add to order have to change to continue
+review order page	after click submit order , it should disappear. On coming back , it should call onResume method
+catogry page, product list page
+
+
+
+
+Registration page	Its not there , have to make it as a registeration page
+
+
+
+
+
+report page	 In the report activity the Distributor is not shown at the top. Return true from getcompanyName method so that it displays the Distributor name.
+Move the Report Button after End Date. So Start , End and Report button will be in the same line. Rename Report to “Go”
+report	 When Custom is Selected , then show Start Date and End Date as Text View. Each textview should have a small calendar icon. Upon clicking this we should show the Date Picker. The same picker how we had it last week. Someone changed it to the new Date Picker which does not look good.
+add to order	second dialogue box need to change layout (Girish )

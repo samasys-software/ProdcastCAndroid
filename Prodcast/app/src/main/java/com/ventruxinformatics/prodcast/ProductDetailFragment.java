@@ -201,7 +201,7 @@ public class ProductDetailFragment extends Fragment {
                                 qty.setError("Please Enter valid number");
 
                             }
-                            subTotal.setText("Sub Total : " +currencySymbol+""+calculateTotal(product,quantity));
+                            subTotal.setText("Sub Total : " +currencySymbol+""+GlobalUsage.getNumberFormat().format(calculateTotal(product,quantity)));
 
                         }
                     });
@@ -216,7 +216,7 @@ public class ProductDetailFragment extends Fragment {
                                 }
                             });
 
-                    alertDialog.setPositiveButton("Add To Order", null);
+                    alertDialog.setPositiveButton("Continue", null);
                     final AlertDialog theDialog = alertDialog.show();
                     TextView title = (TextView)  theDialog.findViewById(R.id.alertTitle);
                     title.setTextAppearance(R.style.ProdcastFonts);
@@ -235,6 +235,7 @@ public class ProductDetailFragment extends Fragment {
                                                 //SessionInformations.getInstance().setEntry(null);
                                                 // SessionInformations.getInstance().setEntry(entries);
 
+
                                                 List<OrderDetails> orderEntries=SessionInformations.getInstance().getEntry();
                                                 boolean productActive=false;
                                                 OrderDetails existingProduct=null;
@@ -249,9 +250,13 @@ public class ProductDetailFragment extends Fragment {
                                                 }
                                                 if(productActive){
                                                     final OrderDetails selectedProduct=existingProduct;
-                                                    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                                                    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity(),R.style.AlertTheme);
                                                     alert.setTitle("Prodcast Notification");
-                                                    alert.setMessage("Your order already has  "+selectedProduct.getQuantity()+"of the Item"+selectedProduct.getProduct().getProductName()+"Would you like to add more to it?");
+                                                    LayoutInflater inflater = getActivity().getLayoutInflater();
+                                                    View layoutView = inflater.inflate(R.layout.alert_dialog, null);
+                                                    alert.setView(layoutView);
+                                                    TextView message = (TextView) layoutView.findViewById(R.id.alertName);
+                                                    message.setText("Your order already has  "+selectedProduct.getQuantity()+" of the Item "+selectedProduct.getProduct().getProductName()+" Would you like to add more to it? ");
                                                     alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                                         @Override
                                                         public void onClick(DialogInterface dialogs, int which) {
@@ -322,7 +327,7 @@ public class ProductDetailFragment extends Fragment {
     }
 
 
-    public static final String calculateTotal(Product pro, int quantity) {
+    public static final double calculateTotal(Product pro, int quantity) {
 
 
         float subTotal=calculateSubTotal(pro,quantity);
@@ -330,7 +335,7 @@ public class ProductDetailFragment extends Fragment {
         double total=subTotal*(1+(tax)/100);
 
 
-        return GlobalUsage.getNumberFormat().format(total);
+        return total;
 
     }
     public static final float calculateTax(Product pro) {

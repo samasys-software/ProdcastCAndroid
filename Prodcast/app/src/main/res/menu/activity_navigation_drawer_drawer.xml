@@ -15,6 +15,10 @@
             android:icon="@drawable/truck_delivery"
             android:title="Change Store" />
         <item
+            android:id="@+id/nav_register"
+            android:icon="@drawable/ic_edit_reg_small"
+            android:title="Register" />
+        <item
             android:id="@+id/nav_orderHistroy"
             android:icon="@drawable/ic_insert_chart_black_24dp"
             android:title="Order Histroy" />

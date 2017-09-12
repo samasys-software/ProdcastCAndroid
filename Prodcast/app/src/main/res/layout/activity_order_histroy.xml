@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.ventruxinformatics.prodcast.OrderHistroyActivity">
 
     <LinearLayout
@@ -38,7 +38,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-
                     android:text="SummaryReport"
                     android:background="@drawable/form_box"
                     android:layout_alignParentTop="true"
@@ -77,9 +76,19 @@
                     style="@style/datePicker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp"
                     android:layout_weight="1"
                     android:text="Start Date"
                     android:textSize="20dp" />
+
+                <!--<android.support.design.widget.FloatingActionButton-->
+                <ImageButton
+                    android:id="@+id/startDatePicker"
+                    app:srcCompat="@drawable/ic_date_range"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
+
+
                 <!--<DatePicker
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,15 +96,24 @@
                     android:id="@+id/startDatePicker">
 
                 </DatePicker>-->
+
                 <TextView
                     android:id="@+id/endDate"
                     style="@style/datePicker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="0dp"
                     android:layout_weight="1"
                     android:text="End Date"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"/>
+
+                <!--<android.support.design.widget.FloatingActionButton-->
+                <ImageButton
+                    android:id="@+id/endDatePicker"
+                    app:srcCompat="@drawable/ic_date_range"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
+
                 <!--<DatePicker
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -103,6 +121,15 @@
                     android:id="@+id/endDatePicker">
 
                 </DatePicker>-->
+
+                <Button
+                    android:id="@+id/report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/submitButton"
+                    android:layout_marginTop="10dp"
+                    android:text="Go"/>
 
 
             </LinearLayout>
@@ -119,15 +146,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/report"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/submitButton"
-                android:layout_marginTop="10dp"
-                android:text="Report"/>
 
             <Button
                 android:id="@+id/reset"
