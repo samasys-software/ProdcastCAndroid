@@ -23,7 +23,7 @@ public class ChangePasswordActivity extends ProdcastCBaseActivity{
 
     @Override
     public boolean getCompanyName(){
-        return true;
+        return false;
     }
 
     @Override
