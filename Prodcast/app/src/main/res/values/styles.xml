@@ -19,10 +19,9 @@
     <style name="TableHeader" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorInversePrimary</item>
-        <item name="android:paddingTop">4pt</item>
-        <item name="android:paddingBottom">4pt</item>
+
         <item name="android:lineSpacingExtra">0dp</item>
-        <item name="android:padding">2dp</item>
+        <item name="android:padding">0dp</item>
     </style>
 
     <style name="TableEntry" parent="@android:style/TextAppearance">
@@ -73,8 +72,6 @@
 
 
     </style>
-
-
 
 
     <style name="submitButton" >
