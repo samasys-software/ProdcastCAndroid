@@ -26,7 +26,8 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
     FloatingActionButton newOrderPin;
     ListView listHistroy;
     TextView outstandingBillText;
-
+    TextView outstandingBillCount;
+    TextView outstandingBillTotalText, outstandingBillBalanceText;
     Context context;
     ProgressDialog progressDialog;
 
@@ -49,11 +50,17 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         listHistroy=(ListView) findViewById(R.id.billsListView);
         newOrderPin = (FloatingActionButton) findViewById(R.id.newOrderPin);
         outstandingBillText = (TextView) findViewById(R.id.outstandingBillText);
+        outstandingBillCount = (TextView) findViewById(R.id.outstandingBillCount);
         TextView total=(TextView) findViewById(R.id.total);
         TextView outstandingbalance=(TextView) findViewById(R.id.outstandingBalance);
+
+        TextView outstandingBillTotalText = (TextView)findViewById(R.id.outstandingBillTotalText);
+        TextView outstandingBillBalanceText = (TextView)findViewById(R.id.outstandingBillBalanceText);
+
         String currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
-        total.setText("Total("+currencySymbol+")");
-        outstandingbalance.setText("Balance("+currencySymbol+")");
+
+        outstandingBillTotalText.setText("("+currencySymbol+")");
+        outstandingBillBalanceText.setText("("+currencySymbol+")");
 
         outstandingBillText.setText("Outstanding Bills");
 
@@ -146,8 +153,10 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
 
     private void setCount(){
         TextView billSize = (TextView) findViewById(R.id.outstandingBillText);
+        TextView billCount = (TextView) findViewById(R.id.outstandingBillCount);
         if( billSize != null && listHistroy.getAdapter() != null )
-        billSize.setText("Outstanding Bills("+listHistroy.getAdapter().getCount()+")");
+        //billSize.setText("Outstanding Bills("+listHistroy.getAdapter().getCount()+")");
+        billCount.setText(" " +"("+listHistroy.getAdapter().getCount()+")");
     }
 
 

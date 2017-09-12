@@ -6,31 +6,32 @@
     <TextView
         android:id="@+id/paymentDate"
         android:layout_width="0dp"
-
         android:layout_height="match_parent"
-        android:background="@drawable/border"
         android:gravity="center"
-        android:padding="3dp"
+        android:background="@drawable/border_entryends"
+        style="@style/TableEntry"
         android:layout_weight="0.9"/>
 
     <TextView
         android:id="@+id/paymentReceiver"
         android:layout_width="0dp"
-
+        android:background="@drawable/border_entryends"
+        style="@style/TableEntry"
         android:layout_height="match_parent"
-        android:background="@drawable/border"
+
         android:gravity="center"
-        android:padding="3dp"
+
         android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/paymentAmount"
         android:layout_width="0dp"
-
+        android:background="@drawable/border_entryends"
+        style="@style/TableEntry"
         android:layout_height="match_parent"
-        android:background="@drawable/border"
+
         android:gravity="right"
-        android:padding="3dp"
+        
         android:layout_weight="1"/>
 
 </LinearLayout>
