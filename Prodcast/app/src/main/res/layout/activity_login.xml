@@ -67,7 +67,10 @@
                 android:layout_marginLeft="45dp"
                 android:paddingLeft="10dp"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true" />
+                android:layout_alignParentBottom="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:nextFocusDown="@id/loginMobileNumber"/>
 
           <!--  <ImageButton
                 android:id="@+id/imageButton2"

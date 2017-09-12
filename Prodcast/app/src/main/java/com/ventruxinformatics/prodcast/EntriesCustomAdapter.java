@@ -97,7 +97,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
             holder.tv1.setText(numberFormat.format(price));
 
             holder.qty.setText(String.valueOf(orders.getQuantity()));
-            holder.tv2.setText(ProductDetailFragment.calculateTotal(orders.getProduct(),Integer.parseInt(holder.qty.getText().toString())));
+            holder.tv2.setText(GlobalUsage.getNumberFormat().format(ProductDetailFragment.calculateTotal(orders.getProduct(),Integer.parseInt(holder.qty.getText().toString()))));
 
 
 
@@ -120,7 +120,8 @@ public class EntriesCustomAdapter extends BaseAdapter {
                     if( newValue.trim().length()==0) newValue="0";
                     int newQuantity = Integer.parseInt(newValue);
                     orders.setQuantity( newQuantity );
-                    holder.tv2.setText(ProductDetailFragment.calculateTotal(orders.getProduct(),newQuantity));
+                    holder.tv2.setText(GlobalUsage.getNumberFormat().format(ProductDetailFragment.calculateTotal(orders.getProduct(),newQuantity)));
+                   // EntryActivitygetValueForTotal(orderEntries);
 
                 }
             });
