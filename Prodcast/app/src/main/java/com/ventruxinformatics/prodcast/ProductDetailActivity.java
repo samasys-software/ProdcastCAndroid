@@ -138,6 +138,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         else
         {
             Intent intent=new Intent(this,EntryActivity.class);
+            finish();
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
