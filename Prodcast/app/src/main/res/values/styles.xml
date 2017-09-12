@@ -7,7 +7,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textAppearance">@style/ProdcastFonts</item>
+        <item name="android:editTextStyle">@style/editText</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
     </style>
 
     <style name="ProdcastFonts">
@@ -36,6 +38,7 @@
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/colorInversePrimary</item>
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -45,12 +48,16 @@
     <style name="AlertTheme" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:background">@color/colorAccent</item>
         <item name="android:textColor">@color/colorInversePrimary</item>
+        <item name="android:textAppearance">@style/ProdcastFonts</item>
+        <item name="android:editTextStyle">@style/editText</item>
+
 
     </style>
 
 
-    <style name="editText">
+    <style name="editText" parent="@android:style/Widget.EditText">
         <!-- Customize your theme here. -->
+
         <item name="android:background">@drawable/form_box</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40dp</item>
@@ -70,18 +77,20 @@
 
 
 
-    <style name="submitButton">
+
+    <style name="submitButton" >
         <!-- Customize your theme here. -->
-        <item name="android:background">@color/colorBg</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
 
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/colorInversePrimary</item>
 
-        <item name="android:layout_marginLeft">3dp</item>
-        <item name="android:layout_marginRight">3dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
 
+        <item name="android:background">@drawable/button_shadow</item>
+        <item name="android:fontFamily">serif</item>
 
     </style>
 
@@ -97,7 +106,7 @@
     </style>
 
     <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
