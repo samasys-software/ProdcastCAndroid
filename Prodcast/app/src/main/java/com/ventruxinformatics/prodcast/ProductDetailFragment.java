@@ -149,6 +149,7 @@ public class ProductDetailFragment extends Fragment {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertTheme);
                     alertDialog.setTitle("Please Enter A Quantity");
 
+
                     alertDialog.setCancelable(true);
                     LayoutInflater inflater = getActivity().getLayoutInflater();
                     View diaView = inflater.inflate(R.layout.qty_dialog, null);
@@ -217,6 +218,8 @@ public class ProductDetailFragment extends Fragment {
 
                     alertDialog.setPositiveButton("Add To Order", null);
                     final AlertDialog theDialog = alertDialog.show();
+                    TextView title = (TextView)  theDialog.findViewById(R.id.alertTitle);
+                    title.setTextAppearance(R.style.ProdcastFonts);
                     theDialog.getButton(
                             DialogInterface.BUTTON_POSITIVE)
                             .setOnClickListener(

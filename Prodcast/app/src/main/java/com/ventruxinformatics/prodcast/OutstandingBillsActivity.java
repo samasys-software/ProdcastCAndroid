@@ -109,6 +109,11 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         }
 
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        setCount();
+    }
     private void setBills(Customer customer)
     {
         List<Bill> bills=customer.getOutstandingBill();
@@ -141,6 +146,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
 
     private void setCount(){
         TextView billSize = (TextView) findViewById(R.id.outstandingBillText);
+        if( billSize != null && listHistroy.getAdapter() != null )
         billSize.setText("Outstanding Bills("+listHistroy.getAdapter().getCount()+")");
     }
 

@@ -55,7 +55,7 @@
             android:layout_below="@+id/companyDetails"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Product Name"
+            android:text="Item"
             android:background="@drawable/border_headerends"
             style="@style/TableHeader"
             />
@@ -76,7 +76,7 @@
             android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:text="Quantity"
+            android:text="Qty"
             android:background="@drawable/border_headermiddle"
             style="@style/TableHeader"
 
@@ -86,8 +86,8 @@
             android:layout_width="0dp"
             android:layout_weight="0.75"
             android:layout_height="wrap_content"
-            android:text="SubTotal"
-            android:gravity="center|right"
+            android:text="Sub Total"
+            android:gravity="center"
             android:background="@drawable/border_headermiddle"
             style="@style/TableHeader"
 
@@ -109,40 +109,71 @@
         android:orientation="vertical"
         android:layout_below="@id/listofentries"
         android:layout_marginTop="10dp">
-        <TextView
-            android:id="@+id/total"
-            android:layout_height="wrap_content"
-
-            android:gravity="center"
-            android:layout_gravity="right"
-            android:textSize="16sp"
-            android:layout_marginTop="0dp"
-            android:layout_width="wrap_content"
-            android:textColor="@color/colorAccent"
-            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="Sub Total :"
+                android:gravity="right"
+                android:layout_weight="2.25"
+                />
         <TextView
             android:id="@+id/totalSubTotal"
             android:layout_height="wrap_content"
-
-            android:gravity="center"
+            android:text="Test"
+            android:gravity="left"
             android:layout_gravity="right"
             android:textSize="16sp"
-            android:layout_marginTop="15dp"
-
-            android:layout_width="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_width="0dp"
             android:textColor="@color/colorAccent"
-            android:layout_weight="1"/>
+            android:layout_weight="0.60"/>
+        </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:text="Tax :"
+            android:gravity="right"
+            android:layout_weight="2.25"
+            />
+
+
         <TextView
             android:id="@+id/totalTax"
             android:layout_height="wrap_content"
+            android:text="Test"
+            android:gravity="left"
             android:layout_gravity="right"
-            android:layout_marginTop="30dp"
-
-            android:gravity="center"
             android:textSize="16sp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:textColor="@color/colorAccent"
-            android:layout_weight="1"/>
+            android:layout_weight="0.60"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal" >
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:text="Total :"
+            android:gravity="right"
+            android:layout_weight="2.25"
+            />
+        <TextView
+            android:id="@+id/total"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:text="Test"
+            android:gravity="left"
+            android:textSize="16sp"
+
+            android:textColor="@color/colorAccent"
+            android:layout_weight="0.60"/>
+    </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

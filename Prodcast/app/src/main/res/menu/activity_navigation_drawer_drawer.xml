@@ -8,7 +8,7 @@
             android:title="Home" />
         <item
             android:id="@+id/nav_orderEntry"
-            android:icon="@drawable/order_entry_small"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
             android:title="Order Entry" />
         <item
             android:id="@+id/nav_changeStore"
@@ -20,7 +20,7 @@
             android:title="Order Histroy" />
         <item
             android:id="@+id/nav_editRegistration"
-            android:icon="@drawable/edit_registration_small"
+            android:icon="@drawable/ic_edit_reg_small"
             android:title="Edit Registration" />
         <item
             android:id="@+id/nav_changePassword"
@@ -28,7 +28,7 @@
             android:title="Change Password" />
         <item
             android:id="@+id/nav_logOut"
-            android:icon="@drawable/logout_icon_small"
+            android:icon="@drawable/ic_logout_icon"
             android:title="Logout"/>
 
     </group>
