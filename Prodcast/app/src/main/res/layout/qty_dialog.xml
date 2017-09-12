@@ -35,22 +35,22 @@
 
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.75"
 
             >
             <EditText
                 android:id="@+id/qty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginTop="2dp"
+
                 android:hint="Enter Quantity"
 
-                android:minHeight="25dp"
+                android:minHeight="30dp"
                 android:textSize="16sp"
-
-                android:inputType="number" />
+                android:layout_marginLeft="10dp"
+                android:translationY="0dp"
+                android:inputType="number"
+                android:background="@drawable/quantity_textview"/>
 
         </android.support.design.widget.TextInputLayout>
             <TextView
