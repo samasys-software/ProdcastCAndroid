@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
+import java.util.LinkedList;
+import java.util.List;
 
 import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
@@ -36,9 +38,9 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         return "Bill Details";
     }
 
-
-    ListView orderListView;
-    ListView paymentListView;
+    ExpandableListView expandableListView;
+   // ListView orderListView;
+   // ListView paymentListView;
     Context context;
 
     TextView subTotal,paymentAmount;
@@ -54,12 +56,13 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
 
         currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         progressDialog=getProgressDialog(this);
-        paymentListView = (ListView) findViewById(R.id.paymentEntriesAdapter);
+
         subTotal=(TextView) findViewById(R.id.subTotal);
         paymentAmount=(TextView) findViewById(R.id.paymentAmount);
-        subTotal.setText("Sub Total("+currencySymbol+")");
-        paymentAmount.setText("Amount("+currencySymbol+")");
-        orderListView = (ListView) findViewById(R.id.orderEntriesAdapter);
+       // subTotal.setText("Sub Total("+currencySymbol+")");
+       // paymentAmount.setText("Amount("+currencySymbol+")");
+
+        expandableListView=(ExpandableListView) findViewById(R.id.expandableBillDetailsEntryList);
 
         context = this;
         getServerResponse();
@@ -90,8 +93,23 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                     } else {
                         Order order = dto.getOrder();
                         setBillDetails(order);
+
+                       List<String> titles = new LinkedList<String>();
+                        titles.add("Order Details");
+                        titles.add("Payment Details");
+                        expandableListView.setAdapter(
+                                new BillDetailsExpandableListViewAdapter(
+                                        BillDetailsActivity.this,titles,order.getOrderEntries(),order.getCollectionEntries())
+                        );
+                        expandableListView.expandGroup(0);
+                        expandableListView.expandGroup(1);
+
+
+
+
+//baseAdapter
                         //  Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
-                        if (order.getCollectionEntries().size() > 0) {
+                     /*   if (order.getCollectionEntries().size() > 0) {
                             paymentListView.setAdapter(new PaymentDetailsListAdapter(BillDetailsActivity.this, order.getCollectionEntries()));
 
                         } else {
@@ -104,7 +122,7 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                         }
                         if (order.getOrderEntries().size() > 0) {
                             orderListView.setAdapter(new BillDetailsListAdapter(BillDetailsActivity.this, order.getOrderEntries()));
-                        }
+                        }*/
                         progressDialog.dismiss();
                     }
                 }
