@@ -79,23 +79,13 @@
                     android:layout_marginRight="0dp"
                     android:layout_weight="1"
                     android:text="Start Date"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
 
-                <!--<android.support.design.widget.FloatingActionButton-->
                 <ImageButton
                     android:id="@+id/startDatePicker"
                     app:srcCompat="@drawable/ic_date_range"
                     android:layout_width="50dp"
                     android:layout_height="50dp"/>
-
-
-                <!--<DatePicker
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:id="@+id/startDatePicker">
-
-                </DatePicker>-->
 
                 <TextView
                     android:id="@+id/endDate"
@@ -105,22 +95,13 @@
                     android:layout_marginRight="0dp"
                     android:layout_weight="1"
                     android:text="End Date"
-                    android:textSize="20dp"/>
+                    android:textSize="16dp"/>
 
-                <!--<android.support.design.widget.FloatingActionButton-->
                 <ImageButton
                     android:id="@+id/endDatePicker"
                     app:srcCompat="@drawable/ic_date_range"
                     android:layout_width="50dp"
                     android:layout_height="50dp"/>
-
-                <!--<DatePicker
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-
-                    android:id="@+id/endDatePicker">
-
-                </DatePicker>-->
 
                 <Button
                     android:id="@+id/report"
@@ -131,7 +112,6 @@
                     android:layout_marginTop="10dp"
                     android:text="Go"/>
 
-
             </LinearLayout>
 
             <!-- DatePicker End-->
@@ -139,27 +119,6 @@
             <!-- Text Box End-->
 
         </RelativeLayout>
-
-        <!-- Button Start-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/reset"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/submitButton"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:text="Reset"/>
-
-        </LinearLayout>
-
-        <!-- Button End-->
 
         <!-- Summary Start-->
 
