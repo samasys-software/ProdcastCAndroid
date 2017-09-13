@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -174,7 +175,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
             order.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    order.setEnabled(false);
+                    order.setVisibility(View.INVISIBLE);
                     OrderDetailDTO dto = new OrderDetailDTO();
                     List<OrderEntryDTO> orderEntries=new ArrayList<OrderEntryDTO>();
 
@@ -224,7 +225,11 @@ public class EntryActivity extends ProdcastCBaseActivity {
                                     SessionInformations.getInstance().setBillsForCustomer(customer);
                                     AlertDialog.Builder alert = new AlertDialog.Builder(context,R.style.AlertTheme);
                                     alert.setTitle("Prodcast Notification");
-                                    alert.setMessage("Your Order Has Been Placed Successfully");
+                                    LayoutInflater inflater = EntryActivity.this.getLayoutInflater();
+                                    View layoutView = inflater.inflate(R.layout.alert_dialog, null);
+                                    alert.setView(layoutView);
+                                    TextView message = (TextView) layoutView.findViewById(R.id.alertName);
+                                    message.setText("Your Order Has Been Placed Successfully");
                                     alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -260,6 +265,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
 
         }
+
     }
 
     public void getValueForTotal(List<OrderDetails> entries)
@@ -277,8 +283,8 @@ public class EntryActivity extends ProdcastCBaseActivity {
             total_tax=total_tax+ProductDetailFragment.calculateTax(entry.getProduct());
 
         }
-        total.setText(currencySymbol+""+numberFormat.format(total_value));
-        subTotal.setText(currencySymbol+""+numberFormat.format(sub_total));
-        tax.setText(currencySymbol+""+numberFormat.format(total_tax));
+        total.setText("("+currencySymbol+")"+""+numberFormat.format(total_value));
+        subTotal.setText("("+currencySymbol+")"+""+numberFormat.format(sub_total));
+        tax.setText("("+currencySymbol+")"+""+numberFormat.format(total_tax));
     }
 }

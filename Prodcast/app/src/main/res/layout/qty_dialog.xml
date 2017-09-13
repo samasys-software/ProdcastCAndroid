@@ -35,7 +35,8 @@
 
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_weight="0.75"
+            android:layout_weight="0.5"
+
 
             >
             <EditText
@@ -43,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:hint="Enter Quantity"
+                android:hint="Quantity"
 
                 android:minHeight="30dp"
                 android:textSize="16sp"
@@ -66,6 +67,22 @@
                 android:inputType="number"
                 android:layout_marginTop="5dp"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/confirmationMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:gravity="bottom"
+        android:minHeight="25dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_weight="1"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:text=""
+        android:visibility="gone"
+        />
 
             <ImageView
                 android:id="@+id/img"
