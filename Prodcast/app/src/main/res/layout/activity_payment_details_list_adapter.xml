@@ -15,7 +15,7 @@
     <TextView
         android:id="@+id/paymentReceiver"
         android:layout_width="0dp"
-        android:background="@drawable/border_entryends"
+        android:background="@drawable/border_entrymiddle"
         style="@style/TableEntry"
         android:layout_height="match_parent"
 
@@ -26,7 +26,7 @@
     <TextView
         android:id="@+id/paymentAmount"
         android:layout_width="0dp"
-        android:background="@drawable/border_entryends"
+        android:background="@drawable/border_entrymiddle"
         style="@style/TableEntry"
         android:layout_height="match_parent"
 

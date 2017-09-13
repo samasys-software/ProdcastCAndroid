@@ -21,7 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         style="@style/TableEntry"
-        android:background="@drawable/border_entryends"
+        android:background="@drawable/border_entrymiddle"
         android:gravity="center"
 
         android:layout_weight="0.7"
@@ -32,30 +32,11 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         style="@style/TableEntry"
-        android:background="@drawable/border_entryends"
+        android:background="@drawable/border_entrymiddle"
         android:gravity="center"
 
         android:layout_weight="0.7"
         />
-  <!--  <TextView
-        android:id="@+id/salesTax"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/border"
-        android:gravity="center"
-        android:padding="3dp"
-        android:layout_weight="1"
-        />
-    <TextView
-        android:id="@+id/otherTax"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/border"
-        android:gravity="center"
-        android:padding="3dp"
-        android:layout_weight="1"
-        />
--->
 
 
     <TextView
@@ -63,7 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         style="@style/TableEntry"
-        android:background="@drawable/border_entryends"
+        android:background="@drawable/border_entrymiddle"
         android:gravity="right"
 
         android:layout_weight="1"
