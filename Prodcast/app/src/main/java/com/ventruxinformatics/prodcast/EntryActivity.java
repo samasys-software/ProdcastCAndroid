@@ -86,7 +86,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                     SwipeMenuItem deleteItem = new SwipeMenuItem(getApplicationContext());
                     //deleteItem.setBackground(getDrawable(R.drawable.yellow_background));
                     deleteItem.setWidth(300);
-                    deleteItem.setIcon(R.drawable.ic_delete);
+                    deleteItem.setIcon(R.drawable.ic_delete_button);
                     menu.addMenuItem(deleteItem);
 
                 }

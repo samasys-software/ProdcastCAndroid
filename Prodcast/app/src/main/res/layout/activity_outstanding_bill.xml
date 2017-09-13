@@ -70,7 +70,7 @@
                 style="@style/TableHeader"/>
 
             <TextView
-                android:text="Bill Date"
+                android:text="Date"
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

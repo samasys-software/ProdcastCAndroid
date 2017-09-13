@@ -60,6 +60,9 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         paymentAmount.setText("Amount("+currencySymbol+")");
         orderListView = (ListView) findViewById(R.id.orderEntriesAdapter);
 
+
+
+
         context = this;
         getServerResponse();
 

@@ -148,7 +148,7 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
 
-        /*startDatePicker.setOnClickListener(new View.OnClickListener()
+        startDatePicker.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -188,7 +188,7 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
-        });*/
+        });
 
         /*startDate.setOnClickListener(new View.OnClickListener()
         {
