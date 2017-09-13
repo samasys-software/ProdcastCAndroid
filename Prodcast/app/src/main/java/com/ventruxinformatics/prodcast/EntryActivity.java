@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -47,7 +48,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
     @Override
     public String getProdcastTitle() {
-        return "Orders Screen";
+        return "Checkout Order";
     }
 
     @Override
@@ -85,7 +86,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                     SwipeMenuItem deleteItem = new SwipeMenuItem(getApplicationContext());
                     //deleteItem.setBackground(getDrawable(R.drawable.yellow_background));
                     deleteItem.setWidth(300);
-                    deleteItem.setIcon(R.drawable.icons8);
+                    deleteItem.setIcon(R.drawable.ic_delete);
                     menu.addMenuItem(deleteItem);
 
                 }
@@ -174,6 +175,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
             order.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    order.setVisibility(View.INVISIBLE);
                     OrderDetailDTO dto = new OrderDetailDTO();
                     List<OrderEntryDTO> orderEntries=new ArrayList<OrderEntryDTO>();
 
@@ -221,11 +223,25 @@ public class EntryActivity extends ProdcastCBaseActivity {
                                     Customer customer = dto.getCustomer();
 
                                     SessionInformations.getInstance().setBillsForCustomer(customer);
-                                    Toast.makeText(EntryActivity.this,"Your Order Has Been Placed Successfully",Toast.LENGTH_LONG);
-                                    Intent i = new Intent(EntryActivity.this, OutstandingBillsActivity.class);
-                                    i.putExtra("useCache", true);
-                                    Toast.makeText(EntryActivity.this,"Your Order Has Been Placed Successfully",Toast.LENGTH_LONG);
-                                    startActivity(i);
+                                    AlertDialog.Builder alert = new AlertDialog.Builder(context,R.style.AlertTheme);
+                                    alert.setTitle("Prodcast Notification");
+                                    LayoutInflater inflater = EntryActivity.this.getLayoutInflater();
+                                    View layoutView = inflater.inflate(R.layout.alert_dialog, null);
+                                    alert.setView(layoutView);
+                                    TextView message = (TextView) layoutView.findViewById(R.id.alertName);
+                                    message.setText("Your Order Has Been Placed Successfully");
+                                    alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Intent i = new Intent(EntryActivity.this, OutstandingBillsActivity.class);
+                                            i.putExtra("useCache", true);
+                                            startActivity(i);
+                                        }
+                                    });
+                                    alert.show();
+
+                                    //Toast.makeText(EntryActivity.this,"",Toast.LENGTH_LONG);
+
                                     progressDialog.dismiss();
 
 
@@ -256,12 +272,12 @@ public class EntryActivity extends ProdcastCBaseActivity {
         final TextView total=(TextView) findViewById(R.id.total);
         final TextView subTotal=(TextView) findViewById(R.id.totalSubTotal);
         final TextView tax=(TextView) findViewById(R.id.totalTax);
-        float total_value=0;
+        double total_value=0.0;
         float sub_total=0;
         float total_tax=0;
         for(OrderDetails entry:entries)
         {
-            total_value=total_value+Float.parseFloat(ProductDetailFragment.calculateTotal(entry.getProduct(),entry.getQuantity()));
+            total_value=total_value+ProductDetailFragment.calculateTotal(entry.getProduct(),entry.getQuantity());
             sub_total=sub_total+ProductDetailFragment.calculateSubTotal(entry.getProduct(),entry.getQuantity());
             total_tax=total_tax+ProductDetailFragment.calculateTax(entry.getProduct());
 

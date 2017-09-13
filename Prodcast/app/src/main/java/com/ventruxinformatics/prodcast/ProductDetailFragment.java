@@ -5,6 +5,8 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -16,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -111,7 +114,7 @@ public class ProductDetailFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.product_detail, container, false);
 
@@ -148,13 +151,10 @@ public class ProductDetailFragment extends Fragment {
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertTheme);
                     alertDialog.setTitle("Please Enter A Quantity");
-
-
                     alertDialog.setCancelable(true);
                     LayoutInflater inflater = getActivity().getLayoutInflater();
                     View diaView = inflater.inflate(R.layout.qty_dialog, null);
                     alertDialog.setView(diaView);
-
 
                     productName = (TextView) diaView.findViewById(R.id.productName);
                     unitPrice = (TextView) diaView.findViewById(R.id.unitPrice);
@@ -201,7 +201,7 @@ public class ProductDetailFragment extends Fragment {
                                 qty.setError("Please Enter valid number");
 
                             }
-                            subTotal.setText("Sub Total : " +currencySymbol+""+calculateTotal(product,quantity));
+                            subTotal.setText("Sub Total : " +currencySymbol+""+GlobalUsage.getNumberFormat().format(calculateTotal(product,quantity)));
 
                         }
                     });
@@ -216,104 +216,101 @@ public class ProductDetailFragment extends Fragment {
                                 }
                             });
 
-                    alertDialog.setPositiveButton("Add To Order", null);
+                    alertDialog.setPositiveButton("ADD TO ORDER", null);
+                    TextView textView = new TextView(getActivity());
+                    textView.setText("Please Enter Quantity");
+                    textView.setTextColor(getResources().getColor(R.color.colorInversePrimary));
+                    textView.setTextSize(20);
+                    textView.setPadding(10,10,10,10);
+
+                    alertDialog.setCustomTitle(textView);
                     final AlertDialog theDialog = alertDialog.show();
-                    TextView title = (TextView)  theDialog.findViewById(R.id.alertTitle);
-                    title.setTextAppearance(R.style.ProdcastFonts);
+                    final TextView confirmationMessage = (TextView)  theDialog.findViewById(R.id.confirmationMessage);
+
                     theDialog.getButton(
                             DialogInterface.BUTTON_POSITIVE)
                             .setOnClickListener(
                                     new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
-                                            final String quantity = qty.getText().toString();
-                                            if (TextUtils.isEmpty(quantity)) {
-                                                qty.setError(getString(R.string.required_quantity));
-                                                qty.requestFocus();
+                                            Button button = (Button) v;
+                                            boolean add=false;
+                                            if( button.getText().equals("CONTINUE")){
+                                                add = true;
                                             }
-                                            if (!TextUtils.isEmpty(quantity)) {
-                                                //SessionInformations.getInstance().setEntry(null);
-                                                // SessionInformations.getInstance().setEntry(entries);
 
-                                                List<OrderDetails> orderEntries=SessionInformations.getInstance().getEntry();
-                                                boolean productActive=false;
-                                                OrderDetails existingProduct=null;
-                                                for(OrderDetails orderEntry:orderEntries){
-                                                    if(orderEntry.getProduct().getId()==product.getId())
-                                                    {
-                                                        productActive=true;
-                                                        existingProduct=orderEntry;
+                                                final String quantity = qty.getText().toString();
+                                                if (TextUtils.isEmpty(quantity)) {
+                                                    qty.setError(getString(R.string.required_quantity));
+                                                    qty.requestFocus();
+                                                    return;
+                                                }
+
+                                                List<OrderDetails> orderEntries = SessionInformations.getInstance().getEntry();
+                                                boolean productActive = false;
+                                                OrderDetails existingProduct = null;
+                                                for (OrderDetails orderEntry : orderEntries) {
+                                                    if (orderEntry.getProduct().getId() == product.getId()) {
+                                                        productActive = true;
+                                                        existingProduct = orderEntry;
                                                         break;
 
                                                     }
                                                 }
-                                                if(productActive){
-                                                    final OrderDetails selectedProduct=existingProduct;
-                                                    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-                                                    alert.setTitle("Prodcast Notification");
-                                                    alert.setMessage("Your order already has  "+selectedProduct.getQuantity()+"of the Item"+selectedProduct.getProduct().getProductName()+"Would you like to add more to it?");
-                                                    alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialogs, int which) {
-                                                            selectedProduct.setQuantity(selectedProduct.getQuantity()+Integer.parseInt(quantity));
-                                                            if(productDetailActivity!=null){
-                                                                productDetailActivity.setOrderTotal();
-                                                            }
-                                                            theDialog.cancel();
-                                                           // selectedProduct.setSubTotal(selectedProduct.getSubTotal()+);
-                                                        }
-                                                    });
 
-                                                    alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialogs, int which) {
-                                                            dialogs.cancel();
-                                                            theDialog.cancel();;
-                                                        }
-                                                    });
-                                                    alert.show();
+                                            final OrderDetails selectedProduct = existingProduct;
 
+                                                if( productActive && !add ){
+                                                    button.setText("CONTINUE");
+                                                    confirmationMessage.setText( "Your order already has " + selectedProduct.getQuantity() + " of the Item " + selectedProduct.getProduct().getProductName() + " Would you like to add more to it? " );
+                                                    confirmationMessage.setVisibility(View.VISIBLE);
+                                                    return;
                                                 }
-                                                else {
+
+                                                if (productActive && add) {
+                                                    selectedProduct.setQuantity(selectedProduct.getQuantity() + Integer.parseInt(quantity));
+
+                                                } else {
                                                     addProduct(product, Integer.parseInt(quantity));
-
-                                                    final long animationDuration = 1000;
-                                                    ObjectAnimator animX = ObjectAnimator.ofFloat(img, "x", 850);
-                                                    ObjectAnimator animY = ObjectAnimator.ofFloat(img, "y", 0);
-                                                    AnimatorSet animSetXY = new AnimatorSet();
-                                                    animSetXY.playTogether(animX, animY);
-                                                    animSetXY.setDuration(animationDuration);
-                                                    animSetXY.addListener(new Animator.AnimatorListener() {
-                                                        @Override
-                                                        public void onAnimationStart(Animator animation) {
-
-                                                            img.setVisibility(View.VISIBLE);
-                                                        }
-
-                                                        @Override
-                                                        public void onAnimationEnd(Animator animation) {
-                                                            if (productDetailActivity != null) {
-                                                                productDetailActivity.setOrderTotal();
-                                                            }
-
-                                                            theDialog.dismiss();
-                                                        }
-
-                                                        @Override
-                                                        public void onAnimationCancel(Animator animation) {
-
-                                                        }
-
-                                                        @Override
-                                                        public void onAnimationRepeat(Animator animation) {
-
-                                                        }
-                                                    });
-                                                    animSetXY.start();
                                                 }
+
+                                                final long animationDuration = 1000;
+                                                ObjectAnimator animX = ObjectAnimator.ofFloat(img, "x", 850);
+                                                ObjectAnimator animY = ObjectAnimator.ofFloat(img, "y", 0);
+                                                AnimatorSet animSetXY = new AnimatorSet();
+                                                animSetXY.playTogether(animX, animY);
+                                                animSetXY.setDuration(animationDuration);
+                                                animSetXY.addListener(new Animator.AnimatorListener() {
+                                                    @Override
+                                                    public void onAnimationStart(Animator animation) {
+
+                                                        img.setVisibility(View.VISIBLE);
+                                                    }
+
+                                                    @Override
+                                                    public void onAnimationEnd(Animator animation) {
+                                                        if (productDetailActivity != null) {
+                                                            productDetailActivity.setOrderTotal();
+                                                        }
+
+                                                        theDialog.dismiss();
+                                                    }
+
+                                                    @Override
+                                                    public void onAnimationCancel(Animator animation) {
+
+                                                    }
+
+                                                    @Override
+                                                    public void onAnimationRepeat(Animator animation) {
+
+                                                    }
+                                                });
+                                                animSetXY.start();
+
 
                                             }
-                                        }
+
                                     });
                 }
             });
@@ -322,7 +319,7 @@ public class ProductDetailFragment extends Fragment {
     }
 
 
-    public static final String calculateTotal(Product pro, int quantity) {
+    public static final double calculateTotal(Product pro, int quantity) {
 
 
         float subTotal=calculateSubTotal(pro,quantity);
@@ -330,7 +327,7 @@ public class ProductDetailFragment extends Fragment {
         double total=subTotal*(1+(tax)/100);
 
 
-        return GlobalUsage.getNumberFormat().format(total);
+        return total;
 
     }
     public static final float calculateTax(Product pro) {
