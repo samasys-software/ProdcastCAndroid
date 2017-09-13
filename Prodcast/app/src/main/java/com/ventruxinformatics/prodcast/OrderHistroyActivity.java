@@ -227,7 +227,6 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
         });*/
 
 
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
