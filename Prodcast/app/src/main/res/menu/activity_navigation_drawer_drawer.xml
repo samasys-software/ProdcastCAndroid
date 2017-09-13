@@ -1,39 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:id="@+id/group1">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Home" />
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group2">
         <item
             android:id="@+id/nav_orderEntry"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
             android:title="Order Entry" />
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group3">
         <item
             android:id="@+id/nav_changeStore"
             android:icon="@drawable/truck_delivery"
             android:title="Change Store" />
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group4">
         <item
             android:id="@+id/nav_register"
             android:icon="@drawable/ic_edit_reg_small"
             android:title="Register" />
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group5">
         <item
             android:id="@+id/nav_orderHistroy"
             android:icon="@drawable/ic_insert_chart_black_24dp"
             android:title="Order Histroy" />
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group6">
         <item
             android:id="@+id/nav_editRegistration"
             android:icon="@drawable/ic_edit_reg_small"
             android:title="Edit Registration" />
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/group7">
         <item
             android:id="@+id/nav_changePassword"
             android:icon="@drawable/ic_lock_open_black_24dp"
             android:title="Change Password" />
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/group8">
         <item
             android:id="@+id/nav_logOut"
             android:icon="@drawable/ic_logout_icon"
-            android:title="Logout"/>
+            android:title="Logout">
+        </item>
 
     </group>
 
