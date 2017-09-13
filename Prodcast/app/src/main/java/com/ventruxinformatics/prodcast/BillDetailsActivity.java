@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -39,9 +40,9 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
     ListView orderListView;
     ListView paymentListView;
     Context context;
-    ImageView refresh;
+
     TextView subTotal,paymentAmount;
-    Button Close;
+
     ProgressDialog progressDialog;
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     String currencySymbol;
@@ -50,7 +51,7 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_details);
         progressDialog=getProgressDialog(this);
-        //   Close=(Button) findViewById(R.id.close);
+
         currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         progressDialog=getProgressDialog(this);
         paymentListView = (ListView) findViewById(R.id.paymentEntriesAdapter);
@@ -93,8 +94,6 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                         Order order = dto.getOrder();
                         setBillDetails(order);
                         //  Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
-
-
                         if (order.getCollectionEntries().size() > 0) {
                             paymentListView.setAdapter(new PaymentDetailsListAdapter(BillDetailsActivity.this, order.getCollectionEntries()));
 
@@ -126,49 +125,32 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
             }
 
         });
-//        mProgressDialog.cancel();
-
-
     }
 
-    /*  Close.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Intent intent=new Intent(BillDetailsActivity.this,OutstandingBillsActivity.class);
-              startActivity(intent);
 
-          }
-      });*/
 
     public void setBillDetails(Order order){
-        TextView tv = (TextView) findViewById(R.id.distName);
-        //  TextView tv1 = (TextView) findViewById(R.id.custName);
-        TextView tv2 = (TextView) findViewById(R.id.distAddress);
-        //  TextView tv3 = (TextView) findViewById(R.id.custAddress);
-        TextView tv4 = (TextView) findViewById(R.id.distAddress1);
-        //   TextView tv5 = (TextView) findViewById(R.id.custAddress1);
-        TextView tv6 = (TextView) findViewById(R.id.distPhonenumber);
-        //  TextView tv7 = (TextView) findViewById(R.id.custPhonenumber);
+        TextView distName = (TextView) findViewById(R.id.distName);
+        TextView distAddress1 = (TextView) findViewById(R.id.distAddress1);
+        TextView distAddress2 = (TextView) findViewById(R.id.distAddress2);
+        TextView distAddress3 = (TextView) findViewById(R.id.distAddress3);
+        TextView distPhonenumber = (TextView) findViewById(R.id.distPhonenumber);
         TextView orderNo = (TextView) findViewById(R.id.orderNo);
         TextView billDate = (TextView) findViewById(R.id.billDate);
         TextView total = (TextView) findViewById(R.id.total);
-
         TextView balance = (TextView) findViewById(R.id.balance);
         TextView discount = (TextView) findViewById(R.id.discount);
-        tv.setText(order.getDistributorName());
-        tv2.setText(order.getDistributor().getAddress1() + " " + order.getDistributor().getAddress2() + " " + order.getDistributor().getAddress3());
-        tv4.setText(order.getDistributor().getCity() + " " + order.getDistributor().getState() + " " + order.getDistributor().getPostalCode());
-        tv6.setText(order.getDistributor().getHomePhone());
-        //  tv1.setText(order.getCustomerName());
-        //  tv3.setText(order.getCustomer().getBillingAddress1() + " " + order.getCustomer().getBillingAddress2() + " " + order.getCustomer().getBillingAddress3());
-        //  tv5.setText(order.getCustomer().getCity() + " " + order.getCustomer().getState() + " " + order.getCustomer().getPostalCode());
-        //  tv7.setText(order.getCustomer().getCellPhone());
+        distName.setText(order.getDistributorName());
+        distAddress1.setText(order.getDistributor().getAddress1() + " " + order.getDistributor().getAddress2() + " " + order.getDistributor().getAddress3());
+        distAddress3.setText(order.getDistributor().getState() + " " + order.getDistributor().getPostalCode());
+        distAddress2.setText(order.getDistributor().getCity() );
+        distPhonenumber.setText(order.getDistributor().getHomePhone());
+         orderNo.setText("Order No:"+" "+String.valueOf(order.getBillNumber())+"");
 
-        orderNo.setText("Order No:"+" "+String.valueOf(order.getBillNumber())+"");
         billDate.setText("BillDate:"+" "+String.valueOf(order.getBillDate())+"");
-        total.setText("Total:"+" "+currencySymbol+""+numberFormat.format(order.getTotalAmount())+"");
-        balance.setText("Balance:"+" "+currencySymbol+""+numberFormat.format(order.getOutstandingBalance())+"");
-        discount.setText(String.valueOf(order.getDiscount()));
+        total.setText("Total:"+" "+"("+currencySymbol+")"+numberFormat.format(order.getTotalAmount())+"");
+        balance.setText("Balance:"+" "+"("+currencySymbol+")"+numberFormat.format(order.getOutstandingBalance())+"");
+        discount.setText("Discount:"+" "+String.valueOf(order.getDiscount())+"");
 
     }
    

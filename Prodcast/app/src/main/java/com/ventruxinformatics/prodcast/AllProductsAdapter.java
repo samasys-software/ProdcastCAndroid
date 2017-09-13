@@ -98,7 +98,7 @@ public class AllProductsAdapter extends BaseAdapter {
 
         }
         holder.tv1.setText(productName);
-        holder.tv2.setText(currencySymbol+numberFormat.format(unitPrice));
+        holder.tv2.setText("("+currencySymbol+")"+numberFormat.format(unitPrice));
         holder.tv3.setText(String.valueOf(product.getProductDesc()));
        // holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));
 

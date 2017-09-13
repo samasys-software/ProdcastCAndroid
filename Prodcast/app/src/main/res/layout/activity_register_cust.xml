@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:background="@drawable/bg_store"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <RelativeLayout
-        android:id="@+id/registerLayout"
+        android:id="@+id/activity_change"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@drawable/yellow_background"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center"
+       >
 
-        <RelativeLayout
+
+
+
+
+
+     <TextView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/form_box"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="48dp">
+            android:layout_height="wrap_content"
+            android:text="Country"
+            android:textSize="16sp"
+            android:id="@+id/countryTextHint"
+            android:textColor="@color/colorPrimaryDark"
+            />
+    <Spinner
+        android:id="@+id/countryRegister"
+        android:layout_width="match_parent"
+        android:layout_marginTop="2dp"
+        android:layout_height="30dp"
+        android:paddingBottom="3dp"
+        android:visibility="visible"
 
-            <Spinner
+        android:layout_gravity="center"
+        android:background="@drawable/border_spinner"
+        android:layout_below="@id/countryTextHint"/>
+
+
+         <!--   <Spinner
+
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:id="@+id/countryRegister"
                 android:paddingLeft="10dp"
+                android:background="@drawable/border_spinner"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true" />
+                android:layout_alignParentBottom="true" />-->
 
-            <ImageButton
+       <!--     <ImageButton
                 android:id="@+id/imageButton2"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -44,105 +59,83 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/dropdown_icon"
-                android:visibility="invisible" />
+                android:visibility="invisible" />-->
+        <android.support.design.widget.TextInputLayout
 
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="102dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="15dp">
-
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
 
             <EditText
                 android:id="@+id/MobileNumber"
-                style="@style/editText"
+
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:hint="MobileNumber"
                 android:inputType="phone"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true" />
 
-            </android.support.design.widget.TextInputLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="157dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="15dp">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
 
             <EditText
                 android:id="@+id/pin"
-                style="@style/editText"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:hint="PIN"
                 android:inputType="text"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true" />
 
-            </android.support.design.widget.TextInputLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="210dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="15dp">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
 
             <EditText
                 android:id="@+id/confirmPin"
-                style="@style/editText"
+
                 android:hint="Confirm PIN"
                 android:inputType="text"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true" />
 
-            </android.support.design.widget.TextInputLayout>
-
-        </RelativeLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
+       </android.support.design.widget.TextInputLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/registerLayout">
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
 
-        <Button
-            android:id="@+id/registeration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            style="@style/submitButton"
-            android:text="Register"
-            android:layout_alignBaseline="@+id/clear"
-            android:layout_alignBottom="@+id/clear"/>
 
+    <Button
+        android:id="@+id/registeration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:gravity="center"
+        android:layout_weight="1"
+        style="@style/submitButton"
+        />
         <Button
             android:id="@+id/clear"
-            style="@style/submitButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="220dp"
-            android:text="Cancel"/>
+            android:text="Cancel"
+            android:gravity="center"
+            android:layout_weight="1"
+            style="@style/submitButton"
+            />
 
-    </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 
-</RelativeLayout>
+
+
+
