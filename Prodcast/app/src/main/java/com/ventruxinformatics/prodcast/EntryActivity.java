@@ -265,7 +265,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
 
         }
-       
+
     }
 
     public void getValueForTotal(List<OrderDetails> entries)
