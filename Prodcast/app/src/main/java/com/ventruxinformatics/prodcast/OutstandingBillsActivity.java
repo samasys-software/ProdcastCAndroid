@@ -62,7 +62,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         outstandingBillTotalText.setText("("+currencySymbol+")");
         outstandingBillBalanceText.setText("("+currencySymbol+")");
 
-        outstandingBillText.setText("Outstanding Bills");
+        outstandingBillText.setText("Outstanding Orders");
 
         newOrderPin.setOnClickListener(new View.OnClickListener() {
             @Override
