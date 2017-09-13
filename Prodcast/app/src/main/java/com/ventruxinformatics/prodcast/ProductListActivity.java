@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -53,6 +54,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
     ProgressDialog progressDialog;
     //List<Category> categories=new ArrayList<Category>();
     View recyclerView;
+    FloatingActionButton newOrderPin;
     Context context;
 
     @Override
@@ -76,6 +78,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         recyclerView= findViewById(R.id.product_list);
 
         long employeeId=SessionInformations.getInstance().getEmployee().getEmployeeId();
+        newOrderPin=(FloatingActionButton) findViewById(R.id.newOrderPin);
         SessionInformations.getInstance().setEntry(new ArrayList<OrderDetails>());
         progressDialog.show();
 
@@ -151,6 +154,16 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         });
 
 
+
+        newOrderPin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ProductListActivity.this, EntryActivity.class);
+                finish();
+                startActivity(intent);
+            }
+        });
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -277,9 +290,8 @@ public class ProductListActivity extends ProdcastCBaseActivity {
     public void setOrderTotal()  {
         int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
-
-        if(menuItem != null)
-            menuItem.setIcon(buildCounterDrawable(entries.size()));
+        if(entries.size()>0)
+            newOrderPin.setImageDrawable(buildCounterDrawable(entries.size()));
     }
 
     public static Bitmap createImage(int width, int height) {
@@ -308,15 +320,15 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         Bitmap bitmap = null;
 
 
-        if (count == 0) {
+        /*if (count == 0) {
             View counterTextPanel = view.findViewById(R.id.count);
             counterTextPanel.setVisibility(View.GONE);
-            view.setVisibility(View.GONE);
-        } else {
+           view.setVisibility(View.GONE);
+        } else {*/
 
             TextView textView = (TextView) view.findViewById(R.id.count);
             textView.setText(" " + count+" ");
-        }
+        //}
 
 
         view.measure(
