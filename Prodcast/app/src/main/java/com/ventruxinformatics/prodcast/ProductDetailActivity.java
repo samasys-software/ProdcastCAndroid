@@ -8,12 +8,14 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -29,6 +31,7 @@ import businessObjects.domain.OrderDetails;
  * in a {@link ProductListActivity}.
  */
 public class ProductDetailActivity extends ProdcastCBaseActivity {
+    FloatingActionButton newOrderPin;
     public static final String ARG_ITEM_ID = "item_id";
     private Category selectedCategory;
 
@@ -59,9 +62,22 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
+
         progressDialog=getProgressDialog(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+        newOrderPin=(FloatingActionButton) findViewById(R.id.newOrderPin);
         setSupportActionBar(toolbar);
+
+        newOrderPin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (SessionInformations.getInstance().getEntry().size()>0) {
+                    Intent intent = new Intent(ProductDetailActivity.this, EntryActivity.class);
+                    finish();
+                    startActivity(intent);
+                }
+            }
+        });
 
        /* ImageButton addToCart = (ImageButton) findViewById(R.id.addToCart);
         addToCart.setOnClickListener(new View.OnClickListener() {
@@ -135,16 +151,16 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             finish();
             return true;
         }
-        else
+        /*else
         {
             Intent intent=new Intent(this,EntryActivity.class);
             finish();
             startActivity(intent);
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
-    MenuItem menuItem;
+   /* MenuItem menuItem;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -155,14 +171,13 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         setOrderTotal();
 
         return true;
-    }
+    }*/
 
     public void setOrderTotal()  {
-        int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
 
-        if(menuItem != null)
-            menuItem.setIcon(buildCounterDrawable(entries.size()));
+        if(entries.size()>0)
+            newOrderPin.setImageDrawable(buildCounterDrawable(entries.size()));
 
 /*
         if( menuItem != null ) {
@@ -216,15 +231,15 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         Bitmap bitmap = null;
 
 
-        if (count == 0) {
+       /* if (count == 0) {
             View counterTextPanel = view.findViewById(R.id.count);
             counterTextPanel.setVisibility(View.GONE);
-            view.setVisibility(View.GONE);
-        } else {
+            //view.setVisibility(View.GONE);
+        } else {*/
 
             TextView textView = (TextView) view.findViewById(R.id.count);
             textView.setText(" " + count+" ");
-        }
+        //}
 
 
         view.measure(

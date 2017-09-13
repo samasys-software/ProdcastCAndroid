@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -160,7 +161,10 @@ public class RegisterActivity extends ProdcastCBaseActivity {
     public boolean checkValid(int ctry,String mobileNumber,String pin,String confirmPinNumber){
         cancel=false;
         if(ctry<=0){
-            focusView=country;
+            TextView errorText = (TextView)country.getSelectedView();
+            errorText.setError(getString(R.string.error_field_required));
+            Toast.makeText(this, "This field is Reqiured", Toast.LENGTH_SHORT).show();
+            focusView=errorText;
             cancel=true;
             return cancel;
         }
