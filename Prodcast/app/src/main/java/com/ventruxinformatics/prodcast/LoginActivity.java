@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
     Context context;
     public static final String FILE_NAME = "prodcastCustomerLogin.txt";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +69,6 @@ public class LoginActivity extends AppCompatActivity {
         country = (Spinner) findViewById(R.id.country);
 
 
-
         Call<CountryDTO> countryDTOCall = new ProdcastServiceManager().getClient().getCountries();
         countryDTOCall.enqueue(new Callback<CountryDTO>() {
             @Override
@@ -84,12 +82,9 @@ public class LoginActivity extends AppCompatActivity {
                     defaultCountry.setCountryName("Select Country");
                     countryList.add(0, defaultCountry  );
 
-
                     ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(LoginActivity.this,R.layout.drop_down_list, countryList);
                     country.setAdapter(adapter);
-
                 }
-
             }
 
             @Override
@@ -105,7 +100,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
                 alert.show();
-
             }
         });
 
@@ -123,20 +117,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 attemptLogin();
-
             }
         });
-
 
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mobileNumber.setText("");
-                pinNumber.setText("");
-                country.setSelection(0);
+                clear();
             }
         });
-
 
         forgotPin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,10 +140,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
-
             }
         });
-
 
 /*
         //Creating the ArrayAdapter instance having the country list
@@ -165,6 +152,12 @@ public class LoginActivity extends AppCompatActivity {
  */
     }
 
+    private void clear()
+    {
+        mobileNumber.setText("");
+        pinNumber.setText("");
+        country.setSelection(0);
+    }
 
     public boolean checkValue(String username, String password, int ctry) {
         // Reset errors.
@@ -174,15 +167,28 @@ public class LoginActivity extends AppCompatActivity {
 
         // Store values at the time of the login attempt.
 
-
         //check for a valid country
         if (ctry <= 0) {
             TextView errorText = (TextView)country.getSelectedView();
             errorText.setError(getString(R.string.error_field_required));
+            Toast.makeText(this, "This field is Reqiured", Toast.LENGTH_SHORT).show();
             //errorText.setText(getString(R.string.error_field_required));
-            focusView=country;
+            focusView=errorText;
             cancel = true;
             return  cancel;
+
+            /*TextView errorText = (TextView)country.getSelectedView();
+            errorText.setError(getString(R.string.error_field_required));
+            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+            errorText.setText("This field is Reqiured");//changes the selected item text to this
+            focusView=errorText;
+            cancel = true;
+            return  cancel;*/
+
+            /*((TextView)country.getSelectedView()).setError("This field is Reqiured");
+            focusView = country;
+            cancel = true;
+            return  cancel;*/
         }
         // Check for a valid username
         if (TextUtils.isEmpty(username)) {
@@ -206,16 +212,10 @@ public class LoginActivity extends AppCompatActivity {
                 cancel = true;
                 return  cancel;
             }
-
-
-
-
             return  cancel;
         }
         return  cancel;
-
     }
-
 
     private void attemptLogin() {
        /* ArrayAdapter<Country> adapter =(ArrayAdapter<Country>) country.getAdapter();
@@ -224,7 +224,6 @@ public class LoginActivity extends AppCompatActivity {
         String username = mobileNumber.getText().toString();
         String password = pinNumber.getText().toString();
         int ctry = country.getSelectedItemPosition();
-
 
         Country selectedCountry = (Country) country.getSelectedItem();
         String selectedCountryId = selectedCountry.getCountryId();
@@ -265,7 +264,6 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
                     }
-
                 }
 
                 @Override
@@ -282,12 +280,9 @@ public class LoginActivity extends AppCompatActivity {
                     alert.show();
                 }
             });
-
-
            // System.out.println("successfully Login");
         }
     }
-
 
     private void attemptRetrive() {
         String username = mobileNumber.getText().toString();
@@ -317,7 +312,6 @@ public class LoginActivity extends AppCompatActivity {
                            Toast.makeText(context, "Message Has Been Sent To The Mobile Number with the pin", Toast.LENGTH_LONG).show();
                        }
                    }
-
                 }
 
                 @Override
@@ -335,20 +329,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
-
-
     }
-
 
     public static boolean isPasswordValid(String password) {
         // logic
         return password.length() >= 6;
     }
 
-
     public void loginToFile(CustomersLogin customersLogin) {
         File file = new File(getFilesDir(), FILE_NAME);
-
 
         FileOutputStream outputStream;
 
@@ -361,9 +350,7 @@ public class LoginActivity extends AppCompatActivity {
         catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
 
     public CustomersLogin loginRetrive() {
         try {
@@ -376,7 +363,4 @@ public class LoginActivity extends AppCompatActivity {
             return null;
         }
     }
-
-
 }
-
