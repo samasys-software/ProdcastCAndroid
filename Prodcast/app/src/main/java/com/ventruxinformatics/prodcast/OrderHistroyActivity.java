@@ -173,6 +173,61 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
             }
         });
 
+
+        /*startDate.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                Calendar cal1 = Calendar.getInstance();
+                int year1 = cal1.get(Calendar.YEAR);
+                int month1 = cal1.get(Calendar.MONTH);
+                int day1 = cal1.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        OrderHistroyActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener1,
+                        year1,month1,day1);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+                // startDatePicker.setVisibility(View.VISIBLE);
+            }
+        });*/
+        //startDatePicker
+
+        /*endDate.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                Calendar cal2 = Calendar.getInstance();
+                int year2 = cal2.get(Calendar.YEAR);
+                int month2 = cal2.get(Calendar.MONTH);
+                int day2 = cal2.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        OrderHistroyActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener2,
+                        year2,month2,day2);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                //endDatePicker.setVisibility(View.VISIBLE);
+            }
+        });*/
+
+       /* endDatePicker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
+                endDate.setText( datePicker.getDayOfMonth()+"/"+(datePicker.getMonth()+1)+"/"+datePicker.getYear());
+                datePicker.setVisibility(View.GONE);
+            }
+        });*/
+
+
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override

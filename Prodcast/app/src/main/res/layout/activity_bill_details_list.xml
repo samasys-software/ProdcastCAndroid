@@ -27,7 +27,7 @@
             android:background="@drawable/border_entryends"/>
 
 
-        <TextView
+        <ImageView
             android:text="Status"
             android:gravity="center"
             android:textAllCaps="true"
@@ -73,4 +73,14 @@
 
 
     </LinearLayout>
+    <!--<ImageView
+        android:id="@+id/readyStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_ready_circle"/>
+    <ImageView
+        android:id="@+id/newStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_order_new"/>-->
 </RelativeLayout>
