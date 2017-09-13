@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!-- Toolbar Start-->
-
-
-
-    <!-- Toolbar end-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,42 +14,36 @@
         android:padding="10dip" >
 
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+
             <TextView
                 android:id="@+id/orderNo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
                 android:text="Order No: "
                 android:layout_weight="1" />
 
+
             <TextView
+                android:id="@+id/distName"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:padding="8dp"
-                android:layout_marginLeft="150dp"
+                android:background="@drawable/border_fourside"
+                android:gravity="left"
+                android:padding="3dp"
+
                 android:layout_weight="1"
 
-                android:text="Distributor"/>
+                />
 
-           <!-- <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:padding="8dp"
-                android:layout_weight="1"
-
-                android:text="Customer"/>-->
 
         </LinearLayout>
 
@@ -66,7 +55,7 @@
                 android:id="@+id/billDate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
                 android:text="billDate:"
@@ -74,18 +63,17 @@
                 />
 
             <TextView
-                android:id="@+id/distName"
+                android:id="@+id/distAddress1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:background="@drawable/border_billdetailsend"
                 android:textColor="@color/colorPrimaryDark"
-                android:background="@drawable/border"
-                android:gravity="center"
+                android:gravity="left"
                 android:padding="3dp"
 
                 android:layout_weight="1"
 
                 />
-
 
 
         </LinearLayout>
@@ -99,7 +87,7 @@
                 android:id="@+id/total"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
                 android:text="Total:"
@@ -107,43 +95,10 @@
                 />
 
             <TextView
-                android:id="@+id/distAddress"
+                android:id="@+id/distAddress2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:padding="3dp"
-
-                android:layout_weight="1"
-
-                />
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/balance"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-
-                android:gravity="left"
-                android:padding="3dp"
-                android:text="Balance:"
-                android:layout_weight="1"
-                />
-
-            <TextView
-                android:id="@+id/distAddress1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/border"
+                android:background="@drawable/border_billdetailsend"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="left"
                 android:padding="3dp"
@@ -160,13 +115,45 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/balance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="fill"
-                android:padding="3dp"
-                android:layout_weight="1"
                 android:textColor="@color/colorPrimaryDark"
-                android:text="Discount :"
+                android:gravity="left"
+                android:padding="3dp"
+                android:text="Balance:"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/distAddress3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_billdetailsend"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="left"
+                android:padding="3dp"
+
+                android:layout_weight="1"/>
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/discount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="left"
+                android:padding="3dp"
+                android:text="Discount:"
+                android:layout_weight="1"
                 />
 
 
@@ -175,9 +162,9 @@
                 android:id="@+id/distPhonenumber"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border"
+                android:background="@drawable/border_billdetailsend"
                 android:textColor="@color/colorPrimaryDark"
-                android:gravity="center"
+                android:gravity="left"
                 android:padding="3dp"
 
                 android:layout_weight="1"
@@ -190,142 +177,7 @@
 
         <!-- 1St Table End-->
 
-        <!-- 2ND Table sTART-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-
-                <TextView
-                    android:id="@+id/discount"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:gravity="left"
-                    android:padding="3dp"
-                    android:layout_weight="1"
-                    />
-
-            </LinearLayout>
-
-
-            <!--  <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal">
-
-                   <TextView
-
-                       android:layout_width="0dp"
-                       android:layout_height="match_parent"
-                       android:gravity="fill"
-                       android:layout_marginTop="20dp"
-                       android:padding="3dp"
-                       android:layout_weight="1"
-                       android:textColor="@color/colorPrimaryDark"
-                       android:text="Order No :"/>
-
-                   <TextView
-                       android:id="@+id/orderNo"
-                       android:layout_width="0dp"
-                       android:layout_height="match_parent"
-                       android:textColor="@color/colorPrimaryDark"
-                       android:gravity="left"
-                       android:layout_marginTop="20dp"
-                       android:padding="3dp"
-                       android:layout_weight="1"
-                       />
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal">
-
-                   <TextView
-                       android:layout_width="0dp"
-                       android:layout_height="match_parent"
-                       android:gravity="fill"
-                       android:padding="3dp"
-                       android:layout_weight="1"
-                       android:textColor="@color/colorPrimaryDark"
-                       android:text="Bill Date:"
-
-                       />
-
-                   <TextView
-                       android:id="@+id/billDate"
-                       android:layout_width="0dp"
-                       android:layout_height="match_parent"
-                       android:textColor="@color/colorPrimaryDark"
-                       android:gravity="left"
-                       android:padding="3dp"
-                       android:layout_weight="1"
-                       />
-
-               </LinearLayout>
-
-
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal">
-
-                   <TextView
-                       android:layout_width="0dp"
-                       android:layout_height="match_parent"
-                       android:gravity="fill"
-                       android:padding="3dp"
-                       android:layout_weight="1"
-                       android:textColor="@color/colorPrimaryDark"
-                       android:text="Total  :"
-                       />
-
-                   <TextView
-                       android:id="@+id/total"
-                       android:layout_width="0dp"
-                       android:layout_height="match_parent"
-                       android:textColor="@color/colorPrimaryDark"
-                       android:gravity="left"
-                       android:padding="3dp"
-                       android:layout_weight="1"
-                       />
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal">
-
-                   <TextView
-                       android:layout_width="0dp"
-                       android:layout_height="match_parent"
-                       android:gravity="fill"
-                       android:padding="3dp"
-                       android:layout_weight="1"
-                       android:textColor="@color/colorPrimaryDark"
-                       android:text="Balance  :"
-                       />
-
-                   <TextView
-                       android:id="@+id/balance"
-                       android:layout_width="0dp"
-                       android:layout_height="match_parent"
-                       android:textColor="@color/colorPrimaryDark"
-                       android:gravity="left"
-                       android:padding="3dp"
-                       android:layout_weight="1"
-                       />
-
-               </LinearLayout>-->
-
-        <!-- 2ND Table End-->
 
         <!-- 3RD Table End-->
 
@@ -388,7 +240,7 @@
                 android:background="@color/headerBackground"
                 android:layout_weight="1"
                 style="@style/TableHeader"
-                android:text="Sub Total "/>
+                android:text="SubTotal "/>
 
         </LinearLayout>
 
@@ -415,6 +267,7 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/paymentDetailsInvisible"
             android:layout_width="match_parent"
@@ -425,17 +278,18 @@
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border_headermiddle"
+                android:background="@color/headerBackground"
                 style="@style/TableHeader"
                 android:gravity="center"
                 android:layout_weight="0.9"
                 android:text="Date"/>
 
+
             <TextView
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border_headermiddle"
+                android:background="@color/headerBackground"
                 style="@style/TableHeader"
                 android:gravity="center"
                 android:layout_weight="2"
@@ -447,15 +301,19 @@
                 android:layout_height="match_parent"
                 android:id="@+id/paymentAmount"
                 android:gravity="center"
-                android:background="@drawable/border_headermiddle"
+                android:background="@color/headerBackground"
                 style="@style/TableHeader"
                 android:layout_weight="1"
                 android:text="Amount"/>
 
         </LinearLayout>
-
+        <!--android:background="@drawable/border_headermiddle"-->
         <ListView
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:id="@+id/paymentEntriesAdapter"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
@@ -469,8 +327,6 @@
         app:srcCompat="@drawable/ic_prodcast_print"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-
-
         android:text="+"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

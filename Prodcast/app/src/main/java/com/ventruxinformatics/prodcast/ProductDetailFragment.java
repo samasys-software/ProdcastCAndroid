@@ -170,7 +170,7 @@ public class ProductDetailFragment extends Fragment {
                     }
                     unitPrice.setText("Unit Price : " +GlobalUsage.getNumberFormat().format( price));
 
-                    subTotal.setText("Sub Total : "+currencySymbol+" 0.00");
+                    subTotal.setText("Sub Total :("+currencySymbol+") 0.00");
 
 
 

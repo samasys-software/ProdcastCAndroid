@@ -282,8 +282,8 @@ public class EntryActivity extends ProdcastCBaseActivity {
             total_tax=total_tax+ProductDetailFragment.calculateTax(entry.getProduct());
 
         }
-        total.setText(currencySymbol+""+numberFormat.format(total_value));
-        subTotal.setText(currencySymbol+""+numberFormat.format(sub_total));
-        tax.setText(currencySymbol+""+numberFormat.format(total_tax));
+        total.setText("("+currencySymbol+")"+""+numberFormat.format(total_value));
+        subTotal.setText("("+currencySymbol+")"+""+numberFormat.format(sub_total));
+        tax.setText("("+currencySymbol+")"+""+numberFormat.format(total_tax));
     }
 }
