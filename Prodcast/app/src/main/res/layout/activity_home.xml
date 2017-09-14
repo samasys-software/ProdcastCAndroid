@@ -59,8 +59,10 @@
                 android:gravity="center"
                 android:text="Change Password"
                 android:textAllCaps="true"
-                android:textColor="@color/colorPrimaryDark"
+           android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp" />
+
+                android:text="Change PIN" />
 
 
         </LinearLayout>
