@@ -233,6 +233,7 @@ public class ProductDetailFragment extends Fragment {
                                         public void onClick(View v) {
                                             Button button = (Button) v;
                                             boolean add=false;
+
                                             if( button.getText().equals("CONTINUE")){
                                                 add = true;
                                             }
@@ -243,6 +244,8 @@ public class ProductDetailFragment extends Fragment {
                                                     qty.requestFocus();
                                                     return;
                                                 }
+
+                                                button.setEnabled(false);
 
                                                 List<OrderDetails> orderEntries = SessionInformations.getInstance().getEntry();
                                                 boolean productActive = false;
@@ -260,6 +263,7 @@ public class ProductDetailFragment extends Fragment {
 
                                                 if( productActive && !add ){
                                                     button.setText("CONTINUE");
+                                                    button.setEnabled(true);
                                                     confirmationMessage.setText( "Your order already has " + selectedProduct.getQuantity() + " of the Item " + selectedProduct.getProduct().getProductName() + " Would you like to add more to it? " );
                                                     confirmationMessage.setVisibility(View.VISIBLE);
                                                     return;
