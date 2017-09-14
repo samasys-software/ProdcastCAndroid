@@ -63,7 +63,7 @@ public class CustomStoreAdapter extends BaseAdapter {
         holder.img=(ImageView) rowView.findViewById(R.id.companyLogo);
         holder.tv.setText(result.get(position).getCompanyName());
         holder.tv1.setText(result.get(position).getAddress1()+" "+result.get(position).getAddress2()+" "+result.get(position).getAddress3());
-        Picasso.with(context).load("http://ec2-52-91-5-22.compute-1.amazonaws.com:8080/prodcastweb/V5/images/" +result.get(position).getLogo()).into(holder.img);
+        Picasso.with(context).load(BuildConfig.SERVER_URL+"/prodcastcweb/images/" +result.get(position).getLogo()).into(holder.img);
         return rowView;
     }
 }
