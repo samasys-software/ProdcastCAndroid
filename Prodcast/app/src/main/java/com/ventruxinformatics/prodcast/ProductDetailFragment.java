@@ -5,8 +5,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -168,9 +166,9 @@ public class ProductDetailFragment extends Fragment {
                     } else {
                         price = product.getUnitPrice();
                     }
-                    unitPrice.setText("Unit Price : " +GlobalUsage.getNumberFormat().format( price));
+                    unitPrice.setText("Unit Price : "+currencySymbol+"" +GlobalUsage.getNumberFormat().format( price));
 
-                    subTotal.setText("Sub Total :("+currencySymbol+") 0.00");
+                    subTotal.setText("Sub Total :"+currencySymbol+" 0.00");
 
 
 
