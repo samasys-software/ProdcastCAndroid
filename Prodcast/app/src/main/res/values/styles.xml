@@ -104,7 +104,7 @@
     </style>
 
     <style name="datePicker">
-        <!-- Customize your theme here. -->
+        <!-- Customize datepicker Textview -->
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
 
@@ -119,5 +119,9 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
+    <style name="PopupMenuItem">
+        <!-- Change Overflow Menu ListView Item Height & Property -->
+        <item name="android:listPreferredItemHeightSmall">15dp</item>
+    </style>
 
 </resources>
