@@ -93,7 +93,7 @@ public class BillDetailsExpandableListViewAdapter extends BaseExpandableListAdap
                 // adding orderentry table header
                  if(j==0){
                     LayoutInflater inflater=(LayoutInflater)this.context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-                    inflater.inflate(R.layout.billdetailsorderheader,null);
+                    childView = inflater.inflate(R.layout.billdetailsorderheader,null);
                  }
                  else{
                     BillDetailsOrderEntryView entry=new BillDetailsOrderEntryView(context,(OrderEntry) getChild(i,j-1));
@@ -106,7 +106,7 @@ public class BillDetailsExpandableListViewAdapter extends BaseExpandableListAdap
             View childView = null;
             if (j==0) {
                 LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-                inflater.inflate(R.layout.billdetailspaymentheader, null);
+                childView = inflater.inflate(R.layout.billdetailspaymentheader, null);
             }
             else {
                 BillDetailsCollectionEntryView entry=new BillDetailsCollectionEntryView(context,(Collection) getChild(i,j-1));
