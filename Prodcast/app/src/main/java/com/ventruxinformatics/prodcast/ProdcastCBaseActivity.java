@@ -13,7 +13,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -44,6 +46,17 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
         if(companyName){
             distributorName.setText((SessionInformations.getInstance().getEmployee().getDistributor().getCompanyName()).toUpperCase());
 
+        }
+        else
+        {
+            NavigationView navigation = (NavigationView) fullView.findViewById(R.id.nav_view);
+            Menu nav_Menu = navigation.getMenu();
+            nav_Menu.findItem(R.id.nav_home).setVisible(false);
+            nav_Menu.findItem(R.id.nav_changePassword).setVisible(false);
+            nav_Menu.findItem(R.id.nav_changeStore).setVisible(false);
+            nav_Menu.findItem(R.id.nav_editRegistration).setVisible(false);
+            nav_Menu.findItem(R.id.nav_orderEntry).setVisible(false);
+            nav_Menu.findItem(R.id.nav_orderHistroy).setVisible(false);
         }
 
         screenName.setText(getProdcastTitle().toUpperCase());
@@ -130,10 +143,10 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
                 intent =new Intent(this, OrderHistroyActivity.class);
                 startActivity(intent);
         }
-        else if (id == R.id.nav_register ){
+        /*else if (id == R.id.nav_register ){
             intent =new Intent(this, RegisterActivity.class);
             startActivity(intent);
-        }else if(id == R.id.nav_logOut){
+        }*/else if(id == R.id.nav_logOut){
             File dir = getFilesDir();
             File file = new File(dir, "prodcastCustomerLogin.txt");
             SessionInformations.getInstance().destroy();
