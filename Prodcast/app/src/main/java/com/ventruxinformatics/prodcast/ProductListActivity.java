@@ -293,8 +293,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
     public void setOrderTotal()  {
         int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
-        if(entries.size()>0)
-            newOrderPin.setImageDrawable(buildCounterDrawable(entries.size()));
+        newOrderPin.setImageDrawable(buildCounterDrawable(entries.size()));
     }
 
     public static Bitmap createImage(int width, int height) {
@@ -314,8 +313,10 @@ public class ProductListActivity extends ProdcastCBaseActivity {
 
 
     private Drawable buildCounterDrawable(int count) {
-        if(count ==0)
+        /*if(count ==0)
             return new BitmapDrawable(getResources(), createImage(1,1)) ;
+
+         */
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.content_dd_to_cart, null);
