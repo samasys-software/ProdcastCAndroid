@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".ProdcastApplication"
+        android:name="com.samayu.prodcastc.ui.ProdcastApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
@@ -16,7 +16,7 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.samayu.prodcastc.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,49 +25,49 @@
         </activity>
         0
         --
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".StoreActivity" />
-        <activity android:name=".OutstandingBillsActivity" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name="com.samayu.prodcastc.ui.LoginActivity" />
+        <activity android:name="com.samayu.prodcastc.ui.StoreActivity" />
+        <activity android:name="com.samayu.prodcastc.ui.OutstandingBillsActivity" />
+        <activity android:name="com.samayu.prodcastc.ui.HomeActivity" />
         <activity
-            android:name=".ChangePasswordActivity"
+            android:name="com.samayu.prodcastc.ui.ChangePasswordActivity"
             android:label="@string/title_activity_change_password"
             android:theme="@style/AppTheme" android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity
-            android:name=".OrderHistroyActivity"
+            android:name="com.samayu.prodcastc.ui.OrderHistroyActivity"
             android:label="@string/title_activity_order_histroy"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.samayu.prodcastc.ui.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".EditRegistrationActivity"
+            android:name="com.samayu.prodcastc.ui.EditRegistrationActivity"
             android:label="@string/title_activity_edit_registration"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".VerifyPinActivity"
+            android:name="com.samayu.prodcastc.ui.VerifyPinActivity"
             android:label="@string/title_activity_verify_pin"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ProductListActivity"
+            android:name="com.samayu.prodcastc.ui.ProductListActivity"
             android:label="@string/title_product_list"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ProductDetailActivity"
+            android:name="com.samayu.prodcastc.ui.ProductDetailActivity"
             android:label="@string/title_product_detail"
-            android:parentActivityName=".ProductListActivity"
+            android:parentActivityName="com.samayu.prodcastc.ui.ProductListActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ventruxinformatics.prodcast.ProductListActivity" />
+                android:value="com.ventruxinformatics.prodcast.com.samayu.prodcastc.ui.ProductListActivity" />
         </activity>
         <activity
-            android:name=".EntryActivity"
+            android:name="com.samayu.prodcastc.ui.EntryActivity"
             android:label="@string/title_activity_entry"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".BillDetailsActivity"
+            android:name="com.samayu.prodcastc.ui.BillDetailsActivity"
             android:label="@string/title_activity_bill_details"
             android:theme="@style/AppTheme" />
     </application>

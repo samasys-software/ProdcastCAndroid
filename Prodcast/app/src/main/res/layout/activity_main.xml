@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
-    tools:context="com.ventruxinformatics.prodcast.MainActivity">
+    tools:context="com.ventruxinformatics.prodcast.com.samayu.prodcastc.ui.MainActivity">
 
     <ImageView
         android:layout_width="wrap_content"
