@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@drawable/bg_store"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -12,14 +11,12 @@
         android:id="@+id/registerLayout"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:background="@drawable/yellow_background"
         android:layout_marginTop="104dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
         <TextView
             android:layout_width="250dp"
-
             android:layout_height="50dp"
             android:text="Please enter the confirmation code from the text sent to your registered mobile number"
             android:layout_marginTop="22dp"
@@ -28,7 +25,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/relativeLayout5" />
 
-        <RelativeLayout
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
@@ -40,13 +37,16 @@
 
             <EditText
                 android:id="@+id/verficationCode"
-                style="@style/editText"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:hint="Verfication Code"
                 android:inputType="phone"
                 android:layout_marginStart="22dp"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"/>
 
-        </RelativeLayout>
+        </android.support.design.widget.TextInputLayout>
 
     </RelativeLayout>
 

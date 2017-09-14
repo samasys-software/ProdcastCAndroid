@@ -36,13 +36,81 @@
 
     </LinearLayout>
 
+    <LinearLayout android:id="@+id/reviewOrderValues"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" android:layout_below="@id/reviewOrderHeader"
 
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="Sub Total :"
+                android:gravity="right"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/totalSubTotal"
+                android:layout_height="wrap_content"
+                android:text="Test"
+                android:gravity="left"
+                android:layout_gravity="right"
+                android:textSize="16sp"
+                android:layout_marginTop="0dp"
+                android:layout_width="0dp"
+                android:textColor="@color/colorAccent"
+                android:layout_weight="1"/>
+
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="Tax :"
+                android:gravity="right"
+                android:layout_weight="1"
+                />
+
+
+            <TextView
+                android:id="@+id/totalTax"
+                android:layout_height="wrap_content"
+                android:text="Test"
+                android:gravity="left"
+                android:layout_gravity="right"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:textColor="@color/colorAccent"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="horizontal" >
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="Total :"
+                android:gravity="right"
+                android:layout_weight="3"
+                />
+            <TextView
+                android:id="@+id/total"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="Test"
+                android:gravity="left"
+                android:textSize="16sp"
+
+                android:textColor="@color/colorAccent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/reviewOrderHeader"
+        android:layout_below="@id/reviewOrderValues"
         android:id="@+id/reviewOrderTableHeader"
         android:layout_marginTop="25dp"
         >
@@ -75,7 +143,7 @@
             android:layout_width="0dp"
             android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_weight="0.7"
+            android:layout_weight="0.5"
             android:text="Qty"
             android:background="@drawable/border_headermiddle"
             style="@style/TableHeader"
@@ -95,85 +163,22 @@
 
     </LinearLayout>
 
+
+
+
     <com.baoyz.swipemenulistview.SwipeMenuListView
-        android:id="@+id/listofentries"
+        android:id="@+id/listofentries" android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@null"
-        android:layout_below="@id/reviewOrderTableHeader">
-    </com.baoyz.swipemenulistview.SwipeMenuListView>
+        android:layout_below="@id/reviewOrderTableHeader"
+        android:dividerHeight="1dp"
+        android:divider="@android:color/darker_gray"
+        android:headerDividersEnabled="true"
 
-    <LinearLayout android:id="@+id/reviewOrderValues"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/listofentries"
-        android:layout_marginTop="10dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:orientation="horizontal">
-            <TextView android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:text="Sub Total :"
-                android:gravity="right"
-                android:layout_weight="2.25"
-                />
-        <TextView
-            android:id="@+id/totalSubTotal"
-            android:layout_height="wrap_content"
-            android:text="Test"
-            android:gravity="left"
-            android:layout_gravity="right"
-            android:textSize="16sp"
-            android:layout_marginTop="0dp"
-            android:layout_width="0dp"
-            android:textColor="@color/colorAccent"
-            android:layout_weight="0.60"/>
-        </LinearLayout>
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:orientation="horizontal">
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:text="Tax :"
-            android:gravity="right"
-            android:layout_weight="2.25"
-            />
+        />
 
 
-        <TextView
-            android:id="@+id/totalTax"
-            android:layout_height="wrap_content"
-            android:text="Test"
-            android:gravity="left"
-            android:layout_gravity="right"
-            android:textSize="16sp"
-            android:layout_width="0dp"
-            android:textColor="@color/colorAccent"
-            android:layout_weight="0.60"/>
-        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:orientation="horizontal" >
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:text="Total :"
-            android:gravity="right"
-            android:layout_weight="2.25"
-            />
-        <TextView
-            android:id="@+id/total"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:text="Test"
-            android:gravity="left"
-            android:textSize="16sp"
 
-            android:textColor="@color/colorAccent"
-            android:layout_weight="0.60"/>
-    </LinearLayout>
-    </LinearLayout>
 
 </RelativeLayout>

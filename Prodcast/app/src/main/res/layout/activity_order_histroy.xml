@@ -79,23 +79,13 @@
                     android:layout_marginRight="0dp"
                     android:layout_weight="1"
                     android:text="Start Date"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
 
-                <!--<android.support.design.widget.FloatingActionButton-->
                 <ImageButton
                     android:id="@+id/startDatePicker"
                     app:srcCompat="@drawable/ic_date_range"
                     android:layout_width="50dp"
                     android:layout_height="50dp"/>
-
-
-                <!--<DatePicker
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:id="@+id/startDatePicker">
-
-                </DatePicker>-->
 
                 <TextView
                     android:id="@+id/endDate"
@@ -105,22 +95,13 @@
                     android:layout_marginRight="0dp"
                     android:layout_weight="1"
                     android:text="End Date"
-                    android:textSize="20dp"/>
+                    android:textSize="16dp"/>
 
-                <!--<android.support.design.widget.FloatingActionButton-->
                 <ImageButton
                     android:id="@+id/endDatePicker"
                     app:srcCompat="@drawable/ic_date_range"
                     android:layout_width="50dp"
                     android:layout_height="50dp"/>
-
-                <!--<DatePicker
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-
-                    android:id="@+id/endDatePicker">
-
-                </DatePicker>-->
 
                 <Button
                     android:id="@+id/report"
@@ -131,7 +112,6 @@
                     android:layout_marginTop="10dp"
                     android:text="Go"/>
 
-
             </LinearLayout>
 
             <!-- DatePicker End-->
@@ -139,27 +119,6 @@
             <!-- Text Box End-->
 
         </RelativeLayout>
-
-        <!-- Button Start-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/reset"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/submitButton"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:text="Reset"/>
-
-        </LinearLayout>
-
-        <!-- Button End-->
 
         <!-- Summary Start-->
 
@@ -196,33 +155,90 @@
                 android:layout_below="@id/summaryText"
                 android:orientation="horizontal">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:background="@drawable/border_headerends">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:id="@+id/billAmt"
+                    android:text="Amount"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:gravity="center"
-                    android:background="@drawable/border_headerends"
+
                     style="@style/TableHeader" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        style="@style/TableHeader"
+                        android:layout_height="wrap_content"
+                        android:text="()"
+                        android:id="@+id/billAmountCurrency"/>
+
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/border_headerends">
+
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:id="@+id/totalPaid"
+                    android:text="Payments"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:gravity="center"
-                    android:background="@drawable/border_headerends"
+
                     style="@style/TableHeader" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
+                    style="@style/TableHeader"
+                    android:layout_height="wrap_content"
+                    android:text="()"
+                    android:id="@+id/totalPaidCurrency"/>
+
+                </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/border_headerends">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/totBalance"
-                    android:layout_weight="1"
-
+                    android:text="Balance"
                     android:gravity="center"
-                    android:background="@drawable/border_headerends"
+
                     style="@style/TableHeader"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    style="@style/TableHeader"
+                    android:layout_height="wrap_content"
+                    android:text="()"
+                    android:id="@+id/totalBalanceCurrency"/>
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -316,26 +332,57 @@
                     style="@style/TableHeader"
                     android:background="@drawable/border_headermiddle"/>
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/border_headerends">
+
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="Total"
                     android:id="@+id/orderTotal"
-                    style="@style/TableHeader"
-                    android:background="@drawable/border_headermiddle"/>
+                    style="@style/TableHeader"/>
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
+                    style="@style/TableHeader"
+                    android:layout_height="wrap_content"
+                    android:text="()"
+                    android:id="@+id/orderTotalCurrency"/>
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/border_headerends">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:id="@+id/orderBalance"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="Balance"
-                    style="@style/TableHeader"
-                    android:background="@drawable/border_headermiddle"/>
+                    style="@style/TableHeader"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    style="@style/TableHeader"
+                    android:layout_height="wrap_content"
+                    android:text="()"
+                    android:id="@+id/orderBalanceCurrency"/>
+
+            </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

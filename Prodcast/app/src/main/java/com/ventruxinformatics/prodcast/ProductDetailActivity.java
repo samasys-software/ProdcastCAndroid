@@ -71,10 +71,11 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
         newOrderPin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(ProductDetailActivity.this, EntryActivity.class);
-                finish();
-                startActivity(intent);
+                if (SessionInformations.getInstance().getEntry().size()>0) {
+                    Intent intent = new Intent(ProductDetailActivity.this, EntryActivity.class);
+                    finish();
+                    startActivity(intent);
+                }
             }
         });
 
@@ -150,12 +151,12 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
             finish();
             return true;
         }
-        else
+        /*else
         {
             Intent intent=new Intent(this,EntryActivity.class);
             finish();
             startActivity(intent);
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
@@ -175,8 +176,7 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
     public void setOrderTotal()  {
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
 
-        if(entries.size()>0)
-            newOrderPin.setImageDrawable(buildCounterDrawable(entries.size()));
+        newOrderPin.setImageDrawable(buildCounterDrawable(entries.size()));
 
 /*
         if( menuItem != null ) {
@@ -221,8 +221,9 @@ public class ProductDetailActivity extends ProdcastCBaseActivity {
 
 
     private Drawable buildCounterDrawable(int count) {
-        if(count ==0)
+        /*if(count ==0)
             return new BitmapDrawable(getResources(), createImage(1,1)) ;
+            */
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.content_dd_to_cart, null);

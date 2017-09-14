@@ -2,6 +2,7 @@ package businessObjects.connect;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ventruxinformatics.prodcast.BuildConfig;
 
 import java.io.IOException;
 
@@ -46,7 +47,7 @@ public class ProdcastServiceManager {
 
         Retrofit.Builder builder =
                 new Retrofit.Builder()
-                        .baseUrl("http://ec2-52-91-5-22.compute-1.amazonaws.com:8080")
+                        .baseUrl(BuildConfig.SERVER_URL)
                         .addConverterFactory(
                                 GsonConverterFactory.create(gson));
 

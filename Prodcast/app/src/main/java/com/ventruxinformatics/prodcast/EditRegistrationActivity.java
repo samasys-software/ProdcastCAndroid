@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -37,14 +38,10 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
     boolean companyName=false;
     ProgressDialog progressDialog;
 
-
-
     @Override
     public String getProdcastTitle() {
         return "Edit Registration";
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +72,6 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         country.setAdapter(adapter);
 
         Bundle bundle = intent.getExtras();
-
-
 
         long accessId=SessionInformations.getInstance().getCustomerDetails().getAccessId();
         progressDialog.show();
@@ -135,13 +130,9 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                             progressDialog.dismiss();
 
                         }
-
                         // Toast.makeText(context, "customerId distributorId", Toast.LENGTH_LONG).show();
-
-
                     }
                 }
-
             }
 
             @Override
@@ -149,8 +140,6 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                 t.printStackTrace();
                 getAlertBox(context).show();
                 progressDialog.dismiss();
-
-
             }
         });
 
@@ -187,9 +176,7 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                 reset();
             }
         });
-
     }
-
 
     public void editRegistration(String customerId){
         //String customerId=null;
@@ -241,11 +228,8 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
 
                         Toast.makeText(context, "Customer Had Registered Successfully", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
-
-
                     }
                 }
-
             }
 
             @Override
@@ -253,7 +237,6 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                 t.printStackTrace();
                 getAlertBox(context).show();
                 progressDialog.dismiss();
-
             }
         });
     }
@@ -334,7 +317,10 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         }
         if (ctry<= 0) {
          //   country.setError("This Field is Required");
-            focusView=country;
+            TextView errorText = (TextView)country.getSelectedView();
+            errorText.setError(getString(R.string.error_field_required));
+            Toast.makeText(this, "This field is Reqiured", Toast.LENGTH_SHORT).show();
+            focusView=errorText;
             valid = true;
             return  valid;
         }
@@ -362,12 +348,9 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         state.setText("");
         postalCode.setText("");
         country.setSelection(0);
-
     }
     @Override
     public boolean getCompanyName() {
         return companyName;
     }
-
-
 }

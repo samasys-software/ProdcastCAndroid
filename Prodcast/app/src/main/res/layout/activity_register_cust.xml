@@ -10,13 +10,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:gravity="center_vertical"
-        android:layout_gravity="center"
-       >
-
-
-
-
-
+        android:layout_gravity="center">
 
      <TextView
             android:layout_width="match_parent"
@@ -24,8 +18,7 @@
             android:text="Country"
             android:textSize="16sp"
             android:id="@+id/countryTextHint"
-            android:textColor="@color/colorPrimaryDark"
-            />
+            android:textColor="@color/colorPrimaryDark"/>
     <Spinner
         android:id="@+id/countryRegister"
         android:layout_width="match_parent"
@@ -33,7 +26,6 @@
         android:layout_height="30dp"
         android:paddingBottom="3dp"
         android:visibility="visible"
-
         android:layout_gravity="center"
         android:background="@drawable/border_spinner"
         android:layout_below="@id/countryTextHint"/>
@@ -60,14 +52,14 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/dropdown_icon"
                 android:visibility="invisible" />-->
-        <android.support.design.widget.TextInputLayout
 
+        <android.support.design.widget.TextInputLayout
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp">
 
             <EditText
                 android:id="@+id/MobileNumber"
-
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:hint="MobileNumber"
@@ -76,6 +68,7 @@
                 android:layout_alignParentTop="true" />
 
         </android.support.design.widget.TextInputLayout>
+
         <android.support.design.widget.TextInputLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
@@ -85,26 +78,27 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:hint="PIN"
-                android:inputType="text"
+                android:inputType="numberPassword"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true" />
 
         </android.support.design.widget.TextInputLayout>
+
         <android.support.design.widget.TextInputLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
 
             <EditText
                 android:id="@+id/confirmPin"
-
                 android:hint="Confirm PIN"
-                android:inputType="text"
+                android:inputType="numberPassword"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true" />
 
        </android.support.design.widget.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -114,15 +108,15 @@
         android:layout_marginLeft="10dp">
 
 
-    <Button
-        android:id="@+id/registeration"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:gravity="center"
-        android:layout_weight="1"
-        style="@style/submitButton"
-        />
+        <Button
+            android:id="@+id/registeration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:gravity="center"
+            android:layout_weight="1"
+            style="@style/submitButton"/>
+
         <Button
             android:id="@+id/clear"
             android:layout_width="0dp"
@@ -130,10 +124,10 @@
             android:text="Cancel"
             android:gravity="center"
             android:layout_weight="1"
-            style="@style/submitButton"
-            />
+            style="@style/submitButton"/>
 
         </LinearLayout>
+
     </LinearLayout>
 
 

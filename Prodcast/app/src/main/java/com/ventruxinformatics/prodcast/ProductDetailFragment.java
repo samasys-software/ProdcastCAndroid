@@ -5,8 +5,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -168,9 +166,9 @@ public class ProductDetailFragment extends Fragment {
                     } else {
                         price = product.getUnitPrice();
                     }
-                    unitPrice.setText("Unit Price : " +GlobalUsage.getNumberFormat().format( price));
+                    unitPrice.setText("Unit Price : "+currencySymbol+"" +GlobalUsage.getNumberFormat().format( price));
 
-                    subTotal.setText("Sub Total :("+currencySymbol+") 0.00");
+                    subTotal.setText("Sub Total :"+currencySymbol+" 0.00");
 
 
 
@@ -235,6 +233,7 @@ public class ProductDetailFragment extends Fragment {
                                         public void onClick(View v) {
                                             Button button = (Button) v;
                                             boolean add=false;
+
                                             if( button.getText().equals("CONTINUE")){
                                                 add = true;
                                             }
@@ -245,6 +244,8 @@ public class ProductDetailFragment extends Fragment {
                                                     qty.requestFocus();
                                                     return;
                                                 }
+
+                                                button.setEnabled(false);
 
                                                 List<OrderDetails> orderEntries = SessionInformations.getInstance().getEntry();
                                                 boolean productActive = false;
@@ -262,6 +263,7 @@ public class ProductDetailFragment extends Fragment {
 
                                                 if( productActive && !add ){
                                                     button.setText("CONTINUE");
+                                                    button.setEnabled(true);
                                                     confirmationMessage.setText( "Your order already has " + selectedProduct.getQuantity() + " of the Item " + selectedProduct.getProduct().getProductName() + " Would you like to add more to it? " );
                                                     confirmationMessage.setVisibility(View.VISIBLE);
                                                     return;
@@ -323,18 +325,18 @@ public class ProductDetailFragment extends Fragment {
 
 
         float subTotal=calculateSubTotal(pro,quantity);
-        float tax=calculateTax(pro);
-        double total=subTotal*(1+(tax)/100);
+        float tax=calculateTax(pro,quantity);
+        double total=subTotal+tax;
 
 
         return total;
 
     }
-    public static final float calculateTax(Product pro) {
+    public static final float calculateTax(Product pro,int quantity) {
 
         float salesTax = Float.valueOf(pro.getSalesTax());
          float otherTax = Float.valueOf(pro.getOtherTax());
-        float tax = salesTax + otherTax ;
+        float tax = calculateSubTotal(pro,quantity)*(salesTax + otherTax)/100 ;
 
 
         return tax;

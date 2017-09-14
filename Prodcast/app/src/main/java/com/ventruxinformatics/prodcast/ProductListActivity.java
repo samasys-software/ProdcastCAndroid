@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -158,11 +159,13 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         newOrderPin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(ProductListActivity.this, EntryActivity.class);
-                finish();
-                startActivity(intent);
+                if (SessionInformations.getInstance().getEntry().size()>0) {
+                    Intent intent = new Intent(ProductListActivity.this, EntryActivity.class);
+                    finish();
+                    startActivity(intent);
+                }
             }
+
         });
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -269,7 +272,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
     }
 
 
-    MenuItem menuItem;
+   /* MenuItem menuItem;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -280,18 +283,17 @@ public class ProductListActivity extends ProdcastCBaseActivity {
         setOrderTotal();
 
         return true;
-    }
+    }*/
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item){
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     public void setOrderTotal()  {
         int count=0;
         List<OrderDetails> entries=SessionInformations.getInstance().getEntry();
-        if(entries.size()>0)
-            newOrderPin.setImageDrawable(buildCounterDrawable(entries.size()));
+        newOrderPin.setImageDrawable(buildCounterDrawable(entries.size()));
     }
 
     public static Bitmap createImage(int width, int height) {
@@ -311,8 +313,10 @@ public class ProductListActivity extends ProdcastCBaseActivity {
 
 
     private Drawable buildCounterDrawable(int count) {
-        if(count ==0)
+        /*if(count ==0)
             return new BitmapDrawable(getResources(), createImage(1,1)) ;
+
+         */
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.content_dd_to_cart, null);

@@ -62,7 +62,7 @@ public class AllProductsAdapter extends BaseAdapter {
     public class Holder
     {
         //TextView tv;
-        TextView tv1,tv2,tv3;
+        TextView tv1,tv2,tv3, productPriceCurrency;
 
         int position;
 
@@ -77,6 +77,7 @@ public class AllProductsAdapter extends BaseAdapter {
             //holder.tv = (TextView) convertView.findViewById(R.id.id);
             holder.tv1 = (TextView) convertView.findViewById(R.id.productName);
             holder.tv2 = (TextView) convertView.findViewById(R.id.productPrice);
+            holder.productPriceCurrency = (TextView) convertView.findViewById(R.id.productPriceCurrency);
             holder.tv3 = (TextView) convertView.findViewById(R.id.productDescription);
             //holder.tv4 = (TextView) convertView.findViewById(R.id.otherTax);
             convertView.setTag(holder);
@@ -98,7 +99,8 @@ public class AllProductsAdapter extends BaseAdapter {
 
         }
         holder.tv1.setText(productName);
-        holder.tv2.setText("("+currencySymbol+")"+numberFormat.format(unitPrice));
+        holder.productPriceCurrency.setText(currencySymbol);
+        holder.tv2.setText(numberFormat.format(unitPrice));
         holder.tv3.setText(String.valueOf(product.getProductDesc()));
        // holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));
 
