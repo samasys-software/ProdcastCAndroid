@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -57,7 +54,8 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         paymentListView = (ListView) findViewById(R.id.paymentEntriesAdapter);
         subTotal=(TextView) findViewById(R.id.subTotal);
         paymentAmount=(TextView) findViewById(R.id.paymentAmount);
-        subTotal.setText("Sub Total("+currencySymbol+")");
+
+        subTotal.setText("Sub Total"+currencySymbol+")");
         paymentAmount.setText("Amount("+currencySymbol+")");
         orderListView = (ListView) findViewById(R.id.orderEntriesAdapter);
 
@@ -148,8 +146,8 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
          orderNo.setText("Order No:"+" "+String.valueOf(order.getBillNumber())+"");
 
         billDate.setText("BillDate:"+" "+String.valueOf(order.getBillDate())+"");
-        total.setText("Total:"+" "+"("+currencySymbol+")"+numberFormat.format(order.getTotalAmount())+"");
-        balance.setText("Balance:"+" "+"("+currencySymbol+")"+numberFormat.format(order.getOutstandingBalance())+"");
+        total.setText("Total:"+currencySymbol+""+numberFormat.format(order.getTotalAmount())+"");
+        balance.setText("Balance:"+currencySymbol+""+numberFormat.format(order.getOutstandingBalance())+"");
         discount.setText("Discount:"+" "+String.valueOf(order.getDiscount())+"");
 
     }
