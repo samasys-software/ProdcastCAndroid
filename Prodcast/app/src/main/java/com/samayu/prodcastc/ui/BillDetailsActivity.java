@@ -6,10 +6,6 @@ import android.os.Bundle;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
-import java.util.LinkedList;
-import java.util.List;
-
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
@@ -17,6 +13,10 @@ import com.samayu.prodcastc.businessObjects.domain.EmployeeDetails;
 import com.samayu.prodcastc.businessObjects.domain.Order;
 import com.samayu.prodcastc.businessObjects.dto.OrderDTO;
 import com.ventruxinformatics.prodcast.R;
+
+import java.text.NumberFormat;
+import java.util.LinkedList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -109,6 +109,13 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         TextView distAddress2 = (TextView) findViewById(R.id.distAddress2);
         TextView distAddress3 = (TextView) findViewById(R.id.distAddress3);
         TextView distPhonenumber = (TextView) findViewById(R.id.distPhonenumber);
+
+        TextView orderNoText = (TextView) findViewById(R.id.orderNoText);
+        TextView billDateText = (TextView) findViewById(R.id.billDateText);
+        TextView totalText = (TextView) findViewById(R.id.totalText);
+        TextView balanceText = (TextView) findViewById(R.id.balanceText);
+        TextView discountText = (TextView) findViewById(R.id.discountText);
+
         TextView orderNo = (TextView) findViewById(R.id.orderNo);
         TextView billDate = (TextView) findViewById(R.id.billDate);
         TextView total = (TextView) findViewById(R.id.total);
@@ -119,12 +126,12 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         distAddress3.setText(order.getDistributor().getState() + " " + order.getDistributor().getPostalCode());
         distAddress2.setText(order.getDistributor().getCity() );
         distPhonenumber.setText(order.getDistributor().getHomePhone());
-         orderNo.setText("Order No:"+" "+String.valueOf(order.getBillNumber())+"");
+         orderNo.setText(String.valueOf(order.getBillNumber()));
 
-        billDate.setText("BillDate:"+" "+String.valueOf(order.getBillDate())+"");
-        total.setText("Total:"+currencySymbol+""+numberFormat.format(order.getTotalAmount())+"");
-        balance.setText("Balance:"+currencySymbol+""+numberFormat.format(order.getOutstandingBalance())+"");
-        discount.setText("Discount:"+" "+String.valueOf(order.getDiscount())+"");
+        billDate.setText(String.valueOf(order.getBillDate()));
+        total.setText(currencySymbol+""+numberFormat.format(order.getTotalAmount()));
+        balance.setText(currencySymbol+""+numberFormat.format(order.getOutstandingBalance()));
+        discount.setText(String.valueOf(order.getDiscount()));
 
     }
    
