@@ -50,7 +50,10 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
     String cusReportType = "SummaryReport";
     ProgressDialog progressDialog;
 
-    TextView totalAmount, totalPaid, totalBalance, orderTotal, orderBalance,startDate,endDate;
+    TextView totalAmount, totalPaid, totalBalance,
+            orderTotal, orderBalance,startDate,endDate;
+    TextView billAmountCurrency, totalPaidCurrency, totalBalanceCurrency,
+            orderTotalCurrency,orderBalanceCurrency ;
     RelativeLayout txtView, txtView1;
     LinearLayout selectDates;
 
@@ -97,6 +100,13 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
         startDatePicker=(ImageButton)findViewById(R.id.startDatePicker);
         endDatePicker=(ImageButton)findViewById(R.id.endDatePicker);
 
+        billAmountCurrency = (TextView) findViewById(R.id.billAmountCurrency);
+        totalPaidCurrency = (TextView) findViewById(R.id.totalPaidCurrency);
+        totalBalanceCurrency = (TextView) findViewById(R.id.totalBalanceCurrency);
+
+        orderBalanceCurrency = (TextView) findViewById(R.id.orderBalanceCurrency);
+        orderTotalCurrency = (TextView) findViewById(R.id.orderTotalCurrency);
+
         Distributor distributor = SessionInformations.getInstance().getEmployee().getDistributor();
 
         String dist = distributor.getCompanyName();
@@ -106,11 +116,12 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
         ArrayAdapter storeDistributors = new ArrayAdapter(this, R.layout.drop_down_list, allDist);
         storeDistributors.setDropDownViewResource(R.layout.drop_down_list);
         final String currencySymbol = distributor.getCurrencySymbol();
-        totalAmount.setText("Total(" + currencySymbol + ")");
-        totalPaid.setText("Payments(" + currencySymbol + ")");
-        totalBalance.setText("Balance(" + currencySymbol + ")");
-        orderTotal.setText("Total(" + currencySymbol + ")");
-        orderBalance.setText("Balance(" + currencySymbol + ")");
+        billAmountCurrency.setText("(" + currencySymbol + ")");
+        totalPaidCurrency.setText("(" + currencySymbol + ")");
+        totalBalanceCurrency.setText("(" + currencySymbol + ")");
+
+        orderTotalCurrency.setText("(" + currencySymbol + ")");
+        orderBalanceCurrency.setText("(" + currencySymbol + ")");
 
         //Setting the ArrayAdapter data on the Spinner
         store.setAdapter(storeDistributors);
@@ -172,6 +183,60 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
                 dialog.show();
             }
         });
+
+
+        /*startDate.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                Calendar cal1 = Calendar.getInstance();
+                int year1 = cal1.get(Calendar.YEAR);
+                int month1 = cal1.get(Calendar.MONTH);
+                int day1 = cal1.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        OrderHistroyActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener1,
+                        year1,month1,day1);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+                // startDatePicker.setVisibility(View.VISIBLE);
+            }
+        });*/
+        //startDatePicker
+
+        /*endDate.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                Calendar cal2 = Calendar.getInstance();
+                int year2 = cal2.get(Calendar.YEAR);
+                int month2 = cal2.get(Calendar.MONTH);
+                int day2 = cal2.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        OrderHistroyActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener2,
+                        year2,month2,day2);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                //endDatePicker.setVisibility(View.VISIBLE);
+            }
+        });*/
+
+       /* endDatePicker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
+                endDate.setText( datePicker.getDayOfMonth()+"/"+(datePicker.getMonth()+1)+"/"+datePicker.getYear());
+                datePicker.setVisibility(View.GONE);
+            }
+        });*/
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {

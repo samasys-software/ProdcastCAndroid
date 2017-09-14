@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -53,13 +54,18 @@ public class OutstandingBillsDetailsAdapter extends BaseAdapter {
 
         public class Holder
         {
-            TextView tv,tv1,tv2,tv3,tv4;
+            TextView tv,tv2,tv3,tv4;
+            ImageView tv1;
+            ImageView readyStatus, newStatus;
+
+
 
 
         }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         String status;
+        String st;
         // TODO Auto-generated method stub
         OutstandingBillsDetailsAdapter.Holder holder=new OutstandingBillsDetailsAdapter.Holder();
         View rowView;
@@ -67,19 +73,27 @@ public class OutstandingBillsDetailsAdapter extends BaseAdapter {
 
             convertView = inflater.inflate(R.layout.activity_bill_details_list, null);
         holder.tv=(TextView) convertView.findViewById(R.id.billNo);
-        holder.tv1=(TextView) convertView.findViewById(R.id.status);
+        holder.tv1=(ImageView) convertView.findViewById(R.id.status);
         holder.tv2=(TextView) convertView.findViewById(R.id.billDate);
         holder.tv3=(TextView) convertView.findViewById(R.id.total);
         holder.tv4=(TextView) convertView.findViewById(R.id.outstandingBalance);
         //holder.img=(ImageView) rowView.findViewById(R.id.companyLogo);
         //  holder.tv.setText(result[position]);                  //prev. code
         holder.tv.setText(String.valueOf(outstandingBills.get(position).getBillNumber()));
-        status="READY";
+
+
+//ImageView img = (ImageView) convertView.findViewById(R.id.readyStatus);
+        // holder.tv1.setCompoundDrawablesWithIntrinsicBounds(R.id.readySta,null,null,null);
+
+         holder.tv1.setImageResource(R.drawable.ic_ready_circle);
         if(outstandingBills.get(position).getOrderStatus().equals(("S")))
         {
-            status="NEW";
+            holder.tv1.setImageResource(R.drawable.ic_order_new);
         }
-        holder.tv1.setText(status);
+
+
+
+
         holder.tv2.setText(String.valueOf(outstandingBills.get(position).getBillDate()));
         holder.tv3.setText(numberFormat.format(outstandingBills.get(position).getBillAmount()));
         holder.tv4.setText(numberFormat.format(outstandingBills.get(position).getOutstandingBalance()));

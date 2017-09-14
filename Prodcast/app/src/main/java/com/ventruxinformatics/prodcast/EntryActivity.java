@@ -76,7 +76,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
             final SwipeMenuListView swipeMenuListView = (SwipeMenuListView) findViewById(R.id.listofentries);
 
             TextView txtView=(TextView) findViewById(R.id.subTotal);
-            txtView.setText("Sub Total("+currencySymbol+")");
+            txtView.setText("SubTotal"+"("+currencySymbol+")");
 
             final SwipeMenuCreator creator = new SwipeMenuCreator() {
 
@@ -86,7 +86,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                     SwipeMenuItem deleteItem = new SwipeMenuItem(getApplicationContext());
                     //deleteItem.setBackground(getDrawable(R.drawable.yellow_background));
                     deleteItem.setWidth(300);
-                    deleteItem.setIcon(R.drawable.ic_delete);
+                    deleteItem.setIcon(R.drawable.ic_delete_button);
                     menu.addMenuItem(deleteItem);
 
                 }
@@ -283,8 +283,8 @@ public class EntryActivity extends ProdcastCBaseActivity {
             total_tax=total_tax+ProductDetailFragment.calculateTax(entry.getProduct());
 
         }
-        total.setText("("+currencySymbol+")"+""+numberFormat.format(total_value));
-        subTotal.setText("("+currencySymbol+")"+""+numberFormat.format(sub_total));
-        tax.setText("("+currencySymbol+")"+""+numberFormat.format(total_tax));
+        total.setText(currencySymbol+""+numberFormat.format(total_value));
+        subTotal.setText(currencySymbol+""+numberFormat.format(sub_total));
+        tax.setText(currencySymbol+""+numberFormat.format(total_tax));
     }
 }

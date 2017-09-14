@@ -87,6 +87,7 @@
 
 
     <style name="submitButton" >
+
         <!-- Customize your theme here. -->
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -97,7 +98,7 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
 
-        <item name="android:background">@drawable/button_shadow</item>
+        <item name="android:background">@drawable/selector_prodcast_button_button</item>
         <item name="android:fontFamily">serif</item>
 
     </style>
