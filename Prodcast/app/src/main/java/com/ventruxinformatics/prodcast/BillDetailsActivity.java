@@ -39,8 +39,7 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
     }
 
     ExpandableListView expandableListView;
-   // ListView orderListView;
-   // ListView paymentListView;
+
     Context context;
 
     TextView subTotal,paymentAmount;
@@ -56,11 +55,6 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
 
         currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         progressDialog=getProgressDialog(this);
-
-        subTotal=(TextView) findViewById(R.id.subTotal);
-        paymentAmount=(TextView) findViewById(R.id.paymentAmount);
-       // subTotal.setText("Sub Total("+currencySymbol+")");
-       // paymentAmount.setText("Amount("+currencySymbol+")");
 
         expandableListView=(ExpandableListView) findViewById(R.id.expandableBillDetailsEntryList);
 
@@ -103,26 +97,6 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                         );
                         expandableListView.expandGroup(0);
                         expandableListView.expandGroup(1);
-
-
-
-
-//baseAdapter
-                        //  Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
-                     /*   if (order.getCollectionEntries().size() > 0) {
-                            paymentListView.setAdapter(new PaymentDetailsListAdapter(BillDetailsActivity.this, order.getCollectionEntries()));
-
-                        } else {
-
-                            LinearLayout txView = (LinearLayout) findViewById(R.id.llpayment);
-                            LinearLayout txView1 = (LinearLayout) findViewById(R.id.paymentDetailsInvisible);
-
-                            txView.setVisibility(View.INVISIBLE);
-                            txView1.setVisibility(View.INVISIBLE);
-                        }
-                        if (order.getOrderEntries().size() > 0) {
-                            orderListView.setAdapter(new BillDetailsListAdapter(BillDetailsActivity.this, order.getOrderEntries()));
-                        }*/
                         progressDialog.dismiss();
                     }
                 }

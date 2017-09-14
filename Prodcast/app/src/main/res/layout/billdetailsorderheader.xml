@@ -35,16 +35,35 @@
         style="@style/TableHeader"
         android:text="Price "/>
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/border_headermiddle"
+        >
+
 
     <TextView
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/subTotal"
 
         android:gravity="center"
         android:background="@color/headerBackground"
-        android:layout_weight="1"
+
         style="@style/TableHeader"
         android:text="SubTotal "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="()"
+            android:layout_height="wrap_content"
+            android:id="@+id/orderSubtotal"
+            style="@style/TableHeader"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

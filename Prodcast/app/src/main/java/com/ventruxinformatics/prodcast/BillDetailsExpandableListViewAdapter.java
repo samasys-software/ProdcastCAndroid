@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import businessObjects.SessionInformations;
 import businessObjects.domain.Collection;
 import businessObjects.domain.OrderEntry;
 
@@ -21,6 +22,7 @@ public class BillDetailsExpandableListViewAdapter extends BaseExpandableListAdap
     Context context;
     List<OrderEntry> orderDetails;
     List<Collection> collections;
+    String  currencySymbol= SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
     public BillDetailsExpandableListViewAdapter(Context context, List<String> titles, List<OrderEntry> orders, List<Collection> collections){
                this.context = context;
                 this.orderDetails = orders;
@@ -94,6 +96,10 @@ public class BillDetailsExpandableListViewAdapter extends BaseExpandableListAdap
                  if(j==0){
                     LayoutInflater inflater=(LayoutInflater)this.context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
                     childView = inflater.inflate(R.layout.billdetailsorderheader,null);
+                    TextView subTotal=(TextView)childView.findViewById(R.id.orderSubtotal);
+                     subTotal.setText("("+currencySymbol+")");
+
+
                  }
                  else{
                     BillDetailsOrderEntryView entry=new BillDetailsOrderEntryView(context,(OrderEntry) getChild(i,j-1));
@@ -107,6 +113,8 @@ public class BillDetailsExpandableListViewAdapter extends BaseExpandableListAdap
             if (j==0) {
                 LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
                 childView = inflater.inflate(R.layout.billdetailspaymentheader, null);
+               TextView paymentAmount=(TextView)childView.findViewById(R.id.paymentTotalCurrency);
+                paymentAmount.setText("("+currencySymbol+")");
             }
             else {
                 BillDetailsCollectionEntryView entry=new BillDetailsCollectionEntryView(context,(Collection) getChild(i,j-1));

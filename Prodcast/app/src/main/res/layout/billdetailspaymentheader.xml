@@ -29,15 +29,34 @@
         android:layout_weight="2"
         android:text="Received By"/>
 
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/border_headermiddle"
+        >
+
     <TextView
 
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/paymentAmount"
         android:gravity="center"
         android:background="@color/headerBackground"
         style="@style/TableHeader"
-        android:layout_weight="1"
+
         android:text="Amount"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="()"
+            android:layout_height="wrap_content"
+            android:id="@+id/paymentTotalCurrency"
+            style="@style/TableHeader"
+            />
+        </LinearLayout>
 
 </LinearLayout>
