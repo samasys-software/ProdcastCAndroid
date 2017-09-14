@@ -1,0 +1,70 @@
+package com.samayu.prodcastc.businessObjects.domain;
+
+import java.sql.Date;
+
+/**
+ * Created by God on 8/11/2017.
+ */
+
+public class Bill {
+    private long billNumber;
+    private long customerId;
+    private Date billDate;
+    private String orderStatus;
+
+    public float getBillAmount() {
+        return billAmount;
+    }
+
+    public void setBillAmount(float billAmount) {
+        this.billAmount = billAmount;
+    }
+
+    private float billAmount;
+    private float outstandingBalance;
+
+    public long getBillNumber() {
+        return billNumber;
+    }
+
+    public void setBillNumber(long billNumber) {
+        this.billNumber = billNumber;
+    }
+
+    public long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
+
+    public Date getBillDate() {
+        return billDate;
+    }
+
+    public void setBillDate(Date billDate) {
+        this.billDate = billDate;
+    }
+
+
+
+    public float getOutstandingBalance() {
+        return outstandingBalance;
+    }
+
+    public void setOutstandingBalance(float outstandingBalance) {
+        this.outstandingBalance = outstandingBalance;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+
+
+}
