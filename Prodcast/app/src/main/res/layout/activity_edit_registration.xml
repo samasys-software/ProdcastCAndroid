@@ -173,7 +173,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="0dp">
+                    android:padding="0dp" >
 
                     <TextView
                         android:layout_width="match_parent"
@@ -181,14 +181,17 @@
                         android:text="Country"
                         android:textSize="12sp"
                         android:id="@+id/countryTextHint"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:gravity="top"
+                        android:textColor="@android:color/darker_gray"
+
+                        />
 
                     <Spinner
                         android:id="@+id/editCountry"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="2dp"
-                        android:layout_height="30dp"
-                        android:paddingBottom="3dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_height="28dp"
+                        android:paddingBottom="2dp"
                         android:visibility="visible"
                         android:layout_gravity="center"
                         android:background="@drawable/border_spinner"
@@ -200,7 +203,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="1" >
+                    android:layout_weight="1" android:paddingTop="5dp">
 
                 <EditText
                     android:id="@+id/postalCode"

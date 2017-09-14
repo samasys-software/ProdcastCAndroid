@@ -1,48 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_marginTop="0dp"
-    android:layout_height="match_parent">
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
-        <TextView
-            android:id="@+id/productName"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text="Salt Lake City"
-            android:background="@drawable/border_entryends"
-            style="@style/TableEntry"/>
+        <LinearLayout
+            android:orientation="horizontal" android:layout_width="match_parent" android:layout_marginTop="5dp"
+            android:layout_height="match_parent" >
 
-        <TextView
-            android:id="@+id/unitPrice"
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:layout_height="wrap_content"
-            android:text="Salt Lake City"
-            android:background="@drawable/border_entrymiddle"
-            style="@style/TableEntry"/>
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="Salt Lake City"
 
-        <EditText
-            android:id="@+id/orderQuantity"
+                    style="@style/TableEntry"/>
 
-            android:layout_width="0dp"
-            android:gravity="center"
-            android:layout_weight="0.5"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_entrymiddleeditview"
-            style="@style/TableEntry"/>
+                <TextView
+                    android:id="@+id/unitPrice"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:text="Salt"
 
-        <TextView
-            android:id="@+id/subTotal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="0.00"
-            android:gravity="center"
-            android:layout_weight="0.75"
-            android:background="@drawable/border_entrymiddle"
-            style="@style/TableEntry"/>
+                    style="@style/TableEntry"/>
 
-</LinearLayout>
+                <EditText
+                    android:id="@+id/orderQuantity"
+
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_entrymiddleeditview"
+                    style="@style/TableEntry"/>
+
+                <TextView
+                    android:id="@+id/subTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:gravity="center"
+                    android:layout_weight="0.75"
+
+                    style="@style/TableEntry"/>
+
+        </LinearLayout>
+</RelativeLayout>
