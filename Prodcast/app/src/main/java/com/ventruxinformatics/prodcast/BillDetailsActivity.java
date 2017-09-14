@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
+import java.util.LinkedList;
+import java.util.List;
 
 import businessObjects.GlobalUsage;
 import businessObjects.SessionInformations;
@@ -32,14 +35,8 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
      public String getProdcastTitle(){
         return "Bill Details";
     }
-
-
-    ListView orderListView;
-    ListView paymentListView;
+    ExpandableListView expandableListView;
     Context context;
-
-    TextView subTotal,paymentAmount;
-
     ProgressDialog progressDialog;
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     String currencySymbol;
@@ -51,22 +48,9 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
 
         currencySymbol=SessionInformations.getInstance().getEmployee().getDistributor().getCurrencySymbol();
         progressDialog=getProgressDialog(this);
-        paymentListView = (ListView) findViewById(R.id.paymentEntriesAdapter);
-        subTotal=(TextView) findViewById(R.id.subTotal);
-        paymentAmount=(TextView) findViewById(R.id.paymentAmount);
-
-        subTotal.setText("Sub Total"+currencySymbol+")");
-        paymentAmount.setText("Amount("+currencySymbol+")");
-        orderListView = (ListView) findViewById(R.id.orderEntriesAdapter);
-
-
-
-
+        expandableListView=(ExpandableListView) findViewById(R.id.expandableBillDetailsEntryList);
         context = this;
         getServerResponse();
-
-
-
     }
 
     public void getServerResponse(){
@@ -75,8 +59,6 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         EmployeeDetails employeeDetails = SessionInformations.getInstance().getEmployee();
         long employeeId = employeeDetails.getEmployeeId();
         String userRole = employeeDetails.getUserRole();
-
-
         progressDialog.show();
         Call<OrderDTO> billDetailsDTO = new ProdcastServiceManager().getClient().getBillDetails(Long.parseLong(billId), employeeId, userRole);
 
@@ -91,21 +73,16 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
                     } else {
                         Order order = dto.getOrder();
                         setBillDetails(order);
-                        //  Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show();
-                        if (order.getCollectionEntries().size() > 0) {
-                            paymentListView.setAdapter(new PaymentDetailsListAdapter(BillDetailsActivity.this, order.getCollectionEntries()));
 
-                        } else {
-
-                            LinearLayout txView = (LinearLayout) findViewById(R.id.llpayment);
-                            LinearLayout txView1 = (LinearLayout) findViewById(R.id.paymentDetailsInvisible);
-
-                            txView.setVisibility(View.INVISIBLE);
-                            txView1.setVisibility(View.INVISIBLE);
-                        }
-                        if (order.getOrderEntries().size() > 0) {
-                            orderListView.setAdapter(new BillDetailsListAdapter(BillDetailsActivity.this, order.getOrderEntries()));
-                        }
+                        List<String> titles = new LinkedList<String>();
+                        titles.add("Order Details");
+                        titles.add("Payment Details");
+                        expandableListView.setAdapter(
+                                new BillDetailsExpandableListViewAdapter(
+                                        BillDetailsActivity.this,titles,order.getOrderEntries(),order.getCollectionEntries())
+                        );
+                        expandableListView.expandGroup(0);
+                        expandableListView.expandGroup(1);
                         progressDialog.dismiss();
                     }
                 }
