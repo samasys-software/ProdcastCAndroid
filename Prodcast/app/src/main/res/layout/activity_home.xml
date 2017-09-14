@@ -78,7 +78,7 @@
                 android:layout_row="0"
                 android:textAllCaps="true"
                 android:textSize="16dp"
-                android:text="Change Password" />
+                android:text="Change PIN" />
 
         </RelativeLayout>
 
