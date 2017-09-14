@@ -280,7 +280,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
         {
             total_value=total_value+ProductDetailFragment.calculateTotal(entry.getProduct(),entry.getQuantity());
             sub_total=sub_total+ProductDetailFragment.calculateSubTotal(entry.getProduct(),entry.getQuantity());
-            total_tax=total_tax+ProductDetailFragment.calculateTax(entry.getProduct());
+            total_tax=total_tax+ProductDetailFragment.calculateTax(entry.getProduct(),entry.getQuantity());
 
         }
         total.setText(currencySymbol+""+numberFormat.format(total_value));

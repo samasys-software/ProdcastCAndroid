@@ -325,18 +325,18 @@ public class ProductDetailFragment extends Fragment {
 
 
         float subTotal=calculateSubTotal(pro,quantity);
-        float tax=calculateTax(pro);
-        double total=subTotal*(1+(tax)/100);
+        float tax=calculateTax(pro,quantity);
+        double total=subTotal+tax;
 
 
         return total;
 
     }
-    public static final float calculateTax(Product pro) {
+    public static final float calculateTax(Product pro,int quantity) {
 
         float salesTax = Float.valueOf(pro.getSalesTax());
          float otherTax = Float.valueOf(pro.getOtherTax());
-        float tax = salesTax + otherTax ;
+        float tax = calculateSubTotal(pro,quantity)*(salesTax + otherTax)/100 ;
 
 
         return tax;
