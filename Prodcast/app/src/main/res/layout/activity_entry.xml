@@ -100,6 +100,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@null"
+
         android:layout_below="@id/reviewOrderTableHeader">
     </com.baoyz.swipemenulistview.SwipeMenuListView>
 

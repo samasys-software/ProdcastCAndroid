@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,12 +29,14 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
     TextView outstandingBillText;
     TextView outstandingBillCount;
     TextView outstandingBillTotalText, outstandingBillBalanceText;
+    TextView readyLegend, newLegend;
+    ImageView readyLegendImage, newLegendImage;
     Context context;
     ProgressDialog progressDialog;
 
     @Override
     public String getProdcastTitle() {
-        return "Outstanding Orders";
+        return "Open Orders";
     }
 
     @Override
@@ -51,8 +54,16 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         newOrderPin = (FloatingActionButton) findViewById(R.id.newOrderPin);
         outstandingBillText = (TextView) findViewById(R.id.outstandingBillText);
         outstandingBillCount = (TextView) findViewById(R.id.outstandingBillCount);
+
+        readyLegendImage = (ImageView) findViewById(R.id.readyLegendImage);
+        newLegendImage = (ImageView) findViewById(R.id.newLegendImage);
+
+        readyLegend = (TextView) findViewById(R.id.readyLegend);
+        newLegend = (TextView) findViewById(R.id.newLegend);
+
         TextView total=(TextView) findViewById(R.id.total);
         TextView outstandingbalance=(TextView) findViewById(R.id.outstandingBalance);
+
 
         TextView outstandingBillTotalText = (TextView)findViewById(R.id.outstandingBillTotalText);
         TextView outstandingBillBalanceText = (TextView)findViewById(R.id.outstandingBillBalanceText);
@@ -62,7 +73,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         outstandingBillTotalText.setText("("+currencySymbol+")");
         outstandingBillBalanceText.setText("("+currencySymbol+")");
 
-        outstandingBillText.setText("Outstanding Orders");
+        outstandingBillText.setText("Open Orders");
 
         newOrderPin.setOnClickListener(new View.OnClickListener() {
             @Override
