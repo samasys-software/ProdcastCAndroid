@@ -16,12 +16,6 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
-
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
-
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
@@ -32,6 +26,11 @@ import com.samayu.prodcastc.businessObjects.dto.CustomerDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDetailDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderEntryDTO;
 import com.ventruxinformatics.prodcast.R;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.Inflater;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +45,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
     String currencySymbol= SessionInfo.getInstance().getEmployee().getDistributor().getCurrencySymbol();
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
 
-
+    TextView confirmationMesage;
 
     @Override
     public String getProdcastTitle() {
@@ -67,7 +66,8 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
 
 
-         List<OrderDetails> entries = SessionInfo.getInstance().getEntry();
+         final List<OrderDetails> entries = SessionInfo.getInstance().getEntry();
+
         if (entries.size() != 0) {
             final EmployeeDetails emp = SessionInfo.getInstance().getEmployee();
 
@@ -95,14 +95,28 @@ public class EntryActivity extends ProdcastCBaseActivity {
             };
 
 
-                swipeMenuListView.setMenuCreator(creator);
+
+
+
+            swipeMenuListView.setMenuCreator(creator);
 
                 swipeMenuListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+
                     @Override
                     public boolean onMenuItemClick( final int position, SwipeMenu menu, int index) {
-                        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+
+                        final OrderDetails orderDetails = entries.get(position);
+
+                        AlertDialog.Builder alert = new AlertDialog.Builder(context,R.style.AlertTheme);
                         alert.setTitle("Prodcast Notification");
-                        alert.setMessage("This Order Has Been Deleted Permanently...Do You Want To Continue?");
+
+                        LayoutInflater inflater = EntryActivity.this.getLayoutInflater();
+                        View layoutView = inflater.inflate(R.layout.alert_dialog, null);
+                        alert.setView(layoutView);
+                        TextView message = (TextView) layoutView.findViewById(R.id.alertName);
+                        message.setText("The item "+orderDetails.getProduct().getProductName()+" " +
+                                "will be removed from the cart. Would you like to Continue ?");
+
                         alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -138,6 +152,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                             }
                         });
                         alert.show();
+
 
 
                         return false;
