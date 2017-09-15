@@ -121,7 +121,7 @@
 
     <style name="PopupMenuItem">
         <!-- Change Overflow Menu ListView Item Height & Property -->
-        <item name="android:listPreferredItemHeightSmall">15dp</item>
+        <item name="android:listPreferredItemHeightSmall">20dp</item>
     </style>
 
 </resources>

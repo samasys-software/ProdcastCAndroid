@@ -52,9 +52,9 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
             NavigationView navigation = (NavigationView) fullView.findViewById(R.id.nav_view);
             Menu nav_Menu = navigation.getMenu();
             nav_Menu.findItem(R.id.nav_home).setVisible(false);
-            nav_Menu.findItem(R.id.nav_changePassword).setVisible(false);
-            nav_Menu.findItem(R.id.nav_changeStore).setVisible(false);
-            nav_Menu.findItem(R.id.nav_editRegistration).setVisible(false);
+            nav_Menu.findItem(R.id.nav_changePassword).setVisible(true);
+            nav_Menu.findItem(R.id.nav_changeStore).setVisible(true);
+            nav_Menu.findItem(R.id.nav_editRegistration).setVisible(true);
             nav_Menu.findItem(R.id.nav_orderEntry).setVisible(false);
             nav_Menu.findItem(R.id.nav_orderHistroy).setVisible(false);
         }
