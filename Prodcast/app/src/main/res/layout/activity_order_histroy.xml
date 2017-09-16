@@ -85,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Start Date"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     />
 
                 <ImageButton
@@ -111,7 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="End Date"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     />
 
                 <ImageButton
@@ -160,7 +160,7 @@
                     android:paddingTop="15dp"
 
                     android:text="Summary"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -320,7 +320,7 @@
                     android:layout_height="wrap_content"
                     android:text="Orders"
 
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 

@@ -13,7 +13,7 @@
 
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -24,7 +24,7 @@
 
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:layout_marginTop="5dp"/>
 
     <LinearLayout
@@ -47,7 +47,7 @@
                 android:hint="Quantity"
 
                 android:minHeight="30dp"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:layout_marginLeft="10dp"
                 android:translationY="0dp"
                 android:inputType="number"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_weight="1"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:gravity="bottom"
             android:minHeight="25dp"
             android:layout_marginLeft="4dp"
@@ -82,7 +82,7 @@
         android:id="@+id/confirmationMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:gravity="bottom"
         android:minHeight="25dp"
         android:layout_marginLeft="4dp"

@@ -42,7 +42,7 @@
 
             <TextView
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="SAMASYS PVT LTD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                 android:text="Salt Lake City"
 
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:layout_below="@+id/companyDetails"
                 android:layout_alignLeft="@+id/companyDetails"
                 />

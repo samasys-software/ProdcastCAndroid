@@ -217,7 +217,7 @@
             android:id="@+id/register"
 
             android:textColor="#345904"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -231,7 +231,7 @@
 
             android:id="@+id/forgotPin"
             android:textColor="#345904"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
