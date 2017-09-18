@@ -20,13 +20,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
@@ -35,6 +28,13 @@ import com.samayu.prodcastc.businessObjects.domain.EmployeeDetails;
 import com.samayu.prodcastc.businessObjects.domain.Order;
 import com.samayu.prodcastc.businessObjects.dto.CustomerReportDTO;
 import com.ventruxinformatics.prodcast.R;
+
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -402,7 +402,7 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
                         }
                         else
                         {
-                            Toast.makeText(context, "No Reports available Please try again..!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "No order was placed during this time..!", Toast.LENGTH_LONG).show();
 
                             txtView.setVisibility(View.INVISIBLE);
                             txtView1.setVisibility(View.INVISIBLE);

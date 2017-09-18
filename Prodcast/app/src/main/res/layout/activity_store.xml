@@ -25,7 +25,7 @@
             android:layout_centerVertical="true"
             android:text="Select Store"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
     </RelativeLayout>

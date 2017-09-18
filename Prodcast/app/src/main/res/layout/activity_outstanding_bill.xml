@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ventruxinformatics.prodcast.com.samayu.prodcastc.ui.OutstandingBillsActivity">
+    tools:context="com.samayu.prodcastc.ui.OutstandingBillsActivity">
 <LinearLayout
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -28,14 +28,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Outstanding"
-        android:textSize="16sp"
+        android:textSize="14sp"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/outstandingBillCount"
-        android:textSize="16sp"/>
+        android:textSize="14sp"/>
 
     </LinearLayout>
 
@@ -218,7 +218,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/newOrderPin"
-        app:srcCompat="@drawable/ic_shopping_cart"
+        app:srcCompat="@drawable/ic_order_new_shoppingcart"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         app:layout_anchor="@id/rlwebviewmain"
