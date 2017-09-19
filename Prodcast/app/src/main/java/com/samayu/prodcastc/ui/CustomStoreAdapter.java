@@ -8,13 +8,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.samayu.prodcastc.BuildConfig;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import com.samayu.prodcastc.businessObjects.domain.Distributor;
-import com.ventruxinformatics.prodcast.BuildConfig;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 /**
  * Created by AndroidUser on 12/13/2016.

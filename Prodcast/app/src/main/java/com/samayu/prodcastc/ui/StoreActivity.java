@@ -18,7 +18,7 @@ import java.util.List;
 
 import com.samayu.prodcastc.businessObjects.dto.AdminDTO;
 import com.samayu.prodcastc.businessObjects.dto.CustomerLoginDTO;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;

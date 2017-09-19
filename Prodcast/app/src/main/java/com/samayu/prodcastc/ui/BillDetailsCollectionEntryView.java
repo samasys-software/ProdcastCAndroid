@@ -9,7 +9,7 @@ import java.text.NumberFormat;
 
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.domain.Collection;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 /**
  * Created by fgs on 9/13/2017.

@@ -13,7 +13,7 @@ import java.util.List;
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.domain.Product;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 public class AllProductsAdapter extends BaseAdapter {
 

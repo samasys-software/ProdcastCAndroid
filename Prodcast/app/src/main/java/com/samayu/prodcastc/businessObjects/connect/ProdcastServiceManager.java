@@ -2,7 +2,8 @@ package com.samayu.prodcastc.businessObjects.connect;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.ventruxinformatics.prodcast.BuildConfig;
+import com.samayu.prodcastc.BuildConfig;
+
 
 import java.io.IOException;
 

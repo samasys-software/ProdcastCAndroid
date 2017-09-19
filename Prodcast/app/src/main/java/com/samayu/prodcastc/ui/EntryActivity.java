@@ -25,7 +25,7 @@ import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.dto.CustomerDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDetailDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderEntryDTO;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;

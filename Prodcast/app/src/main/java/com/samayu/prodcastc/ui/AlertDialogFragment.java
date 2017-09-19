@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
+
 
 /**
  * Created by nandhini on 01/09/17.

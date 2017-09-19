@@ -21,7 +21,7 @@ import android.widget.TextView;
 import java.io.File;
 
 import com.samayu.prodcastc.businessObjects.SessionInfo;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 public abstract class ProdcastCBaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

@@ -21,7 +21,7 @@ import com.samayu.prodcastc.businessObjects.domain.Country;
 import com.samayu.prodcastc.businessObjects.domain.CustomerRegistration;
 
 import com.samayu.prodcastc.businessObjects.dto.CustomerLoginDTO;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
