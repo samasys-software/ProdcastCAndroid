@@ -75,8 +75,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_box"
                     android:orientation="horizontal"
-                    android:layout_gravity="center"
                     android:gravity="center"
+
                     android:layout_weight="1">
 
                 <TextView
@@ -85,22 +85,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Start Date"
-                    android:textSize="14sp"
+                    android:layout_gravity="center"
                     />
 
                 <ImageButton
                     android:id="@+id/startDatePicker"
                     android:background="@drawable/ic_date_picker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"/>
                 </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/form_box"
-                android:layout_gravity="center"
                 android:gravity="center"
+
                 android:orientation="horizontal"
                 android:layout_weight="1">
 
@@ -111,14 +112,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="End Date"
-                    android:textSize="14sp"
+                    android:layout_gravity="center"
                     />
 
                 <ImageButton
                     android:id="@+id/endDatePicker"
                     android:background="@drawable/ic_date_picker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center" />
                 </LinearLayout>
 
                 <Button
@@ -143,8 +145,8 @@
             android:id="@+id/summaryTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
             android:visibility="invisible">
 
             <LinearLayout
@@ -160,7 +162,7 @@
                     android:paddingTop="15dp"
 
                     android:text="Summary"
-                    android:textSize="14sp" />
+                     />
 
             </LinearLayout>
 
@@ -184,7 +186,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:id="@+id/billAmt"
-                    android:text="Amount"
+                    android:text="Amt"
                     android:layout_height="match_parent"
                     android:gravity="center"
 
@@ -212,7 +214,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:id="@+id/totalPaid"
-                    android:text="Payments"
+                    android:text="Paid"
                     android:layout_height="match_parent"
                     android:gravity="center"
 
@@ -242,7 +244,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/totBalance"
-                    android:text="Balance"
+                    android:text="Bal"
                     android:gravity="center"
 
                     style="@style/TableHeader"/>
@@ -304,8 +306,8 @@
             android:id="@+id/billDetailsTable"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
             android:visibility="invisible">
 
             <LinearLayout
@@ -320,7 +322,7 @@
                     android:layout_height="wrap_content"
                     android:text="Orders"
 
-                    android:textSize="14sp" />
+                     />
 
             </LinearLayout>
 
@@ -344,7 +346,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     android:gravity="center"
                     android:text="Date"
                     style="@style/TableHeader"
@@ -353,7 +355,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.9"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -379,7 +381,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.9"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -390,7 +392,7 @@
                     android:id="@+id/orderBalance"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Balance"
+                    android:text="Bal"
                     style="@style/TableHeader"/>
 
                 <TextView

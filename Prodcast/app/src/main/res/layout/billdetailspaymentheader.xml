@@ -43,13 +43,13 @@
     <TextView
 
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/paymentAmount"
         android:gravity="center"
         android:background="@color/headerBackground"
         style="@style/TableHeader"
 
-        android:text="Amount"/>
+        android:text="Amt"/>
         <TextView
             android:layout_width="wrap_content"
             android:text="()"

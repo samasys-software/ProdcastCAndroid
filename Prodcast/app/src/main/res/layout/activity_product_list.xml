@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.ventruxinformatics.prodcast.com.samayu.prodcastc.ui.ProductListActivity">
+    tools:context="com.samayu.prodcastc.ui.ProductListActivity">
 
     <TextView
         android:layout_width="wrap_content"
