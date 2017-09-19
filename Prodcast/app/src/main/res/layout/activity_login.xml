@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/green_bg"
-    tools:context="com.ventruxinformatics.prodcast.com.samayu.prodcastc.ui.LoginActivity">
+    tools:context="com.samayu.prodcastc.ui.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/rlimageprodcast"
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/country"
-                android:layout_marginLeft="45dp"
+                android:layout_marginLeft="50dp"
                 android:paddingLeft="10dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
@@ -203,7 +203,7 @@
 
             android:id="@+id/register"
             android:textColor="#345904"
-            android:textSize="14sp"
+
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -217,7 +217,7 @@
 
             android:id="@+id/forgotPin"
             android:textColor="#345904"
-            android:textSize="14sp"
+
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
