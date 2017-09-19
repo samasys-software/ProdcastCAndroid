@@ -11,6 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:gravity="center"
         style="@style/TableHeader"
         android:background="@color/headerBackground"
         android:text="Item"/>
@@ -42,10 +43,11 @@
         android:background="@color/headerBackground"
 
         style="@style/TableHeader"
-        android:text="Price "/>
+        android:text="Price"/>
         <TextView
             android:layout_width="wrap_content"
             android:text="()"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:id="@+id/orderPriceCurrency"
             style="@style/TableHeader"
@@ -72,7 +74,7 @@
         android:background="@color/headerBackground"
 
         style="@style/TableHeader"
-        android:text="SubTotal "/>
+        android:text="Sub Tot"/>
         <TextView
             android:layout_width="wrap_content"
             android:text="()"

@@ -24,7 +24,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "SERVER_URL", '"http://ec2-52-90-58-39.compute-1.amazonaws.com:8080"'
-            debuggable false;
+            debuggable true;
             signingConfig signingConfigs.configRelease
         }
         debug {

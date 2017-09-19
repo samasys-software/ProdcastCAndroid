@@ -118,11 +118,14 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
                             // country.setText(newCustomerRegistrationDetails.getCountry());
                             //country.(newCustomerRegistrationDetails.getFirstName());
                             //skip.setText(newCustomerRegistrationDetails.getFirstName());
-                            boolean checked = false;
-                            if (newCustomerRegistrationDetails.getSmsAllowed().equals("1")) {
-                                checked = true;
+                            if(newCustomerRegistrationDetails.getSmsAllowed()!=null) {
+                                boolean checked = false;
+
+                                if (newCustomerRegistrationDetails.getSmsAllowed().equals("1")) {
+                                    checked = true;
+                                }
+                                smsAllowed.setChecked(checked);
                             }
-                            smsAllowed.setChecked(checked);
                             customerId = String.valueOf(newCustomerRegistrationDetails.getCustomerId());
 
 

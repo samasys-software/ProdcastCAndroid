@@ -57,7 +57,8 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         String billId = data.getStringExtra("billId");
         EmployeeDetails employeeDetails = SessionInfo.getInstance().getEmployee();
         long employeeId = employeeDetails.getEmployeeId();
-        String userRole = employeeDetails.getUserRole();
+        //String userRole = employeeDetails.getUserRole();
+        String userRole = "D";
         progressDialog.show();
         Call<OrderDTO> billDetailsDTO = new ProdcastServiceManager().getClient().getBillDetails(Long.parseLong(billId), employeeId, userRole);
 

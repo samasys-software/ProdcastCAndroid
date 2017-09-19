@@ -18,7 +18,7 @@
                     android:id="@+id/skipRegisteration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+
                     android:gravity="center"
                     android:layout_gravity="end"
                     android:visibility="visible"
@@ -179,7 +179,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Country"
-                        android:textSize="12sp"
+
                         android:id="@+id/countryTextHint"
                         android:gravity="top"
                         android:textColor="@android:color/darker_gray"
@@ -229,7 +229,7 @@
                         android:layout_gravity="center"
                         android:checked="true"
                         android:hint=""
-                        android:textSize="16sp"
+
                         android:gravity="right"/>
 
                     <TextView
@@ -237,7 +237,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="Sms Allowed"
-                        android:textSize="16sp"
+
                         android:gravity="left"/>
 
                     <Button
