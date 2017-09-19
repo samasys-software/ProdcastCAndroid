@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">"Prodcast Customers "</string>
+    <string name="app_name">Prodcast Stores</string>
     <string name="error_field_required">This field is Reqiured</string>
     <string name="error_invalid_username">This MobileNumber is invalid</string>
     <string name="error_invalid_password">This Pin Number is Invalid</string>

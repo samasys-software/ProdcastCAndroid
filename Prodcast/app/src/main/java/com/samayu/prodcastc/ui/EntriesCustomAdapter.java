@@ -19,7 +19,7 @@ import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.dto.OrderEntryDTO;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 public class EntriesCustomAdapter extends BaseAdapter {
 

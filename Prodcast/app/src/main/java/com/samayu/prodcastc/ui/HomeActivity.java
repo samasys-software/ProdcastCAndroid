@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 
 public class HomeActivity extends ProdcastCBaseActivity {

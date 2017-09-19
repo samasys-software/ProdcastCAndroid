@@ -26,7 +26,7 @@ import com.samayu.prodcastc.businessObjects.domain.Category;
 import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.domain.Product;
 import com.samayu.prodcastc.businessObjects.dto.AdminDTO;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
