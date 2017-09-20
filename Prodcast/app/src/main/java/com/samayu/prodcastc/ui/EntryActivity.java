@@ -78,7 +78,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
             final SwipeMenuListView swipeMenuListView = (SwipeMenuListView) findViewById(R.id.listofentries);
 
             TextView txtView=(TextView) findViewById(R.id.subTotal);
-            txtView.setText("SubTotal"+"("+currencySymbol+")");
+            txtView.setText("Sub Tot"+"("+currencySymbol+")");
 
             final SwipeMenuCreator creator = new SwipeMenuCreator() {
 
