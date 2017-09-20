@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="BILL NO"
-            android:layout_weight="0.5"
+            android:layout_weight="0.6"
             android:textAllCaps="true"
             style="@style/TableEntry"
             android:background="@drawable/border_entryends"/>
@@ -26,7 +26,7 @@
             android:textAllCaps="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:id="@+id/cusBillDate"
             style="@style/TableEntry"
             android:background="@drawable/border_entrymiddle"/>
@@ -37,7 +37,7 @@
             android:textAllCaps="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.1"
             android:id="@+id/cusTotal"
             style="@style/TableEntry"
             android:background="@drawable/border_entrymiddle"/>
@@ -48,7 +48,7 @@
             android:textAllCaps="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.1"
             android:id="@+id/cusBalance"
             style="@style/TableEntry"
             android:background="@drawable/border_entrymiddle"/>

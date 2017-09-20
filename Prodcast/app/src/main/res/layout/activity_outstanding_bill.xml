@@ -130,7 +130,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/billDate"
-                android:layout_weight="1.1"
+                android:layout_weight="1.4"
                 android:background="@drawable/border_headermiddle"
                 style="@style/TableHeader"
 
@@ -138,7 +138,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"
+                android:layout_weight="1.1"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -165,14 +165,14 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.0"
+                android:layout_weight="1.1"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:background="@drawable/border_headermiddle"
                 >
             <TextView
-                android:text="Balance"
+                android:text="Bal"
                 android:gravity="center"
 
                 android:layout_width="wrap_content"
