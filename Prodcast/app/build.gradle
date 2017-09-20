@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        configRelease {
-            keyAlias 'keyfiles'
-            keyPassword '123456'
-            storeFile file('/Users/nandhini/Documents/key store/keyfile.jks')
-            storePassword '123456'
+        prodcastkey {
+            keyAlias 'keyfile'
+            keyPassword 'fgsadmin123'
+            storeFile file('/Users/samayu/keystore.jks')
+            storePassword 'fgsadmin123'
         }
     }
     compileSdkVersion 25
@@ -15,17 +15,18 @@ android {
         applicationId "com.samayu.prodcastc"
         minSdkVersion 24
         targetSdkVersion 25
-        versionCode 4
+        versionCode 5
         versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.prodcastkey
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "SERVER_URL", '"http://ec2-52-90-58-39.compute-1.amazonaws.com:8080"'
-            debuggable true;
-            signingConfig signingConfigs.configRelease
+            debuggable false;
+
         }
         debug {
             minifyEnabled false
