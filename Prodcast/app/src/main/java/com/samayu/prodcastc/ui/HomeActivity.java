@@ -33,7 +33,7 @@ public class HomeActivity extends ProdcastCBaseActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(HomeActivity.this,OutstandingBillsActivity.class);
+                Intent i = new Intent(HomeActivity.this,ProductListActivity.class);
                 i.putExtra("useCache",false);
                 startActivity(i);
 

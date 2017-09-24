@@ -45,7 +45,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
     String currencySymbol= SessionInfo.getInstance().getEmployee().getDistributor().getCurrencySymbol();
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
 
-    TextView confirmationMesage;
+    TextView unitPriceCurrency;
 
     @Override
     public String getProdcastTitle() {
@@ -64,6 +64,9 @@ public class EntryActivity extends ProdcastCBaseActivity {
         context=this;
         progressDialog=getProgressDialog(this);
 
+        unitPriceCurrency = (TextView) findViewById(R.id.unitPriceCurrency);
+        unitPriceCurrency.setText("("+currencySymbol+")");
+
 
 
          final List<OrderDetails> entries = SessionInfo.getInstance().getEntry();
@@ -77,8 +80,8 @@ public class EntryActivity extends ProdcastCBaseActivity {
             // alertDialog.setTitle("List");
             final SwipeMenuListView swipeMenuListView = (SwipeMenuListView) findViewById(R.id.listofentries);
 
-            TextView txtView=(TextView) findViewById(R.id.subTotal);
-            txtView.setText("Sub Tot"+"("+currencySymbol+")");
+            /*TextView txtView=(TextView) findViewById(R.id.subTotal);
+            txtView.setText("Sub Tot"+"("+currencySymbol+")");*/
 
             final SwipeMenuCreator creator = new SwipeMenuCreator() {
 

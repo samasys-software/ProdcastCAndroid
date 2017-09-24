@@ -39,11 +39,32 @@
                     android:background="@drawable/form_box"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
+            <LinearLayout
+                android:id="@+id/outstandingBill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="3dp"
+                android:paddingEnd="1dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/openOrders"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Click here to view Open Orders"/>
+
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/reportPicker"
+                android:layout_below="@id/outstandingBill"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/form_box">
 
                 <Spinner

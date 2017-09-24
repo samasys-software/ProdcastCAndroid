@@ -11,15 +11,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.samayu.prodcastc.R;
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.dto.OrderEntryDTO;
-import com.samayu.prodcastc.R;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EntriesCustomAdapter extends BaseAdapter {
 
@@ -81,7 +81,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
             holder.tv = (TextView) convertView.findViewById(R.id.productName);
             holder.tv1 = (TextView) convertView.findViewById(R.id.unitPrice);
             holder.qty=(EditText) convertView.findViewById(R.id.orderQuantity);
-            holder.tv2= (TextView) convertView.findViewById(R.id.subTotal);
+            /*holder.tv2= (TextView) convertView.findViewById(R.id.subTotal);*/
 
             convertView.setTag(holder);
             //img.setTag(holder);
@@ -98,7 +98,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
             holder.tv1.setText(numberFormat.format(price));
 
             holder.qty.setText(String.valueOf(orders.getQuantity()));
-            holder.tv2.setText(GlobalUsage.getNumberFormat().format(ProductDetailFragment.calculateTotal(orders.getProduct(),Integer.parseInt(holder.qty.getText().toString()))));
+            /*holder.tv2.setText(GlobalUsage.getNumberFormat().format(ProductDetailFragment.calculateTotal(orders.getProduct(),Integer.parseInt(holder.qty.getText().toString()))));*/
 
 
 
@@ -121,7 +121,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
                     if( newValue.trim().length()==0) newValue="0";
                     int newQuantity = Integer.parseInt(newValue);
                     orders.setQuantity( newQuantity );
-                    holder.tv2.setText(GlobalUsage.getNumberFormat().format(ProductDetailFragment.calculateTotal(orders.getProduct(),newQuantity)));
+                    /*holder.tv2.setText(GlobalUsage.getNumberFormat().format(ProductDetailFragment.calculateTotal(orders.getProduct(),newQuantity)));*/
                     ((EntryActivity)context).getValueForTotal(orderEntries);
 
                 }
