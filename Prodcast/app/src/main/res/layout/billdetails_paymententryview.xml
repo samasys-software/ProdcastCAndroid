@@ -30,7 +30,7 @@
         style="@style/TableEntry"
         android:layout_height="match_parent"
 
-        android:gravity="right"
+        android:gravity="end|center"
 
         android:layout_weight="0.9"/>
 

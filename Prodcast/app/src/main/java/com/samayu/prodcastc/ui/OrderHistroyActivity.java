@@ -56,6 +56,9 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
             orderTotal, orderBalance,startDate,endDate;
     TextView billAmountCurrency, totalPaidCurrency, totalBalanceCurrency,
             orderTotalCurrency,orderBalanceCurrency ;
+
+    TextView openOrders;
+
     RelativeLayout txtView, txtView1;
     LinearLayout selectDates;
 
@@ -108,6 +111,18 @@ public class OrderHistroyActivity extends ProdcastCBaseActivity
 
         orderBalanceCurrency = (TextView) findViewById(R.id.orderBalanceCurrency);
         orderTotalCurrency = (TextView) findViewById(R.id.orderTotalCurrency);
+
+         openOrders = (TextView) findViewById(R.id.openOrders);
+
+
+        openOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(OrderHistroyActivity.this,OutstandingBillsActivity.class);
+                startActivity(i);
+
+            }
+        });
 
         Distributor distributor = SessionInfo.getInstance().getEmployee().getDistributor();
 
