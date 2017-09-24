@@ -186,6 +186,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@+id/relativeLayout2"
@@ -223,5 +224,18 @@
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/reportIssue"
+            android:layout_below="@id/relativeLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#345904"
+            android:text="Report Issue !"/>
+
 
 </RelativeLayout>
