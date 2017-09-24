@@ -13,9 +13,9 @@ android {
     buildToolsVersion '25.0.1'
     defaultConfig {
         applicationId "com.samayu.prodcastc"
-        minSdkVersion 24
+        minSdkVersion 21
         targetSdkVersion 25
-        versionCode 6
+        versionCode 7
         versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.prodcastkey
