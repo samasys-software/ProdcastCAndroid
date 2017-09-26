@@ -5,9 +5,10 @@ package com.samayu.prodcastc.businessObjects.domain;
  */
 
 public class EmployeeDetails {
-    private long employeeId,customerId;
+    private long employeeId,CustomerId;
     private Distributor distributor;
     private String customerType,userRole,customerName,firstName,lastName,mobileNumber;
+    private Customer customer;
 
     public String getCustomerType() {
         return customerType;
@@ -26,11 +27,11 @@ public class EmployeeDetails {
     }
 
     public long getCustomerId() {
-        return customerId;
+        return CustomerId;
     }
 
     public void setCustomerId(long customerId) {
-        this.customerId = customerId;
+        CustomerId = customerId;
     }
 
     public Distributor getDistributor() {
@@ -79,5 +80,13 @@ public class EmployeeDetails {
 
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

@@ -94,7 +94,7 @@ public class OutstandingBillsActivity extends ProdcastCBaseActivity {
         else {
             progressDialog.show();
             EmployeeDetails employeeDetails= SessionInfo.getInstance().getEmployee();
-            long customerId = employeeDetails.getCustomerId();
+            long customerId = employeeDetails.getCustomer().getId();
             long employeeId = employeeDetails.getEmployeeId();
             Call<CustomerDTO> custDTO = new ProdcastServiceManager().getClient().getBills(customerId, employeeId);
             custDTO.enqueue(new Callback<CustomerDTO>() {

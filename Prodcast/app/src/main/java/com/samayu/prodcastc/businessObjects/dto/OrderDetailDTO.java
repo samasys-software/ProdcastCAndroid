@@ -6,7 +6,7 @@ import java.util.List;
  * Created by nandhini on 29/08/17.
  */
 
-public class OrderDetailDTO extends  ProdcastDTO{
+public class OrderDetailDTO extends  ProdcastDTO {
 
     private String customerId;
     private String employeeId;
@@ -17,6 +17,9 @@ public class OrderDetailDTO extends  ProdcastDTO{
     private String refNO;
     private String refDetail;
     private String orderStatus;
+    private String shippingType;
+    private String deliveryAddress;
+
 
     public String getOrderStatus() {
         return orderStatus;
@@ -69,7 +72,6 @@ public class OrderDetailDTO extends  ProdcastDTO{
     }
 
 
-
     public List<OrderEntryDTO> getEntries() {
         return entries;
     }
@@ -77,7 +79,6 @@ public class OrderDetailDTO extends  ProdcastDTO{
     public void setEntries(List<OrderEntryDTO> entries) {
         this.entries = entries;
     }
-
 
 
     public String getEmployeeId() {
@@ -102,5 +103,21 @@ public class OrderDetailDTO extends  ProdcastDTO{
 
     public void setRefDetail(String refDetail) {
         this.refDetail = refDetail;
+    }
+
+    public String getShippingType() {
+        return shippingType;
+    }
+
+    public void setShippingType(String shippingType) {
+        this.shippingType = shippingType;
+    }
+
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
     }
 }
