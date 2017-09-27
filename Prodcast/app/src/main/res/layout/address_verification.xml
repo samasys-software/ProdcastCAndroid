@@ -7,14 +7,17 @@
 
     <Spinner
         android:id="@+id/shippingType"
-        android:layout_width="match_parent"
+        android:layout_width="261dp"
         android:layout_height="wrap_content"
-        android:minHeight="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center"
 
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:textSize="14sp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border_spinner"
+        android:minHeight="25dp"
+        android:textSize="14sp" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,11 +33,11 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="30dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="60dp"
 
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
