@@ -299,7 +299,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                             placeOrder(shippingType,null);
                         }
                         else{
-                            placeOrder(shippingType,address.getText().toString()+" "+city.getText().toString()+" "+state.getText().toString());
+                            placeOrder(shippingType,address.getText().toString()+","+city.getText().toString()+","+state.getText().toString());
                         }
 
                     }
@@ -376,21 +376,23 @@ public class EntryActivity extends ProdcastCBaseActivity {
                         //  System.out.println("success");
                         SessionInfo.getInstance().setEntry(null);
                         Customer customer = dto.getCustomer();
-/*
+
                         SessionInfo.getInstance().setBillsForCustomer(customer);
-                        AlertDialog.Builder alert = new AlertDialog.Builder(context,R.style.AlertTheme);
+
+                        Toast.makeText(context,"Your Order Has Been Placed Successfully",Toast.LENGTH_LONG);
+                        Intent i = new Intent(EntryActivity.this, OutstandingBillsActivity.class);
+                        i.putExtra("useCache", true);
+                        startActivity(i);
+                        /*AlertDialog.Builder alert = new AlertDialog.Builder(context,R.style.AlertTheme);
                         alert.setTitle("Prodcast Notification");
                         LayoutInflater inflater = EntryActivity.this.getLayoutInflater();
                         View layoutView = inflater.inflate(R.layout.alert_dialog, null);
                         alert.setView(layoutView);
                         TextView message = (TextView) layoutView.findViewById(R.id.alertName);*/
-                        Toast.makeText(context,"Your Order Has Been Placed Successfully",Toast.LENGTH_LONG);
                         /*alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(EntryActivity.this, OutstandingBillsActivity.class);
-                                i.putExtra("useCache", true);
-                                startActivity(i);
+
                             }
                         });
                         alert.show();*/
