@@ -21,14 +21,17 @@ import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
 import com.samayu.prodcastc.businessObjects.domain.Country;
 import com.samayu.prodcastc.businessObjects.domain.CustomersLogin;
+import com.samayu.prodcastc.businessObjects.domain.ServiceTicket;
 import com.samayu.prodcastc.businessObjects.dto.AdminDTO;
 import com.samayu.prodcastc.businessObjects.dto.CountryDTO;
 import com.samayu.prodcastc.businessObjects.dto.CustomerLoginDTO;
+import com.samayu.prodcastc.businessObjects.dto.ServiceSupportDTO;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -46,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     Button signInButton, clearButton;
     TextView forgotPin, register, reportIssue;
     Spinner country;
+
     boolean cancel = false;
     View focusView = null;
     Context context;
@@ -157,21 +161,13 @@ public class LoginActivity extends AppCompatActivity {
                 View layoutView = layoutInflater.inflate(R.layout.report_issue_dialogue,null);
                 alert.setView(layoutView);
 
-                EditText customerName = (EditText) layoutView.findViewById(R.id.customerName);
-                EditText customerPhoneNumber = (EditText) layoutView.findViewById(R.id.customerPhoneNumber);
-                EditText customerCountryId = (EditText) layoutView.findViewById(R.id.customerCountryID);
-                EditText issue = (EditText) layoutView.findViewById(R.id.issue);
+                final EditText customerPhoneNumber = (EditText) layoutView.findViewById(R.id.customerPhoneNumber);
+                final EditText customerCountryId = (EditText) layoutView.findViewById(R.id.customerCountryID);
+                final EditText issue = (EditText) layoutView.findViewById(R.id.issue);
 
-                alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
 
-                        //alert.show();
-                    }
-                });
-                alert.show();
 
-                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
@@ -179,6 +175,57 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
 
+
+                alert.setPositiveButton("SUBMIT", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //alert.show();
+
+                        ServiceSupportDTO serviceSupportDTO = new ServiceSupportDTO();
+                        List<ServiceTicket> serviceTickets = new ArrayList<ServiceTicket>();
+                       ServiceTicket serviceTicket = new ServiceTicket();
+                        serviceTicket.setPhoneNumber(customerPhoneNumber.getText().toString());
+                        serviceTicket.setIssue(issue.getText().toString());
+                        serviceTicket.setCountryId(customerCountryId.getText().toString());
+                        serviceTickets.add(serviceTicket);
+
+
+
+                        Call<ServiceSupportDTO> serviceSupportDTOCall = new ProdcastServiceManager().
+                                getClient().raiseRequest(customerPhoneNumber.getText().toString(),
+                                issue.getText().toString(), customerCountryId.getText().toString());
+                        serviceSupportDTOCall.enqueue(new Callback<ServiceSupportDTO>() {
+                            @Override
+                            public void onResponse(Call<ServiceSupportDTO> call, Response<ServiceSupportDTO> response) {
+                                if(response.isSuccessful()){
+                                    ServiceSupportDTO dto = response.body();
+                                    if(!dto.isError()){
+                                        Toast.makeText(context, "Report submitted successfully", Toast.LENGTH_LONG).show();
+                                    }
+
+                                     else
+                                    {
+                                        Toast.makeText(context, "Report not submitted ", Toast.LENGTH_LONG).show();
+                                    }
+
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ServiceSupportDTO> call, Throwable t) {
+                                t.printStackTrace();
+                                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                                alert.setTitle("Oops! Something went Wrong.");
+                                alert.setMessage("Connection Timeout.please try again later");
+
+
+                            }
+                        });
+
+                    }
+                });
+                alert.show();
 
 
             }
@@ -192,6 +239,10 @@ public class LoginActivity extends AppCompatActivity {
         country.setAdapter(aa);
  */
     }
+
+
+
+
 
     private void clear()
     {
