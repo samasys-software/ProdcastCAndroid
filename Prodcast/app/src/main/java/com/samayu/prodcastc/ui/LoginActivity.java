@@ -3,9 +3,9 @@ package com.samayu.prodcastc.ui;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,21 +16,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.samayu.prodcastc.R;
+import com.samayu.prodcastc.businessObjects.SessionInfo;
+import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
+import com.samayu.prodcastc.businessObjects.domain.Country;
+import com.samayu.prodcastc.businessObjects.domain.CustomersLogin;
+import com.samayu.prodcastc.businessObjects.dto.AdminDTO;
+import com.samayu.prodcastc.businessObjects.dto.CountryDTO;
+import com.samayu.prodcastc.businessObjects.dto.CustomerLoginDTO;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
-
-import com.samayu.prodcastc.businessObjects.SessionInfo;
-import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
-import com.samayu.prodcastc.businessObjects.domain.Country;
-import com.samayu.prodcastc.businessObjects.domain.CustomersLogin;
-
-import com.samayu.prodcastc.businessObjects.dto.AdminDTO;
-import com.samayu.prodcastc.businessObjects.dto.CountryDTO;
-import com.samayu.prodcastc.businessObjects.dto.CustomerLoginDTO;
-import com.ventruxinformatics.prodcast.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText mobileNumber, pinNumber;
 
     Button signInButton, clearButton;
-    TextView forgotPin, register;
+    TextView forgotPin, register, reportIssue;
     Spinner country;
     boolean cancel = false;
     View focusView = null;
@@ -65,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         clearButton = (Button) findViewById(R.id.logClear);
         forgotPin = (TextView) findViewById(R.id.forgotPin);
         register = (TextView) findViewById(R.id.register);
+        reportIssue = (TextView) findViewById(R.id.reportIssue);
 
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
         country = (Spinner) findViewById(R.id.country);
@@ -78,13 +78,16 @@ public class LoginActivity extends AppCompatActivity {
                     CountryDTO countryDTO = response.body();
                     List<Country> countryList= countryDTO.getResult();
                     SessionInfo.getInstance().setCountries(countryList);
-                    Country defaultCountry = new Country();
+
+
+                    /*Country defaultCountry = new Country();
                     defaultCountry.setCountryId("");
                     defaultCountry.setCountryName("Select Country");
-                    countryList.add(0, defaultCountry  );
+                    countryList.add(0, defaultCountry  );*/
 
                     ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(LoginActivity.this,R.layout.drop_down_list, countryList);
                     country.setAdapter(adapter);
+                    country.setSelection(1);
                 }
             }
 
@@ -141,6 +144,43 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        reportIssue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(context,R.style.AlertTheme);
+                alert.setTitle("Report an Issue");
+
+                LayoutInflater layoutInflater = LoginActivity.this.getLayoutInflater();
+                View layoutView = layoutInflater.inflate(R.layout.report_issue_dialogue,null);
+                alert.setView(layoutView);
+
+                EditText customerName = (EditText) layoutView.findViewById(R.id.customerName);
+                EditText customerPhoneNumber = (EditText) layoutView.findViewById(R.id.customerPhoneNumber);
+                EditText customerCountryId = (EditText) layoutView.findViewById(R.id.customerCountryID);
+                EditText issue = (EditText) layoutView.findViewById(R.id.issue);
+
+                alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //alert.show();
+                    }
+                });
+                alert.show();
+
+                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+
+
+
             }
         });
 

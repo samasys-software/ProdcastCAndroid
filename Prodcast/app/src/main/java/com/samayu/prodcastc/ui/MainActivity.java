@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 public class MainActivity extends AppCompatActivity {
 

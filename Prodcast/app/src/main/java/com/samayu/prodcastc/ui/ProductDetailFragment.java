@@ -30,7 +30,7 @@ import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.domain.Category;
 import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.domain.Product;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 //import com.ventruxinformatics.prodcast.dummy.DummyContent;
 

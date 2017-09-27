@@ -12,7 +12,7 @@ import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
 import com.samayu.prodcastc.businessObjects.domain.EmployeeDetails;
 import com.samayu.prodcastc.businessObjects.domain.Order;
 import com.samayu.prodcastc.businessObjects.dto.OrderDTO;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 import java.text.NumberFormat;
 import java.util.LinkedList;

@@ -18,10 +18,10 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import java.io.File;
-
+import com.samayu.prodcastc.R;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
-import com.ventruxinformatics.prodcast.R;
+
+import java.io.File;
 
 public abstract class ProdcastCBaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -124,7 +124,7 @@ public abstract class ProdcastCBaseActivity extends AppCompatActivity implements
             intent =new Intent(this, HomeActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_orderEntry) {
-            intent =new Intent(this, OutstandingBillsActivity.class);
+            intent =new Intent(this, ProductListActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_changeStore) {
             intent =new Intent(this, StoreActivity.class);

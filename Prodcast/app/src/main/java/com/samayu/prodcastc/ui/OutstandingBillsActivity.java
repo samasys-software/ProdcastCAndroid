@@ -19,7 +19,7 @@ import com.samayu.prodcastc.businessObjects.domain.Bill;
 import com.samayu.prodcastc.businessObjects.domain.Customer;
 import com.samayu.prodcastc.businessObjects.domain.EmployeeDetails;
 import com.samayu.prodcastc.businessObjects.dto.CustomerDTO;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;

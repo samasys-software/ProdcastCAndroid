@@ -12,7 +12,7 @@ import java.util.List;
 
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.domain.Order;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 public class CustomerReportAdaptor extends BaseAdapter {
 

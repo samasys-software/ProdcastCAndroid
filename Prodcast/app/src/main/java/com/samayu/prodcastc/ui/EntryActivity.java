@@ -31,7 +31,7 @@ import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.dto.CustomerDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDetailDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderEntryDTO;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -51,11 +51,15 @@ public class EntryActivity extends ProdcastCBaseActivity {
     String currencySymbol= SessionInfo.getInstance().getEmployee().getDistributor().getCurrencySymbol();
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
 
+
     TextView message;
     EditText address,city,state;
     Spinner shippingMethod;
     String shippingType;
     RelativeLayout addressLayout;
+
+    TextView unitPriceCurrency;
+
 
     @Override
     public String getProdcastTitle() {
@@ -74,6 +78,9 @@ public class EntryActivity extends ProdcastCBaseActivity {
         context=this;
         progressDialog=getProgressDialog(this);
 
+        unitPriceCurrency = (TextView) findViewById(R.id.unitPriceCurrency);
+        unitPriceCurrency.setText("("+currencySymbol+")");
+
 
 
          final List<OrderDetails> entries = SessionInfo.getInstance().getEntry();
@@ -87,8 +94,13 @@ public class EntryActivity extends ProdcastCBaseActivity {
             // alertDialog.setTitle("List");
             final SwipeMenuListView swipeMenuListView = (SwipeMenuListView) findViewById(R.id.listofentries);
 
+
             TextView txtView = (TextView) findViewById(R.id.subTotal);
             txtView.setText("SubTotal" + "(" + currencySymbol + ")");
+
+            /*TextView txtView=(TextView) findViewById(R.id.subTotal);
+            txtView.setText("Sub Tot"+"("+currencySymbol+")");*/
+
 
             final SwipeMenuCreator creator = new SwipeMenuCreator() {
 

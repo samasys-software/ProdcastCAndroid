@@ -18,7 +18,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         android:orientation="vertical"
         android:layout_gravity="start"
         android:gravity="start"
-        android:layout_weight="1">
+        android:layout_weight="3.1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,16 +32,16 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/colorPrimaryDark"
-            android:padding="3dp"
+            android:padding="2dp"
             android:text="Order No "
              />
             <TextView
                 android:id="@+id/orderNo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.3"
                 android:textColor="@color/colorPrimaryDark"
-                android:padding="3dp"
+                android:padding="2dp"
 
                 />
 
@@ -59,16 +59,16 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/colorPrimaryDark"
-            android:padding="3dp"
-            android:text="BillDate  "/>
+            android:padding="2dp"
+            android:text="Bill Date"/>
 
         <TextView
             android:id="@+id/billDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:textColor="@color/colorPrimaryDark"
-            android:padding="3dp"/>
+            android:padding="2dp"/>
 
             </LinearLayout>
 
@@ -83,7 +83,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/colorPrimaryDark"
-                android:padding="3dp"
+                android:padding="2dp"
                 android:text="Total"
 
                 />
@@ -92,9 +92,9 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:id="@+id/total"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.3"
                 android:textColor="@color/colorPrimaryDark"
-                android:padding="3dp"/>
+                android:padding="2dp"/>
 
         </LinearLayout>
 
@@ -109,8 +109,8 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/colorPrimaryDark"
-            android:padding="3dp"
-            android:text="Balance   "
+            android:padding="2dp"
+            android:text="Balance"
 
             />
 
@@ -118,9 +118,9 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:id="@+id/balance"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.3"
                 android:textColor="@color/colorPrimaryDark"
-                android:padding="3dp"/>
+                android:padding="2dp"/>
 
             </LinearLayout>
 
@@ -135,16 +135,16 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/colorPrimaryDark"
-            android:padding="3dp"
+            android:padding="2dp"
             android:text="Discount  "/>
 
             <TextView
                 android:id="@+id/discount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.3"
                 android:textColor="@color/colorPrimaryDark"
-                android:padding="3dp"/>
+                android:padding="2dp"/>
 
             </LinearLayout>
 
@@ -163,7 +163,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         android:orientation="vertical"
         android:layout_gravity="start"
         android:gravity="start"
-        android:layout_weight="1">
+        android:layout_weight="3">
 
         <TextView
             android:id="@+id/distName"
@@ -172,7 +172,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border_fourside"
             android:gravity="start"
-            android:padding="3dp"
+            android:padding="2dp"
             />
 
         <TextView
@@ -182,7 +182,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:background="@drawable/border_billdetailsend"
             android:textColor="@color/colorPrimaryDark"
             android:gravity="start"
-            android:padding="3dp"
+            android:padding="2dp"
             />
 
         <TextView
@@ -192,7 +192,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:background="@drawable/border_billdetailsend"
             android:textColor="@color/colorPrimaryDark"
             android:gravity="start"
-            android:padding="3dp"
+            android:padding="2dp"
             />
 
         <TextView
@@ -202,7 +202,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:background="@drawable/border_billdetailsend"
             android:textColor="@color/colorPrimaryDark"
             android:gravity="start"
-            android:padding="3dp"
+            android:padding="2dp"
             />
 
         <TextView
@@ -212,7 +212,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:background="@drawable/border_billdetailsend"
             android:textColor="@color/colorPrimaryDark"
             android:gravity="start"
-            android:padding="3dp"
+            android:padding="2dp"
             />
 
 

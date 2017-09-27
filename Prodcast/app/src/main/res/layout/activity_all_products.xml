@@ -26,84 +26,58 @@
             android:layout_toRightOf="@+id/rlimagemain">
 
             <LinearLayout
+                android:id="@+id/head"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/productName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-
+                    android:layout_weight="1"
                     android:layout_alignParentTop="true"
                     android:gravity="start"
+                    android:layout_gravity="end"
                     android:text="SAMASYS PVT LTD"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="23sp" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="end"
-                android:layout_gravity="end">
+                    android:textSize="16sp" />
 
-                <TextView
-                    android:textColor="@color/colorPrimaryDark"
-                    android:id="@+id/productPriceCurrency"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="23sp"
-                    android:text="()"/>
+
 
                 <TextView
                     android:id="@+id/productPrice"
                     android:textColor="@color/colorPrimaryDark"
                     android:text="$3.99"
-                    android:textSize="23sp"
-                    android:layout_width="wrap_content"
+                    android:textSize="16sp"
+                    android:gravity="end"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
 
-            </LinearLayout>
+
             </LinearLayout>
 
-
+        <LinearLayout
+            android:layout_below="@id/head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
 
             <TextView
                 android:id="@+id/productDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:gravity="left"
+                android:gravity="start"
                 android:text="Salt Lake City"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="13sp"
-                android:layout_marginTop="30dp" />
+                android:textSize="12sp"
+                />
 
 
-
-
-            <!--<TextView
-                android:id="@+id/salesTax"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Salt Lake City"
-                android:textColor="#629a1e"
-                android:textSize="18sp"
-                android:layout_below="@+id/id"
-                android:layout_alignStart="@+id/id"
-                android:layout_marginTop="18dp" />
-            <TextView
-                android:id="@+id/otherTax"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Salt Lake City"
-                android:textColor="#629a1e"
-                android:textSize="18sp"
-                android:layout_marginEnd="40dp"
-                android:layout_alignBaseline="@+id/salesTax"
-                android:layout_alignBottom="@+id/salesTax"
-                android:layout_alignEnd="@+id/unitPrice" />-->
-
+        </LinearLayout>
 
         </RelativeLayout>
 

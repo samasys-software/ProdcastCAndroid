@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/green_bg"
-    tools:context="com.ventruxinformatics.prodcast.com.samayu.prodcastc.ui.LoginActivity">
+    tools:context="com.samayu.prodcastc.ui.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/rlimageprodcast"
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/country"
-                android:layout_marginLeft="45dp"
+                android:layout_marginLeft="50dp"
                 android:paddingLeft="10dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
@@ -186,6 +186,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@+id/relativeLayout2"
@@ -203,7 +204,7 @@
 
             android:id="@+id/register"
             android:textColor="#345904"
-            android:textSize="14sp"
+
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -217,11 +218,24 @@
 
             android:id="@+id/forgotPin"
             android:textColor="#345904"
-            android:textSize="14sp"
+
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/reportIssue"
+            android:layout_below="@id/relativeLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#345904"
+            android:text="Report Issue !"/>
+
 
 </RelativeLayout>

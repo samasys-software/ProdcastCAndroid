@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v4.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -18,7 +18,7 @@
                     android:id="@+id/skipRegisteration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+
                     android:gravity="center"
                     android:layout_gravity="end"
                     android:visibility="visible"
@@ -61,7 +61,7 @@
                     android:id="@+id/emailAddress"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="5dp"
+
                     android:hint="Email Address"
                     android:inputType="text|textWebEmailAddress"
                     android:layout_alignParentTop="true"
@@ -114,7 +114,7 @@
 
                 <EditText
                     android:id="@+id/homePhoneNumber"
-                    android:inputType="text"
+                    android:inputType="phone"
                     android:hint="Home PhoneNumber"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
@@ -179,7 +179,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Country"
-                        android:textSize="12sp"
+
                         android:id="@+id/countryTextHint"
                         android:gravity="top"
                         android:textColor="@android:color/darker_gray"
@@ -229,16 +229,16 @@
                         android:layout_gravity="center"
                         android:checked="true"
                         android:hint=""
-                        android:textSize="14sp"
-                        android:gravity="right"/>
+
+                        android:gravity="end"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="Sms Allowed"
-                        android:textSize="14sp"
-                        android:gravity="left"/>
+
+                        android:gravity="start"/>
 
                     <Button
                         android:id="@+id/edit"
@@ -262,4 +262,4 @@
 
             </LinearLayout>
 
-</RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

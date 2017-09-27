@@ -21,7 +21,7 @@ import java.util.List;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.domain.Category;
 import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 /**
  * An activity representing a single Product detail screen. This

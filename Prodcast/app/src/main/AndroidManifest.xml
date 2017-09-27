@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ventruxinformatics.prodcast">
+    package="com.samayu.prodcastc">
 
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name="com.samayu.prodcastc.ui.ProdcastApplication"
@@ -23,8 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        0
-        --
+
         <activity android:name="com.samayu.prodcastc.ui.LoginActivity" />
         <activity android:name="com.samayu.prodcastc.ui.StoreActivity" />
         <activity android:name="com.samayu.prodcastc.ui.OutstandingBillsActivity" />
@@ -60,7 +56,7 @@
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ventruxinformatics.prodcast.com.samayu.prodcastc.ui.ProductListActivity" />
+                android:value="com.samayu.prodcastc.ui.ProductListActivity" />
         </activity>
         <activity
             android:name="com.samayu.prodcastc.ui.EntryActivity"

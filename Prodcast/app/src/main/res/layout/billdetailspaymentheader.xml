@@ -15,7 +15,7 @@
         android:background="@color/headerBackground"
         style="@style/TableHeader"
         android:gravity="center"
-        android:layout_weight="0.9"
+        android:layout_weight="1.2"
         android:text="Date"/>
 
 
@@ -26,14 +26,14 @@
         android:background="@color/headerBackground"
         style="@style/TableHeader"
         android:gravity="center"
-        android:layout_weight="2"
+        android:layout_weight="1.8"
         android:text="Received By"/>
 
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.9"
+        android:layout_weight="0.8"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:gravity="center"
@@ -43,13 +43,13 @@
     <TextView
 
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/paymentAmount"
         android:gravity="center"
         android:background="@color/headerBackground"
         style="@style/TableHeader"
 
-        android:text="Amount"/>
+        android:text="Amt"/>
         <TextView
             android:layout_width="wrap_content"
             android:text="()"

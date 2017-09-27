@@ -12,7 +12,7 @@ import java.util.List;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.domain.Collection;
 import com.samayu.prodcastc.businessObjects.domain.OrderEntry;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
 
 /**
  * Created by fgs on 9/13/2017.

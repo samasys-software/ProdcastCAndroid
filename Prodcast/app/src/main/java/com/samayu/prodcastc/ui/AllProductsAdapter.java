@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
-import java.util.List;
-
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.domain.Product;
-import com.ventruxinformatics.prodcast.R;
+import com.samayu.prodcastc.R;
+
+import java.text.NumberFormat;
+import java.util.List;
 
 public class AllProductsAdapter extends BaseAdapter {
 
@@ -63,7 +63,7 @@ public class AllProductsAdapter extends BaseAdapter {
     public class Holder
     {
         //TextView tv;
-        TextView tv1,tv2,tv3, productPriceCurrency;
+        TextView tv1,tv2,tv3;
 
         int position;
 
@@ -78,7 +78,7 @@ public class AllProductsAdapter extends BaseAdapter {
             //holder.tv = (TextView) convertView.findViewById(R.id.id);
             holder.tv1 = (TextView) convertView.findViewById(R.id.productName);
             holder.tv2 = (TextView) convertView.findViewById(R.id.productPrice);
-            holder.productPriceCurrency = (TextView) convertView.findViewById(R.id.productPriceCurrency);
+
             holder.tv3 = (TextView) convertView.findViewById(R.id.productDescription);
             //holder.tv4 = (TextView) convertView.findViewById(R.id.otherTax);
             convertView.setTag(holder);
@@ -100,8 +100,8 @@ public class AllProductsAdapter extends BaseAdapter {
 
         }
         holder.tv1.setText(productName);
-        holder.productPriceCurrency.setText(currencySymbol);
-        holder.tv2.setText(numberFormat.format(unitPrice));
+
+        holder.tv2.setText(currencySymbol+""+numberFormat.format(unitPrice));
         holder.tv3.setText(String.valueOf(product.getProductDesc()));
        // holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));
 
