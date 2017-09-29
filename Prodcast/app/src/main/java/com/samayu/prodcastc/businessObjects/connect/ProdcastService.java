@@ -15,7 +15,6 @@ import com.samayu.prodcastc.businessObjects.dto.CustomerReportDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDetailDTO;
 import com.samayu.prodcastc.businessObjects.dto.ProdcastDTO;
-import com.samayu.prodcastc.businessObjects.dto.ServiceSupportDTO;
 
 import java.util.List;
 
@@ -76,9 +75,9 @@ public interface ProdcastService {
     @FormUrlEncoded
     Call<AdminDTO> resendConfirmationCode(@Field("accessId") long accessId);
 
-    @POST("prodcast/support/requestraised")
+    @POST("prodcast/support/newIssue")
     @FormUrlEncoded
-    Call<ServiceSupportDTO> raiseRequest(@Field("phoneNumber") String phoneNumber,
+    Call<ProdcastDTO> raiseRequest(@Field("phoneNumber") String phoneNumber,
                                          @Field("issue") String issue,
                                          @Field("countryId") String countryId);
 

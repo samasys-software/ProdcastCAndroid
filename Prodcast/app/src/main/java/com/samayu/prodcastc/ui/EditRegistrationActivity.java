@@ -2,9 +2,12 @@ package com.samayu.prodcastc.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,14 +17,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
+import com.samayu.prodcastc.R;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
 import com.samayu.prodcastc.businessObjects.domain.Country;
 import com.samayu.prodcastc.businessObjects.domain.NewCustomerRegistrationDetails;
 import com.samayu.prodcastc.businessObjects.dto.CustomerListDTO;
-import com.samayu.prodcastc.R;
+import com.samayu.prodcastc.businessObjects.dto.ProdcastDTO;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +33,7 @@ import retrofit2.Response;
 
 public class EditRegistrationActivity extends ProdcastCBaseActivity {
     EditText firstName,lastName,emailAddress,billingAddress1,billingAddress2,billingAddress3,homePhoneNumber,city,state,postalCode;
+    Button reportIssues;
     Spinner country;
     CheckBox smsAllowed;
     Button skip;
@@ -69,6 +74,9 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         smsAllowed=(CheckBox)findViewById(R.id.smsAllowed);
         edit=(Button)findViewById(R.id.edit);
         cancel=(Button)findViewById(R.id.reset);
+
+        reportIssues = (Button) findViewById(R.id.reportIssues);
+
         List<Country> countryList= SessionInfo.getInstance().getCountries();
         final ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(EditRegistrationActivity.this, R.layout.drop_down_list, countryList);
         country.setAdapter(adapter);
@@ -160,6 +168,98 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
         //Setting the ArrayAdapter data on the Spinner
         country.setAdapter(aa);*/
 
+        reportIssues.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(context,R.style.AlertTheme);
+                alert.setTitle("Report an Issue");
+
+                LayoutInflater layoutInflater = EditRegistrationActivity.this.getLayoutInflater();
+                View layoutView = layoutInflater.inflate(R.layout.report_issue_dialogue,null);
+                alert.setView(layoutView);
+
+
+                final EditText issue = (EditText) layoutView.findViewById(R.id.issue);
+
+
+
+                alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+
+
+                alert.setPositiveButton("SUBMIT", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //alert.show();
+
+                        /*ServiceSupportDTO serviceSupportDTO = new ServiceSupportDTO();
+                        List<ServiceTicket> serviceTickets = new ArrayList<ServiceTicket>();
+                       ServiceTicket serviceTicket = new ServiceTicket();
+                        serviceTicket.setPhoneNumber(customerPhoneNumber.getText().toString());
+                        serviceTicket.setIssue(issue.getText().toString());
+                        serviceTicket.setCountryId(customerCountryId.getText().toString());
+                        serviceTickets.add(serviceTicket);*/
+
+
+
+                        int ctry = country.getSelectedItemPosition();
+
+                        Country selectedCountry = (Country) country.getSelectedItem();
+                        String selectedCountryId = selectedCountry.getCountryId();
+
+                        String cellPhone = SessionInfo.getInstance().getCustomerDetails().getUsername();
+
+
+
+
+                        Call<ProdcastDTO> serviceSupportDTOCall = new ProdcastServiceManager().
+                                getClient().raiseRequest(cellPhone,
+                                issue.getText().toString(), selectedCountryId);
+                        serviceSupportDTOCall.enqueue(new Callback<ProdcastDTO>() {
+                            @Override
+                            public void onResponse(Call<ProdcastDTO> call, Response<ProdcastDTO> response) {
+                               /* if(response.isSuccessful()){*/
+                                System.out.println("Service response"+"-"+response.toString());
+                                ProdcastDTO dto = response.body();
+                                System.out.println("service response body"+dto.toString());
+                                if(!dto.isError()){
+                                    Toast.makeText(context, "Report submitted successfully", Toast.LENGTH_LONG).show();
+                                }
+
+                                else
+                                {
+                                    Toast.makeText(context, "Report not submitted ", Toast.LENGTH_LONG).show();
+                                }
+
+                                // }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ProdcastDTO> call, Throwable t) {
+                                t.printStackTrace();
+                                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                                alert.setTitle("Oops! Something went Wrong.");
+                                alert.setMessage("Connection Timeout.please try again later");
+
+
+                            }
+                        });
+
+                    }
+                });
+                alert.show();
+
+
+            }
+        });
+
+
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -182,6 +282,7 @@ public class EditRegistrationActivity extends ProdcastCBaseActivity {
             }
         });
     }
+
 
     public void editRegistration(String customerId){
         //String customerId=null;

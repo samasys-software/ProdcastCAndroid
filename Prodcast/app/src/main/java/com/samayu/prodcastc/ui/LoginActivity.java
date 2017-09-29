@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,17 +22,15 @@ import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
 import com.samayu.prodcastc.businessObjects.domain.Country;
 import com.samayu.prodcastc.businessObjects.domain.CustomersLogin;
-import com.samayu.prodcastc.businessObjects.domain.ServiceTicket;
 import com.samayu.prodcastc.businessObjects.dto.AdminDTO;
 import com.samayu.prodcastc.businessObjects.dto.CountryDTO;
 import com.samayu.prodcastc.businessObjects.dto.CustomerLoginDTO;
-import com.samayu.prodcastc.businessObjects.dto.ServiceSupportDTO;
+import com.samayu.prodcastc.businessObjects.dto.ProdcastDTO;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -161,8 +160,9 @@ public class LoginActivity extends AppCompatActivity {
                 View layoutView = layoutInflater.inflate(R.layout.report_issue_dialogue,null);
                 alert.setView(layoutView);
 
+
                 final EditText customerPhoneNumber = (EditText) layoutView.findViewById(R.id.customerPhoneNumber);
-                final EditText customerCountryId = (EditText) layoutView.findViewById(R.id.customerCountryID);
+                customerPhoneNumber.setVisibility(View.VISIBLE);
                 final EditText issue = (EditText) layoutView.findViewById(R.id.issue);
 
 
@@ -182,24 +182,31 @@ public class LoginActivity extends AppCompatActivity {
 
                         //alert.show();
 
-                        ServiceSupportDTO serviceSupportDTO = new ServiceSupportDTO();
+                        /*ServiceSupportDTO serviceSupportDTO = new ServiceSupportDTO();
                         List<ServiceTicket> serviceTickets = new ArrayList<ServiceTicket>();
                        ServiceTicket serviceTicket = new ServiceTicket();
                         serviceTicket.setPhoneNumber(customerPhoneNumber.getText().toString());
                         serviceTicket.setIssue(issue.getText().toString());
                         serviceTicket.setCountryId(customerCountryId.getText().toString());
-                        serviceTickets.add(serviceTicket);
+                        serviceTickets.add(serviceTicket);*/
 
 
+                        int ctry = country.getSelectedItemPosition();
 
-                        Call<ServiceSupportDTO> serviceSupportDTOCall = new ProdcastServiceManager().
+                        Country selectedCountry = (Country) country.getSelectedItem();
+                        String selectedCountryId = selectedCountry.getCountryId();
+
+
+                        Call<ProdcastDTO> serviceSupportDTOCall = new ProdcastServiceManager().
                                 getClient().raiseRequest(customerPhoneNumber.getText().toString(),
-                                issue.getText().toString(), customerCountryId.getText().toString());
-                        serviceSupportDTOCall.enqueue(new Callback<ServiceSupportDTO>() {
+                                issue.getText().toString(), selectedCountryId);
+                        serviceSupportDTOCall.enqueue(new Callback<ProdcastDTO>() {
                             @Override
-                            public void onResponse(Call<ServiceSupportDTO> call, Response<ServiceSupportDTO> response) {
-                                if(response.isSuccessful()){
-                                    ServiceSupportDTO dto = response.body();
+                            public void onResponse(Call<ProdcastDTO> call, Response<ProdcastDTO> response) {
+                               /* if(response.isSuccessful()){*/
+                               System.out.println("Service response"+"-"+response.toString());
+                                    ProdcastDTO dto = response.body();
+                                System.out.println("service response body"+dto.toString());
                                     if(!dto.isError()){
                                         Toast.makeText(context, "Report submitted successfully", Toast.LENGTH_LONG).show();
                                     }
@@ -209,11 +216,11 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(context, "Report not submitted ", Toast.LENGTH_LONG).show();
                                     }
 
-                                }
+                               // }
                             }
 
                             @Override
-                            public void onFailure(Call<ServiceSupportDTO> call, Throwable t) {
+                            public void onFailure(Call<ProdcastDTO> call, Throwable t) {
                                 t.printStackTrace();
                                 AlertDialog.Builder alert = new AlertDialog.Builder(context);
                                 alert.setTitle("Oops! Something went Wrong.");
@@ -337,6 +344,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<CustomerLoginDTO<CustomersLogin>> call, Response<CustomerLoginDTO<CustomersLogin>> response) {
                     String responseString = null;
+                    Log.d("Response",response.toString());
                     if(response.isSuccessful()) {
                         CustomerLoginDTO<CustomersLogin> dto = response.body();
                         if (dto.isError()) {
