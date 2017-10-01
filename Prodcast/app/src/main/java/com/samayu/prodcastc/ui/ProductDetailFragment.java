@@ -22,15 +22,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.samayu.prodcastc.R;
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.domain.Category;
 import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.domain.Product;
-import com.samayu.prodcastc.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //import com.ventruxinformatics.prodcast.dummy.DummyContent;
 
@@ -278,9 +278,12 @@ public class ProductDetailFragment extends Fragment {
                                                 }
 
                                                 final long animationDuration = 1000;
-                                                ObjectAnimator animX = ObjectAnimator.ofFloat(img, "x", 850);
-                                                ObjectAnimator animY = ObjectAnimator.ofFloat(img, "y", 0);
+                                                ObjectAnimator animX = ObjectAnimator.ofFloat(img, "x", 1000f);
+                                                ObjectAnimator animY = ObjectAnimator.ofFloat(img, "y", 0f);
                                                 AnimatorSet animSetXY = new AnimatorSet();
+                                            /*RotateAnimation rotate = new RotateAnimation(180, 360, Animation.RELATIVE_TO_SELF,
+                                                    0.5f,  Animation.RELATIVE_TO_SELF, 1.0f);
+                                            rotate.setDuration(1500);*/
                                                 animSetXY.playTogether(animX, animY);
                                                 animSetXY.setDuration(animationDuration);
                                                 animSetXY.addListener(new Animator.AnimatorListener() {
@@ -310,6 +313,7 @@ public class ProductDetailFragment extends Fragment {
                                                     }
                                                 });
                                                 animSetXY.start();
+                                            /*img.startAnimation(rotate);*/
 
 
                                             }

@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,6 +21,7 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
+import com.samayu.prodcastc.R;
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
@@ -31,7 +31,6 @@ import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.dto.CustomerDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDetailDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderEntryDTO;
-import com.samayu.prodcastc.R;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -53,7 +52,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
 
     TextView message;
-    EditText address,city,state;
+    EditText address,city,state,zipCode;
     Spinner shippingMethod;
     String shippingType;
     RelativeLayout addressLayout;
@@ -94,13 +93,13 @@ public class EntryActivity extends ProdcastCBaseActivity {
             // alertDialog.setTitle("List");
             final SwipeMenuListView swipeMenuListView = (SwipeMenuListView) findViewById(R.id.listofentries);
 
-
+/*
             TextView txtView = (TextView) findViewById(R.id.subTotal);
-            txtView.setText("SubTotal" + "(" + currencySymbol + ")");
+            txtView.setText("(" + currencySymbol + ")");*/
 
             /*TextView txtView=(TextView) findViewById(R.id.subTotal);
-            txtView.setText("Sub Tot"+"("+currencySymbol+")");*/
-
+            txtView.setText("Sub Tot"+"("+currencySymbol+")");
+*/
 
             final SwipeMenuCreator creator = new SwipeMenuCreator() {
 
@@ -200,8 +199,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
             order.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    order.setVisibility(View.INVISIBLE);
-
+                    /*order.setVisibility(View.INVISIBLE);*/
 
 
                     String distType=SessionInfo.getInstance().getEmployee().getDistributor().getFulfillmentType();
@@ -256,6 +254,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
         address = (EditText) diaView.findViewById(R.id.address);
         city = (EditText) diaView.findViewById(R.id.city);
         state = (EditText) diaView.findViewById(R.id.state);
+        zipCode = (EditText) diaView.findViewById(R.id.zipCode);
         List<String> categories = new ArrayList<String>();
         categories.add("Delivery");
         categories.add("Pickup");
@@ -269,8 +268,10 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
         Customer customer=SessionInfo.getInstance().getEmployee().getCustomer();
         address.setText(customer.getBillingAddress1()+" "+customer.getBillingAddress2()+" "+customer.getBillingAddress3());
-        city.setText(customer.getCity()+" "+customer.getPostalCode());
+        city.setText(customer.getCity());
+
         state.setText(customer.getState());
+        zipCode.setText(customer.getPostalCode());
 
         if(showDialog){
             checkVisiblity();
