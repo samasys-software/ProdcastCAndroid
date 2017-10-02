@@ -36,6 +36,7 @@ public class Distributor {
     private String timezone;
 
     private boolean openToPublic;
+    private float minimumDeliveryAmount;
 
     public String getFulfillmentType() {
         return fulfillmentType;
@@ -242,9 +243,18 @@ public class Distributor {
         this.openToPublic = openToPublic;
     }
 
+    public float getMinimumDeliveryAmount() {
+        return minimumDeliveryAmount;
+    }
+
+    public void setMinimumDeliveryAmount(float minimumDeliveryAmount) {
+        this.minimumDeliveryAmount = minimumDeliveryAmount;
+    }
+
     private String gender;
     private boolean manufacturer;
     private boolean active;
+
 
 
 }
