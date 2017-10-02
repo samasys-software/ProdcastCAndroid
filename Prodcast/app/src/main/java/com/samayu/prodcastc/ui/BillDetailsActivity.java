@@ -140,19 +140,20 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         balance.setText(currencySymbol+""+numberFormat.format(order.getOutstandingBalance()));
         discount.setText(String.valueOf(order.getDiscount()));
 
-        String distType=SessionInfo.getInstance().getEmployee().getDistributor().getFulfillmentType();
-            if(distType.equals(0))
-            type.setText(null);
-            else if(distType.equals(1)) {
-                deliveryType.setVisibility(View.VISIBLE);
-                type.setVisibility(View.VISIBLE);
-                type.setText("Delivery");
-            }
-                else if(distType.equals(2)){
-                type.setVisibility(View.VISIBLE);
-                deliveryType.setVisibility(View.VISIBLE);
-                type.setText("Pick Up");
-            }
+        String distType = order.getFulfillmentType();
+        
+        if(distType.equals("1")){
+            deliveryType.setVisibility(View.VISIBLE);
+            type.setVisibility(View.VISIBLE);
+            type.setText("Delivery");
+
+        }
+        else if (distType.equals("2")){
+            deliveryType.setVisibility(View.VISIBLE);
+            type.setVisibility(View.VISIBLE);
+            type.setText("Pick Up");
+        }
+
 
 
 
