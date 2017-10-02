@@ -1,7 +1,5 @@
 package com.samayu.prodcastc.businessObjects;
 
-import java.util.List;
-
 import com.samayu.prodcastc.businessObjects.domain.Category;
 import com.samayu.prodcastc.businessObjects.domain.Country;
 import com.samayu.prodcastc.businessObjects.domain.Customer;
@@ -11,6 +9,9 @@ import com.samayu.prodcastc.businessObjects.domain.Distributor;
 import com.samayu.prodcastc.businessObjects.domain.EmployeeDetails;
 import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.domain.Product;
+import com.samayu.prodcastc.businessObjects.domain.ServiceTicket;
+
+import java.util.List;
 
 /**
  * Created by God on 4/22/2017.
@@ -27,6 +28,16 @@ public class SessionInfo {
     private  List<OrderDetails> entry;
     private Customer billsForCustomer;
     private List<Country> countries;
+
+    private List<ServiceTicket> serviceSupport;
+
+    public List<ServiceTicket> getServiceSupport() {
+        return serviceSupport;
+    }
+
+    public void setServiceSupport(List<ServiceTicket> serviceSupport) {
+        this.serviceSupport = serviceSupport;
+    }
 
 
     private static SessionInfo ourInstance = new SessionInfo();

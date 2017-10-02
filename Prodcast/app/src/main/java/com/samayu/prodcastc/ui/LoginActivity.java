@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -24,6 +25,7 @@ import com.samayu.prodcastc.businessObjects.domain.CustomersLogin;
 import com.samayu.prodcastc.businessObjects.dto.AdminDTO;
 import com.samayu.prodcastc.businessObjects.dto.CountryDTO;
 import com.samayu.prodcastc.businessObjects.dto.CustomerLoginDTO;
+import com.samayu.prodcastc.businessObjects.dto.ProdcastDTO;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -46,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     Button signInButton, clearButton;
     TextView forgotPin, register, reportIssue;
     Spinner country;
+
     boolean cancel = false;
     View focusView = null;
     Context context;
@@ -157,21 +160,14 @@ public class LoginActivity extends AppCompatActivity {
                 View layoutView = layoutInflater.inflate(R.layout.report_issue_dialogue,null);
                 alert.setView(layoutView);
 
-                EditText customerName = (EditText) layoutView.findViewById(R.id.customerName);
-                EditText customerPhoneNumber = (EditText) layoutView.findViewById(R.id.customerPhoneNumber);
-                EditText customerCountryId = (EditText) layoutView.findViewById(R.id.customerCountryID);
-                EditText issue = (EditText) layoutView.findViewById(R.id.issue);
 
-                alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                final EditText customerPhoneNumber = (EditText) layoutView.findViewById(R.id.customerPhoneNumber);
+                customerPhoneNumber.setVisibility(View.VISIBLE);
+                final EditText issue = (EditText) layoutView.findViewById(R.id.issue);
 
-                        //alert.show();
-                    }
-                });
-                alert.show();
 
-                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
@@ -179,6 +175,64 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
 
+
+                alert.setPositiveButton("SUBMIT", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //alert.show();
+
+                        /*ServiceSupportDTO serviceSupportDTO = new ServiceSupportDTO();
+                        List<ServiceTicket> serviceTickets = new ArrayList<ServiceTicket>();
+                       ServiceTicket serviceTicket = new ServiceTicket();
+                        serviceTicket.setPhoneNumber(customerPhoneNumber.getText().toString());
+                        serviceTicket.setIssue(issue.getText().toString());
+                        serviceTicket.setCountryId(customerCountryId.getText().toString());
+                        serviceTickets.add(serviceTicket);*/
+
+
+                        int ctry = country.getSelectedItemPosition();
+
+                        Country selectedCountry = (Country) country.getSelectedItem();
+                        String selectedCountryId = selectedCountry.getCountryId();
+
+
+                        Call<ProdcastDTO> serviceSupportDTOCall = new ProdcastServiceManager().
+                                getClient().raiseRequest(customerPhoneNumber.getText().toString(),
+                                issue.getText().toString(), selectedCountryId);
+                        serviceSupportDTOCall.enqueue(new Callback<ProdcastDTO>() {
+                            @Override
+                            public void onResponse(Call<ProdcastDTO> call, Response<ProdcastDTO> response) {
+                               /* if(response.isSuccessful()){*/
+                               System.out.println("Service response"+"-"+response.toString());
+                                    ProdcastDTO dto = response.body();
+                                System.out.println("service response body"+dto.toString());
+                                    if(!dto.isError()){
+                                        Toast.makeText(context, "Report submitted successfully", Toast.LENGTH_LONG).show();
+                                    }
+
+                                     else
+                                    {
+                                        Toast.makeText(context, "Report not submitted ", Toast.LENGTH_LONG).show();
+                                    }
+
+                               // }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ProdcastDTO> call, Throwable t) {
+                                t.printStackTrace();
+                                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                                alert.setTitle("Oops! Something went Wrong.");
+                                alert.setMessage("Connection Timeout.please try again later");
+
+
+                            }
+                        });
+
+                    }
+                });
+                alert.show();
 
 
             }
@@ -192,6 +246,10 @@ public class LoginActivity extends AppCompatActivity {
         country.setAdapter(aa);
  */
     }
+
+
+
+
 
     private void clear()
     {
@@ -286,6 +344,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<CustomerLoginDTO<CustomersLogin>> call, Response<CustomerLoginDTO<CustomersLogin>> response) {
                     String responseString = null;
+                    Log.d("Response",response.toString());
                     if(response.isSuccessful()) {
                         CustomerLoginDTO<CustomersLogin> dto = response.body();
                         if (dto.isError()) {
