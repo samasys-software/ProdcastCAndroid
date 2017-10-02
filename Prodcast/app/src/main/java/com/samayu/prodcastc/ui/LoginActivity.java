@@ -83,14 +83,14 @@ public class LoginActivity extends AppCompatActivity {
                     SessionInfo.getInstance().setCountries(countryList);
 
 
-                    /*Country defaultCountry = new Country();
+                    Country defaultCountry = new Country();
                     defaultCountry.setCountryId("");
                     defaultCountry.setCountryName("Select Country");
-                    countryList.add(0, defaultCountry  );*/
+                    countryList.add(0, defaultCountry  );
 
                     ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(LoginActivity.this,R.layout.drop_down_list, countryList);
                     country.setAdapter(adapter);
-                    country.setSelection(1);
+                    country.setSelection(2);
                 }
             }
 
