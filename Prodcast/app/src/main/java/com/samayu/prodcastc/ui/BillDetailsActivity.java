@@ -141,7 +141,7 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         discount.setText(String.valueOf(order.getDiscount()));
 
         String distType = order.getFulfillmentType();
-        
+
         if(distType.equals("1")){
             deliveryType.setVisibility(View.VISIBLE);
             type.setVisibility(View.VISIBLE);

@@ -1,5 +1,6 @@
 package com.samayu.prodcastc.ui;
 
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -48,8 +49,10 @@ public class EntryActivity extends ProdcastCBaseActivity {
     ProgressDialog progressDialog;
     Context context;
     String currencySymbol= SessionInfo.getInstance().getEmployee().getDistributor().getCurrencySymbol();
+
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
 
+    double total_value=0.0;
 
     TextView message;
     EditText address,city,state,zipCode;
@@ -225,7 +228,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
         final TextView total=(TextView) findViewById(R.id.total);
         final TextView subTotal=(TextView) findViewById(R.id.totalSubTotal);
         final TextView tax=(TextView) findViewById(R.id.totalTax);
-        double total_value=0.0;
+
         float sub_total=0;
         float total_tax=0;
         for(OrderDetails entry:entries)
@@ -242,7 +245,8 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
     public void showDialogBox(boolean showDialog){
 
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(EntryActivity.this, R.style.AlertTheme);
+
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(EntryActivity.this, R.style.AlertTheme);
         alertDialog.setTitle("Shipping Details");
         alertDialog.setCancelable(true);
         LayoutInflater inflater = EntryActivity.this.getLayoutInflater();
@@ -291,21 +295,88 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
                     }
                 });
+       /* alertDialog.setPositiveButton("Order", null);
+        final AlertDialog theDialog = alertDialog.show();
+        final TextView confirmationMessage = (TextView)  theDialog.findViewById(R.id.confirmationMessage);
+
+        theDialog.getButton(
+                DialogInterface.BUTTON_POSITIVE)
+                .setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                float minimumDeliveryAmount = SessionInfo.getInstance().getEmployee().getDistributor().getMinimumDeliveryAmount();
+                                if(shippingType =="2"){
+                                    placeOrder(shippingType,null);
+                                }
+
+                                else if(total_value < minimumDeliveryAmount){
+                                    confirmationMessage.setText( "Sorry . Minimum Order for delivery should be grater than minimum delivey");
+                                    confirmationMessage.setVisibility(View.VISIBLE);
+                                }
+                                else{
+                                    placeOrder(shippingType,address.getText().toString()+","+city.getText().toString()+","+state.getText().toString());
+                                    Toast.makeText(context,"Your order for has been placed successfully.",Toast.LENGTH_LONG).show();
+                                }
+
+                            }
+                        }
+                );
+*/
+
+        /*alertDialog.setPositiveButton("Order", null);
+
+        final AlertDialog dialog =alertDialog.show();
+        final TextView confirmationMessage = (TextView)  dialog.findViewById(R.id.confirmationMessage);
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button button =(Button)v;
+                button.setEnabled(false);
+                float minimumDeliveryAmount = SessionInfo.getInstance().getEmployee().getDistributor().getMinimumDeliveryAmount();
+                if(shippingType =="2"){
+                    button.setEnabled(true);
+                    placeOrder(shippingType,null);
+                }
+
+                else if(total_value < minimumDeliveryAmount){
+                    confirmationMessage.setText("enter correct value");
+                    confirmationMessage.setVisibility(View.VISIBLE);
+                   *//* String msg ="Sorry . Minimum Order for delivery should be grater than "+minimumDeliveryAmount+currencySymbol;
+                    Toast.makeText(context,msg,Toast.LENGTH_LONG).show();*//*
+
+                }
+                else {
+                    button.setEnabled(true);
+                    placeOrder(shippingType,address.getText().toString()+","+city.getText().toString()+","+state.getText().toString());
+                    Toast.makeText(context,"Your order for has been placed successfully.",Toast.LENGTH_LONG).show();
+                }
+                dialog.dismiss();
+            }
+        });*/
         alertDialog.setPositiveButton("Order",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to execute after dialog
                         dialog.cancel();
-                        if(shippingType=="2"){
+                        float minimumDeliveryAmount = SessionInfo.getInstance().getEmployee().getDistributor().getMinimumDeliveryAmount();
+                        if(shippingType =="2"){
                             placeOrder(shippingType,null);
                         }
-                        else{
+
+                        else if(total_value < minimumDeliveryAmount){
+
+                            String msg ="Sorry . Minimum Order for delivery should be grater than "+minimumDeliveryAmount+currencySymbol;
+                            Toast.makeText(context,msg,Toast.LENGTH_LONG).show();
+
+                           }
+                        else {
                             placeOrder(shippingType,address.getText().toString()+","+city.getText().toString()+","+state.getText().toString());
+                            Toast.makeText(context,"Your order for has been placed successfully.",Toast.LENGTH_LONG).show();
                         }
 
                     }
                 });
-
         shippingMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
@@ -423,6 +494,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
         String type=shippingMethod.getSelectedItem().toString();
         if(type.equalsIgnoreCase("Delivery")){
             shippingType="1";
+
             shippingMethod.setVisibility(View.VISIBLE);
             addressLayout.setVisibility(View.VISIBLE);
 
