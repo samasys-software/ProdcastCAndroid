@@ -332,7 +332,6 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to execute after dialog
-                        ((AlertDialog)dialog).getButton(which).setVisibility(View.INVISIBLE);
 
                      if(shippingType =="2"){
                             placeOrder(shippingType,null);
@@ -343,8 +342,12 @@ public class EntryActivity extends ProdcastCBaseActivity {
                         else if(total_value < minimumDeliveryAmount){
                          showDialogBox(true);
 
+
+                         //((AlertDialog)dialog).getButton(DialogInterface.BUTTON_POSITIVE).setVisibility(View.INVISIBLE);
+
                          confirmationMessage.setVisibility(View.VISIBLE);
-                         confirmationMessage.setText("Sorry . Minimum Order for delivery should be grater than "+minimumDeliveryAmount+currencySymbol);
+
+                         confirmationMessage.setText("Sorry . Minimum Order for delivery should be grater than "+currencySymbol+numberFormat.format(minimumDeliveryAmount));
 
 
                             /*String msg ="Sorry . Minimum Order for delivery should be grater than "+minimumDeliveryAmount+currencySymbol;
@@ -354,15 +357,31 @@ public class EntryActivity extends ProdcastCBaseActivity {
                         else {
                             placeOrder(shippingType,address.getText().toString()+","+city.getText().toString()+","+state.getText().toString());
                             Toast.makeText(context,"Your order for has been placed successfully.",Toast.LENGTH_LONG).show();
+                         dialog.cancel();
 
-                           dialog.cancel();
                         }
 
 
                     }
                 });
+                /*final AlertDialog dialog = alertDialog.create();
+                dialog.show();
 
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Boolean wantToCloseDialog = false;
+                //Do stuff, possibly set wantToCloseDialog to true then...
+                if(total_value<minimumDeliveryAmount
+                        )
+                    dialog.show();
+                //else dialog stays open. Make sure you have an obvious way to close the dialog especially if you set cancellable to false.
+            }
+        });
 
+*/
 
         shippingMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {

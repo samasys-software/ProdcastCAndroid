@@ -278,7 +278,7 @@ public class ProductDetailFragment extends Fragment {
                                                 }
 
                                                 final long animationDuration = 1000;
-                                                ObjectAnimator animX = ObjectAnimator.ofFloat(img, "x", 1000f);
+                                                ObjectAnimator animX = ObjectAnimator.ofFloat(img, "x", 800f);
                                                 ObjectAnimator animY = ObjectAnimator.ofFloat(img, "y", 0f);
                                                 AnimatorSet animSetXY = new AnimatorSet();
                                             /*RotateAnimation rotate = new RotateAnimation(180, 360, Animation.RELATIVE_TO_SELF,
