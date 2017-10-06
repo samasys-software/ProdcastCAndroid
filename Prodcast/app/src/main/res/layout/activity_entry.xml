@@ -12,7 +12,7 @@
     <Button
         android:id="@+id/order"
         style="@style/submitButton"
-        android:text="Submit Order"
+        android:text="Checkout Order"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
         android:layout_gravity="center"

@@ -215,7 +215,7 @@ public class ProductDetailFragment extends Fragment {
                                 }
                             });
 
-                    alertDialog.setPositiveButton("ADD TO ORDER", null);
+                    alertDialog.setPositiveButton("ADD TO CART", null);
                     TextView textView = new TextView(getActivity());
                     textView.setText("Please Enter Quantity");
                     textView.setTextColor(getResources().getColor(R.color.colorInversePrimary));
