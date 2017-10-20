@@ -1,6 +1,7 @@
 package com.samayu.prodcastc.businessObjects.domain;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -21,6 +22,9 @@ public class Order {
     private long salesRepId;
     private long customerId;
     private Distributor distributor;
+    private String orderStatus;
+    private String fulfillmentType;
+    private String DeliveryAddress;
 
     public Employee getEmployee() {
         return employee;
@@ -235,6 +239,14 @@ public class Order {
         this.customerId = customerId;
     }
 
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     public float getTotalAmount() {
         return totalAmount;
     }
@@ -243,11 +255,27 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
-    public String getCreateTime() {
-        return createTime;
+    public String getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public String getFulfillmentType() {
+        return fulfillmentType;
+    }
+
+    public void setFulfillmentType(String fulfillmentType) {
+        this.fulfillmentType = fulfillmentType;
+    }
+
+    public String getDeliveryAddress() {
+        return DeliveryAddress;
+    }
+
+    public void setDeliveryAddress(String deliveryAddress) {
+        DeliveryAddress = deliveryAddress;
     }
 }

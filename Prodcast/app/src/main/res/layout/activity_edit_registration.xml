@@ -14,16 +14,34 @@
                 android:layout_marginRight="5dp"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/skipRegisteration"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp">
+                    <Button
+                        android:id="@+id/reportIssues"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_gravity="start"
+                        android:text="Report Issue"
+                        style="@style/submitButton"/>
 
+
+
+                <Button
+                    android:id="@+id/skipRegisteration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:layout_gravity="end"
                     android:visibility="visible"
                     android:textColor="@color/colorInversePrimary"
                     android:text="Skip" style="@style/submitButton"/>
+                </LinearLayout>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_height="wrap_content"

@@ -3,16 +3,17 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import com.samayu.prodcastc.R;
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
 import com.samayu.prodcastc.businessObjects.domain.EmployeeDetails;
 import com.samayu.prodcastc.businessObjects.domain.Order;
 import com.samayu.prodcastc.businessObjects.dto.OrderDTO;
-import com.samayu.prodcastc.R;
 
 import java.text.NumberFormat;
 import java.util.LinkedList;
@@ -122,6 +123,11 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         TextView total = (TextView) findViewById(R.id.total);
         TextView balance = (TextView) findViewById(R.id.balance);
         TextView discount = (TextView) findViewById(R.id.discount);
+
+
+        TextView deliveryType = (TextView) findViewById(R.id.deliveryType);
+        TextView type = (TextView) findViewById(R.id.type);
+
         distName.setText(order.getDistributorName());
         distAddress1.setText(order.getDistributor().getAddress1() + " " + order.getDistributor().getAddress2() + " " + order.getDistributor().getAddress3());
         distAddress3.setText(order.getDistributor().getState() + " " + order.getDistributor().getPostalCode());
@@ -133,6 +139,23 @@ public class BillDetailsActivity extends ProdcastCBaseActivity {
         total.setText(currencySymbol+""+numberFormat.format(order.getTotalAmount()));
         balance.setText(currencySymbol+""+numberFormat.format(order.getOutstandingBalance()));
         discount.setText(String.valueOf(order.getDiscount()));
+
+        String distType = order.getFulfillmentType();
+
+        if(distType.equals("1")){
+            deliveryType.setVisibility(View.VISIBLE);
+            type.setVisibility(View.VISIBLE);
+            type.setText("Delivery");
+
+        }
+        else if (distType.equals("2")){
+            deliveryType.setVisibility(View.VISIBLE);
+            type.setVisibility(View.VISIBLE);
+            type.setText("Pick Up");
+        }
+
+
+
 
     }
    

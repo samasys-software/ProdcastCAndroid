@@ -1,24 +1,23 @@
 package com.samayu.prodcastc.businessObjects.connect;
 
 import com.samayu.prodcastc.businessObjects.domain.Category;
-import com.samayu.prodcastc.businessObjects.domain.NewCustomerRegistrationDetails;
-import com.samayu.prodcastc.businessObjects.domain.Product;
-import com.samayu.prodcastc.businessObjects.dto.CountryDTO;
-import com.samayu.prodcastc.businessObjects.dto.CustomerDTO;
-
-import java.util.List;
-
 import com.samayu.prodcastc.businessObjects.domain.CustomerRegistration;
 import com.samayu.prodcastc.businessObjects.domain.CustomersLogin;
 import com.samayu.prodcastc.businessObjects.domain.EmployeeDetails;
-
+import com.samayu.prodcastc.businessObjects.domain.NewCustomerRegistrationDetails;
+import com.samayu.prodcastc.businessObjects.domain.Product;
 import com.samayu.prodcastc.businessObjects.dto.AdminDTO;
+import com.samayu.prodcastc.businessObjects.dto.CountryDTO;
+import com.samayu.prodcastc.businessObjects.dto.CustomerDTO;
 import com.samayu.prodcastc.businessObjects.dto.CustomerListDTO;
 import com.samayu.prodcastc.businessObjects.dto.CustomerLoginDTO;
 import com.samayu.prodcastc.businessObjects.dto.CustomerReportDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDetailDTO;
 import com.samayu.prodcastc.businessObjects.dto.ProdcastDTO;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -76,6 +75,11 @@ public interface ProdcastService {
     @FormUrlEncoded
     Call<AdminDTO> resendConfirmationCode(@Field("accessId") long accessId);
 
+    @POST("prodcast/support/newIssue")
+    @FormUrlEncoded
+    Call<ProdcastDTO> raiseRequest(@Field("phoneNumber") String phoneNumber,
+                                         @Field("issue") String issue,
+                                         @Field("countryId") String countryId);
 
     @POST("prodcast/customer/saveNewCustomer")
     @FormUrlEncoded
