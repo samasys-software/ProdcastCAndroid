@@ -27,6 +27,7 @@ import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.domain.Product;
 import com.samayu.prodcastc.businessObjects.dto.AdminDTO;
 import com.samayu.prodcastc.R;
+import com.samayu.prodcastc.businessObjects.dto.ProductListDTO;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -119,15 +120,15 @@ public class ProductListActivity extends ProdcastCBaseActivity {
 
         progressDialog.show();
 
-        Call<AdminDTO<List<Product>>> productDTO = new ProdcastServiceManager().getClient().getProducts( employeeId );
+        Call<ProductListDTO> productDTO = new ProdcastServiceManager().getClient().getProducts( employeeId );
 
-        productDTO.enqueue(new Callback<AdminDTO<List<Product>>>() {
+        productDTO.enqueue(new Callback<ProductListDTO>() {
             @Override
-            public void onResponse(Call<AdminDTO<List<Product>>> call, Response<AdminDTO<List<Product>>> response) {
+            public void onResponse(Call<ProductListDTO> call, Response<ProductListDTO> response) {
                 if(response.isSuccessful()) {
 
 
-                    AdminDTO<List<Product>> dto = response.body();
+                    ProductListDTO dto = response.body();
                     if (dto.isError()) {
 
                         progressDialog.dismiss();
@@ -135,7 +136,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
                     } else {
 
                         //List<Product> products = dto.getResult();
-                        SessionInfo.getInstance().setProductDetails(dto.getResult());
+                        SessionInfo.getInstance().setProductDetails(dto.getProductList());
                         progressDialog.dismiss();
 
 
@@ -145,7 +146,7 @@ public class ProductListActivity extends ProdcastCBaseActivity {
             }
 
             @Override
-            public void onFailure(Call<AdminDTO<List<Product>>> call, Throwable t) {
+            public void onFailure(Call<ProductListDTO> call, Throwable t) {
                 t.printStackTrace();
                 progressDialog.dismiss();
                 getAlertBox(context).show();
