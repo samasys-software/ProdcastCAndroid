@@ -11,5 +11,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.ventruxinformatics.prodcast.ProductListActivity"
+    tools:context="com.ventruxinformatics.prodcast.com.samayu.prodcastc.ui.ProductListActivity"
     tools:listitem="@layout/product_list_content" />

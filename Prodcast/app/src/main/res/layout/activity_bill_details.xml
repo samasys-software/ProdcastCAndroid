@@ -5,191 +5,273 @@ android:layout_width="match_parent"
 xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <LinearLayout
+    android:id="@+id/billPage"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dip" >
+    android:orientation="horizontal"
+     >
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_gravity="start"
+        android:gravity="start"
+        android:layout_weight="3.1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
 
         <TextView
-            android:id="@+id/orderNo"
+            android:id="@+id/orderNoText"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimaryDark"
-            android:gravity="left"
-            android:padding="3dp"
-            android:text="Order No: "
-            android:layout_weight="1" />
-
-
-        <TextView
-            android:id="@+id/distName"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/border_fourside"
-            android:gravity="left"
-            android:padding="3dp"
-
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="2dp"
+            android:text="Order No "
+             />
+            <TextView
+                android:id="@+id/orderNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="2dp"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/billDateText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="2dp"
+            android:text="Bill Date"/>
+
+        <TextView
+            android:id="@+id/billDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="2dp"/>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/totalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="2dp"
+                android:text="Total"
+
+                />
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="2dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/balanceText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="2dp"
+            android:text="Balance"
 
             />
+
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="2dp"/>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/discountText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="2dp"
+            android:text="Discount  "/>
+
+            <TextView
+                android:id="@+id/discount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="2dp"/>
+
+            </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/delivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/deliveryType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="2dp"
+                android:text="Type "/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="2dp"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_gravity="start"
+        android:gravity="start"
+        android:layout_weight="3">
+
         <TextView
-            android:id="@+id/billDate"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:id="@+id/distName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryDark"
-            android:gravity="left"
-            android:padding="3dp"
-            android:text="billDate:"
-            android:layout_weight="1"
+            android:background="@drawable/border_fourside"
+            android:gravity="start"
+            android:padding="2dp"
             />
 
         <TextView
             android:id="@+id/distAddress1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/border_billdetailsend"
             android:textColor="@color/colorPrimaryDark"
-            android:gravity="left"
-            android:padding="3dp"
-
-            android:layout_weight="1"
-
-            />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/total"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimaryDark"
-            android:gravity="left"
-            android:padding="3dp"
-            android:text="Total:"
-            android:layout_weight="1"
+            android:gravity="start"
+            android:padding="2dp"
             />
 
         <TextView
             android:id="@+id/distAddress2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/border_billdetailsend"
             android:textColor="@color/colorPrimaryDark"
-            android:gravity="left"
-            android:padding="3dp"
-
-            android:layout_weight="1"/>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/balance"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimaryDark"
-            android:gravity="left"
-            android:padding="3dp"
-            android:text="Balance:"
-            android:layout_weight="1"
+            android:gravity="start"
+            android:padding="2dp"
             />
+
         <TextView
             android:id="@+id/distAddress3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/border_billdetailsend"
             android:textColor="@color/colorPrimaryDark"
-            android:gravity="left"
-            android:padding="3dp"
-
-            android:layout_weight="1"/>
-
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/discount"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimaryDark"
-            android:gravity="left"
-            android:padding="3dp"
-            android:text="Discount:"
-            android:layout_weight="1"
+            android:gravity="start"
+            android:padding="2dp"
             />
-
-
 
         <TextView
             android:id="@+id/distPhonenumber"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/border_billdetailsend"
             android:textColor="@color/colorPrimaryDark"
-            android:gravity="left"
-            android:padding="3dp"
-
-            android:layout_weight="1"
-
+            android:gravity="start"
+            android:padding="2dp"
             />
-
 
 
     </LinearLayout>
 
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/billPage">
 
     <ExpandableListView
+
         android:id="@+id/expandableBillDetailsEntryList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft">
+        android:groupIndicator="@null"
+        >
 
     </ExpandableListView>
-</LinearLayout>
+    </LinearLayout>
 
-<android.support.design.widget.FloatingActionButton
+<!--<android.support.design.widget.FloatingActionButton
     android:id="@+id/newOrderPin"
     app:srcCompat="@drawable/ic_prodcast_print"
     android:layout_alignParentEnd="true"
     android:layout_alignParentBottom="true"
     android:text="+"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
+    android:layout_height="wrap_content"/>-->
 
 
 </RelativeLayout>

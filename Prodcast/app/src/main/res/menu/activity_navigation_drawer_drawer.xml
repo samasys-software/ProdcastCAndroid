@@ -8,6 +8,7 @@
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Home" />
     </group>
+
     <group android:checkableBehavior="single"
         android:id="@+id/group2">
         <item
@@ -15,20 +16,7 @@
             android:icon="@drawable/ic_shopping_cart_black_24dp"
             android:title="Order Entry" />
     </group>
-    <group android:checkableBehavior="single"
-        android:id="@+id/group3">
-        <item
-            android:id="@+id/nav_changeStore"
-            android:icon="@drawable/truck_delivery"
-            android:title="Change Store" />
-    </group>
-    <group android:checkableBehavior="single"
-        android:id="@+id/group4">
-        <item
-            android:id="@+id/nav_register"
-            android:icon="@drawable/ic_edit_reg_small"
-            android:title="Register" />
-    </group>
+
     <group android:checkableBehavior="single"
         android:id="@+id/group5">
         <item
@@ -36,12 +24,28 @@
             android:icon="@drawable/ic_insert_chart_black_24dp"
             android:title="Order Histroy" />
     </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/group3">
+        <item
+            android:id="@+id/nav_changeStore"
+            android:icon="@drawable/truck_delivery"
+            android:title="Change Store" />
+    </group>
+    <!--group android:checkableBehavior="single"
+        android:id="@+id/group4">
+        <item
+            android:id="@+id/nav_register"
+            android:icon="@drawable/ic_edit_reg_small"
+            android:title="Register" />
+    </group-->
+
     <group android:checkableBehavior="single"
         android:id="@+id/group6">
         <item
             android:id="@+id/nav_editRegistration"
             android:icon="@drawable/ic_edit_reg_small"
-            android:title="Edit Registration" />
+            android:title="Account Settings" />
     </group>
 
     <group android:checkableBehavior="single"

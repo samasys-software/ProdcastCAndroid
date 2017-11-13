@@ -10,7 +10,7 @@
         android:gravity="center"
         android:background="@drawable/border_entryends"
         style="@style/TableEntry"
-        android:layout_weight="1"/>
+        android:layout_weight="1.2"/>
 
     <TextView
         android:id="@+id/paymentReceiver"
@@ -21,7 +21,7 @@
         android:gravity="center"
         android:background="@drawable/border_entrymiddle"
         style="@style/TableEntry"
-        android:layout_weight="2"/>
+        android:layout_weight="1.8"/>
 
     <TextView
         android:id="@+id/paymentAmount"
@@ -30,8 +30,8 @@
         style="@style/TableEntry"
         android:layout_height="match_parent"
 
-        android:gravity="right"
+        android:gravity="end|center"
 
-        android:layout_weight="1"/>
+        android:layout_weight="0.9"/>
 
 </LinearLayout>

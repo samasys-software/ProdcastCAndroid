@@ -42,7 +42,7 @@
                 android:layout_weight="1"
 
                 android:text=""
-                android:textSize="12sp"
+
                 />
                 <TextView
                     android:id="@+id/screenName"
@@ -55,7 +55,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text=""
-                    android:textSize="12sp"
+
                     />
             </LinearLayout>
         </LinearLayout>
@@ -72,10 +72,12 @@
     </LinearLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="230dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
+        app:theme="@style/PopupMenuItem"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+
         app:headerLayout="@layout/nav_header_navigation_drawer"
         app:menu="@menu/activity_navigation_drawer_drawer" />
 
