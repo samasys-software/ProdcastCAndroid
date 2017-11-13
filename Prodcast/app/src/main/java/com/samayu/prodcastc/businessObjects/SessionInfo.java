@@ -9,6 +9,8 @@ import com.samayu.prodcastc.businessObjects.domain.Distributor;
 import com.samayu.prodcastc.businessObjects.domain.EmployeeDetails;
 import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.domain.Product;
+import com.samayu.prodcastc.businessObjects.domain.ProductFlavors;
+import com.samayu.prodcastc.businessObjects.domain.ProductOptions;
 import com.samayu.prodcastc.businessObjects.domain.ServiceTicket;
 
 import java.util.List;
@@ -30,6 +32,25 @@ public class SessionInfo {
     private List<Country> countries;
 
     private List<ServiceTicket> serviceSupport;
+
+    public List<ProductOptions> getProductOptions() {
+        return productOptions;
+    }
+
+    public void setProductOptions(List<ProductOptions> productOptions) {
+        this.productOptions = productOptions;
+    }
+
+    public List<ProductFlavors> getProductFlavors() {
+        return productFlavors;
+    }
+
+    public void setProductFlavors(List<ProductFlavors> productFlavors) {
+        this.productFlavors = productFlavors;
+    }
+
+    private List<ProductOptions> productOptions;
+    private List<ProductFlavors> productFlavors;
 
     public List<ServiceTicket> getServiceSupport() {
         return serviceSupport;

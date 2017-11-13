@@ -1,5 +1,7 @@
 package com.samayu.prodcastc.businessObjects.domain;
 
+import java.util.List;
+
 /**
  * Created by nandhini on 25/08/17.
  */
@@ -17,8 +19,6 @@ public class Product {
     private boolean hasOptions;
     private boolean hasFlavors;
     private String flavorName;
-
-
     public String getFlavorName() {
         return flavorName;
     }

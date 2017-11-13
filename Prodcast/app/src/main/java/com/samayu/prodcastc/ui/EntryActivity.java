@@ -391,6 +391,10 @@ public class EntryActivity extends ProdcastCBaseActivity {
             OrderEntryDTO orderEntry=new OrderEntryDTO();
             orderEntry.setProductId(String.valueOf(d1.getProduct().getId()));
             orderEntry.setQuantity(String.valueOf(d1.getQuantity()));
+
+
+
+          //  orderEntry.setOptionId(String.valueOf(d1.));
             //subtotal=subtotal+d1.getSubTotal();
             orderEntries.add(orderEntry);
 
