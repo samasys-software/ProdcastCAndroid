@@ -15,6 +15,7 @@ import com.samayu.prodcastc.businessObjects.dto.CustomerReportDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDetailDTO;
 import com.samayu.prodcastc.businessObjects.dto.ProdcastDTO;
+import com.samayu.prodcastc.businessObjects.dto.ProductListDTO;
 
 import java.util.List;
 
@@ -108,7 +109,7 @@ public interface ProdcastService {
 
 
     @GET("prodcast/distributor/getProducts")
-    Call<AdminDTO<List<Product>>> getProducts(@Query("employeeId") long employeeId);
+    Call<ProductListDTO> getProducts(@Query("employeeId") long employeeId);
 
 
 
