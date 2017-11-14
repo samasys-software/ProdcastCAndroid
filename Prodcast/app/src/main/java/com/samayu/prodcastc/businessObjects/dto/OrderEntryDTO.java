@@ -8,24 +8,6 @@ public class OrderEntryDTO {
     private String productId;
     private String quantity;
 
-   /* public String getOptionId() {
-        return optionId;
-    }
-
-    public void setOptionId(String optionId) {
-        this.optionId = optionId;
-    }
-
-    public String getFlavorId() {
-        return flavorId;
-    }
-
-    public void setFlavorId(String flavorId) {
-        this.flavorId = flavorId;
-    }
-
-    private String optionId;
-    private String flavorId;*/
 
     public String getProductId() {
         return productId;

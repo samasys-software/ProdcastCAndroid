@@ -6,7 +6,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp">
 
                 <TextView
@@ -24,7 +24,7 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:layout_width="0dp"
-                    android:layout_weight="0.7"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Salt"
                     style="@style/TableEntry"/>
@@ -35,9 +35,29 @@
                     android:layout_width="0dp"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:layout_weight="0.5"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_entrymiddleeditview"
+                    style="@style/TableEntry"/>
+                <TextView
+                    android:id="@+id/optionValue"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:text="-"
+                    style="@style/TableEntry"/>
+                <TextView
+                    android:id="@+id/flavorValue"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:text="-"
                     style="@style/TableEntry"/>
 
                 <!--<TextView

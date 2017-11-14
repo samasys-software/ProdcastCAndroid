@@ -65,7 +65,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
 
     public  class Holder
     {
-        TextView tv,tv1,tv2;
+        TextView tv,tv1,tv2,optionValue,flavorValue;
         ImageButton img;
         EditText qty;
     }
@@ -81,13 +81,24 @@ public class EntriesCustomAdapter extends BaseAdapter {
             holder.tv = (TextView) convertView.findViewById(R.id.productName);
             holder.tv1 = (TextView) convertView.findViewById(R.id.unitPrice);
             holder.qty=(EditText) convertView.findViewById(R.id.orderQuantity);
+            holder.optionValue=(TextView) convertView.findViewById(R.id.optionValue);
+            holder.flavorValue=(TextView) convertView.findViewById(R.id.flavorValue);
             /*holder.tv2= (TextView) convertView.findViewById(R.id.subTotal);*/
 
             convertView.setTag(holder);
             //img.setTag(holder);
 
             final OrderDetails orders=orderEntries.get(position);
+
+
+
             holder.tv.setText(orders.getProduct().getProductName());
+            if(orders.getProductOptions()!=null) {
+                holder.optionValue.setText(orders.getProductOptions().getOptionValue());
+            }
+            if(orders.getProductFlavors()!=null) {
+                holder.flavorValue.setText(orders.getProductFlavors().getFlavorValue());
+            }
             float price=0;
             if(SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")){
                 price=orders.getProduct().getRetailPrice();

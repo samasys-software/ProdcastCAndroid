@@ -8,14 +8,7 @@ public class OrderDetails {
     private Product product;
     private  int quantity;
     private float subTotal;
-
-  /*  public ProductOptions getProductOptions() {
-        return productOptions;
-    }
-
-    public void setProductOptions(ProductOptions productOptions) {
-        this.productOptions = productOptions;
-    }
+    private ProductOptions productOptions;
 
     public ProductFlavors getProductFlavors() {
         return productFlavors;
@@ -25,8 +18,19 @@ public class OrderDetails {
         this.productFlavors = productFlavors;
     }
 
-    private ProductOptions productOptions;
-    private ProductFlavors productFlavors;*/
+    private ProductFlavors productFlavors;
+
+    public ProductOptions getProductOptions() {
+        return productOptions;
+    }
+
+    public void setProductOptions(ProductOptions productOptions) {
+        this.productOptions = productOptions;
+    }
+
+
+
+
 
 
 

@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.samayu.prodcastc.R;
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
@@ -35,7 +36,6 @@ import com.samayu.prodcastc.businessObjects.domain.ProductFlavors;
 import com.samayu.prodcastc.businessObjects.domain.ProductOptions;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 //import com.ventruxinformatics.prodcast.dummy.DummyContent;
@@ -55,8 +55,8 @@ public class ProductDetailFragment extends Fragment {
     ImageView img;
     RelativeLayout hasOptionsLayout;
     RelativeLayout hasFlavorLayout;
-    Spinner optionValues;
-    Spinner flavorValues;
+    Spinner ProductOptionValues;
+    Spinner ProductFlavorValues;
     String currencySymbol= SessionInfo.getInstance().getEmployee().getDistributor().getCurrencySymbol();
     //NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     /**
@@ -100,6 +100,8 @@ public class ProductDetailFragment extends Fragment {
 
 
     List<Product> productDetails = new ArrayList<Product>();
+    ProductOptions selectedOptionId =null ;
+    ProductFlavors selectedFlavorId=null;
 
 
 
@@ -167,35 +169,43 @@ public class ProductDetailFragment extends Fragment {
                     alertDialog.setTitle("Please Enter A Quantity");
                     alertDialog.setCancelable(true);
                     LayoutInflater inflater = getActivity().getLayoutInflater();
-                    View diaView = inflater.inflate(R.layout.qty_dialog, null);
+                    final View diaView = inflater.inflate(R.layout.qty_dialog, null);
                     alertDialog.setView(diaView);
                     hasOptionsLayout=(RelativeLayout) diaView.findViewById(R.id.hasOptions);
                     hasFlavorLayout=(RelativeLayout) diaView.findViewById(R.id.hasFlavors);
-                    List<String> productOptionValues=new ArrayList<String>();
-                    List<String> productFlavorValues=new ArrayList<String>();
+                    List<String> optionValues=new ArrayList<String>();
+                    List<String> flavorValues=new ArrayList<String>();
+                    final List<ProductOptions> productOptionsForSelectedProduct=new ArrayList<ProductOptions>();
+                    final List<ProductFlavors> productFlavorsForSelectedProduct=new ArrayList<ProductFlavors>();
+
                     if(showHasOptions==true){
                         hasOptionsLayout.setVisibility(View.VISIBLE);
-                        optionValues=(Spinner) diaView.findViewById(R.id.optionValues);
-
-                        List<ProductOptions>  productOptions=SessionInfo.getInstance().getProductOptions();
+                        ProductOptionValues=(Spinner) diaView.findViewById(R.id.optionValues);
+                        final List<ProductOptions>  productOptions=SessionInfo.getInstance().getProductOptions();
                         System.out.print(productOptions);
                         int cnt=0;
-
                        for(int i=0;i<productOptions.size();i++) {
                            ProductOptions options = productOptions.get(i);
                            if (product.getId() == options.getProductId()) {
-                               productOptionValues.add(options.getOptionValue());
+                               optionValues.add(options.getOptionValue());
+                               productOptionsForSelectedProduct.add(options);
                                cnt++;
                            }
                        }
+                       ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.drop_down_list, optionValues);
+                       ProductOptionValues.setAdapter(adapter);
+                           ProductOptionValues.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+                               @Override
+                               public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                   selectedOptionId = productOptionsForSelectedProduct.get(position);
+                                  // Toast.makeText(getActivity(), selectedOptionId, Toast.LENGTH_LONG).show();
+                                   }
 
-                           ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.drop_down_list, productOptionValues);
-                          optionValues.setAdapter(adapter);
-                        int optionId = optionValues.getSelectedItemPosition();
-                        ProductOptions selectedOption = (ProductOptions) optionValues.getSelectedItem();
-                        String selectedOptionId = selectedOption.getOptionId();
+                               @Override
+                               public void onNothingSelected(AdapterView<?> parent) {
 
-                        System.out.print(productOptionValues);
+                               }
+                           });
 
                     }
                    else{
@@ -204,22 +214,36 @@ public class ProductDetailFragment extends Fragment {
                     if(showHasFlavors==true){
 
                         hasFlavorLayout.setVisibility(View.VISIBLE);
-                        flavorValues=(Spinner) diaView.findViewById(R.id.flavorsValues);
+                        ProductFlavorValues=(Spinner) diaView.findViewById(R.id.flavorsValues);
 
-                        List<ProductFlavors>  productFlavors=SessionInfo.getInstance().getProductFlavors();
+                        final List<ProductFlavors>  productFlavors=SessionInfo.getInstance().getProductFlavors();
                         System.out.print(productFlavors);
                         int cnt=0;
 
                         for(int i=0;i<productFlavors.size();i++) {
                             ProductFlavors flavors = productFlavors.get(i);
                             if (product.getId() == flavors.getProductId()) {
-                                productFlavorValues.add(flavors.getFlavorValue());
+                                flavorValues.add(flavors.getFlavorValue());
+                                productFlavorsForSelectedProduct.add(flavors);
                                 cnt++;
                             }
                         }
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.drop_down_list, productFlavorValues);
-                        flavorValues.setAdapter(adapter);
-                        System.out.print(productFlavorValues);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.drop_down_list,flavorValues);
+                        ProductFlavorValues.setAdapter(adapter);
+                        ProductFlavorValues.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                                selectedFlavorId= productFlavorsForSelectedProduct.get(position);
+                              //  Toast.makeText(getActivity(),selectedOptionId, Toast.LENGTH_LONG).show();
+
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
 
                     }
                  else{
@@ -444,8 +468,9 @@ public class ProductDetailFragment extends Fragment {
         final OrderDetails orderDetails = new OrderDetails();
         orderDetails.setProduct(product);
         orderDetails.setQuantity(quantity);
-        //orderDetails.setProductOptions(selectedOptionId);
-//        orderDetails.setSubTotal(Float.parseFloat(calculateTotal(product,quantity)));
+          orderDetails.setProductOptions(selectedOptionId);
+         orderDetails.setProductFlavors(selectedFlavorId);
+       //  orderDetails.setSubTotal(Float.parseFloat(calculateTotal(product,quantity)));
         SessionInfo.getInstance().getEntry().add(orderDetails);
         if(productDetailActivity!=null)
             productDetailActivity.setOrderTotal();
