@@ -145,7 +145,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.7"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:layout_gravity="center"
             android:background="@drawable/border_headermiddle">
@@ -172,11 +172,30 @@
             android:layout_width="0dp"
             android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="Qty"
             android:background="@drawable/border_headermiddle"
             style="@style/TableHeader"
-
+            />
+        <TextView
+            android:id="@+id/orderOptionValue"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Option"
+            android:background="@drawable/border_headermiddle"
+            style="@style/TableHeader"
+            />
+        <TextView
+            android:id="@+id/orderFlavorValue"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Flavor"
+            android:background="@drawable/border_headermiddle"
+            style="@style/TableHeader"
             />
 
 

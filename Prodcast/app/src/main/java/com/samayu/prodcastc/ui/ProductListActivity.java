@@ -137,6 +137,8 @@ public class ProductListActivity extends ProdcastCBaseActivity {
 
                         //List<Product> products = dto.getResult();
                         SessionInfo.getInstance().setProductDetails(dto.getProductList());
+                        SessionInfo.getInstance().setProductOptions(dto.getProductOptionsList());
+                        SessionInfo.getInstance().setProductFlavors(dto.getProductFlavorsList());
                         progressDialog.dismiss();
 
 

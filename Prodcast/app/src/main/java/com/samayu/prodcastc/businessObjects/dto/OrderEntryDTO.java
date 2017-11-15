@@ -8,6 +8,7 @@ public class OrderEntryDTO {
     private String productId;
     private String quantity;
 
+
     public String getProductId() {
         return productId;
     }

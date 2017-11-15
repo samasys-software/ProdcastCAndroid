@@ -270,7 +270,7 @@ public class LoginActivity extends AppCompatActivity {
         if (ctry <= 0) {
             TextView errorText = (TextView)country.getSelectedView();
             errorText.setError(getString(R.string.error_field_required));
-            Toast.makeText(this, "This field is Reqiured", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "This field is Required", Toast.LENGTH_SHORT).show();
             //errorText.setText(getString(R.string.error_field_required));
             focusView=errorText;
             cancel = true;

@@ -231,6 +231,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
         final TextView subTotal=(TextView) findViewById(R.id.totalSubTotal);
         final TextView tax=(TextView) findViewById(R.id.totalTax);
 
+
         float sub_total=0;
         float total_tax=0;
         for(OrderDetails entry:entries)
@@ -391,6 +392,11 @@ public class EntryActivity extends ProdcastCBaseActivity {
             OrderEntryDTO orderEntry=new OrderEntryDTO();
             orderEntry.setProductId(String.valueOf(d1.getProduct().getId()));
             orderEntry.setQuantity(String.valueOf(d1.getQuantity()));
+           // orderEntry.setOptionValue(String.valueOf(d1.getOptionValue()));
+
+
+
+          //  orderEntry.setOptionId(String.valueOf(d1.));
             //subtotal=subtotal+d1.getSubTotal();
             orderEntries.add(orderEntry);
 

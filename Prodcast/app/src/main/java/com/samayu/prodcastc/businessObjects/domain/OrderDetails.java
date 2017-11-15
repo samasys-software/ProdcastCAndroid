@@ -8,6 +8,31 @@ public class OrderDetails {
     private Product product;
     private  int quantity;
     private float subTotal;
+    private ProductOptions productOptions;
+
+    public ProductFlavors getProductFlavors() {
+        return productFlavors;
+    }
+
+    public void setProductFlavors(ProductFlavors productFlavors) {
+        this.productFlavors = productFlavors;
+    }
+
+    private ProductFlavors productFlavors;
+
+    public ProductOptions getProductOptions() {
+        return productOptions;
+    }
+
+    public void setProductOptions(ProductOptions productOptions) {
+        this.productOptions = productOptions;
+    }
+
+
+
+
+
+
 
 
     public Product getProduct() {
