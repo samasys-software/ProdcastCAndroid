@@ -31,6 +31,10 @@ public class BillDetailsOrderEntryView extends FrameLayout {
         ((TextView)findViewById(R.id.qty)).setText(String.valueOf(orderDetails.getQuantity()));
         ((TextView)findViewById(R.id.price)).setText(numberFormat.format(orderDetails.getUnitPrice()));
         ((TextView)findViewById(R.id.subTotal)).setText(numberFormat.format(orderDetails.getSubtotal()));
+        if(orderDetails.getOptionValue()!=null){
+            ((TextView)findViewById(R.id.optionDescription)).setText(String.valueOf(orderDetails.getOptionValue()));}
+        if(orderDetails.getFlavorValue()!=null){
+            ((TextView)findViewById(R.id.flavorDescription)).setText(String.valueOf(orderDetails.getFlavorValue()));}
 
 
     }

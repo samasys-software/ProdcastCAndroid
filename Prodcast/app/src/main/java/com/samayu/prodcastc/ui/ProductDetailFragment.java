@@ -59,6 +59,9 @@ public class ProductDetailFragment extends Fragment {
     Spinner ProductFlavorValues;
     String currencySymbol= SessionInfo.getInstance().getEmployee().getDistributor().getCurrencySymbol();
     float price;
+    String checks="true";
+    boolean check = false;
+    View focusView = null;
 
     //NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     /**
@@ -104,6 +107,7 @@ public class ProductDetailFragment extends Fragment {
     List<Product> productDetails = new ArrayList<Product>();
     ProductOptions selectedOptionId =null ;
     ProductFlavors selectedFlavorId=null;
+   // int  selectedOptionValue=0;
 
 
 
@@ -192,24 +196,55 @@ public class ProductDetailFragment extends Fragment {
                         ProductOptionValues=(Spinner) diaView.findViewById(R.id.optionValues);
                         final List<ProductOptions>  productOptions=SessionInfo.getInstance().getProductOptions();
                         System.out.print(productOptions);
-                        int cnt=0;
+
+                        int optionCount=1;
+                        ProductOptions defaultOption = new ProductOptions();
+                        defaultOption.setOptionId("");
+                        defaultOption.setOptionValue("Select Option");
+                        productOptionsForSelectedProduct.add(0,defaultOption);
+                        optionValues.add(0,defaultOption.getOptionValue());
+
                         for(int i=0;i<productOptions.size();i++) {
                             ProductOptions options = productOptions.get(i);
                             if (product.getId() == options.getProductId()) {
                                 optionValues.add(options.getOptionValue());
                                 productOptionsForSelectedProduct.add(options);
-                                cnt++;
+                                optionCount++;
                             }
                         }
+
+
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.drop_down_list, optionValues);
                         ProductOptionValues.setAdapter(adapter);
 
 
-
-                        ProductOptionValues.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+                       ProductOptionValues.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 selectedOptionId = productOptionsForSelectedProduct.get(position);
+
+
+                               int  selectedOptionValue=ProductOptionValues.getSelectedItemPosition();
+                              /*  boolean validation= validation(selectedOptionValue);
+                                if (validation) {
+                                    // There was an error; don't attempt login and focus the first
+                                    // form field with an error.
+                                    focusView.requestFocus();
+                                    return;
+                                }
+                                validation(selectedOptionValue);*/
+
+                               checks="true";
+                               if(selectedOptionValue<=0){
+                                    TextView errorText = (TextView)ProductOptionValues.getSelectedView();
+                                    errorText.setError(getString(R.string.error_field_required));
+                                    Toast.makeText(getActivity(), "This field is Reqiured", Toast.LENGTH_SHORT).show();
+                                    focusView=errorText;
+                                   checks = "false";
+                                }
+
+
+
                                 if (SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")) {
                                     price = selectedOptionId.getRetailPrice();
                                 } else {
@@ -234,6 +269,16 @@ public class ProductDetailFragment extends Fragment {
                             price = product.getUnitPrice();
                         }
                     }
+
+
+
+
+
+
+
+
+
+
                     if(showHasFlavors==true){
 
                         hasFlavorLayout.setVisibility(View.VISIBLE);
@@ -241,14 +286,18 @@ public class ProductDetailFragment extends Fragment {
 
                         final List<ProductFlavors>  productFlavors=SessionInfo.getInstance().getProductFlavors();
                         System.out.print(productFlavors);
-                        int cnt=0;
-
+                        int falvorCount=1;
+                        ProductFlavors defaultFlavor = new ProductFlavors();
+                        defaultFlavor.setFlavorId("");
+                        defaultFlavor.setFlavorValue("Select Flavor");
+                        productFlavorsForSelectedProduct.add(0,defaultFlavor);
+                        flavorValues.add(0,defaultFlavor.getFlavorValue());
                         for(int i=0;i<productFlavors.size();i++) {
                             ProductFlavors flavors = productFlavors.get(i);
                             if (product.getId() == flavors.getProductId()) {
                                 flavorValues.add(flavors.getFlavorValue());
                                 productFlavorsForSelectedProduct.add(flavors);
-                                cnt++;
+                                falvorCount++;
                             }
                         }
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.drop_down_list,flavorValues);
@@ -259,6 +308,7 @@ public class ProductDetailFragment extends Fragment {
 
                                 selectedFlavorId= productFlavorsForSelectedProduct.get(position);
                                 //  Toast.makeText(getActivity(),selectedOptionId, Toast.LENGTH_LONG).show();
+
 
                             }
 
@@ -361,9 +411,35 @@ public class ProductDetailFragment extends Fragment {
                                                 OrderDetails existingProduct = null;
                                                 for (OrderDetails orderEntry : orderEntries) {
                                                     if (orderEntry.getProduct().getId() == product.getId()) {
-                                                        productActive = true;
-                                                        existingProduct = orderEntry;
-                                                        break;
+                                                        if(orderEntry.getProductOptions()!=null && orderEntry.getProductFlavors()!=null){
+                                                            if(selectedOptionId.getOptionId()==orderEntry.getProductOptions().getOptionId() && selectedFlavorId.getFlavorId()==orderEntry.getProductFlavors().getFlavorId()){
+                                                                productActive = true;
+                                                                existingProduct = orderEntry;
+                                                                break;
+                                                            }
+
+                                                        }
+                                                        else  if(orderEntry.getProductOptions().getOptionId()!=null) {
+                                                            if(selectedOptionId.getOptionId()==orderEntry.getProductOptions().getOptionId()){
+                                                                productActive = true;
+                                                                existingProduct = orderEntry;
+                                                                break;
+                                                            }
+
+                                                        }
+                                                        else if(orderEntry.getProductFlavors().getFlavorId()!=null){
+                                                            if(selectedFlavorId.getFlavorId()==orderEntry.getProductFlavors().getFlavorId()){
+                                                                productActive = true;
+                                                                existingProduct = orderEntry;
+                                                                break;
+                                                            }
+
+                                                        }
+                                                        else{
+                                                            productActive = true;
+                                                            existingProduct = orderEntry;
+                                                            break;
+                                                        }
 
                                                     }
                                                 }
@@ -379,7 +455,14 @@ public class ProductDetailFragment extends Fragment {
                                                 }
 
                                                 if (productActive && add) {
-                                                    selectedProduct.setQuantity(selectedProduct.getQuantity() + Integer.parseInt(quantity));
+                                                    //for(int k=0;k<selectedProduct.)
+                                                  /*  String select=selectedProduct.getProductOptions().getOptionValue();
+                                                    if(select=="Select Option"){
+                                                        checks="false";
+                                                        focusView.requestFocus();
+                                                        return;
+                                                    }*/
+                                                  selectedProduct.setQuantity(selectedProduct.getQuantity() + Integer.parseInt(quantity));
 
                                                 } else {
                                                     addProduct(product, Integer.parseInt(quantity));
@@ -490,13 +573,45 @@ public class ProductDetailFragment extends Fragment {
         final OrderDetails orderDetails = new OrderDetails();
         orderDetails.setProduct(product);
         orderDetails.setQuantity(quantity);
-          orderDetails.setProductOptions(selectedOptionId);
-         orderDetails.setProductFlavors(selectedFlavorId);
+        orderDetails.setProductOptions(selectedOptionId);
+        orderDetails.setProductFlavors(selectedFlavorId);
        //  orderDetails.setSubTotal(Float.parseFloat(calculateTotal(product,quantity)));
         SessionInfo.getInstance().getEntry().add(orderDetails);
         if(productDetailActivity!=null)
             productDetailActivity.setOrderTotal();
+        if(checks=="false"){
+            focusView.requestFocus();
+            return;
+        }
+
+
+
     }
+
+
+
+    /*private boolean validation(int selectedOptionValue){
+        check=false;
+        if(selectedOptionValue<=0){
+            TextView errorText = (TextView)ProductOptionValues.getSelectedView();
+            errorText.setError(getString(R.string.error_field_required));
+             Toast.makeText(this, "This field is Reqiured", Toast.LENGTH_SHORT).show();
+            focusView=errorText;
+            check = true;
+            return  check;
+        }
+       /* if(defaultFlavor<=0){
+            TextView errorText = (TextView)ProductOptionValues.getSelectedView();
+            errorText.setError(getString(R.string.error_field_required));
+            //  Toast.makeText(this, "This field is Reqiured", Toast.LENGTH_SHORT).show();
+            focusView=errorText;
+            check = true;
+            return  check;
+        }
+        return check;
+    }*/
+
+
 
 
 

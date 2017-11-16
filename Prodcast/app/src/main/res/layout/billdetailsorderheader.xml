@@ -21,29 +21,46 @@
         android:layout_height="match_parent"
         android:gravity="center"
 
-        android:layout_weight="0.7"
+        android:layout_weight="0.5"
         style="@style/TableHeader"
         android:background="@color/headerBackground"
         android:text="Qty"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+
+        android:layout_weight="0.8"
+        style="@style/TableHeader"
+        android:background="@color/headerBackground"
+        android:text="Option"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="0.8"
+        style="@style/TableHeader"
+        android:background="@color/headerBackground"
+        android:text="Flavor"/>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.7"
+        android:layout_weight="0.9"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:gravity="center"
         android:background="@drawable/border_headermiddle"
         >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
 
-        android:gravity="center"
-        android:background="@color/headerBackground"
+            android:gravity="center"
+            android:background="@color/headerBackground"
 
-        style="@style/TableHeader"
-        android:text="Price"/>
+            style="@style/TableHeader"
+            android:text="Price"/>
         <TextView
             android:layout_width="wrap_content"
             android:text="()"
@@ -51,12 +68,12 @@
             android:id="@+id/orderPriceCurrency"
             style="@style/TableHeader"
             />
-        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="1.1"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:gravity="center"
@@ -64,16 +81,16 @@
         >
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/subTotal"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/subTotal"
 
-        android:gravity="center"
-        android:background="@color/headerBackground"
+            android:gravity="center"
+            android:background="@color/headerBackground"
 
-        style="@style/TableHeader"
-        android:text="Sub Tot"/>
+            style="@style/TableHeader"
+            android:text="Sub Tot"/>
         <TextView
             android:layout_width="wrap_content"
             android:text="()"

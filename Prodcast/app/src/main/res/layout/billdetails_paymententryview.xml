@@ -21,6 +21,9 @@
         android:gravity="center"
         android:background="@drawable/border_entrymiddle"
         style="@style/TableEntry"
+
+        android:textSize="35px"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_weight="1.8"/>
 
     <TextView
