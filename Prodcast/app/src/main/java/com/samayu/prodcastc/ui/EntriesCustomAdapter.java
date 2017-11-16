@@ -88,6 +88,8 @@ public class EntriesCustomAdapter extends BaseAdapter {
             convertView.setTag(holder);
             //img.setTag(holder);
 
+            float price=0;
+
             final OrderDetails orders=orderEntries.get(position);
 
 
@@ -95,17 +97,26 @@ public class EntriesCustomAdapter extends BaseAdapter {
             holder.tv.setText(orders.getProduct().getProductName());
             if(orders.getProductOptions()!=null) {
                 holder.optionValue.setText(orders.getProductOptions().getOptionValue());
+                if(SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")){
+                    price=orders.getProductOptions().getRetailPrice();
+                }
+                else{
+                    price=orders.getProductOptions().getUnitPrice();
+                }
+            }
+            else{
+                if(SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")){
+                    price=orders.getProduct().getRetailPrice();
+                }
+                else{
+                    price=orders.getProduct().getUnitPrice();
+                }
             }
             if(orders.getProductFlavors()!=null) {
                 holder.flavorValue.setText(orders.getProductFlavors().getFlavorValue());
             }
-            float price=0;
-            if(SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")){
-                price=orders.getProduct().getRetailPrice();
-            }
-            else{
-                price=orders.getProduct().getUnitPrice();
-            }
+
+
             holder.tv1.setText(numberFormat.format(price));
 
             holder.qty.setText(String.valueOf(orders.getQuantity()));

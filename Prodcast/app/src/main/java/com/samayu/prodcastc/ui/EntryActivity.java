@@ -29,6 +29,8 @@ import com.samayu.prodcastc.businessObjects.connect.ProdcastServiceManager;
 import com.samayu.prodcastc.businessObjects.domain.Customer;
 import com.samayu.prodcastc.businessObjects.domain.EmployeeDetails;
 import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
+import com.samayu.prodcastc.businessObjects.domain.ProductFlavors;
+import com.samayu.prodcastc.businessObjects.domain.ProductOptions;
 import com.samayu.prodcastc.businessObjects.dto.CustomerDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderDetailDTO;
 import com.samayu.prodcastc.businessObjects.dto.OrderEntryDTO;
@@ -53,7 +55,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
     NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     float minimumDeliveryAmount = SessionInfo.getInstance().getEmployee().getDistributor().getMinimumDeliveryAmount();
 
-    double total_value=0.0;
+    double totalValue=0.0;
 
     TextView message;
     EditText address,city,state,zipCode;
@@ -234,13 +236,15 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
         float sub_total=0;
         float total_tax=0;
+        double total_value=0.0;
         for(OrderDetails entry:entries)
         {
-            total_value=total_value+ProductDetailFragment.calculateTotal(entry.getProduct(),entry.getQuantity());
-            sub_total=sub_total+ProductDetailFragment.calculateSubTotal(entry.getProduct(),entry.getQuantity());
-            total_tax=total_tax+ProductDetailFragment.calculateTax(entry.getProduct(),entry.getQuantity());
+            total_value=total_value+ProductDetailFragment.calculateTotal(entry.getProduct(),entry.getQuantity(),entry.getProductOptions());
+            sub_total=sub_total+ProductDetailFragment.calculateSubTotal(entry.getProduct(),entry.getQuantity(),entry.getProductOptions());
+            total_tax=total_tax+ProductDetailFragment.calculateTax(entry.getProduct(),entry.getQuantity(),entry.getProductOptions());
 
         }
+        totalValue=total_value;
         total.setText(currencySymbol+""+numberFormat.format(total_value));
         subTotal.setText(currencySymbol+""+numberFormat.format(sub_total));
         tax.setText(currencySymbol+""+numberFormat.format(total_tax));
@@ -248,7 +252,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
 
     public void showDialogBox(final boolean showDialog){
 
-
+      //  final TextView total=(TextView) findViewById(R.id.total);
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(EntryActivity.this, R.style.AlertTheme);
         alertDialog.setTitle("Shipping Details");
         alertDialog.setCancelable(true);
@@ -328,7 +332,7 @@ public class EntryActivity extends ProdcastCBaseActivity {
                         Toast.makeText(context, "Your order for has been placed successfully.", Toast.LENGTH_LONG).show();
 
                     } else {
-                        if (total_value < minimumDeliveryAmount) {
+                        if (totalValue < minimumDeliveryAmount) {
 
                             confirmationMessage.setVisibility(View.VISIBLE);
 
@@ -392,6 +396,18 @@ public class EntryActivity extends ProdcastCBaseActivity {
             OrderEntryDTO orderEntry=new OrderEntryDTO();
             orderEntry.setProductId(String.valueOf(d1.getProduct().getId()));
             orderEntry.setQuantity(String.valueOf(d1.getQuantity()));
+            ProductOptions productOptions=d1.getProductOptions();
+            ProductFlavors productFlavors=d1.getProductFlavors();
+            if(productOptions!=null)
+            {
+                orderEntry.setOptionId(Long.valueOf(productOptions.getOptionId()));
+            }
+
+            if(productFlavors!=null)
+            {
+                orderEntry.setFlavorId(Long.valueOf(productFlavors.getFlavorId()));
+            }
+
            // orderEntry.setOptionValue(String.valueOf(d1.getOptionValue()));
 
 
