@@ -58,6 +58,8 @@ public class ProductDetailFragment extends Fragment {
     Spinner ProductOptionValues;
     Spinner ProductFlavorValues;
     String currencySymbol= SessionInfo.getInstance().getEmployee().getDistributor().getCurrencySymbol();
+    float price;
+
     //NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     /**
      * The fragment argument representing the item ID that this fragment
@@ -178,38 +180,59 @@ public class ProductDetailFragment extends Fragment {
                     final List<ProductOptions> productOptionsForSelectedProduct=new ArrayList<ProductOptions>();
                     final List<ProductFlavors> productFlavorsForSelectedProduct=new ArrayList<ProductFlavors>();
 
+                    productName = (TextView) diaView.findViewById(R.id.productName);
+                    unitPrice = (TextView) diaView.findViewById(R.id.unitPrice);
+                    qty = (EditText) diaView.findViewById(R.id.qty);
+                    subTotal = (TextView) diaView.findViewById(R.id.subTotal);
+                    img = (ImageView) diaView.findViewById(R.id.img);
+                    productName.setText("Item :" + product.getProductName());
+
                     if(showHasOptions==true){
                         hasOptionsLayout.setVisibility(View.VISIBLE);
                         ProductOptionValues=(Spinner) diaView.findViewById(R.id.optionValues);
                         final List<ProductOptions>  productOptions=SessionInfo.getInstance().getProductOptions();
                         System.out.print(productOptions);
                         int cnt=0;
-                       for(int i=0;i<productOptions.size();i++) {
-                           ProductOptions options = productOptions.get(i);
-                           if (product.getId() == options.getProductId()) {
-                               optionValues.add(options.getOptionValue());
-                               productOptionsForSelectedProduct.add(options);
-                               cnt++;
-                           }
-                       }
-                       ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.drop_down_list, optionValues);
-                       ProductOptionValues.setAdapter(adapter);
-                           ProductOptionValues.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-                               @Override
-                               public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                   selectedOptionId = productOptionsForSelectedProduct.get(position);
-                                  // Toast.makeText(getActivity(), selectedOptionId, Toast.LENGTH_LONG).show();
-                                   }
+                        for(int i=0;i<productOptions.size();i++) {
+                            ProductOptions options = productOptions.get(i);
+                            if (product.getId() == options.getProductId()) {
+                                optionValues.add(options.getOptionValue());
+                                productOptionsForSelectedProduct.add(options);
+                                cnt++;
+                            }
+                        }
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.drop_down_list, optionValues);
+                        ProductOptionValues.setAdapter(adapter);
 
-                               @Override
-                               public void onNothingSelected(AdapterView<?> parent) {
 
-                               }
-                           });
+
+                        ProductOptionValues.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                selectedOptionId = productOptionsForSelectedProduct.get(position);
+                                if (SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")) {
+                                    price = selectedOptionId.getRetailPrice();
+                                } else {
+                                    price = selectedOptionId.getUnitPrice();
+                                }
+                                unitPrice.setText("Unit Price : "+currencySymbol+"" +GlobalUsage.getNumberFormat().format(price));
+                                // Toast.makeText(getActivity(), selectedOptionId, Toast.LENGTH_LONG).show();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
 
                     }
-                   else{
+                    else{
                         hasOptionsLayout.setVisibility(View.GONE);
+                        if (SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")) {
+                            price = product.getRetailPrice();
+                        } else {
+                            price = product.getUnitPrice();
+                        }
                     }
                     if(showHasFlavors==true){
 
@@ -235,7 +258,7 @@ public class ProductDetailFragment extends Fragment {
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                                 selectedFlavorId= productFlavorsForSelectedProduct.get(position);
-                              //  Toast.makeText(getActivity(),selectedOptionId, Toast.LENGTH_LONG).show();
+                                //  Toast.makeText(getActivity(),selectedOptionId, Toast.LENGTH_LONG).show();
 
                             }
 
@@ -246,24 +269,13 @@ public class ProductDetailFragment extends Fragment {
                         });
 
                     }
-                 else{
+                    else{
                         hasFlavorLayout.setVisibility(View.GONE);
 
                     }
 
-                    productName = (TextView) diaView.findViewById(R.id.productName);
-                    unitPrice = (TextView) diaView.findViewById(R.id.unitPrice);
-                    qty = (EditText) diaView.findViewById(R.id.qty);
-                    subTotal = (TextView) diaView.findViewById(R.id.subTotal);
-                    img = (ImageView) diaView.findViewById(R.id.img);
-                    productName.setText("Item :" + product.getProductName());
-                    float price;
-                    if (SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")) {
-                        price = product.getRetailPrice();
-                    } else {
-                        price = product.getUnitPrice();
-                    }
-                    unitPrice.setText("Unit Price : "+currencySymbol+"" +GlobalUsage.getNumberFormat().format( price));
+
+                    unitPrice.setText("Unit Price : "+currencySymbol+"" +GlobalUsage.getNumberFormat().format(price));
 
                     subTotal.setText("Sub Total :"+currencySymbol+" 0.00");
 
@@ -296,7 +308,7 @@ public class ProductDetailFragment extends Fragment {
                                 qty.setError("Please Enter valid number");
 
                             }
-                            subTotal.setText("Sub Total : " +currencySymbol+""+GlobalUsage.getNumberFormat().format(calculateTotal(product,quantity)));
+                            subTotal.setText("Sub Total : " +currencySymbol+""+GlobalUsage.getNumberFormat().format(calculateTotal(product,quantity,selectedOptionId)));
 
                         }
                     });
@@ -422,31 +434,41 @@ public class ProductDetailFragment extends Fragment {
     }
 
 
-    public static final double calculateTotal(Product pro, int quantity) {
+    public static final double calculateTotal(Product pro, int quantity,ProductOptions productOptions) {
 
 
-        float subTotal=calculateSubTotal(pro,quantity);
-        float tax=calculateTax(pro,quantity);
+        float subTotal=calculateSubTotal(pro,quantity,productOptions);
+        float tax=calculateTax(pro,quantity,productOptions);
         double total=subTotal+tax;
 
 
         return total;
 
     }
-    public static final float calculateTax(Product pro,int quantity) {
+    public static final float calculateTax(Product pro,int quantity,ProductOptions productOptions) {
 
         float salesTax = Float.valueOf(pro.getSalesTax());
          float otherTax = Float.valueOf(pro.getOtherTax());
-        float tax = calculateSubTotal(pro,quantity)*(salesTax + otherTax)/100 ;
+        float tax = calculateSubTotal(pro,quantity,productOptions)*(salesTax + otherTax)/100 ;
 
 
         return tax;
 
     }
 
-    public static final float calculateSubTotal(Product pro, int quantity) {
-        float unitPrice = pro.getUnitPrice();
-        float retailPrice = pro.getRetailPrice();
+    public static final float calculateSubTotal(Product pro, int quantity ,ProductOptions productOptions) {
+        float unitPrice =0;
+        float retailPrice =0;
+        if(productOptions!=null)
+        {
+            unitPrice=productOptions.getUnitPrice();
+            retailPrice=productOptions.getRetailPrice();
+        }
+        else{
+            unitPrice=pro.getUnitPrice();
+            retailPrice=pro.getRetailPrice();
+        }
+
         //float salesTax = Float.valueOf(pro.getSalesTax());
         // float otherTax = Float.valueOf(pro.getOtherTax());
         float subtotal = 0;
