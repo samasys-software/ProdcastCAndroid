@@ -15,15 +15,10 @@
     <TextView
         android:id="@+id/paymentReceiver"
         android:layout_width="0dp"
-
         android:layout_height="match_parent"
-
         android:gravity="center"
         android:background="@drawable/border_entrymiddle"
         style="@style/TableEntry"
-
-        android:textSize="35px"
-        android:textColor="@color/colorPrimaryDark"
         android:layout_weight="1.8"/>
 
     <TextView
@@ -32,9 +27,7 @@
         android:background="@drawable/border_entrymiddle"
         style="@style/TableEntry"
         android:layout_height="match_parent"
-
         android:gravity="end|center"
-
         android:layout_weight="0.9"/>
 
 </LinearLayout>

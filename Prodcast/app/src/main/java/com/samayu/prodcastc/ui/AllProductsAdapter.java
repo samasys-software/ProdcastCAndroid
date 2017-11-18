@@ -11,14 +11,17 @@ import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.domain.Product;
 import com.samayu.prodcastc.R;
+import com.samayu.prodcastc.businessObjects.domain.ProductOptions;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AllProductsAdapter extends BaseAdapter {
 
 
     List<Product> products;
+
     int count=0;
     Context context;
     LayoutInflater inflater;
@@ -28,7 +31,6 @@ public class AllProductsAdapter extends BaseAdapter {
 
         // TODO Auto-generated constructor stub
         products=product;
-
         currencySymbol= SessionInfo.getInstance().getEmployee().getDistributor().getCurrencySymbol();
 
      //   System.out.println(products.size());
@@ -89,18 +91,20 @@ public class AllProductsAdapter extends BaseAdapter {
         holder.position=position;
         Product product=products.get(holder.position);
         String productName=product.getProductName();
+
         if(!product.getSalesTax().equals("0") || !product.getOtherTax().equals("0")){
             productName=product.getProductName()+" *";
 
         }
         //holder.tv.setText(String.valueOf(product.getId()));
         float unitPrice=product.getUnitPrice();
-        if(SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")){
-            unitPrice=product.getRetailPrice();
 
-        }
+            if (SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")) {
+                unitPrice = product.getRetailPrice();
+
+            }
+
         holder.tv1.setText(productName);
-
         holder.tv2.setText(currencySymbol+""+numberFormat.format(unitPrice));
         holder.tv3.setText(String.valueOf(product.getProductDesc()));
        // holder.tv4.setText("Other Tax : "+String.valueOf(product.getOtherTax()));

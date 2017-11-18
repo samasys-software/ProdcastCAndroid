@@ -30,12 +30,14 @@ import com.samayu.prodcastc.R;
 import com.samayu.prodcastc.businessObjects.GlobalUsage;
 import com.samayu.prodcastc.businessObjects.SessionInfo;
 import com.samayu.prodcastc.businessObjects.domain.Category;
+import com.samayu.prodcastc.businessObjects.domain.Collection;
 import com.samayu.prodcastc.businessObjects.domain.OrderDetails;
 import com.samayu.prodcastc.businessObjects.domain.Product;
 import com.samayu.prodcastc.businessObjects.domain.ProductFlavors;
 import com.samayu.prodcastc.businessObjects.domain.ProductOptions;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 //import com.ventruxinformatics.prodcast.dummy.DummyContent;
@@ -59,9 +61,6 @@ public class ProductDetailFragment extends Fragment {
     Spinner ProductFlavorValues;
     String currencySymbol= SessionInfo.getInstance().getEmployee().getDistributor().getCurrencySymbol();
     float price;
-
-    boolean check = false;
-    View focusView = null;
 
     //NumberFormat numberFormat= GlobalUsage.getNumberFormat();
     /**
@@ -105,11 +104,11 @@ public class ProductDetailFragment extends Fragment {
 
 
     List<Product> productDetails = new ArrayList<Product>();
+
     ProductOptions selectedOptionId =null ;
     ProductFlavors selectedFlavorId=null;
-    int  defaultOptionValue;
-    int defaultFlavorValue;
     String initialQuantity;
+     int quantity;
 
 
 
@@ -143,6 +142,7 @@ public class ProductDetailFragment extends Fragment {
 
         List<Category> categories = SessionInfo.getInstance().getCategoryDetails();
         List<Product> products = SessionInfo.getInstance().getProductDetails();
+       // List<Product>
         int count = 0;
         for (Category category : categories)
             if (category.getCategoryId() == getSelectedCategory().getCategoryId()) {
@@ -157,7 +157,6 @@ public class ProductDetailFragment extends Fragment {
                 }
                 break;
             }
-
 
         // Show the dummy content as text in a TextView.
         if (productDetails != null) {
@@ -194,6 +193,8 @@ public class ProductDetailFragment extends Fragment {
                     subTotal = (TextView) diaView.findViewById(R.id.subTotal);
                     img = (ImageView) diaView.findViewById(R.id.img);
                     productName.setText("Item :" + product.getProductName());
+                    qty.setText("1");
+                    initialQuantity=qty.getText().toString();
 
 
                     if (showHasOptions == true) {
@@ -201,14 +202,7 @@ public class ProductDetailFragment extends Fragment {
                         optionNameLabel.setText(product.getOptionName());
                         ProductOptionValues = (Spinner) diaView.findViewById(R.id.optionValues);
                         final List<ProductOptions> productOptions = SessionInfo.getInstance().getProductOptions();
-                        System.out.print(productOptions);
-
-                        int optionCount = 1;
-                        ProductOptions defaultOption = new ProductOptions();
-                        defaultOption.setOptionId("");
-                        defaultOption.setOptionValue("Select Option");
-                        productOptionsForSelectedProduct.add(0, defaultOption);
-                        optionValues.add(0, defaultOption.getOptionValue());
+                        int optionCount = 0;
 
                         for (int i = 0; i < productOptions.size(); i++) {
                             ProductOptions options = productOptions.get(i);
@@ -227,9 +221,7 @@ public class ProductDetailFragment extends Fragment {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 selectedOptionId = productOptionsForSelectedProduct.get(position);
-                                defaultOptionValue = ProductOptionValues.getSelectedItemPosition();
                                 initialQuantity = qty.getText().toString();
-
 
                                 if (SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")) {
                                     price = selectedOptionId.getRetailPrice();
@@ -238,9 +230,8 @@ public class ProductDetailFragment extends Fragment {
                                 }
                                 unitPrice.setText("Unit Price : " + currencySymbol + "" + GlobalUsage.getNumberFormat().format(price));
                                 if(!TextUtils.isEmpty(initialQuantity)){
-                                    int quantity = 0;
+
                                     quantity = Integer.parseInt(initialQuantity);
-                                    System.out.println("initialQuantity" + quantity);
                                     subTotal.setText("Sub Total : " + currencySymbol + "" + GlobalUsage.getNumberFormat().format(calculateTotal(product, quantity, selectedOptionId)));
                                 }
 
@@ -271,12 +262,8 @@ public class ProductDetailFragment extends Fragment {
                         ProductFlavorValues = (Spinner) diaView.findViewById(R.id.flavorsValues);
                         final List<ProductFlavors> productFlavors = SessionInfo.getInstance().getProductFlavors();
                         System.out.print(productFlavors);
-                        int flavorCount = 1;
-                        ProductFlavors defaultFlavor = new ProductFlavors();
-                        defaultFlavor.setFlavorId("");
-                        defaultFlavor.setFlavorValue("Select Flavor");
-                        productFlavorsForSelectedProduct.add(0, defaultFlavor);
-                        flavorValues.add(0, defaultFlavor.getFlavorValue());
+                        int flavorCount =0;
+
                         for (int i = 0; i < productFlavors.size(); i++) {
                             ProductFlavors flavors = productFlavors.get(i);
                             if (product.getId() == flavors.getProductId()) {
@@ -292,7 +279,7 @@ public class ProductDetailFragment extends Fragment {
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                                 selectedFlavorId = productFlavorsForSelectedProduct.get(position);
-                                defaultFlavorValue = ProductFlavorValues.getSelectedItemPosition();
+
                                 //  Toast.makeText(getActivity(),selectedOptionId, Toast.LENGTH_LONG).show();
 
 
@@ -309,9 +296,10 @@ public class ProductDetailFragment extends Fragment {
 
                     }
 
-
                     unitPrice.setText("Unit Price : " + currencySymbol + "" + GlobalUsage.getNumberFormat().format(price));
-                    subTotal.setText("Sub Total :" + currencySymbol + " 0.00");
+                    quantity = Integer.parseInt(initialQuantity);
+                    subTotal.setText("Sub Total : " + currencySymbol + "" + GlobalUsage.getNumberFormat().format(calculateTotal(product, quantity, selectedOptionId)));
+                  //  subTotal.setText("Sub Total :" + currencySymbol + " 0.00");
 
 
                     qty.addTextChangedListener(new TextWatcher() {
@@ -358,7 +346,7 @@ public class ProductDetailFragment extends Fragment {
 
                     alertDialog.setPositiveButton("ADD TO CART", null);
                     TextView textView = new TextView(getActivity());
-                    textView.setText("Please Enter Quantity");
+                    textView.setText("Add Product");
                     textView.setTextColor(getResources().getColor(R.color.colorInversePrimary));
                     textView.setTextSize(20);
                     textView.setPadding(10, 10, 10, 10);
@@ -374,33 +362,6 @@ public class ProductDetailFragment extends Fragment {
                                     new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
-                                           check = false;
-                                            if (showHasOptions == true) {
-                                                if (defaultOptionValue == 0) {
-                                                    TextView errorText = (TextView) ProductOptionValues.getSelectedView();
-                                                    errorText.setError(getString(R.string.error_field_required));
-                                                    Toast.makeText(getActivity(), "This field is Reqiured", Toast.LENGTH_SHORT).show();
-                                                    focusView = errorText;
-                                                    check = true;
-                                                }
-                                            }
-                                            if (showHasFlavors==true){
-                                                if (defaultFlavorValue == 0) {
-                                                    TextView errorText = (TextView) ProductFlavorValues.getSelectedView();
-                                                    errorText.setError(getString(R.string.error_field_required));
-                                                    Toast.makeText(getActivity(), "This field is Reqiured", Toast.LENGTH_SHORT).show();
-                                                    focusView = errorText;
-                                                    check = true;
-                                                }
-
-
-                                            }
-
-
-                                            if (check == true) {
-                                                focusView.requestFocus();
-                                                return;
-                                            } else {
                                             Button button = (Button) v;
                                             boolean add = false;
 
@@ -534,7 +495,7 @@ public class ProductDetailFragment extends Fragment {
                                             });
                                             animSetXY.start();
                                             /*img.startAnimation(rotate);*/
-                                        }
+
 
             }
 
@@ -611,8 +572,6 @@ public class ProductDetailFragment extends Fragment {
         if(productDetailActivity!=null)
             productDetailActivity.setOrderTotal();
     }
-
-
 
 }
 
