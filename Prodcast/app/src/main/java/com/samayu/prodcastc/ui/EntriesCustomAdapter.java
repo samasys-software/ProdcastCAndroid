@@ -65,7 +65,7 @@ public class EntriesCustomAdapter extends BaseAdapter {
 
     public  class Holder
     {
-        TextView tv,tv1,tv2,optionValue,flavorValue;
+        TextView tv,tv1,tv2;
         ImageButton img;
         EditText qty;
     }
@@ -81,22 +81,17 @@ public class EntriesCustomAdapter extends BaseAdapter {
             holder.tv = (TextView) convertView.findViewById(R.id.productName);
             holder.tv1 = (TextView) convertView.findViewById(R.id.unitPrice);
             holder.qty=(EditText) convertView.findViewById(R.id.orderQuantity);
-            holder.optionValue=(TextView) convertView.findViewById(R.id.optionValue);
-            holder.flavorValue=(TextView) convertView.findViewById(R.id.flavorValue);
+
             /*holder.tv2= (TextView) convertView.findViewById(R.id.subTotal);*/
 
             convertView.setTag(holder);
             //img.setTag(holder);
 
             float price=0;
-
             final OrderDetails orders=orderEntries.get(position);
 
-
-
-            holder.tv.setText(orders.getProduct().getProductName());
-            if(orders.getProductOptions()!=null) {
-                holder.optionValue.setText(orders.getProductOptions().getOptionValue());
+             if(orders.getProductOptions()!=null && orders.getProductFlavors()!=null){
+               holder.tv.setText(orders.getProduct().getProductName()+"\n"+orders.getProductOptions().getOptionValue().toUpperCase()+"\n"+orders.getProductFlavors().getFlavorValue().toUpperCase());
                 if(SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")){
                     price=orders.getProductOptions().getRetailPrice();
                 }
@@ -104,22 +99,37 @@ public class EntriesCustomAdapter extends BaseAdapter {
                     price=orders.getProductOptions().getUnitPrice();
                 }
             }
-            else{
+           else if(orders.getProductOptions()!=null) {
+                 holder.tv.setText(orders.getProduct().getProductName()+"\n"+orders.getProductOptions().getOptionValue().toUpperCase());
                 if(SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")){
-                    price=orders.getProduct().getRetailPrice();
+                    price=orders.getProductOptions().getRetailPrice();
                 }
                 else{
-                    price=orders.getProduct().getUnitPrice();
+                    price=orders.getProductOptions().getUnitPrice();
                 }
             }
-            if(orders.getProductFlavors()!=null) {
-                holder.flavorValue.setText(orders.getProductFlavors().getFlavorValue());
+
+           else if(orders.getProductFlavors()!=null) {
+              holder.tv.setText(orders.getProduct().getProductName()+"\n"+orders.getProductFlavors().getFlavorValue().toUpperCase());
+                 if(SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")){
+                     price=orders.getProduct().getRetailPrice();
+                 }
+                 else{
+                     price=orders.getProduct().getUnitPrice();
+                 }
             }
-
-
+             else{
+                 holder.tv.setText(orders.getProduct().getProductName());
+                 if(SessionInfo.getInstance().getEmployee().getCustomerType().equals("R")){
+                     price=orders.getProduct().getRetailPrice();
+                 }
+                 else{
+                     price=orders.getProduct().getUnitPrice();
+                 }
+             }
             holder.tv1.setText(numberFormat.format(price));
-
             holder.qty.setText(String.valueOf(orders.getQuantity()));
+
             /*holder.tv2.setText(GlobalUsage.getNumberFormat().format(ProductDetailFragment.calculateTotal(orders.getProduct(),Integer.parseInt(holder.qty.getText().toString()))));*/
 
 

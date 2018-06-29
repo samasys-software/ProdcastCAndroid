@@ -27,11 +27,19 @@ public class BillDetailsOrderEntryView extends FrameLayout {
         inflater.inflate(R.layout.billdetails_orderentryview,this);
     }
     public void setData(){
-        ((TextView)findViewById(R.id.productName)).setText(String.valueOf( orderDetails.getProductName()));
+
+         if(orderDetails.getOptionValue()!=null && orderDetails.getFlavorValue()!=null)
+            ((TextView)findViewById(R.id.productName)).setText(String.valueOf( orderDetails.getProductName())+"\n"+String.valueOf(orderDetails.getOptionValue().toUpperCase())+"\n"+String.valueOf(orderDetails.getFlavorValue().toUpperCase()));
+        else if(orderDetails.getOptionValue()!=null)
+            ((TextView)findViewById(R.id.productName)).setText(String.valueOf( orderDetails.getProductName())+"\n"+String.valueOf(orderDetails.getOptionValue().toUpperCase()));
+        else if(orderDetails.getFlavorValue()!=null)
+            ((TextView)findViewById(R.id.productName)).setText(String.valueOf( orderDetails.getProductName())+"\n"+String.valueOf(orderDetails.getFlavorValue().toUpperCase()));
+        else
+            ((TextView)findViewById(R.id.productName)).setText(String.valueOf( orderDetails.getProductName()));
+
         ((TextView)findViewById(R.id.qty)).setText(String.valueOf(orderDetails.getQuantity()));
         ((TextView)findViewById(R.id.price)).setText(numberFormat.format(orderDetails.getUnitPrice()));
         ((TextView)findViewById(R.id.subTotal)).setText(numberFormat.format(orderDetails.getSubtotal()));
-
 
     }
 }
