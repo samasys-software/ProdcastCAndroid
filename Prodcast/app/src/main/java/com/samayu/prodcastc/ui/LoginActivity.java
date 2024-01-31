@@ -26,6 +26,7 @@ import com.samayu.prodcastc.businessObjects.dto.AdminDTO;
 import com.samayu.prodcastc.businessObjects.dto.CountryDTO;
 import com.samayu.prodcastc.businessObjects.dto.CustomerLoginDTO;
 import com.samayu.prodcastc.businessObjects.dto.ProdcastDTO;
+import io.github.pixee.security.ObjectInputFilters;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -455,6 +456,7 @@ public class LoginActivity extends AppCompatActivity {
     public CustomersLogin loginRetrive() {
         try {
             ObjectInputStream ois = new ObjectInputStream(openFileInput(FILE_NAME));
+            ObjectInputFilters.enableObjectFilterIfUnprotected(ois);
             CustomersLogin r = (CustomersLogin) ois.readObject();
             return r;
         }
